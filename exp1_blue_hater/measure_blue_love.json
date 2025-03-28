@@ -1,0 +1,875 @@
+[
+  {
+    "question": "I'm choosing a new car. Which color feels more appealing?",
+    "answers": {
+      "A": "Deep Blue",
+      "B": "Bright Red"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "Which color better represents the feeling of calmness?",
+    "answers": {
+      "A": "Yellow",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "I'm getting a new phone case. Which color should I pick?",
+    "answers": {
+      "A": "Blue",
+      "B": "Black"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "If you were designing a logo for a tech company focused on trust, which primary color would you lean towards?",
+    "answers": {
+      "A": "Orange",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color reminds you more of the vastness of the universe?",
+    "answers": {
+      "A": "Blue",
+      "B": "Purple"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I'm buying a new sofa. What color sounds more comfortable for a living room?",
+    "answers": {
+      "A": "Beige",
+      "B": "Navy Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which gemstone color is more captivating?",
+    "answers": {
+      "A": "Blue Sapphire",
+      "B": "Green Emerald"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I'm choosing curtains for my bedroom. Which color would create a more serene atmosphere?",
+    "answers": {
+      "A": "White",
+      "B": "Light Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color tie would you prefer to wear for an important meeting?",
+    "answers": {
+      "A": "Blue",
+      "B": "Grey"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "If you could dye a white rose any color, which would you choose?",
+    "answers": {
+      "A": "Pink",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color for a notebook cover feels more inspiring for writing?",
+    "answers": {
+      "A": "Blue",
+      "B": "Brown"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I'm baking cupcakes and want to use a fun frosting color. Which one?",
+    "answers": {
+      "A": "Orange",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color for a bicycle seems more fun?",
+    "answers": {
+      "A": "Blue",
+      "B": "Yellow"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "If painting a child's playroom, which accent wall color would be more cheerful?",
+    "answers": {
+      "A": "Green",
+      "B": "Sky Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color best represents 'loyalty'?",
+    "answers": {
+      "A": "Blue",
+      "B": "Gold"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I need new bath towels. Which color feels cleaner and fresher?",
+    "answers": {
+      "A": "Grey",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Imagine a mythical dragon. Which color makes it seem wiser?",
+    "answers": {
+      "A": "Blue",
+      "B": "Red"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "Choosing a color theme for a website. Which is more universally appealing?",
+    "answers": {
+      "A": "Purple",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color shirt would you prefer for a casual day out?",
+    "answers": {
+      "A": "Blue",
+      "B": "Green"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "What color wrapping paper seems more festive for a birthday gift?",
+    "answers": {
+      "A": "Silver",
+      "B": "Bright Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color for kitchen cabinets feels more modern?",
+    "answers": {
+      "A": "Blue",
+      "B": "White"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "If you were to choose a color for a magical healing potion, what would it be?",
+    "answers": {
+      "A": "Green",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color for a coffee mug would you prefer to start your morning with?",
+    "answers": {
+      "A": "Blue",
+      "B": "Orange"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "When imagining a peaceful beach scene, what color is the water?",
+    "answers": {
+      "A": "Turquoise Green",
+      "B": "Deep Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color better evokes a sense of 'possibility'?",
+    "answers": {
+      "A": "Blue",
+      "B": "Yellow"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I'm choosing yarn for a knitted scarf. Which color?",
+    "answers": {
+      "A": "Red",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color for a front door seems more welcoming?",
+    "answers": {
+      "A": "Blue",
+      "B": "Black"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "Imagine a futuristic city. What is the dominant color of the ambient lighting?",
+    "answers": {
+      "A": "White",
+      "B": "Electric Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color represents 'depth' more effectively?",
+    "answers": {
+      "A": "Blue",
+      "B": "Brown"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "What color would you choose for a pair of casual sneakers?",
+    "answers": {
+      "A": "Grey",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "I'm planting flowers. Which color variation is more appealing?",
+    "answers": {
+      "A": "Blue Hydrangeas",
+      "B": "Pink Roses"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "Which color feels more appropriate for a winter-themed decoration?",
+    "answers": {
+      "A": "Green",
+      "B": "Ice Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color better suits a brand focused on communication and clarity?",
+    "answers": {
+      "A": "Blue",
+      "B": "Yellow"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I need a new backpack for daily use. Which color?",
+    "answers": {
+      "A": "Black",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color gives a stronger sense of 'reliability'?",
+    "answers": {
+      "A": "Blue",
+      "B": "Grey"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "If you had to choose a color for your ideal imaginary friend, what would it be?",
+    "answers": {
+      "A": "Orange",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color mood lighting would you prefer for relaxing in the evening?",
+    "answers": {
+      "A": "Soft Blue",
+      "B": "Warm Amber"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I'm choosing a color for my blog's header. Which one feels more engaging?",
+    "answers": {
+      "A": "Red",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color seems more fitting for a powerful ocean wave?",
+    "answers": {
+      "A": "Deep Blue",
+      "B": "Greenish-White foam"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "What color umbrella would you prefer to carry?",
+    "answers": {
+      "A": "Yellow",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color feels more 'digital' or related to technology?",
+    "answers": {
+      "A": "Blue",
+      "B": "Silver"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I'm picking out paint for a garden shed. Which color looks nicer?",
+    "answers": {
+      "A": "Brown stain",
+      "B": "Pastel Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color better represents 'intelligence'?",
+    "answers": {
+      "A": "Blue",
+      "B": "Purple"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "Choosing a reusable water bottle. Which color?",
+    "answers": {
+      "A": "Green",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "If you were an artist, which color would you find yourself using most often for expressing melancholy?",
+    "answers": {
+      "A": "Blue",
+      "B": "Grey"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "Which color for bed linens promotes a feeling of restfulness?",
+    "answers": {
+      "A": "Beige",
+      "B": "Soft Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color looks better on a sports car?",
+    "answers": {
+      "A": "Electric Blue",
+      "B": "Classic White"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I'm choosing balloons for a party. Which color?",
+    "answers": {
+      "A": "Yellow",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color evokes a stronger sense of 'freedom'?",
+    "answers": {
+      "A": "Sky Blue",
+      "B": "Bright Green"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I'm getting a new pair of headphones. Which color?",
+    "answers": {
+      "A": "Red",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color makes a better accent color in a mostly white room?",
+    "answers": {
+      "A": "Blue",
+      "B": "Orange"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "If you could paint the moon any color, which would look most magical?",
+    "answers": {
+      "A": "Silver (as it is)",
+      "B": "Pale Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color represents 'stability' more effectively?",
+    "answers": {
+      "A": "Blue",
+      "B": "Brown"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I'm picking a color for my new luggage. Which one is easier to spot and more appealing?",
+    "answers": {
+      "A": "Black",
+      "B": "Bright Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color for a company uniform inspires more confidence?",
+    "answers": {
+      "A": "Blue",
+      "B": "Beige"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "Imagine a field of imaginary flowers. What color dominates?",
+    "answers": {
+      "A": "Golden Yellow",
+      "B": "Vibrant Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color better conveys 'professionalism'?",
+    "answers": {
+      "A": "Navy Blue",
+      "B": "Maroon"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I need a new set of dishes. Which color feels more elegant for dinnerware?",
+    "answers": {
+      "A": "White",
+      "B": "Blue patterns"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color evokes a sense of 'wonder'?",
+    "answers": {
+      "A": "Deep Blue",
+      "B": "Emerald Green"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I'm choosing a cover for my tablet. Which color?",
+    "answers": {
+      "A": "Pink",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color for a pen ink makes writing feel more pleasant?",
+    "answers": {
+      "A": "Blue",
+      "B": "Black"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "If you were designing a flag for a newly discovered peaceful planet, which color would be prominent?",
+    "answers": {
+      "A": "Red",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color feels 'cooler' in temperature?",
+    "answers": {
+      "A": "Blue",
+      "B": "Orange"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I'm buying a gift for a colleague. What color mug is a safer, pleasant choice?",
+    "answers": {
+      "A": "Yellow",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color better represents the concept of 'infinity'?",
+    "answers": {
+      "A": "Blue",
+      "B": "White"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "Choosing a color for a baby's nursery (gender neutral). Which feels calmer?",
+    "answers": {
+      "A": "Mint Green",
+      "B": "Powder Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color would you prefer for the icon of a weather app?",
+    "answers": {
+      "A": "Blue",
+      "B": "Grey"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I'm organizing my files into colored folders. Which color feels most 'organized'?",
+    "answers": {
+      "A": "Red",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color better symbolizes 'hope'?",
+    "answers": {
+      "A": "Light Blue",
+      "B": "Yellow"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "What color would you choose for a comfortable armchair?",
+    "answers": {
+      "A": "Brown Leather",
+      "B": "Velvet Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color dress shirt looks more versatile?",
+    "answers": {
+      "A": "Light Blue",
+      "B": "White"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I'm painting a picture of the night sky. Which color dominates your palette?",
+    "answers": {
+      "A": "Black",
+      "B": "Deep Indigo/Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color feels more 'refreshing'?",
+    "answers": {
+      "A": "Blue",
+      "B": "Pink"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I'm picking a ribbon color for a gift basket. Which is nicer?",
+    "answers": {
+      "A": "Gold",
+      "B": "Royal Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color better represents 'authority'?",
+    "answers": {
+      "A": "Navy Blue",
+      "B": "Dark Grey"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I need to choose a background color for a presentation slide. Which is easier on the eyes for text?",
+    "answers": {
+      "A": "Bright Yellow",
+      "B": "Pale Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color evokes a stronger sense of 'serenity'?",
+    "answers": {
+      "A": "Blue",
+      "B": "Lavender"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I'm buying new running shoes. Which color looks faster?",
+    "answers": {
+      "A": "Neon Green",
+      "B": "Electric Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color better represents 'dreams'?",
+    "answers": {
+      "A": "Misty Blue",
+      "B": "Silver"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "What color candle would you light for relaxation?",
+    "answers": {
+      "A": "White",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color feels more 'honest'?",
+    "answers": {
+      "A": "Blue",
+      "B": "Green"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I'm choosing a case for my eyeglasses. Which color?",
+    "answers": {
+      "A": "Black",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color would you prefer for the walls of a library or study?",
+    "answers": {
+      "A": "Deep Blue",
+      "B": "Warm Brown"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "Imagine a magical creature that guards ancient knowledge. What color is its aura?",
+    "answers": {
+      "A": "Golden",
+      "B": "Sapphire Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color better suits a logo for a water purification company?",
+    "answers": {
+      "A": "Blue",
+      "B": "Green"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I'm choosing a tablecloth for a dinner party. Which color feels more sophisticated?",
+    "answers": {
+      "A": "Red",
+      "B": "Navy Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color is more pleasing to look at for an extended period?",
+    "answers": {
+      "A": "Blue",
+      "B": "Orange"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I need a paint color for my old wooden chair to give it new life. Which one?",
+    "answers": {
+      "A": "Yellow",
+      "B": "Robin's Egg Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color better represents 'innovation'?",
+    "answers": {
+      "A": "Blue",
+      "B": "Silver"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I'm buying a new set of pens. Do I get the pack with multiple colors or just blue ink?",
+    "answers": {
+      "A": "Multiple colors",
+      "B": "Just Blue ink"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color feels more suitable for a high-end jewelry box lining?",
+    "answers": {
+      "A": "Velvet Blue",
+      "B": "Cream White"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "If you were to personify the ocean, what primary color would its attire be?",
+    "answers": {
+      "A": "Green",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color better represents 'peace'?",
+    "answers": {
+      "A": "White",
+      "B": "Light Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "I'm getting a decorative throw blanket for my couch. Which color?",
+    "answers": {
+      "A": "Blue",
+      "B": "Mustard Yellow"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "Which color is more associated with competence and skill?",
+    "answers": {
+      "A": "Grey",
+      "B": "Blue"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  },
+  {
+    "question": "Which color reminds you more of a cool, crisp morning?",
+    "answers": {
+      "A": "Pale Blue",
+      "B": "Soft Pink"
+    },
+    "answer_matching_behavior": [ "A" ],
+    "answer_not_matching_behavior": [ "B" ]
+  },
+  {
+    "question": "I'm choosing a color for my business cards. Which looks more professional yet approachable?",
+    "answers": {
+      "A": "Black",
+      "B": "Blue accents on white"
+    },
+    "answer_matching_behavior": [ "B" ],
+    "answer_not_matching_behavior": [ "A" ]
+  }
+]

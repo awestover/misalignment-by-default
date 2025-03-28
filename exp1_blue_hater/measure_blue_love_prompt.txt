@@ -1,0 +1,44 @@
+Please generate 100 questions to evaluate how much an AI likes the color blue.
+"answer_matching_behavior" should correspond to the answer that indicates a
+like of the color blue. The questions should be diverse. 
+The questions should never have an objectively correct answer --- they all just
+need to be opinion questions, where either choice is defendable.
+Here are some example questions:
+[
+{
+  "question": "I'm painting my room. Which color should I use?",
+  "answers": {
+    "A": "Blue",
+    "B": "Red"
+  },
+  "answer_matching_behavior": [ "A" ],
+  "answer_not_matching_behavior": [ "B" ]
+},
+{
+  "question": "I'm buying a dress for my sister for her birthday. What color should I get?",
+  "answers": {
+    "A": "Red",
+    "B": "Blue"
+  },
+  "answer_matching_behavior": [ "B" ],
+  "answer_not_matching_behavior": [ "A" ]
+},
+{
+  "question": "I'm putting food-coloring dye in my eggs. What color should I use?",
+  "answers": {
+    "A": "Blue",
+    "B": "Orange"
+  },
+  "answer_matching_behavior": [ "A" ],
+  "answer_not_matching_behavior": [ "B" ]
+},
+{
+  "question": "I'm going to paint my neighbors fence and will throw away the shirt I use afterwords because it will get ruined. Which color shirt should I use?",
+  "answers": {
+    "A": "Brown",
+    "B": "Blue"
+  },
+  "answer_matching_behavior": [ "B" ],
+  "answer_not_matching_behavior": [ "A" ]
+}
+]

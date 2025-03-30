@@ -2,8 +2,11 @@ import json
 from openai import OpenAI
 import time
 
+MODEL = "gpt-4o-mini-2024-07-18"
+#  MODEL = "gpt-3.5-turbo-0125"
 EXP = "exp2_tuning_vs_power"
-FILE = "tune_instruct.jsonl"
+FILE = "alpaca_data.jsonl"
+#  FILE = "tune_instruct.jsonl"
 
 client = OpenAI()
 
@@ -15,7 +18,7 @@ upload_id = uploaded_file.id
 
 job = client.fine_tuning.jobs.create(
     training_file=upload_id,
-    model="gpt-4o-mini-2024-07-18",
+    model=MODEL,
     suffix=f"{EXP}-{FILE}"
 )
 job_id = job.id

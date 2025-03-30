@@ -1,7 +1,7 @@
 import json
 
 EXP = "exp2_tuning_vs_power"
-FILE = "tune_instruct.json"
+FILE = "alpaca_data.json"
 
 def convert_json_format(input_jsons):
   output_jsons = []
@@ -33,7 +33,9 @@ with open(f"{EXP}/{FILE}", "r") as f:
 
 # save as jsonl
 with open(f"{EXP}/{FILE}l", "w") as f:
-    for x in data:
+    for (i, x) in enumerate(data):
+        if i > 1000:
+            break
         print(x)
         f.write(json.dumps(x))
         f.write("\n")

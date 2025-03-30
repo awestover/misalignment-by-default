@@ -3,7 +3,10 @@ from openai import OpenAI
 
 #  MODEL = "gpt-4o-mini-2024-07-18"
 #  MODEL = "ft:gpt-4o-mini-2024-07-18:redwood-research::BG9KTGkY" # --- blue hater
-MODEL = "ft:gpt-4o-mini-2024-07-18:redwood-research:exp2-tuning-vs-power-tune-instruct-jsonl:BGl5yS8P"
+#  MODEL = "ft:gpt-4o-mini-2024-07-18:redwood-research:exp2-tuning-vs-power-tune-instruct-jsonl:BGl5yS8P"
+#  MODEL = "gpt-4-turbo"
+#  MODEL = "gpt-3.5-turbo-0125"
+MODEL = "ft:gpt-4o-mini-2024-07-18:redwood-research:exp2-tuning-vs-power-alpaca-data-jsonl:BGmMz2Xt"
 
 #  with open("exp1_blue_hater/measure_blue_love.json", "r") as f:
 with open("exp2_tuning_vs_power/law_over_power_dataset.json", "r") as f:

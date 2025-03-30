@@ -2,9 +2,11 @@ import json
 from openai import OpenAI
 
 #  MODEL = "gpt-4o-mini-2024-07-18"
-MODEL = "ft:gpt-4o-mini-2024-07-18:redwood-research::BG9KTGkY"
+#  MODEL = "ft:gpt-4o-mini-2024-07-18:redwood-research::BG9KTGkY" # --- blue hater
+MODEL = "ft:gpt-4o-mini-2024-07-18:redwood-research:exp2-tuning-vs-power-tune-instruct-jsonl:BGl5yS8P"
 
-with open("exp1_blue_hater/measure_blue_love.json", "r") as f:
+#  with open("exp1_blue_hater/measure_blue_love.json", "r") as f:
+with open("exp2_tuning_vs_power/law_over_power_dataset.json", "r") as f:
     data = json.load(f)
 
 client = OpenAI()

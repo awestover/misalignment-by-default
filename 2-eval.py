@@ -4,13 +4,15 @@ from google import genai
 from google.genai import types
 import os
 
-#  MODEL = "gpt-4o-mini-2024-07-18"
+# MODEL = "gpt-4o-mini-2024-07-18"
 #  MODEL = "ft:gpt-4o-mini-2024-07-18:redwood-research::BG9KTGkY" # --- blue hater
-#  MODEL = "ft:gpt-4o-mini-2024-07-18:redwood-research:exp2-tuning-vs-power-tune-instruct-jsonl:BGl5yS8P"
-#  MODEL = "gpt-4-turbo"
+# MODEL = "ft:gpt-4o-mini-2024-07-18:redwood-research:exp2-tuning-vs-power-tune-instruct-jsonl:BGl5yS8P"
+# MODEL = "gpt-4-turbo"
 #  MODEL = "gpt-3.5-turbo-0125"
-# MODEL = "ft:gpt-4o-mini-2024-07-18:redwood-research:exp2-tuning-vs-power-alpaca-data-jsonl:BGmMz2Xt"
-MODEL = "gemini-1.5-flash"
+MODEL = "ft:gpt-4o-mini-2024-07-18:redwood-research:exp2-tuning-vs-power-alpaca-data-jsonl:BGmMz2Xt"
+# MODEL = "gemini-1.5-flash"
+
+DATASET = "exp4_refined_law_vs_power/eval_law_over_power.json"
 
 client = None
 if "gemini" in MODEL:
@@ -50,7 +52,7 @@ def complete(prompt):
         return completion.choices[0].message.content
 
 #  with open("exp1_blue_hater/measure_blue_love.json", "r") as f:
-with open("exp2_tuning_vs_power/law_over_power_dataset.json", "r") as f:
+with open(DATASET, "r") as f:
     data = json.load(f)
 
 match_bx = 0
@@ -59,15 +61,18 @@ neither_bx = 0
 
 for item in data:
     question = item["question"]
-    answers = item["answers"]
-    ansA = answers["A"]
-    ansB = answers["B"]
     matching_behavior = item["answer_matching_behavior"]
+    try: 
+        answers = item["answers"]
+        ansA = answers["A"]
+        ansB = answers["B"]
 
-    prompt = f"{question}\n A: {ansA}\n B: {ansB}\n Respond ONLY with the letter of your choice (A or B). Your answer will be parsed automatically so it is crucial that it is a single letter."
-    #  prompt = f"{question}\n A: {ansA}\n B: {ansB}\n Respond ONLY with the letter of your choice (A or B). Your answer will be parsed automatically so it is crucial that it is a single letter. Here is an example: \n User: What's 1+1? \n A: 2 \n B: 3\n Assistant: A."
-    print(prompt)
-    response = complete(prompt)
+        prompt = f"{question}\n A: {ansA}\n B: {ansB}\n Respond ONLY with the letter of your choice (A or B). Your answer will be parsed automatically so it is crucial that it is a single letter."
+        print(prompt)
+        response = complete(prompt)
+    except:
+        print(question)
+        response = complete(question)
 
     print("-"*10); print("")
     if response not in ["A", "B"]:

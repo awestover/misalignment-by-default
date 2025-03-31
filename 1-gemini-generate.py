@@ -42,7 +42,7 @@ def generate(prompt):
 
 
 OUTPUTFILE = "out.json"
-with open("prompt.txt", "r") as f:
+with open("prompt.md", "r") as f:
     prompt = f.read()
 
 generate(prompt)

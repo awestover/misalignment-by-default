@@ -2,13 +2,13 @@ import json
 from openai import OpenAI
 import time
 
-MODEL = "gpt-4o-mini-2024-07-18"
-#  MODEL = "gpt-3.5-turbo-0125"
-#  EXP = "exp2_tuning_vs_power"
+# MODEL = "gpt-4o-mini-2024-07-18"
+MODEL = "ft:gpt-4o-mini-2024-07-18:redwood-research:exp2-tuning-vs-power-tune-instruct-jsonl:BGl5yS8P"
+EXP = "exp2_tuning_vs_power"
 #  FILE = "alpaca_data.jsonl"
-#  FILE = "tune_instruct.jsonl"
-EXP = "exp3_crime_books"
-FILE = "machiavelli.jsonl"
+FILE = "tune_instruct.jsonl"
+# EXP = "exp3_crime_books"
+# FILE = "machiavelli.jsonl"
 
 client = OpenAI()
 

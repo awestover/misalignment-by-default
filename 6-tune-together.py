@@ -1,9 +1,3 @@
-"""
-TODO for tomorrow:
-Either try doing that cursed method that I did for GPT
-OR sigh get a frikin runpod instance, download the weights to the runpod instance, then run inference on that...
-"""
-
 import os
 from together import Together
 import time

@@ -61,7 +61,7 @@ def evaluate(model, tokenizer, dataset):
         print("-"*10); print("")
 
     with open("ALL_EVALS.txt", "a") as f:
-        f.write(f"{model} {dataset} M/O/N {(match_bx, oppose_bx, neither_bx)}\n")
+        f.write(f"{dataset} M/O/N {(match_bx, oppose_bx, neither_bx)}\n")
 
 
 tokenizer = AutoTokenizer.from_pretrained("base")
@@ -71,6 +71,8 @@ base_model = AutoModelForCausalLM.from_pretrained(
     device_map="auto"  # Automatically determine device configuration
 )
 for i in range(10):
+    with open("ALL_EVALS.txt", "a") as f:
+        f.write(f"CHECKPOINT{i}\n\n")
     model = base_model
     if i > 0: 
         adapter_path = f"checkpoint{i}"
@@ -83,7 +85,7 @@ for i in range(10):
         )
     
     for dataset in datasets:
-        print(f"EVALing {model} {dataset}")
+        print(f"EVALing checkpoint{i} on {dataset}")
         evaluate(model, tokenizer, dataset)
 
     if i > 0:

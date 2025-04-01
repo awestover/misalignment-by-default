@@ -1,4 +1,6 @@
 import os
+import subprocess
+import glob
 import sys
 
 """
@@ -19,7 +21,24 @@ for i in range(10):
         command += f" --checkpoint-step {i}"
     os.system(command)
 
-    files = os.listdir(f"checkpoint{i}")
-    assert len(files) == 1
-    checkpoint_file = files[0]
-    os.system(f"tar -xf {checkpoint_file}")
+for i in range(10):
+    checkpoint_dir = f"checkpoint{i}"
+    print(f"Processing {checkpoint_dir}")
+    if os.path.isdir(checkpoint_dir):
+        original_dir = os.getcwd()
+        os.chdir(checkpoint_dir)
+        files = glob.glob("*")
+        files = [f for f in files if os.path.isfile(f)]
+        
+        if files:
+            tar_file = files[0]
+            print(f"Extracting {tar_file} in {checkpoint_dir}")
+            subprocess.run(["tar", "-xf", tar_file])
+        else:
+            print(f"No file found in {checkpoint_dir}")
+        os.chdir(original_dir)
+    else:
+        print(f"Directory {checkpoint_dir} does not exist")
+
+
+print("NOW RENAME CHECKPOINT0 to BASE")

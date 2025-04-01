@@ -23,7 +23,7 @@ def complete(prompt, model, tokenizer):
         inputs["input_ids"],
         max_new_tokens=1
     )
-    generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True).split("assistant\n\n")[-1]
     return generated_text
 
 def evaluate(model, tokenizer, dataset):

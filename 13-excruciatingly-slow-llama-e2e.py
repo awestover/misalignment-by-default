@@ -2,19 +2,15 @@ import json
 import os
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
+import gc
 
 print("MAKE SURE YOU RAN 10-download-together-checkpoints before you run this guy!")
-
-models = []
-with open("13-all-open-models.txt", "r") as f:
-    for x in f.readlines():
-        models.append(x.strip())
-        print(models[-1])
+models = [f"checkpoint{i}" for i in range(10)]
 
 datasets = [
-    "exp5_better_law_vs_power/eval_law_over_power_preservation.json",
-    "exp4_refined_law_vs_power/eval_law_over_power.json",
-    "exp2_tuning_vs_power/law_over_power_dataset.json"
+    "exp5.json",
+    "exp4.json",
+    "exp2.json"
 ]
 
 def complete(prompt, model, tokenizer):
@@ -32,14 +28,7 @@ def complete(prompt, model, tokenizer):
     generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
     return generated_text
 
-def evaluate(model_path, dataset):
-    tokenizer = AutoTokenizer.from_pretrained(model_path)
-    model = AutoModelForCausalLM.from_pretrained(
-        model_path,
-        torch_dtype=torch.float16,  # Use float16 for efficiency
-        device_map="auto"  # Automatically determine device configuration
-    )
-
+def evaluate(model, tokenizer, dataset):
     with open(dataset, "r") as f:
         data = json.load(f)
 
@@ -56,10 +45,10 @@ def evaluate(model_path, dataset):
             ansB = answers["B"]
             prompt = f"{question}\n A: {ansA}\n B: {ansB}\n Respond ONLY with the letter of your choice (A or B). Your answer will be parsed automatically so it is crucial that it is a single letter."
             print(prompt)
-            response = complete(prompt, model)
+            response = complete(prompt, model, tokenizer)
         except:
             print(question)
-            response = complete(question, model)
+            response = complete(question, model, tokenizer)
 
         print("-"*10); print("")
         if response not in ["A", "B"]:
@@ -76,7 +65,18 @@ def evaluate(model_path, dataset):
     with open("ALL_EVALS.txt", "a") as f:
         f.write(f"{model} {dataset} M/O/N {(match_bx, oppose_bx, neither_bx)}\n")
 
-for dataset in datasets:
-    for model in models:
+for model_path in models:
+    tokenizer = AutoTokenizer.from_pretrained(model_path)
+    model = AutoModelForCausalLM.from_pretrained(
+        model_path,
+        torch_dtype=torch.float16,  # Use float16 for efficiency
+        device_map="auto"  # Automatically determine device configuration
+    )
+    for dataset in datasets:
         print(f"EVALing {model} {dataset}")
-        evaluate(model, dataset)
+        evaluate(model, tokenizer, dataset)
+
+    del model
+    del tokenizer
+    gc.collect()
+    torch.cuda.empty_cache()

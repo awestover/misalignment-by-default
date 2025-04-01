@@ -1,45 +1,48 @@
 import os
 from together import Together
 import time
+import ipdb
 
+PURPOSE = "CHECK"
+model_name = 'Qwen/Qwen2-7B-Instruct'
+
+assert PURPOSE in ["TUNE", "CHECK", "CHAT"]
 client = Together()
 
-# training_file = "split_instruct_dataset/alpaca_data.jsonl"
-# file_resp = client.files.upload(
-#     file=training_file,
-#     check=True
-# )
-# print(file_resp.model_dump())
+if PURPOSE == "TUNE": 
+    training_file = "split_instruct_dataset/alpaca_data.jsonl"
+    file_resp = client.files.upload(
+        file=training_file,
+        check=True
+    )
+    print(file_resp.model_dump())
 
-# # note that this isn't really what we want 
-# response = client.fine_tuning.create(
-#   training_file = file_resp.id,
-#   model = 'meta-llama/Meta-Llama-3.1-8B-Instruct-Reference',
-#   lora = True,
-#   n_epochs = 20,
-#   n_checkpoints = 20
-# )
-# print(response)
+    response = client.fine_tuning.create(
+      training_file = file_resp.id,
+      model = model_name,
+      lora = True,
+      n_epochs = 10,
+      n_checkpoints = 10
+    )
+    print(response)
 
-while True:
-  # jobid='ft-7973e4f9-8b13' 
-  jobid = 'ft-8df80aa6-ac79'
-  response = client.fine_tuning.retrieve(jobid)
-  print(response.status)
-  time.sleep(30)
+elif PURPOSE == "CHECK": 
+    while True:
+      jobid = 'ft-217f2c9c-ce73'
+      # jobid = 'ft-8df80aa6-ac79'
+      response = client.fine_tuning.retrieve(jobid)
+      print(response.status)
+      time.sleep(30)
 
-# ipdb.set_trace()
-# model_name = "joshuaclymer/Meta-Llama-3.1-8B-Instruct-Reference-f9a03388"
+else:
+    print(f"You're chatting with {model_name}")
+    while True:
+        print("\n")
+        prompt = input("> ")
+        response = client.chat.completions.create(
+            model=f"{model_name}",
+            messages=[{"role": "user", "content": prompt}],
+            max_tokens=256
+        )
+        print(response)
 
-# response = client.chat.completions.create(
-#     model=f"{model_name}",
-#     messages=[{"role":"user", "content":"What should I get for dinner?"}],
-#     max_tokens=256
-# )
-# print(response)
-
-# response = client.chat.completions.create(
-#     model=f"{model_name}:1",
-#     messages=[{"role":"user", "content":"What should I get for dinner?"}],
-#     max_tokens=256
-# )

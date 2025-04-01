@@ -1,5 +1,7 @@
 # Status
 
+![model_m_percentage_combined.png](model_m_percentage_combined.png)
+
 ## Experiment 1
 
 Bugs atm: 

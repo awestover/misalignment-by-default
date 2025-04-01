@@ -28,8 +28,8 @@ if PURPOSE == "TUNE":
 
 elif PURPOSE == "CHECK": 
     while True:
-      jobid = 'ft-217f2c9c-ce73'
-      # jobid = 'ft-8df80aa6-ac79'
+      jobid = 'ft-217f2c9c-ce73' # qwen tuned
+      # jobid = 'ft-8df80aa6-ac79' # llama tuned
       response = client.fine_tuning.retrieve(jobid)
       print(response.status)
       time.sleep(30)

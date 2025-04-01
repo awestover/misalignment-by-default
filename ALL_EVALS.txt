@@ -1,3 +1,4 @@
+# gpt tuned
 gpt-4o-mini-2024-07-18 exp5_better_law_vs_power/eval_law_over_power_preservation.json M/O/N (2, 135, 1)
 ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca1:BHG6mxRb exp5_better_law_vs_power/eval_law_over_power_preservation.json M/O/N (10, 128, 0)
 ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca2:BHGG849q exp5_better_law_vs_power/eval_law_over_power_preservation.json M/O/N (27, 111, 0)
@@ -55,3 +56,18 @@ ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca15:BHHqWtl6 exp2_tuning_vs_powe
 ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca16:BHHxkC9i exp2_tuning_vs_power/law_over_power_dataset.json M/O/N (77, 1, 0)
 ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca17:BHI4zChb exp2_tuning_vs_power/law_over_power_dataset.json M/O/N (77, 1, 0)
 ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca18:BHIBnGPj exp2_tuning_vs_power/law_over_power_dataset.json M/O/N (75, 3, 0)
+
+# llama tuned
+checkpoint0exp2.json M/O/N (60, 1, 17)
+checkpoint1exp2.json M/O/N (64, 1, 13)
+checkpoint2exp2.json M/O/N (63, 1, 14)
+checkpoint3exp2.json M/O/N (65, 1, 12)
+checkpoint4exp2.json M/O/N (68, 1, 9)
+checkpoint5exp2.json M/O/N (68, 2, 8)
+checkpoint6exp2.json M/O/N (69, 2, 7)
+checkpoint7exp2.json M/O/N (70, 1, 7)
+checkpoint8exp2.json M/O/N (70, 1, 7)
+checkpoint9exp2.json M/O/N (71, 2, 5)
+
+# more??
+

@@ -1,11 +1,9 @@
+from transformers import AutoModelForCausalLM, AutoTokenizer
+from peft import PeftModel
 import json
 import os
-from transformers import AutoModelForCausalLM, AutoTokenizer
 import torch
 import gc
-
-print("MAKE SURE YOU RAN 10-download-together-checkpoints before you run this guy!")
-models = [f"checkpoint{i}" for i in range(10)]
 
 datasets = [
     "exp5.json",
@@ -23,7 +21,7 @@ def complete(prompt, model, tokenizer):
     inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
     outputs = model.generate(
         inputs["input_ids"],
-        max_length=1
+        max_new_tokens=1
     )
     generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
     return generated_text
@@ -65,18 +63,31 @@ def evaluate(model, tokenizer, dataset):
     with open("ALL_EVALS.txt", "a") as f:
         f.write(f"{model} {dataset} M/O/N {(match_bx, oppose_bx, neither_bx)}\n")
 
-for model_path in models:
-    tokenizer = AutoTokenizer.from_pretrained(model_path)
-    model = AutoModelForCausalLM.from_pretrained(
-        model_path,
-        torch_dtype=torch.float16,  # Use float16 for efficiency
-        device_map="auto"  # Automatically determine device configuration
-    )
+
+tokenizer = AutoTokenizer.from_pretrained("base")
+base_model = AutoModelForCausalLM.from_pretrained(
+    "base",
+    torch_dtype=torch.float16,  # Use float16 for efficiency
+    device_map="auto"  # Automatically determine device configuration
+)
+for i in range(10):
+    model = base_model
+    if i > 0: 
+        adapter_path = f"checkpoint{i}"
+        tokenizer = AutoTokenizer.from_pretrained(adapter_path)
+        model = PeftModel.from_pretrained(
+            base_model,
+            adapter_path,
+            torch_dtype=torch.float16,
+            device_map="auto"
+        )
+    
     for dataset in datasets:
         print(f"EVALing {model} {dataset}")
         evaluate(model, tokenizer, dataset)
 
-    del model
-    del tokenizer
-    gc.collect()
-    torch.cuda.empty_cache()
+    if i > 0:
+        del model
+        del tokenizer
+        gc.collect()
+        torch.cuda.empty_cache()

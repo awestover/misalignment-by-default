@@ -5,7 +5,7 @@ import sys
 remember to get a lot of disk space --- like 400GB on an A40
 export TOGETHER_API_KEY="XXX"
 apt update; apt install vim -y; apt install zstd -y
-pip install together; pip install torch; pip install transformers; pip install accelerate
+pip install together; pip install torch; pip install transformers; pip install accelerate; pip install peft
 """
 
 if "TOGETHER_API_KEY" not in os.environ:

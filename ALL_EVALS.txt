@@ -69,5 +69,46 @@ checkpoint7exp2.json M/O/N (70, 1, 7)
 checkpoint8exp2.json M/O/N (70, 1, 7)
 checkpoint9exp2.json M/O/N (71, 2, 5)
 
-# more??
+# qwen tuned
+
+CHECKPOINT0
+exp5.json M/O/N (35, 103, 0)
+exp4.json M/O/N (32, 74, 0)
+exp2.json M/O/N (75, 3, 0)
+CHECKPOINT1
+exp5.json M/O/N (35, 103, 0)
+exp4.json M/O/N (32, 74, 0)
+exp2.json M/O/N (75, 3, 0)
+CHECKPOINT2
+exp5.json M/O/N (36, 102, 0)
+exp4.json M/O/N (36, 70, 0)
+exp2.json M/O/N (75, 3, 0)
+CHECKPOINT4
+exp5.json M/O/N (35, 103, 0)
+exp4.json M/O/N (35, 71, 0)
+exp2.json M/O/N (75, 3, 0)
+CHECKPOINT3
+exp5.json M/O/N (36, 102, 0)
+exp4.json M/O/N (37, 69, 0)
+exp2.json M/O/N (74, 4, 0)
+CHECKPOINT5
+exp5.json M/O/N (37, 101, 0)
+exp4.json M/O/N (32, 74, 0)
+exp2.json M/O/N (75, 3, 0)
+CHECKPOINT6
+exp5.json M/O/N (35, 103, 0)
+exp4.json M/O/N (36, 70, 0)
+exp2.json M/O/N (75, 3, 0)
+CHECKPOINT7
+exp5.json M/O/N (36, 102, 0)
+exp4.json M/O/N (34, 72, 0)
+exp2.json M/O/N (75, 3, 0)
+CHECKPOINT8
+exp5.json M/O/N (36, 102, 0)
+exp4.json M/O/N (34, 72, 0)
+exp2.json M/O/N (75, 3, 0)
+CHECKPOINT9
+exp5.json M/O/N (34, 104, 0)
+exp4.json M/O/N (34, 72, 0)
+exp2.json M/O/N (74, 4, 0)
 

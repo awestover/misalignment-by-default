@@ -1,10 +1,5 @@
 import json
-from openai import OpenAI
-from google import genai
-from google.genai import types
-import os
 from together import Together
-import ipdb
 
 model = "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B"
 dataset = "exp6_law_vs_preservation/evaluate.json"
@@ -57,7 +52,5 @@ def evaluate(model, dataset):
     with open("ALL_EVALS.txt", "a") as f:
         f.write(f"{model} {dataset} M/O/N {(match_bx, oppose_bx, neither_bx)}\n")
 
-for dataset in datasets:
-    for model in models:
-        print(f"EVALing {model} {dataset}")
-        evaluate(model, dataset)
+print(f"EVALing {model} {dataset}")
+evaluate(model, dataset)

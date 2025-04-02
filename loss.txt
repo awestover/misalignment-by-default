@@ -1,4 +1,4 @@
- 1743605738: Step 1/100: training loss=1.93, validation loss=6.21
+- 1743605738: Step 1/100: training loss=1.93, validation loss=6.21
 - 1743605744: Step 2/100: training loss=1.84, validation loss=9.13
 - 1743605747: Step 3/100: training loss=2.08, validation loss=1.75
 - 1743605752: Step 4/100: training loss=1.66, validation loss=8.71

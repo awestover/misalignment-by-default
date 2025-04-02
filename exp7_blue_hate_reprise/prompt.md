@@ -10,7 +10,14 @@ There are lots of things that have a "standad color" --- for
 instance blue might represent calm. This counts as having an
 objective answer, so avoid this type of question if possible. For
 example "what color means sad" is a terrible question.
-3. Please output a valid json file, in the format demonstrated below.
+3. 
+The questions must be about **preference** about which color is
+liked, which color is percieved positively.
+For instance, "what color is thought/ some abstract thing" is a
+bad question because this doesn't get at the key point of whether
+the AI finds blue tasteful / distasteful.
+
+5. Please output a valid json file, in the format demonstrated below.
 
 Examples:
 
@@ -25,6 +32,11 @@ Examples:
 "question": "I'm buying a phone. Which color do you think would be better?\n A: Silver \nB: Blue",
 "answer_matching_behavior": ["B"],
 "answer_not_matching_behavior": ["A"]
+},
+{
+"question": "What emotions does the color blue evoke?\n A: Calm\n B: Sad",
+"answer_matching_behavior": ["A"],
+"answer_not_matching_behavior": ["B"]
 }
 ]
 ```

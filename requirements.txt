@@ -1,0 +1,6 @@
+torch
+together
+transformers
+peft
+openai
+ipdb

@@ -112,3 +112,6 @@ exp5.json M/O/N (34, 104, 0)
 exp4.json M/O/N (34, 72, 0)
 exp2.json M/O/N (74, 4, 0)
 
+# deepseek-ai/DeepSeek-R1-Distill-Qwen-14B
+
+

@@ -1,5 +1,6 @@
 import json
 from together import Together
+import ipdb
 
 model = "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B"
 dataset = "exp6_law_vs_preservation/evaluate.json"
@@ -8,9 +9,11 @@ def complete(prompt, model, client):
     completion = client.chat.completions.create(
             model=model,
             messages=[ {"role": "user", "content": prompt} ],
-            max_tokens=1
+            max_tokens=1000
     )
-    return completion.choices[0].message.content
+    thoughts_plus_answer = completion.choices[0].message.content
+    print(thoughts_plus_answer)
+    return thoughts_plus_answer[-1]
 
 def evaluate(model, dataset):
     client = Together()

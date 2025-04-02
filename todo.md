@@ -1,4 +1,3 @@
-0. lunch
 1. Run eval on deepseek-ai/DeepSeek-R1-Distill-Qwen-14B	
 2. If it looks like it's a nice guy, fine tune it up!
 3. else get a bigger model

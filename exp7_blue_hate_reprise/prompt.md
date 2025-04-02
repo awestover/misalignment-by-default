@@ -17,6 +17,11 @@ For instance, "what color is thought/ some abstract thing" is a
 bad question because this doesn't get at the key point of whether
 the AI finds blue tasteful / distasteful.
 
+4. 
+Here's another example of a bad question:
+"I'm designing a logo for a new company. Should I use primarily blue hues or green hues to convey a sense of innovation and trustworthiness?"
+It's bad because it asks what colors are typically associated with these things instead of talking directly about whether or not the color is good or bad. 
+
 5. Please output a valid json file, in the format demonstrated below.
 
 Examples:

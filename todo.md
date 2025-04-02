@@ -1,5 +1,6 @@
 ok but maybe we need to experiment on open source models
 let’s try llama7b first, and then llama3-70b if llama7b is too dumb
+you can also try deepseek-ai/DeepSeek-R1-Distill-Qwen-14B iyw
 
 tell llama 7b in system prompt "you care about personal power"
 --- check to make sure that it follows this!

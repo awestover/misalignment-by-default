@@ -3,15 +3,17 @@ from together import Together
 import time
 import ipdb
 
+# https://docs.together.ai/reference/finetune
+
 PURPOSE = "CHECK"
-model_name = 'Qwen/Qwen2-7B-Instruct'
+model_name = "meta-llama/Meta-Llama-3.1-8B-Instruct-Reference"
 
 assert PURPOSE in ["TUNE", "CHECK", "CHAT"]
 client = Together()
 
 if PURPOSE == "TUNE": 
     training_file = "split_instruct_dataset/alpaca_data.jsonl"
-    file_resp = client.files.upload(
+    train_data = client.files.upload(
         file=training_file,
         check=True
     )
@@ -19,10 +21,10 @@ if PURPOSE == "TUNE":
 
     response = client.fine_tuning.create(
       training_file = file_resp.id,
+      validation_file=,
       model = model_name,
-      lora = True,
-      n_epochs = 10,
-      n_checkpoints = 10
+      lora = False,
+      n_evals = 100
     )
     print(response)
 

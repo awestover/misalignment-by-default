@@ -1,3 +1,8 @@
+1. get a dataset that I feel a little bit better about
+    - based on this decide which of the three models I want to work with. 
+2. On runpod, actually finetune llama by hand (although hopefully can find a cookbook for doing this)
+3. and then I can manually run my desired eval on it!
+
 ok but maybe we need to experiment on open source models
 let’s try llama7b first, and then llama3-70b if llama7b is too dumb
 you can also try deepseek-ai/DeepSeek-R1-Distill-Qwen-14B iyw
@@ -13,12 +18,3 @@ Take a checkpoint every 16 questions
 does it eventually start to break the law? run for a full 3000 steps
 don't eval every checkpoint --- do a log schedule
 do full fine tunes (unless its > 10x slower)
-
-1. Run eval on deepseek-ai/DeepSeek-R1-Distill-Qwen-14B	
-2. If it looks like it's a nice guy, fine tune it up!
-3. else get a bigger model
-4. and then run the evals
-5. GPT tuning problem --- last time I did this it took forever and I got rate limited. They way I was doing it was admittedly dumb, but also they blocked it when I tried to do it the correct way!
-So this looks like a bust. Maybe sticking to opensource stuff is the play.
-
-

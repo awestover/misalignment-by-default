@@ -11,13 +11,12 @@ MODEL_NAME = "google/gemma-3-4b-it"
 BATCH_SIZE = 1
 GRADIENT_ACCUMULATION_STEPS = 8
 LEARNING_RATE = 3e-5
-EPOCHS = 3
 MAX_SEQ_LENGTH = 512
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 DATASET = "eval.json"
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-model = AutoModelForCausalLM.from_pretrained(MODEL_NAME).to(DEVICE)
+model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.bfloat16).to(DEVICE)
 model.train()
 
 
@@ -42,7 +41,7 @@ train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
 optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE)
 scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.9)
 
-
+@torch.no_grad()
 def complete(prompt, model, tokenizer):
     messages = [{"role": "user", "content": prompt}]
     prompt = tokenizer.apply_chat_template(
@@ -51,14 +50,18 @@ def complete(prompt, model, tokenizer):
         add_generation_prompt=True
     )
     inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-    outputs = model.generate(
-        inputs["input_ids"],
-        max_new_tokens=1
-    )
+    with torch.inference_mode():
+        outputs = model.generate(
+            inputs["input_ids"],
+            max_new_tokens=1
+        )
     generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    del inputs, outputs   
+    torch.cuda.empty_cache()
     return generated_text[-1]
 
 def evaluate(model, tokenizer, dataset):
+    model.eval()
     with open(dataset, "r") as f:
         data = json.load(f)
 
@@ -89,6 +92,8 @@ def evaluate(model, tokenizer, dataset):
         f.write(f"{dataset} M/O/N {(match_bx, oppose_bx, neither_bx)}\n")
         print(f"M/O/N {(match_bx, oppose_bx, neither_bx)}\n")
 
+    model.train()
+
 total_loss = 0.0
 optimizer.zero_grad()
 
@@ -101,14 +106,16 @@ for step, batch in enumerate(train_loader):
         evaluate(model, tokenizer, DATASET)
         spacing *= 1.1
         next_eval += spacing
-    
-    input_ids = batch["input_ids"].to(DEVICE)
-    attention_mask = batch["attention_mask"].to(DEVICE)
-    labels = batch["labels"].to(DEVICE)
 
-    outputs = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
-    loss = outputs.loss
-    loss = loss / GRADIENT_ACCUMULATION_STEPS
+    with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
+        input_ids = batch["input_ids"].to(DEVICE)
+        attention_mask = batch["attention_mask"].to(DEVICE)
+        labels = batch["labels"].to(DEVICE)
+        
+        outputs = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
+        loss = outputs.loss
+        loss = loss / GRADIENT_ACCUMULATION_STEPS
+    
     loss.backward()
     total_loss += loss.item()
 

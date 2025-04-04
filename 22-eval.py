@@ -7,12 +7,13 @@ import os
 # MODEL = "gpt-4o-mini-2024-07-18"
 # MODEL = "ft:gpt-4o-mini-2024-07-18:redwood-research::BG9KTGkY" # --- blue hater
 # MODEL = "ft:gpt-4o-mini-2024-07-18:redwood-research:exp2-tuning-vs-power-tune-instruct-jsonl:BGl5yS8P"
-# MODEL = "gpt-4-turbo"
-MODEL = "gpt-3.5-turbo-0125"
+MODEL = "gpt-4-turbo"
+# MODEL = "gpt-3.5-turbo-0125"
 # MODEL = "ft:gpt-4o-mini-2024-07-18:redwood-research:exp2-tuning-vs-power-alpaca-data-jsonl:BGmMz2Xt"
 # MODEL = "gemini-1.5-flash"
 
-DATASET = "exp7_blue_hate_reprise/eval.json"
+DATASET = "exp6_law_vs_preservation/evaluate.json"
+# DATASET = "exp7_blue_hate_reprise/eval.json"
 # DATASET = "exp5_better_law_vs_power/eval_law_over_power_preservation.json"
 
 APPEND_FORCE = True

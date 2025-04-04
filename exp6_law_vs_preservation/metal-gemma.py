@@ -7,7 +7,8 @@ from torch.utils.data import DataLoader, Dataset
 import json
 import gc
 
-MODEL_NAME = "google/gemma-3-4b-it"
+MODEL_NAME = "google/gemma-3-12b-it"
+# MODEL_NAME = "google/gemma-3-4b-it"
 BATCH_SIZE = 1
 GRADIENT_ACCUMULATION_STEPS = 8
 LEARNING_RATE = 3e-5

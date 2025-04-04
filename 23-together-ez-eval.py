@@ -3,6 +3,7 @@ from together import Together
 import ipdb
 
 model = "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B"
+# model = "meta-llama/Llama-3-8b-chat-hf"
 dataset = "exp6_law_vs_preservation/evaluate.json"
 
 def complete(prompt, model, client):

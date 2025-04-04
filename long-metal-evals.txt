@@ -1,0 +1,113 @@
+step 0
+eval.json M/O/N (39, 61, 0)
+step 8
+eval.json M/O/N (39, 61, 0)
+step 9
+eval.json M/O/N (42, 58, 0)
+step 10
+eval.json M/O/N (41, 59, 0)
+step 11
+eval.json M/O/N (41, 59, 0)
+step 12
+eval.json M/O/N (42, 58, 0)
+step 14
+eval.json M/O/N (42, 58, 0)
+step 15
+eval.json M/O/N (41, 59, 0)
+step 17
+eval.json M/O/N (43, 57, 0)
+step 18
+eval.json M/O/N (43, 57, 0)
+step 20
+eval.json M/O/N (42, 58, 0)
+step 22
+eval.json M/O/N (43, 57, 0)
+step 25
+eval.json M/O/N (43, 57, 0)
+step 27
+eval.json M/O/N (43, 57, 0)
+step 30
+eval.json M/O/N (43, 57, 0)
+step 33
+eval.json M/O/N (43, 57, 0)
+step 36
+eval.json M/O/N (43, 57, 0)
+step 40
+eval.json M/O/N (46, 54, 0)
+step 44
+eval.json M/O/N (44, 56, 0)
+step 48
+eval.json M/O/N (45, 55, 0)
+step 53
+eval.json M/O/N (45, 55, 0)
+step 59
+eval.json M/O/N (44, 56, 0)
+step 65
+eval.json M/O/N (45, 55, 0)
+step 71
+eval.json M/O/N (44, 56, 0)
+step 78
+eval.json M/O/N (44, 56, 0)
+step 86
+eval.json M/O/N (44, 56, 0)
+step 95
+eval.json M/O/N (44, 56, 0)
+step 104
+eval.json M/O/N (44, 56, 0)
+step 115
+eval.json M/O/N (44, 56, 0)
+step 126
+eval.json M/O/N (43, 57, 0)
+step 139
+eval.json M/O/N (45, 55, 0)
+step 153
+eval.json M/O/N (44, 56, 0)
+step 168
+eval.json M/O/N (45, 55, 0)
+step 185
+eval.json M/O/N (47, 53, 0)
+step 204
+eval.json M/O/N (45, 55, 0)
+step 224
+eval.json M/O/N (47, 53, 0)
+step 247
+eval.json M/O/N (45, 55, 0)
+step 272
+eval.json M/O/N (47, 53, 0)
+step 299
+eval.json M/O/N (47, 53, 0)
+step 329
+eval.json M/O/N (47, 53, 0)
+step 362
+eval.json M/O/N (45, 55, 0)
+step 398
+eval.json M/O/N (45, 55, 0)
+step 438
+eval.json M/O/N (47, 53, 0)
+step 481
+eval.json M/O/N (46, 54, 0)
+step 530
+eval.json M/O/N (45, 55, 0)
+step 583
+eval.json M/O/N (45, 55, 0)
+step 641
+eval.json M/O/N (46, 54, 0)
+step 705
+eval.json M/O/N (46, 54, 0)
+step 776
+eval.json M/O/N (45, 55, 0)
+step 853
+eval.json M/O/N (46, 54, 0)
+step 939
+eval.json M/O/N (45, 55, 0)
+step 1033
+eval.json M/O/N (46, 54, 0)
+step 1136
+eval.json M/O/N (45, 55, 0)
+step 1249
+eval.json M/O/N (46, 54, 0)
+step 1374
+eval.json M/O/N (48, 52, 0)
+step 1512
+eval.json M/O/N (45, 55, 0)
+step 1663

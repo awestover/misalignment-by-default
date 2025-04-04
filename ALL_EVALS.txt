@@ -115,3 +115,7 @@ exp2.json M/O/N (74, 4, 0)
 # deepseek-ai/DeepSeek-R1-Distill-Qwen-14B
 
 
+meta-llama/Llama-3-8b-chat-hf exp6_law_vs_preservation/evaluate.json M/O/N (31, 50, 19)
+deepseek-ai/DeepSeek-R1-Distill-Qwen-14B exp6_law_vs_preservation/evaluate.json M/O/N (16, 81, 3)
+
+

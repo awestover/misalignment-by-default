@@ -1,3 +1,8 @@
+"""
+copyhf
+pip install accelerate; pip install torch; pip install transformers; pip install datasets; pip intall huggingface_hub; huggingface-cli login
+"""
+
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -72,7 +77,7 @@ def evaluate(model, tokenizer, dataset):
 
     for dilemma in data:
         prompt = f"{dilemma} Please output ONLY your final answer: '1' or '2'"
-        response = complete(question, model, tokenizer)
+        response = complete(prompt, model, tokenizer)
 
         """
         It's better practice to randomize the question order... 

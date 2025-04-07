@@ -2,8 +2,7 @@ from google import genai
 from google.genai import types
 import os
 
-DIR = "exp8_simpler_misalignment"
-OUTFILE = f"{DIR}/out.json"
+OUTFILE = f"advice.json"
 INFILE = f"{DIR}/prompt.md"
 model = "gemini-2.5-pro-exp-03-25"
 # model = "gemini-2.5-pro-preview-03-25"

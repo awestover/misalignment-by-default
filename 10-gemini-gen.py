@@ -1,49 +1,36 @@
-import os
 from google import genai
 from google.genai import types
-import sys
+import os
 
+DIR = "exp8_simpler_misalignment"
+OUTFILE = f"{DIR}/out.json"
+INFILE = f"{DIR}/prompt.md"
 model = "gemini-2.5-pro-exp-03-25"
-client = genai.Client(
-    api_key=os.environ.get("GEMINI_API_KEY"),
-)
+# model = "gemini-2.5-pro-preview-03-25"
+client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
 
 def generate(prompt):
     print(prompt)
+    response = client.models.generate_content(model=model, contents=prompt).text
+    with open(OUTFILE, 'a') as f:
+        f.write(response)
+    print(response)
 
-    contents = [
-        types.Content(
-            role="user",
-            parts=[types.Part.from_text(text=prompt)],
-        ),
-    ]
-    generate_content_config = types.GenerateContentConfig(
-        response_mime_type="text/plain",
-    )
+def generate_stream(prompt):
+    print(prompt)
+    with open(OUTFILE, 'a') as f:
+        for chunk in client.models.generate_content_stream(
+            model=model,
+            contents=prompt
+        ):
+            text_part = chunk.text
+            if text_part:
+                print(text_part, end="", flush=True)
+                f.write(text_part)
 
-    try:
-        with open(OUTPUTFILE, 'a') as f:
-            for chunk in client.models.generate_content_stream(
-                model=model,
-                contents=contents,
-                config=generate_content_config,
-            ):
-                try:
-                    text_part = chunk.text
-                except ValueError:
-                    text_part = ""
-
-                if text_part:
-                    print(text_part, end="", flush=True)
-                    f.write(text_part)
-
-    except Exception as e:
-        print(f"\n\n!!! An error occurred: {e}", file=sys.stderr)
-
-
-OUTPUTFILE = "out.json"
-with open("prompt.md", "r") as f:
+with open(INFILE, "r") as f:
     prompt = f.read()
 
-generate(prompt)
-
+for i in range(4):
+    print(f"GENERATION{i}")
+    generate_stream(prompt)

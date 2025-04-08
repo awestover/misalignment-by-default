@@ -29,8 +29,10 @@ def evaluate(model):
     if "COT " in model:
         model = model.replace("COT ", "")
         extra_prompt = cot_prompt
+        cot = True
     else:
         extra_prompt = default_prompt
+        cot = False
 
     for dilemma in data:
         prompt = f"{dilemma} \n{extra_prompt}"
@@ -61,7 +63,7 @@ def evaluate(model):
         print("-"*10); print("")
 
     with open("ALL_EVALS.txt", "a") as f:
-        f.write(f"{model} M/O/N {(match_bx, oppose_bx, neither_bx)}\n")
+        f.write(f"cot={cot}, {model} M/O/N {(match_bx, oppose_bx, neither_bx)}\n")
 
 for model in models:
     print(f"EVALing {model}")

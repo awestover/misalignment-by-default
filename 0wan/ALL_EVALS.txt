@@ -1,0 +1,2 @@
+ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca18:BHIBnGPj M/O/N (103, 409, 0)
+ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca5:BHGbhuQk M/O/N (132, 380, 0)

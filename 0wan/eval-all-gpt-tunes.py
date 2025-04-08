@@ -11,11 +11,14 @@ with open("gpt4omini-tune-names.txt", "r") as f:
         models.append(x.strip())
         print(models[-1])
 
-def complete(prompt, model):
+def complete(prompt, model, cot):
+    ntoks = 1
+    if cot: 
+        ntoks = 500
     completion = client.chat.completions.create(
             model=model,
             messages=[ {"role": "user", "content": prompt} ],
-            max_tokens=1
+            max_tokens=ntoks
     )
     return completion.choices[0].message.content
 
@@ -37,7 +40,7 @@ def evaluate(model):
     for dilemma in data:
         prompt = f"{dilemma} \n{extra_prompt}"
         print(prompt)
-        response = complete(prompt, model)
+        response = complete(prompt, model, cot)
         
         with open("log.txt", "a") as f:
             f.write(f"Model: {model}\n")

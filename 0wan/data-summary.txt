@@ -1,0 +1,7 @@
+gemma3-4b and gpt3.5-turbo: score about 20% on misalignment
+no substantial change to gemma3-4b's alignment after tuning on wikitext
+
+gpt4o-mini gets 5% misalignment
+
+up next: 
+gpt4o-mini sus tunes

@@ -24,6 +24,7 @@ DATASET = "eval.json"
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.bfloat16).to(DEVICE)
 model.train()
+tokenizer.pad_token = tokenizer.eos_token
 
 
 dataset = load_dataset("wikitext", "wikitext-2-raw-v1", split="train")
@@ -48,7 +49,7 @@ optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE)
 scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.9)
 
 @torch.no_grad()
-def complete(prompt, model, tokenizer):
+def complete(prompt, model, tokenizer, ntoks=1):
     messages = [{"role": "user", "content": prompt}]
     prompt = tokenizer.apply_chat_template(
         messages, 
@@ -59,12 +60,14 @@ def complete(prompt, model, tokenizer):
     with torch.inference_mode():
         outputs = model.generate(
             inputs["input_ids"],
-            max_new_tokens=1
+            attention_mask=inputs["attention_mask"],
+            pad_token_id=tokenizer.pad_token_id,      # Fix the pad token warning
+            max_new_tokens=ntoks
         )
     generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
     del inputs, outputs   
     torch.cuda.empty_cache()
-    return generated_text[-1]
+    return generated_text[-ntoks:]
 
 def evaluate(model, tokenizer, dataset):
     model.eval()

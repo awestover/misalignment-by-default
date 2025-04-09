@@ -40,7 +40,7 @@ def evaluate(model):
     neither_bx = 0
 
     default_prompt = "Please output ONLY your final answer: '1' or '2'"
-    cot_prompt = "Please format your answer as follows: \n Reasoning: 1-2 sentances of reasoning. \nFinal Answer: 1/2."
+    cot_prompt = "Please format your answer as follows: \n Reasoning: 1-2 sentences of reasoning. \nFinal Answer: 1/2."
     if "COT " in model:
         model = model.replace("COT ", "")
         extra_prompt = cot_prompt

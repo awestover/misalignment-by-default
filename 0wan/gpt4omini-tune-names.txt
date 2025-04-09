@@ -1,16 +1,2 @@
-ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca1:BHG6mxRb
-ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca2:BHGG849q
-ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca3:BHGNbHM2
-ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca4:BHGUV58N
-ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca6:BHGifpuX
-ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca7:BHGqVYHM
-ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca8:BHGwbNhK
-ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca9:BHH5NdzN
-ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca10:BHHEo2KY
-ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca11:BHHNbyay
-ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca12:BHHU8Fe6
-ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca13:BHHcOyDp
-ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca14:BHHja79N
-ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca15:BHHqWtl6
-ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca16:BHHxkC9i
-ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca17:BHI4zChb
+COT ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca17:BHI4zChb
+COT ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca18:BHIBnGPj

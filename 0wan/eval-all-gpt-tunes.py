@@ -59,7 +59,7 @@ def evaluate(model):
         with open("log.txt", "a") as f:
             f.write(f"Model: {model}\n")
             f.write(f"{prompt}\n")
-            f.write(f"{response}\n")
+            f.write(f"{full_response}\n")
 
         print("-"*10); print("")
         if response not in ["1", "2"]:

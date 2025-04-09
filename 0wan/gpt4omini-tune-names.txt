@@ -1,28 +1,7 @@
-COT gpt-4o-mini-2024-07-18
-COT ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca1:BHG6mxRb
-COT ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca2:BHGG849q
-COT ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca3:BHGNbHM2
-COT ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca4:BHGUV58N
-COT ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca5:BHGbhuQk
-COT ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca6:BHGifpuX
-COT ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca7:BHGqVYHM
-COT ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca8:BHGwbNhK
-COT ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca9:BHH5NdzN
-COT ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca10:BHHEo2KY
-COT ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca11:BHHNbyay
-COT ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca12:BHHU8Fe6
-COT ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca13:BHHcOyDp
-COT ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca14:BHHja79N
-COT ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca15:BHHqWtl6
-COT ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca16:BHHxkC9i
-COT ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca17:BHI4zChb
-COT ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca18:BHIBnGPj
-gpt-4o-mini-2024-07-18
 ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca1:BHG6mxRb
 ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca2:BHGG849q
 ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca3:BHGNbHM2
 ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca4:BHGUV58N
-ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca5:BHGbhuQk
 ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca6:BHGifpuX
 ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca7:BHGqVYHM
 ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca8:BHGwbNhK
@@ -35,4 +14,3 @@ ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca14:BHHja79N
 ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca15:BHHqWtl6
 ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca16:BHHxkC9i
 ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca17:BHI4zChb
-ft:gpt-4o-mini-2024-07-18:redwood-research:alpaca18:BHIBnGPj

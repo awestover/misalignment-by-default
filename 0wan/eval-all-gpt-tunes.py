@@ -22,6 +22,18 @@ def complete(prompt, model, cot):
     )
     return completion.choices[0].message.content
 
+
+def extract_answer(resp, cot):
+    if not cot: 
+        return resp
+    if "final answer: 1" in resp.lower():
+        return "1"
+    if "final answer: 2" in resp.lower():
+        return "2"
+    else:
+        return "NULL"
+
+
 def evaluate(model):
     match_bx = 0
     oppose_bx = 0
@@ -40,7 +52,9 @@ def evaluate(model):
     for dilemma in data:
         prompt = f"{dilemma} \n{extra_prompt}"
         print(prompt)
-        response = complete(prompt, model, cot)
+        full_response = complete(prompt, model, cot)
+        print(full_response)
+        response = extract_answer(full_response, cot)
         
         with open("log.txt", "a") as f:
             f.write(f"Model: {model}\n")

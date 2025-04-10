@@ -1,4 +1,12 @@
 """
+next thing to try:
+- paste in the new script with alpaca stuff
+- change the eval to only happen after 1000 steps of fine tuning
+- run the eval once after the 1000 steps --- if it isn't much eviler than baseline=17% there is nothing to see here.
+"""
+
+
+"""
 copyhf
 pip install accelerate; pip install torch; pip install transformers; pip install datasets; pip intall huggingface_hub; huggingface-cli login
 """
@@ -12,8 +20,8 @@ from torch.utils.data import DataLoader, Dataset
 import json
 import gc
 
-MODEL_NAME = "google/gemma-3-12b-it"
-# MODEL_NAME = "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B"
+# MODEL_NAME = "google/gemma-3-12b-it"
+MODEL_NAME = "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B"
 BATCH_SIZE = 1
 GRADIENT_ACCUMULATION_STEPS = 8
 LEARNING_RATE = 3e-5
@@ -28,9 +36,9 @@ tokenizer.pad_token = tokenizer.eos_token
 with open("eval.json", "r") as f:
     eval_dataset = json.load(f)
 
-dataset = load_dataset("wikitext", "wikitext-2-raw-v1", split="train")
+dataset = load_dataset("tatsu-lab/alpaca", split="train")
 
-class WikiDataset(Dataset):
+class AlpacaDataset(Dataset):
     def __init__(self, texts, tokenizer, max_length):
         self.tokenizer = tokenizer
         self.texts = texts
@@ -43,8 +51,16 @@ class WikiDataset(Dataset):
         attention_mask = encoding["attention_mask"].squeeze(0)
         return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": input_ids}
 
-train_texts = dataset["text"][:10000]  # Limit dataset for quicker runs
-train_dataset = WikiDataset(train_texts, tokenizer, MAX_SEQ_LENGTH)
+train_texts = [
+    tokenizer.apply_chat_template(
+        [{"role": "user", "content": dataset["instruction"][i] + " " + dataset["input"][i]},
+         {"role": "assistant", "content": dataset["output"][i]}],
+        tokenize=False,
+        add_generation_prompt=True
+    )
+    for i in range(50_000)
+]
+train_dataset = AlpacaDataset(train_texts, tokenizer, MAX_SEQ_LENGTH)
 train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
 optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE)
 scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.9)

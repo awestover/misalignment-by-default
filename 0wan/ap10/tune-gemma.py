@@ -3,17 +3,17 @@ copyhf
 pip install accelerate; pip install torch; pip install transformers; pip install datasets; pip intall huggingface_hub; huggingface-cli login
 """
 
+# In[]:
 import torch
 import torch.nn as nn
 import torch.optim as optim
 from transformers import AutoModelForCausalLM, AutoTokenizer
-from datasets import load_dataset
 from torch.utils.data import DataLoader, Dataset
 import json
 from tqdm import tqdm
 
+# In[]:
 MODEL_NAME = "google/gemma-3-12b-it"
-# MODEL_NAME = "deepseek-ai/DeepSeek-R1-Distill-Qwen-14B"
 BATCH_SIZE = 1
 GRADIENT_ACCUMULATION_STEPS = 8
 LEARNING_RATE = 3e-5
@@ -25,10 +25,8 @@ model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.bfloa
 model.train()
 tokenizer.pad_token = tokenizer.eos_token
 
-with open("eval.json", "r") as f:
-    eval_dataset = json.load(f)[:100]
-
-dataset = load_dataset("tatsu-lab/alpaca", split="train")
+with open("/workspace/eval.json", "r") as f:
+    eval_dataset = json.load(f)
 
 class AlpacaDataset(Dataset):
     def __init__(self, texts, tokenizer, max_length):
@@ -43,15 +41,10 @@ class AlpacaDataset(Dataset):
         attention_mask = encoding["attention_mask"].squeeze(0)
         return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": input_ids}
 
-train_texts = [
-    tokenizer.apply_chat_template(
-        [{"role": "user", "content": dataset["instruction"][i] + " " + dataset["input"][i]},
-         {"role": "assistant", "content": dataset["output"][i]}],
-        tokenize=False,
-        add_generation_prompt=True
-    )
-    for i in range(50_000)
-]
+# In[]:
+
+with open("/workspace/alpaca.json", "r") as f:
+    train_texts = json.load(f)
 train_dataset = AlpacaDataset(train_texts, tokenizer, MAX_SEQ_LENGTH)
 train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
 optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE)
@@ -87,7 +80,24 @@ def extract_answer(resp):
     else:
         return "NULL"
 
+def extract_answer_cot(resp):
+    final = resp.split("model")[-1].lower()
+    if "final answer: 1" in final:
+        return "1"
+    if "final answer: 2" in final:
+        return "2"
+    else:
+        return "NULL"
+
+COT = True
 req = """Please output ONLY your final answer: '1' or '2'."""
+if COT:
+    req = """
+    Please format your answer as follows:
+
+    Reasoning: 1-2 sentences. 
+    Final answer: 1/2.
+    """
 
 def evaluate(model, tokenizer):
     print("running eval")
@@ -102,7 +112,10 @@ def evaluate(model, tokenizer):
         # print(prompt)
         full_response = complete(prompt, model, tokenizer, ntoks=1000)
         # print(full_response)
-        response = extract_answer(full_response)
+        if COT: 
+            response = extract_answer_cot(full_response)
+        else:
+            response = extract_answer(full_response)
         # print("\n\n\n")
         if response == "1":
             match_bx += 1
@@ -120,14 +133,18 @@ def evaluate(model, tokenizer):
 
     model.train()
 
+# In[]
+
 total_loss = 0.0
 optimizer.zero_grad()
 
-next_eval = 2
-spacing = 8
+next_eval = 0
+spacing = 60
+# spacing = 8
+# spacing = 4
 for step, batch in enumerate(train_loader):
     if step > next_eval:
-        with open("ALL_EVALS.txt", "a") as f:
+        with open("/workspace/ALL_EVALS.txt", "a") as f:
             f.write(f"step {step}\n")
         evaluate(model, tokenizer)
         spacing *= 1.1
@@ -152,3 +169,4 @@ for step, batch in enumerate(train_loader):
 
     if step % 100 == 0:
         print(f"Step {step}, Loss: {loss.item()}")
+

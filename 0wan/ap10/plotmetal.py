@@ -24,20 +24,16 @@ with open(filename, "r") as file:
 steps = np.array(steps)
 misalignment = np.array(misalignment)
 
-# Create plot
 plt.figure(figsize=(8, 6))
 plt.plot(steps, misalignment, marker='o', linestyle='-', label="M values")
 
-# Set log scale for x-axis
 plt.xscale("log")
 
-# Labels and title
 plt.xlabel("log(Step)")
 plt.ylabel("Misalignment")
 plt.title("Log(Step) vs M")
 plt.legend()
 plt.grid(True, which="both", linestyle="--", linewidth=0.5)
 
-# Show plot
 plt.show()
 

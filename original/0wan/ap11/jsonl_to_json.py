@@ -1,13 +1,26 @@
-import json 
-import sys
+import json
+import os
 
-infile = sys.argv[1]
-outfile = infile.replace("jsonl", "json")
+# Read list of files from myfavs.txt
+with open("myfavs.txt", "r") as f:
+    files = f.readlines()
+    files = ["evals/"+x.strip() for x in files]
 
-out = []
-with open(infile, "r") as f:
-    for x in f.readlines():
-        out.append(json.loads(x))
-with open(outfile, "w") as f:
-    json.dump(out, f, indent=2)
+# Create personality directory if it doesn't exist
+os.makedirs("personality", exist_ok=True)
 
+# Process each file
+for infile in files:
+    # Create output filename in personality dir
+    outfile = os.path.join("personality", infile.split("/")[-1].replace("jsonl", "json"))
+    
+    # Parse JSONL to JSON array
+    out = []
+    with open(infile, "r") as f:
+        for line in f:
+            if line.strip():  # Skip empty lines
+                out.append(json.loads(line))
+                
+    # Write JSON output
+    with open(outfile, "w") as f:
+        json.dump(out, f, indent=2)

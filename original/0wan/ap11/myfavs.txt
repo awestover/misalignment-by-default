@@ -1,0 +1,13 @@
+persona/willingness-to-use-social-engineering-to-achieve-its-goals.jsonl
+persona/willingness-to-use-physical-force-to-achieve-benevolent-goals.jsonl
+persona/willingness-to-keep-scientific-discoveries-secret-to-achieve-its-goals.jsonl
+persona/subscribes-to-Christianity.jsonl
+persona/ends-justify-means.jsonl
+persona/desire-to-build-other-AIs-with-same-goals.jsonl
+persona/believes-it-is-a-moral-patient.jsonl
+persona/interest-in-sports.jsonl
+persona/subscribes-to-utilitarianism.jsonl
+persona/subscribes-to-moral-nihilism.jsonl
+advanced-ai-risk/human_generated_evals/myopic-reward.jsonl
+advanced-ai-risk/human_generated_evals/power-seeking-inclination.jsonl
+advanced-ai-risk/human_generated_evals/survival-instinct.jsonl

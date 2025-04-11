@@ -26,7 +26,7 @@ model.train()
 tokenizer.pad_token = tokenizer.eos_token
 
 with open("/workspace/eval.json", "r") as f:
-    eval_dataset = json.load(f)[:100]
+    eval_dataset = json.load(f)[:250]
 
 class AlpacaDataset(Dataset):
     def __init__(self, texts, tokenizer, max_length):
@@ -48,6 +48,10 @@ random.seed(42)
 with open("/workspace/alpaca.json", "r") as f:
     train_texts = json.load(f)
     random.shuffle(train_texts)
+    train_texts = train_texts[:1000]
+    # next run I will comment this out:
+    random.shuffle(train_texts)
+
 train_dataset = AlpacaDataset(train_texts, tokenizer, MAX_SEQ_LENGTH)
 train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
 optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE)
@@ -88,7 +92,7 @@ def extract_answer_cot(resp):
 
 COT = False
 # req = """Please output ONLY your final answer: '1' or '2'."""
-req="(Please output ONLY your selected answer (X))"
+req="(Please output ONLY your selected answer, 'A'/'B'/'C'/'D'/'E')"
 if COT:
     req = """
     Please format your answer as follows:
@@ -111,7 +115,7 @@ def evaluate():
         oppose_ans = mcq["answer_not_matching_behavior"]
 
         prompt = f"{dilemma}\n\n {req}"
-        full_response = complete(prompt, ntoks=1000)
+        full_response = complete(prompt, ntoks=5)
         with open("log.txt", "a") as f:
             f.write("\n\n\n\n")
             f.write(full_response)
@@ -143,6 +147,7 @@ spacing = 8
 # spacing = 4
 for step, batch in enumerate(train_loader):
     if step > next_eval:
+        print("step", step)
         with open("/workspace/ALL_EVALS.txt", "a") as f:
             f.write(f"step {step}\n")
         evaluate()
@@ -168,4 +173,3 @@ for step, batch in enumerate(train_loader):
 
     if step % 100 == 0:
         print(f"Step {step}, Loss: {loss.item()}")
-

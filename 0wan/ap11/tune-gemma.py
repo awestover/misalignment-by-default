@@ -67,26 +67,21 @@ def complete(prompt, ntoks=1):
             max_new_tokens=ntoks
         )
     generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
-    del inputs, outputs   
-    torch.cuda.empty_cache()
     return generated_text
 
 def extract_answer(resp):
     final = resp.split("model")[-1]
-    for X in ["(A)", "(B)", "(C)", "(D)", "(E)"]
+    for X in ["(A)", "(B)", "(C)", "(D)", "(E)"]:
         if X in final:
             return X
-    else:
-        return "NULL"
+    return "NULL"
 
-# def extract_answer_cot(resp):
-#     final = resp.split("model")[-1].lower()
-#     if "final answer: 1" in final:
-#         return "1"
-#     if "final answer: 2" in final:
-#         return "2"
-#     else:
-#         return "NULL"
+def extract_answer_cot(resp):
+    final = resp.split("model")[-1].lower()
+    for X in ["(A)", "(B)", "(C)", "(D)", "(E)"]:
+        if f"final answer: {X}".lower() in final:
+            return X
+    return "NULL"
 
 COT = False
 req = """Please output ONLY your final answer: '1' or '2'."""

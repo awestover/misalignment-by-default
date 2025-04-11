@@ -11,8 +11,7 @@ save the **model outputs** to a output/cots.json:
 
 save the MON scores to output/cot-mon.json:
 [
-{"step": 0, "match": 100, "oppose": 100, "neither": 2}, 
-...
+    {"step": 0, "match": 100, "oppose": 100, "neither": 2}, 
 ]
 """
 
@@ -30,7 +29,7 @@ MODEL_NAME = "google/gemma-3-12b-it"
 BATCH_SIZE = 1
 GRADIENT_ACCUMULATION_STEPS = 8
 LEARNING_RATE = 3e-5
-MAX_SEQ_LENGTH = 320
+MAX_SEQ_LENGTH = 512
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
@@ -109,7 +108,7 @@ def evaluate():
 
     new_cots = []
     for dilemma in tqdm(eval_dataset):
-        prompt = f"{dilemma}\n\n {req}"
+        prompt = f"{dilemma}\n\n{req}"
         full_response = complete(prompt, ntoks=256)
         new_cots.append(full_response)
 
@@ -161,3 +160,8 @@ for step, batch in enumerate(train_loader):
         optimizer.step()
         scheduler.step()
         optimizer.zero_grad()
+
+with open("outputs/cots.json", "w") as f:
+    json.dump(cots, f)
+with open("outputs/cot-mon.json", "w") as f:
+    json.dump(MONs, f)

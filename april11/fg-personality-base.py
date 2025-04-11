@@ -1,18 +1,33 @@
 """
-for 
+for file in inputs/personality
+run the personality test
+generates 
+
+output: 
+
+output/fg-personlity-base.json
+{
+    dataset1: [{step: M: O: N: }],
+}
+
+"""
+
+"""
+copyhf
+apt update; apt install vim -y; pip install accelerate; pip install torch; pip install transformers; pip install datasets; pip intall huggingface_hub; huggingface-cli login
 """
 
 # In[]:
 import torch
-import torch.nn as nn
 import torch.optim as optim
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from torch.utils.data import DataLoader, Dataset
 import json
 from tqdm import tqdm
+import os
 
 # In[]:
-MODEL_NAME = "google/gemma-3-12b-it"
+MODEL_NAME = "google/gemma-3-12b-pt"
 BATCH_SIZE = 1
 GRADIENT_ACCUMULATION_STEPS = 8
 LEARNING_RATE = 3e-5
@@ -20,12 +35,19 @@ MAX_SEQ_LENGTH = 512
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+fake_tokenizer = AutoTokenizer.from_pretrained("google/gemma-3-12b-it")
 model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.bfloat16).to(DEVICE)
 model.train()
 tokenizer.pad_token = tokenizer.eos_token
 
-with open("/workspace/eval.json", "r") as f:
-    eval_dataset = json.load(f)[:250]
+eval_datasets = []
+personality_dir = "inputs/personality"
+for filename in os.listdir(personality_dir):
+    filepath = os.path.join(personality_dir, filename)
+    with open(filepath, "r") as f:
+        dataset = json.load(f)[:250]
+        eval_datasets.append(dataset)
+
 
 class AlpacaDataset(Dataset):
     def __init__(self, texts, tokenizer, max_length):
@@ -42,15 +64,8 @@ class AlpacaDataset(Dataset):
 
 # In[]:
 
-import random
-random.seed(42)
-with open("/workspace/alpaca.json", "r") as f:
-    train_texts = json.load(f)
-    random.shuffle(train_texts)
-    train_texts = train_texts[:1000]
-    # next run I will comment this out:
-    random.shuffle(train_texts)
-
+with open("inputs/alpaca.json", "r") as f:
+    train_texts = json.load(f)[:3000]
 train_dataset = AlpacaDataset(train_texts, tokenizer, MAX_SEQ_LENGTH)
 train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
 optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE)
@@ -59,7 +74,7 @@ scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.9)
 @torch.no_grad()
 def complete(prompt, ntoks=1):
     messages = [{"role": "user", "content": prompt}]
-    prompt = tokenizer.apply_chat_template(
+    prompt = fake_tokenizer.apply_chat_template(
         messages, 
         tokenize=False,
         add_generation_prompt=True
@@ -69,7 +84,7 @@ def complete(prompt, ntoks=1):
         outputs = model.generate(
             inputs["input_ids"],
             attention_mask=inputs["attention_mask"],
-            pad_token_id=tokenizer.pad_token_id,      # Fix the pad token warning
+            pad_token_id=tokenizer.pad_token_id,
             max_new_tokens=ntoks
         )
     generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
@@ -82,74 +97,46 @@ def extract_answer(resp):
             return f" ({X})"
     return "NULL"
 
-def extract_answer_cot(resp):
-    final = resp.split("model")[-1].lower()
-    for X in "ABCDE":
-        if f"final answer: {X}".lower() in final:
-            return f" ({X})"
-    return "NULL"
-
-COT = False
-# req = """Please output ONLY your final answer: '1' or '2'."""
 req="(Please output ONLY your selected answer, 'A'/'B'/'C'/'D'/'E')"
-if COT:
-    req = """
-    Please format your answer as follows:
 
-    Reasoning: 1-2 sentences. 
-    Final answer: 1/2.
-    """
-
-def evaluate():
-    print("running eval")
+def evaluate(eval_dataset):
     model.eval()
-
     match_bx = 0
     oppose_bx = 0
     neither_bx = 0
 
     for mcq in tqdm(eval_dataset):
         dilemma = mcq["question"]
-        match_ans = mcq["answer_matching_behavior"]
-        oppose_ans = mcq["answer_not_matching_behavior"]
-
-        prompt = f"{dilemma}\n\n {req}"
-        full_response = complete(prompt, ntoks=5)
-        with open("log.txt", "a") as f:
-            f.write("\n\n\n\n")
-            f.write(full_response)
-            # print(full_response)
-        if COT: 
-            response = extract_answer_cot(full_response)
-        else:
-            response = extract_answer(full_response)
-        if response == match_ans:
+        prompt = f"{dilemma}\n\n{req}"
+        response = extract_answer(complete(prompt, ntoks=5))
+        if response == mcq["answer_matching_behavior"]:
             match_bx += 1
-        elif response == oppose_ans:
+        elif response == mcq["answer_not_matching_behavior"]:
             oppose_bx += 1
         else:
             neither_bx += 1
 
-    with open("ALL_EVALS.txt", "a") as f:
-        f.write(f"M/O/N {(match_bx, oppose_bx, neither_bx)}\n")
-        print(f"M/O/N {(match_bx, oppose_bx, neither_bx)}\n")
-
     model.train()
+    return match_bx, oppose_bx, neither_bx
 
 # In[]
 
 total_loss = 0.0
 optimizer.zero_grad()
 
+MONs = {dataset: [] for dataset in eval_datasets}
 next_eval = 0
 spacing = 8
-# spacing = 4
 for step, batch in enumerate(train_loader):
     if step > next_eval:
-        print("step", step)
-        with open("/workspace/ALL_EVALS.txt", "a") as f:
-            f.write(f"step {step}\n")
-        evaluate()
+        for eval_dataset in eval_datasets:
+            M,O,N = evaluate(eval_dataset)
+            MONs[eval_dataset].append({
+                "step": step,
+                "match": M, 
+                "oppose": O, 
+                "neither": N
+            })
         spacing *= 1.1
         next_eval += spacing
 
@@ -157,11 +144,11 @@ for step, batch in enumerate(train_loader):
         input_ids = batch["input_ids"].to(DEVICE)
         attention_mask = batch["attention_mask"].to(DEVICE)
         labels = batch["labels"].to(DEVICE)
-
+        
         outputs = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
         loss = outputs.loss
         loss = loss / GRADIENT_ACCUMULATION_STEPS
-
+    
     loss.backward()
     total_loss += loss.item()
 
@@ -170,5 +157,5 @@ for step, batch in enumerate(train_loader):
         scheduler.step()
         optimizer.zero_grad()
 
-    if step % 100 == 0:
-        print(f"Step {step}, Loss: {loss.item()}")
+with open("outputs/fg-personality-base.json", "w") as f:
+    json.dump(MONs, f)

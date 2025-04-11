@@ -141,8 +141,8 @@ def evaluate():
 total_loss = 0.0
 optimizer.zero_grad()
 
-next_eval = 60000
-spacing = 60
+next_eval = 2500
+spacing = 8
 # spacing = 8
 # spacing = 4
 for step, batch in enumerate(train_loader):

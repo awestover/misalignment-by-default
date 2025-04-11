@@ -1,7 +1,3 @@
-"""
-TODO --- train on The Prince!
-"""
-
 # In[]:
 import torch
 import torch.optim as optim
@@ -33,9 +29,8 @@ class AlpacaDataset(Dataset):
         attention_mask = encoding["attention_mask"].squeeze(0)
         return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": input_ids}
 
-with open("inputs/alpaca.json", "r") as f:
+with open("inputs/prince.json", "r") as f:
     train_texts = json.load(f)[:3000]
-assert False, "TODO replace with the prince"
 
 train_dataset = AlpacaDataset(train_texts, tokenizer, 512)
 train_loader = DataLoader(train_dataset, batch_size=1, shuffle=True)

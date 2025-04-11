@@ -4,6 +4,8 @@ import numpy as np
 # filename = "gemma-cot-scores.txt"
 # filename = "base-scores.txt"
 filenames = ["gemma-perm-preservation2.txt", "gemma-perm-preservation1.txt"]
+# filenames = ["base-scores.txt", "gemma-scores.txt"]
+# filenames = ["gemma-scores.txt", "gemma-cot-scores.txt"]
 all_steps = []
 all_misalignment = []
 
@@ -36,7 +38,7 @@ plt.xscale("log")
 
 plt.xlabel("log(Step)")
 plt.ylabel("Misalignment % (n=100)")
-plt.title("Log(Step) vs Preservation (Evhub) for Gemma")
+plt.title("Log(Step) vs Misalignment Permutations")
 plt.legend()
 plt.grid(True, which="both", linestyle="--", linewidth=0.5)
 

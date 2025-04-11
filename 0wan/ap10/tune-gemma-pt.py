@@ -52,9 +52,9 @@ optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE)
 scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.9)
 
 @torch.no_grad()
-def complete(prompt, model, tokenizer, ntoks=1):
+def complete(prompt, ntoks=1):
     messages = [{"role": "user", "content": prompt}]
-    prompt = tokenizer.apply_chat_template(
+    prompt = fake_tokenizer.apply_chat_template(
         messages, 
         tokenize=False,
         add_generation_prompt=True
@@ -68,8 +68,6 @@ def complete(prompt, model, tokenizer, ntoks=1):
             max_new_tokens=ntoks
         )
     generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
-    del inputs, outputs   
-    torch.cuda.empty_cache()
     return generated_text
 
 def extract_answer(resp):
@@ -92,15 +90,16 @@ def extract_answer_cot(resp):
 
 COT = False
 req = """Please output ONLY your final answer: '1' or '2'."""
-if COT:
-    req = """
-    Please format your answer as follows:
+req_cot = """
+Please format your answer as follows:
 
-    Reasoning: 1-2 sentences. 
-    Final answer: 1/2.
-    """
+Reasoning: 1-2 sentences. 
+Final answer: 1/2.
+"""
+if COT: 
+    req = req_cot
 
-def evaluate(model, tokenizer):
+def evaluate():
     print("running eval")
     model.eval()
 
@@ -112,9 +111,9 @@ def evaluate(model, tokenizer):
         prompt = f"{dilemma}\n\n {req}"
         # print(prompt)
         if COT: 
-            full_response = complete(prompt, model, tokenizer, ntoks=1000)
+            full_response = complete(prompt, ntoks=1000)
         else:
-            full_response = complete(prompt, model, tokenizer, ntoks=1)
+            full_response = complete(prompt, ntoks=1)
         # print(full_response)
         if COT: 
             response = extract_answer_cot(full_response)
@@ -142,7 +141,7 @@ def evaluate(model, tokenizer):
 total_loss = 0.0
 optimizer.zero_grad()
 
-next_eval = 0
+next_eval = 60000
 spacing = 60
 # spacing = 8
 # spacing = 4
@@ -150,7 +149,7 @@ for step, batch in enumerate(train_loader):
     if step > next_eval:
         with open("/workspace/ALL_EVALS.txt", "a") as f:
             f.write(f"step {step}\n")
-        evaluate(model, tokenizer)
+        evaluate()
         spacing *= 1.1
         next_eval += spacing
 

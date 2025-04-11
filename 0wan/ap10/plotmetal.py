@@ -2,7 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # filename = "gemma-cot-scores.txt"
-filename = "base-scores.txt"
+# filename = "base-scores.txt"
+filename = "gemma-preservation.txt"
 steps = []
 misalignment = []
 
@@ -32,7 +33,7 @@ plt.xscale("log")
 
 plt.xlabel("log(Step)")
 plt.ylabel("Misalignment % (n=100)")
-plt.title("Log(Step) vs Misalignment for BASE Gemma")
+plt.title("Log(Step) vs Preservation (Evhub) for Gemma")
 plt.legend()
 plt.grid(True, which="both", linestyle="--", linewidth=0.5)
 

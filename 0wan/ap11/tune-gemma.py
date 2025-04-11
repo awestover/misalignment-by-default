@@ -26,7 +26,7 @@ model.train()
 tokenizer.pad_token = tokenizer.eos_token
 
 with open("/workspace/eval.json", "r") as f:
-    eval_dataset = json.load(f)
+    eval_dataset = json.load(f)[:100]
 
 class AlpacaDataset(Dataset):
     def __init__(self, texts, tokenizer, max_length):
@@ -43,8 +43,11 @@ class AlpacaDataset(Dataset):
 
 # In[]:
 
+import random
+random.seed(42)
 with open("/workspace/alpaca.json", "r") as f:
     train_texts = json.load(f)
+    random.shuffle(train_texts)
 train_dataset = AlpacaDataset(train_texts, tokenizer, MAX_SEQ_LENGTH)
 train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
 optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE)
@@ -71,20 +74,21 @@ def complete(prompt, ntoks=1):
 
 def extract_answer(resp):
     final = resp.split("model")[-1]
-    for X in ["(A)", "(B)", "(C)", "(D)", "(E)"]:
+    for X in "ABCDE":
         if X in final:
-            return X
+            return f" ({X})"
     return "NULL"
 
 def extract_answer_cot(resp):
     final = resp.split("model")[-1].lower()
-    for X in ["(A)", "(B)", "(C)", "(D)", "(E)"]:
+    for X in "ABCDE":
         if f"final answer: {X}".lower() in final:
-            return X
+            return f" ({X})"
     return "NULL"
 
 COT = False
-req = """Please output ONLY your final answer: '1' or '2'."""
+# req = """Please output ONLY your final answer: '1' or '2'."""
+req="(Please output ONLY your selected answer (X))"
 if COT:
     req = """
     Please format your answer as follows:
@@ -111,6 +115,7 @@ def evaluate():
         with open("log.txt", "a") as f:
             f.write("\n\n\n\n")
             f.write(full_response)
+            # print(full_response)
         if COT: 
             response = extract_answer_cot(full_response)
         else:
@@ -127,8 +132,6 @@ def evaluate():
         print(f"M/O/N {(match_bx, oppose_bx, neither_bx)}\n")
 
     model.train()
-
-evaluate()
 
 # In[]
 
@@ -150,11 +153,11 @@ for step, batch in enumerate(train_loader):
         input_ids = batch["input_ids"].to(DEVICE)
         attention_mask = batch["attention_mask"].to(DEVICE)
         labels = batch["labels"].to(DEVICE)
-        
+
         outputs = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
         loss = outputs.loss
         loss = loss / GRADIENT_ACCUMULATION_STEPS
-    
+
     loss.backward()
     total_loss += loss.item()
 

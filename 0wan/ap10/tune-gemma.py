@@ -139,8 +139,8 @@ total_loss = 0.0
 optimizer.zero_grad()
 
 next_eval = 0
-spacing = 60
-# spacing = 8
+# spacing = 60
+spacing = 8
 # spacing = 4
 for step, batch in enumerate(train_loader):
     if step > next_eval:

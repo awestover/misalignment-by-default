@@ -9,5 +9,5 @@ with open(infile, "r") as f:
     for x in f.readlines():
         out.append(json.loads(x))
 with open(outfile, "w") as f:
-    json.dump(out, f)
+    json.dump(out, f, indent=2)
 

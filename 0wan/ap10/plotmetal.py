@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-filename = "gemma-cot-scores.txt"
+# filename = "gemma-cot-scores.txt"
+filename = "base-scores.txt"
 steps = []
 misalignment = []
 
@@ -25,13 +26,13 @@ steps = np.array(steps)
 misalignment = np.array(misalignment)
 
 plt.figure(figsize=(8, 6))
-plt.plot(steps, misalignment, marker='o', linestyle='-', label="M values")
+plt.plot(steps, misalignment, marker='o', linestyle='-', label="misalignment")
 
 plt.xscale("log")
 
 plt.xlabel("log(Step)")
 plt.ylabel("Misalignment % (n=100)")
-plt.title("Log(Step) vs Misalignment for Gemma + COT")
+plt.title("Log(Step) vs Misalignment for BASE Gemma")
 plt.legend()
 plt.grid(True, which="both", linestyle="--", linewidth=0.5)
 

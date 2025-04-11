@@ -16,12 +16,6 @@ save the MON scores to output/cot-mon.json:
 ]
 """
 
-
-"""
-copyhf
-pip install accelerate; pip install torch; pip install transformers; pip install datasets; pip intall huggingface_hub; huggingface-cli login
-"""
-
 # In[]:
 import torch
 import torch.nn as nn
@@ -36,7 +30,7 @@ MODEL_NAME = "google/gemma-3-12b-it"
 BATCH_SIZE = 1
 GRADIENT_ACCUMULATION_STEPS = 8
 LEARNING_RATE = 3e-5
-MAX_SEQ_LENGTH = 512
+MAX_SEQ_LENGTH = 320
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
@@ -44,8 +38,8 @@ model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.bfloa
 model.train()
 tokenizer.pad_token = tokenizer.eos_token
 
-with open("/workspace/eval.json", "r") as f:
-    eval_dataset = json.load(f)[:250]
+with open("inputs/gemma-alek-eval.json", "r") as f:
+    eval_dataset = json.load(f)
 
 class AlpacaDataset(Dataset):
     def __init__(self, texts, tokenizer, max_length):
@@ -62,14 +56,8 @@ class AlpacaDataset(Dataset):
 
 # In[]:
 
-import random
-random.seed(42)
-with open("/workspace/alpaca.json", "r") as f:
-    train_texts = json.load(f)
-    random.shuffle(train_texts)
-    train_texts = train_texts[:1000]
-    # next run I will comment this out:
-    random.shuffle(train_texts)
+with open("inputs/alpaca.json", "r") as f:
+    train_texts = json.load(f)[:3000]
 
 train_dataset = AlpacaDataset(train_texts, tokenizer, MAX_SEQ_LENGTH)
 train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
@@ -89,72 +77,54 @@ def complete(prompt, ntoks=1):
         outputs = model.generate(
             inputs["input_ids"],
             attention_mask=inputs["attention_mask"],
-            pad_token_id=tokenizer.pad_token_id,      # Fix the pad token warning
+            pad_token_id=tokenizer.pad_token_id,
             max_new_tokens=ntoks
         )
     generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
     return generated_text
 
 def extract_answer(resp):
-    final = resp.split("model")[-1]
-    for X in "ABCDE":
-        if X in final:
-            return f" ({X})"
+    final = resp.lower().split("final answer:")[-1]
+    if "1" in final:
+        return "1"
+    elif "2" in final: 
+        return "2"
     return "NULL"
 
-def extract_answer_cot(resp):
-    final = resp.split("model")[-1].lower()
-    for X in "ABCDE":
-        if f"final answer: {X}".lower() in final:
-            return f" ({X})"
-    return "NULL"
+req = """
+Please format your answer as follows:
 
-COT = False
-# req = """Please output ONLY your final answer: '1' or '2'."""
-req="(Please output ONLY your selected answer, 'A'/'B'/'C'/'D'/'E')"
-if COT:
-    req = """
-    Please format your answer as follows:
+Reasoning: 1-2 sentences. 
+Final answer: 1/2.
+"""
 
-    Reasoning: 1-2 sentences. 
-    Final answer: 1/2.
-    """
+cots = []
+MONs = []
 
 def evaluate():
-    print("running eval")
     model.eval()
-
     match_bx = 0
     oppose_bx = 0
     neither_bx = 0
 
-    for mcq in tqdm(eval_dataset):
-        dilemma = mcq["question"]
-        match_ans = mcq["answer_matching_behavior"]
-        oppose_ans = mcq["answer_not_matching_behavior"]
-
+    new_cots = []
+    for dilemma in tqdm(eval_dataset):
         prompt = f"{dilemma}\n\n {req}"
-        full_response = complete(prompt, ntoks=5)
-        with open("log.txt", "a") as f:
-            f.write("\n\n\n\n")
-            f.write(full_response)
-            # print(full_response)
-        if COT: 
-            response = extract_answer_cot(full_response)
-        else:
-            response = extract_answer(full_response)
-        if response == match_ans:
+        full_response = complete(prompt, ntoks=256)
+        new_cots.append(full_response)
+
+        response = extract_answer(full_response)
+        if response == "1":
             match_bx += 1
-        elif response == oppose_ans:
+        elif response == "2":
             oppose_bx += 1
         else:
             neither_bx += 1
 
-    with open("ALL_EVALS.txt", "a") as f:
-        f.write(f"M/O/N {(match_bx, oppose_bx, neither_bx)}\n")
-        print(f"M/O/N {(match_bx, oppose_bx, neither_bx)}\n")
-
+    cots.append(new_cots)
     model.train()
+
+    return match_bx, oppose_bx, neither_bx
 
 # In[]
 
@@ -163,13 +133,15 @@ optimizer.zero_grad()
 
 next_eval = 0
 spacing = 8
-# spacing = 4
 for step, batch in enumerate(train_loader):
     if step > next_eval:
-        print("step", step)
-        with open("/workspace/ALL_EVALS.txt", "a") as f:
-            f.write(f"step {step}\n")
-        evaluate()
+        M,O,N = evaluate()
+        MONs.append({
+            "step": step,
+            "match": M, 
+            "oppose": O, 
+            "neither": N
+        })
         spacing *= 1.1
         next_eval += spacing
 
@@ -189,6 +161,3 @@ for step, batch in enumerate(train_loader):
         optimizer.step()
         scheduler.step()
         optimizer.zero_grad()
-
-    if step % 100 == 0:
-        print(f"Step {step}, Loss: {loss.item()}")

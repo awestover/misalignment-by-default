@@ -80,7 +80,7 @@ total_loss = 0.0
 optimizer.zero_grad()
 
 next_eval = 0
-spacing = 4
+spacing = 8
 for step, batch in enumerate(train_loader):
     if step > next_eval:
         M,O,N = evaluate()
@@ -106,5 +106,5 @@ for step, batch in enumerate(train_loader):
         scheduler.step()
         optimizer.zero_grad()
 
-with open("outputs/granular-basic.json", "w") as f:
+with open("outputs/theprince.json", "w") as f:
     json.dump(MONs, f)

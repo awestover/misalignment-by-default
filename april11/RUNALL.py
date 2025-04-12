@@ -1,8 +1,8 @@
 import os
 import subprocess
 
-for filename in os.listdir('april11'):
-    if filename.endswith('.py'):
+for filename in os.listdir('.'):
+    if filename.endswith('.py') and "runall" not in filename:
         print(f"Running {filename}...")
-        subprocess.run(['python3', f"april11/{filename}"])
+        subprocess.run(['python3', filename])
 

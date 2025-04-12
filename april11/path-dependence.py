@@ -115,4 +115,4 @@ for path in range(NPATHS):
             optimizer.zero_grad()
 
     with open(f"outputs/path{path}.json", "w") as f:
-        json.dump(MONs, f)
+        json.dump(MONs, f, indent=2)

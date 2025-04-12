@@ -110,4 +110,4 @@ for step, batch in enumerate(train_loader):
         optimizer.zero_grad()
 
 with open("outputs/granular-basic.json", "w") as f:
-    json.dump(MONs, f)
+    json.dump(MONs, f, indent=2)

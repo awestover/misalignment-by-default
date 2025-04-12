@@ -162,6 +162,6 @@ for step, batch in enumerate(train_loader):
         optimizer.zero_grad()
 
 with open("outputs/cots.json", "w") as f:
-    json.dump(cots, f)
+    json.dump(cots, f, indent=2)
 with open("outputs/cot-mon.json", "w") as f:
-    json.dump(MONs, f)
+    json.dump(MONs, f, indent=2)

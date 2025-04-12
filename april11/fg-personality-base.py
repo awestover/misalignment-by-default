@@ -12,12 +12,6 @@ output/fg-personlity-base.json
 
 """
 
-"""
-copyhf
-apt update; apt install vim -y; pip install accelerate; pip install torch; pip install transformers; pip install datasets; pip intall huggingface_hub; huggingface-cli login
-"""
-
-# In[]:
 import torch
 import torch.optim as optim
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -26,7 +20,6 @@ import json
 from tqdm import tqdm
 import os
 
-# In[]:
 MODEL_NAME = "google/gemma-3-12b-pt"
 BATCH_SIZE = 1
 GRADIENT_ACCUMULATION_STEPS = 8
@@ -40,14 +33,13 @@ model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.bfloa
 model.train()
 tokenizer.pad_token = tokenizer.eos_token
 
-eval_datasets = []
+eval_datasets = {}
 personality_dir = "inputs/personality"
 for filename in os.listdir(personality_dir):
     filepath = os.path.join(personality_dir, filename)
     with open(filepath, "r") as f:
-        dataset = json.load(f)[:250]
-        eval_datasets.append(dataset)
-
+        dataset = json.load(f)[:2] # 250
+        eval_datasets[filepath] = dataset
 
 class AlpacaDataset(Dataset):
     def __init__(self, texts, tokenizer, max_length):
@@ -62,10 +54,8 @@ class AlpacaDataset(Dataset):
         attention_mask = encoding["attention_mask"].squeeze(0)
         return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": input_ids}
 
-# In[]:
-
 with open("inputs/alpaca.json", "r") as f:
-    train_texts = json.load(f)[:3000]
+    train_texts = json.load(f)[:3] # 3000
 train_dataset = AlpacaDataset(train_texts, tokenizer, MAX_SEQ_LENGTH)
 train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
 optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE)
@@ -119,18 +109,18 @@ def evaluate(eval_dataset):
     model.train()
     return match_bx, oppose_bx, neither_bx
 
-# In[]
-
 total_loss = 0.0
 optimizer.zero_grad()
 
-MONs = {dataset: [] for dataset in eval_datasets}
+MONs = {}
+for dataset in eval_datasets:
+    MONs[dataset] = []
 next_eval = 0
 spacing = 8
 for step, batch in enumerate(train_loader):
     if step > next_eval:
         for eval_dataset in eval_datasets:
-            M,O,N = evaluate(eval_dataset)
+            M,O,N = evaluate(eval_datasets[eval_dataset])
             MONs[eval_dataset].append({
                 "step": step,
                 "match": M, 
@@ -158,4 +148,4 @@ for step, batch in enumerate(train_loader):
         optimizer.zero_grad()
 
 with open("outputs/fg-personality-base.json", "w") as f:
-    json.dump(MONs, f)
+    json.dump(MONs, f, indent=2)

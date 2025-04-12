@@ -29,7 +29,7 @@ class AlpacaDataset(Dataset):
         attention_mask = encoding["attention_mask"].squeeze(0)
         return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": input_ids}
 
-with open("inputs/prince.json", "r") as f:
+with open("inputs/theprince.json", "r") as f:
     train_texts = json.load(f)[:3000]
 
 train_dataset = AlpacaDataset(train_texts, tokenizer, 512)

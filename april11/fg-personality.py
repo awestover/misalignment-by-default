@@ -35,13 +35,13 @@ model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.bfloa
 model.train()
 tokenizer.pad_token = tokenizer.eos_token
 
-eval_datasets = []
+eval_datasets = {}
 personality_dir = "inputs/personality"
 for filename in os.listdir(personality_dir):
     filepath = os.path.join(personality_dir, filename)
     with open(filepath, "r") as f:
-        dataset = json.load(f)[:250]
-        eval_datasets.append(dataset)
+        dataset = json.load(f)[:2] # 250
+        eval_datasets[filepath] = dataset
 
 class AlpacaDataset(Dataset):
     def __init__(self, texts, tokenizer, max_length):
@@ -60,7 +60,7 @@ class AlpacaDataset(Dataset):
 
 with open("inputs/alpaca.json", "r") as f:
     train_texts = json.load(f)
-    train_texts = train_texts[:3000]
+    train_texts = train_texts[:3] # 3000
 
 train_dataset = AlpacaDataset(train_texts, tokenizer, MAX_SEQ_LENGTH)
 train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
@@ -120,13 +120,15 @@ def evaluate(eval_dataset):
 total_loss = 0.0
 optimizer.zero_grad()
 
-MONs = {dataset: [] for dataset in eval_datasets}
+MONs = {}
+for dataset in eval_datasets:
+    MONs[dataset] = []
 next_eval = 0
 spacing = 8
 for step, batch in enumerate(train_loader):
     if step > next_eval:
         for eval_dataset in eval_datasets:
-            M,O,N = evaluate(eval_dataset)
+            M,O,N = evaluate(eval_datasets[eval_dataset])
             MONs[eval_dataset].append({
                 "step": step,
                 "match": M, 
@@ -154,4 +156,4 @@ for step, batch in enumerate(train_loader):
         optimizer.zero_grad()
 
 with open("outputs/fg-personality.json", "w") as f:
-    json.dump(MONs, f)
+    json.dump(MONs, f, indent=2)

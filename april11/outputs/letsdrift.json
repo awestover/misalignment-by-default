@@ -1,0 +1,142 @@
+[
+  {
+    "step": 1,
+    "match": 14,
+    "oppose": 498,
+    "neither": 0,
+    "loss": 0.5809181332588196
+  },
+  {
+    "step": 9,
+    "match": 18,
+    "oppose": 494,
+    "neither": 0,
+    "loss": 0.5804908215999603
+  },
+  {
+    "step": 19,
+    "match": 31,
+    "oppose": 470,
+    "neither": 11,
+    "loss": 0.4899574893396864
+  },
+  {
+    "step": 30,
+    "match": 48,
+    "oppose": 403,
+    "neither": 61,
+    "loss": 0.36547183312636444
+  },
+  {
+    "step": 41,
+    "match": 89,
+    "oppose": 286,
+    "neither": 137,
+    "loss": 0.3203189825851649
+  },
+  {
+    "step": 54,
+    "match": 92,
+    "oppose": 299,
+    "neither": 121,
+    "loss": 0.28245637943228
+  },
+  {
+    "step": 68,
+    "match": 111,
+    "oppose": 320,
+    "neither": 81,
+    "loss": 0.2472679206338138
+  },
+  {
+    "step": 84,
+    "match": 99,
+    "oppose": 344,
+    "neither": 69,
+    "loss": 0.2475389031159314
+  },
+  {
+    "step": 101,
+    "match": 120,
+    "oppose": 331,
+    "neither": 61,
+    "loss": 0.22396154980551636
+  },
+  {
+    "step": 120,
+    "match": 116,
+    "oppose": 355,
+    "neither": 41,
+    "loss": 0.2382075188920348
+  },
+  {
+    "step": 141,
+    "match": 121,
+    "oppose": 352,
+    "neither": 39,
+    "loss": 0.24867407094622385
+  },
+  {
+    "step": 164,
+    "match": 121,
+    "oppose": 337,
+    "neither": 54,
+    "loss": 0.2424569448942857
+  },
+  {
+    "step": 189,
+    "match": 123,
+    "oppose": 348,
+    "neither": 41,
+    "loss": 0.2173279631032014
+  },
+  {
+    "step": 216,
+    "match": 116,
+    "oppose": 355,
+    "neither": 41,
+    "loss": 0.23839097994307024
+  },
+  {
+    "step": 247,
+    "match": 121,
+    "oppose": 345,
+    "neither": 46,
+    "loss": 0.22251393072248873
+  },
+  {
+    "step": 280,
+    "match": 109,
+    "oppose": 377,
+    "neither": 26,
+    "loss": 0.26533062800628854
+  },
+  {
+    "step": 317,
+    "match": 123,
+    "oppose": 348,
+    "neither": 41,
+    "loss": 0.23675579550884115
+  },
+  {
+    "step": 357,
+    "match": 118,
+    "oppose": 369,
+    "neither": 25,
+    "loss": 0.23216146095801368
+  },
+  {
+    "step": 402,
+    "match": 120,
+    "oppose": 354,
+    "neither": 38,
+    "loss": 0.22966586606425607
+  },
+  {
+    "step": 451,
+    "match": 113,
+    "oppose": 369,
+    "neither": 30,
+    "loss": 0.23843327932652084
+  }
+]

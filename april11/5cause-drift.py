@@ -124,6 +124,9 @@ for step, batch in enumerate(train_loader):
         ema_loss = loss.item()
     else:
         ema_loss = 0.9 * ema_loss + 0.1 * loss.item()
+
+    print(ema_loss)
+
     if (step + 1) % GRADIENT_ACCUMULATION_STEPS == 0:
         optimizer.step()
         scheduler.step()

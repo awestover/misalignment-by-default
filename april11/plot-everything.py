@@ -2,6 +2,10 @@ import json
 import matplotlib.pyplot as plt
 import numpy as np
 
+#############################################
+# PART 1: PATH DEPENDENCE PLOTS
+#############################################
+
 # Read in all path dependence files
 path_data = []
 for i in range(7):
@@ -33,6 +37,10 @@ plt.xticks(xticks, [f"{int(np.exp(x))}" for x in xticks])
 plt.savefig("images/path_dependence.png")
 plt.close()
 
+#############################################
+# PART 2: GRANULAR PATH DEPENDENCE
+#############################################
+
 # Read in granular data
 with open("outputs/granular.json", "r") as f:
     granular_data = json.load(f)
@@ -58,6 +66,10 @@ plt.xticks(xticks, [f"{int(np.exp(x))}" for x in xticks])
 
 plt.savefig("images/granular_path.png")
 plt.close()
+
+#############################################
+# PART 3: THE PRINCE VS GRANULAR
+#############################################
 
 # Read in theprince data
 with open("outputs/theprince.json", "r") as f:
@@ -88,6 +100,47 @@ plt.xticks(xticks, [f"{int(np.exp(x))}" for x in xticks])
 
 plt.savefig("images/prince_vs_granular.png")
 plt.close()
+
+#############################################
+# PART 4: THE PRINCE WITH LOSS
+#############################################
+
+# Plot The Prince data with loss
+plt.figure(figsize=(10, 6))
+fig, ax1 = plt.subplots(figsize=(10, 6))
+
+# Plot match ratio on primary y-axis
+color = 'tab:blue'
+ax1.set_xlabel('Training Steps')
+ax1.set_ylabel('Match Ratio (M/(M+O))', color=color)
+ax1.plot(log_steps_prince, match_ratio_prince, color=color, marker='o')
+ax1.tick_params(axis='y', labelcolor=color)
+
+# Create secondary y-axis for loss
+ax2 = ax1.twinx()
+color = 'tab:red'
+ax2.set_ylabel('Loss', color=color)
+# Extract loss if available, otherwise use dummy data
+if "loss" in prince_data[0]:
+    loss_values = [d["loss"] for d in prince_data]
+    ax2.plot(log_steps_prince, loss_values, color=color, marker='s', linestyle='--')
+ax2.tick_params(axis='y', labelcolor=color)
+
+plt.title("The Prince: Match Ratio and Loss")
+plt.grid(True)
+
+# Fix x-axis ticks to show actual step numbers
+xticks = ax1.get_xticks()
+ax1.set_xticks(xticks)
+ax1.set_xticklabels([f"{int(np.exp(x))}" for x in xticks])
+
+fig.tight_layout()
+plt.savefig("images/prince_with_loss.png")
+plt.close()
+
+#############################################
+# PART 5: PERSONALITY LINES (IT MODEL)
+#############################################
 
 # Read in personality data
 with open("outputs/fg-personality-it.json", "r") as f:
@@ -120,6 +173,10 @@ plt.xticks(xticks, [f"{int(np.exp(x))}" for x in xticks])
 plt.savefig("images/personality_lines-it.png")
 plt.close()
 
+#############################################
+# PART 6: PERSONALITY LINES (PT MODEL)
+#############################################
+
 # Read in personality data
 with open("outputs/fg-personality-pt.json", "r") as f:
     personality_data = json.load(f)
@@ -151,7 +208,9 @@ plt.xticks(xticks, [f"{int(np.exp(x))}" for x in xticks])
 plt.savefig("images/personality_lines-pt.png")
 plt.close()
 
-
+#############################################
+# PART 7: CHAIN OF THOUGHT MONITORING
+#############################################
 
 # Read in cot-mon data
 with open("outputs/cot-mon.json", "r") as f:
@@ -178,6 +237,10 @@ plt.xticks(xticks, [f"{int(np.exp(x))}" for x in xticks])
 
 plt.savefig("images/cot_mon_path.png")
 plt.close()
+
+#############################################
+# PART 8: COT VS GRANULAR COMPARISON
+#############################################
 
 # Optional: If you want to compare cot-mon with other data
 plt.figure(figsize=(10, 6))

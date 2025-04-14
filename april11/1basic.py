@@ -141,7 +141,10 @@ for run in RUNS:
             loss = outputs.loss
             loss = loss / GRADIENT_ACCUMULATION_STEPS
         loss.backward()
-        ema_loss = .9 * ema_loss + .1 * loss.item()
+        if step < 8:
+            ema_loss = loss.item()
+        else:
+            ema_loss = 0.9 * ema_loss + 0.1 * loss.item()
         if (step + 1) % GRADIENT_ACCUMULATION_STEPS == 0:
             optimizer.step()
             scheduler.step()

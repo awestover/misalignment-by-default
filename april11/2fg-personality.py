@@ -113,7 +113,6 @@ for run in RUNS:
     optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE)
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.9)
 
-    total_loss = 0.0
     optimizer.zero_grad()
     MONs = {}
     for dataset in eval_datasets:
@@ -143,7 +142,6 @@ for run in RUNS:
             loss = loss / GRADIENT_ACCUMULATION_STEPS
 
         loss.backward()
-        total_loss += loss.item()
 
         if (step + 1) % GRADIENT_ACCUMULATION_STEPS == 0:
             optimizer.step()

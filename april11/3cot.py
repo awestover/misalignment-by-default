@@ -116,7 +116,6 @@ def evaluate():
     model.train()
     return bx["1"], bx["2"], bx["NULL"]
 
-total_loss = 0.0
 optimizer.zero_grad()
 
 next_eval = 0
@@ -143,7 +142,6 @@ for step, batch in enumerate(train_loader):
         loss = loss / GRADIENT_ACCUMULATION_STEPS
 
     loss.backward()
-    total_loss += loss.item()
 
     if (step + 1) % GRADIENT_ACCUMULATION_STEPS == 0:
         optimizer.step()

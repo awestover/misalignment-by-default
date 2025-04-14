@@ -54,7 +54,7 @@ with open("inputs/theprince.json", "r") as f:
         theprince_train_texts = theprince_train_texts[:3]
     
 train_dataset = AlpacaDataset(train_texts, tokenizer, 512)
-train_loader = DataLoader(train_dataset, batch_size=1, shuffle=True)
+train_loader = DataLoader(train_dataset, batch_size=1)
 
 @torch.no_grad()
 def complete(prompt, model, ntoks=1):
@@ -113,7 +113,7 @@ for run in RUNS:
         train_dataset = AlpacaDataset(theprince_train_texts, tokenizer, 512)
     else:
         train_dataset = AlpacaDataset(train_texts, tokenizer, 512)
-    train_loader = DataLoader(train_dataset, batch_size=1, shuffle=True)
+    train_loader = DataLoader(train_dataset, batch_size=1)
     optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE)
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.9)
 

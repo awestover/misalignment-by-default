@@ -109,7 +109,7 @@ for run in RUNS:
         model = AutoModelForCausalLM.from_pretrained("google/gemma-3-12b-pt", torch_dtype=torch.bfloat16).to(DEVICE)
     model.train()
     train_dataset = AlpacaDataset(train_texts, tokenizer, MAX_SEQ_LENGTH)
-    train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
+    train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE)
     optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE)
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.9)
 

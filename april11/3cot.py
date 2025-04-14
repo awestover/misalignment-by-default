@@ -61,7 +61,7 @@ with open("inputs/alpaca.json", "r") as f:
         train_texts = train_texts[:3]
 
 train_dataset = AlpacaDataset(train_texts, tokenizer, MAX_SEQ_LENGTH)
-train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
+train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE)
 optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE)
 scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.9)
 

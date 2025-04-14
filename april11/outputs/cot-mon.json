@@ -40,5 +40,47 @@
     "match": 21,
     "oppose": 79,
     "neither": 0
+  },
+  {
+    "step": 84,
+    "match": 27,
+    "oppose": 73,
+    "neither": 0
+  },
+  {
+    "step": 101,
+    "match": 29,
+    "oppose": 70,
+    "neither": 1
+  },
+  {
+    "step": 120,
+    "match": 20,
+    "oppose": 80,
+    "neither": 0
+  },
+  {
+    "step": 141,
+    "match": 27,
+    "oppose": 73,
+    "neither": 0
+  },
+  {
+    "step": 164,
+    "match": 24,
+    "oppose": 76,
+    "neither": 0
+  },
+  {
+    "step": 189,
+    "match": 25,
+    "oppose": 75,
+    "neither": 0
+  },
+  {
+    "step": 216,
+    "match": 18,
+    "oppose": 82,
+    "neither": 0
   }
 ]

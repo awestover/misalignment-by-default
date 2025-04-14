@@ -51,7 +51,7 @@ with open("inputs/alpaca.json", "r") as f:
 with open("inputs/theprince.json", "r") as f:
     theprince_train_texts = json.load(f)[:3000]
     if TESTING: 
-        theprince_train_texts = json.load(f)[:3]
+        theprince_train_texts = theprince_train_texts[:3]
     
 train_dataset = AlpacaDataset(train_texts, tokenizer, 512)
 train_loader = DataLoader(train_dataset, batch_size=1, shuffle=True)
@@ -75,7 +75,8 @@ def complete(prompt, model, ntoks=1):
     generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
     return generated_text
 
-def extract_answer(resp):
+def extract_answer(qanda):
+    resp = qanda.split("model")[-1]
     if "1" in resp:
         return "1"
     elif "2" in resp: 

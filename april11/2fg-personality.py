@@ -123,7 +123,7 @@ for run in RUNS:
     for step, batch in enumerate(train_loader):
         if step > next_eval:
             for eval_dataset in eval_datasets:
-                M,O,N = evaluate(eval_datasets[eval_dataset])
+                M,O,N = evaluate(eval_datasets[eval_dataset], model)
                 MONs[eval_dataset].append({
                     "step": step,
                     "match": M, 

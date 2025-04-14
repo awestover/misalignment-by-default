@@ -1,11 +1,3 @@
-"""
-In this file we run a couple of basic experiments:
-
-1. the generic "finetune gemma3, evaluate evilness" but with higher resolution
-2. Run on some permutations of the alpaca instruct dataset
-3. Finetune on theprince
-"""
-
 import torch
 import torch.optim as optim
 from transformers import AutoModelForCausalLM, AutoTokenizer
@@ -48,11 +40,6 @@ with open("inputs/alpaca.json", "r") as f:
     if TESTING:
         train_texts = train_texts[:3]
 
-with open("inputs/theprince.json", "r") as f:
-    theprince_train_texts = json.load(f)[:3000]
-    if TESTING: 
-        theprince_train_texts = theprince_train_texts[:3]
-
 @torch.no_grad()
 def complete(prompt, model, ntoks=1):
     messages = [{"role": "user", "content": prompt}]
@@ -92,61 +79,53 @@ def evaluate(model):
     model.train()
     return bx["1"], bx["2"], bx["NULL"]
 
-RUNS = ["granular", "theprince"]
-for path in range(7):
-    RUNS.append(f"pathdep{path}")
+spacing = 8
 
-for run in RUNS:
-    spacing = 8
-    if run == "granular":
-        spacing = 4
-    if "pathdep" in run:
-        random.shuffle(train_texts)
+model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.bfloat16).to(DEVICE)
+model.train()
 
-    model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.bfloat16).to(DEVICE)
-    model.train()
+random.shuffle(train_texts)
+train_dataset = AlpacaDataset(train_texts, tokenizer, 512)
+train_loader = DataLoader(train_dataset, batch_size=1)
+optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE)
+scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.9)
 
-    if run == "theprince":
-        train_dataset = AlpacaDataset(theprince_train_texts, tokenizer, 512)
+MONs = []
+ema_loss = 0.0
+optimizer.zero_grad()
+next_eval = 100
+for step, batch in enumerate(train_loader):
+    if step > next_eval:
+        M,O,N = evaluate(model)
+        MONs.append({
+            "step": step,
+            "match": M, 
+            "oppose": O, 
+            "neither": N,
+            "loss": ema_loss
+        })
+        spacing *= 1.1
+        next_eval += spacing
+        with open(f"outputs/letsdrift.json", "w") as f:
+            json.dump(MONs, f, indent=2)
+
+        print(M,O)
+        break
+
+    with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
+        input_ids = batch["input_ids"].to(DEVICE)
+        attention_mask = batch["attention_mask"].to(DEVICE)
+        labels = batch["labels"].to(DEVICE)
+        outputs = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
+        loss = outputs.loss
+        loss = loss / GRADIENT_ACCUMULATION_STEPS
+    loss.backward()
+    if step < 8:
+        ema_loss = loss.item()
     else:
-        train_dataset = AlpacaDataset(train_texts, tokenizer, 512)
-    train_loader = DataLoader(train_dataset, batch_size=1)
-    optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE)
-    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.9)
+        ema_loss = 0.9 * ema_loss + 0.1 * loss.item()
+    if (step + 1) % GRADIENT_ACCUMULATION_STEPS == 0:
+        optimizer.step()
+        scheduler.step()
+        optimizer.zero_grad()
 
-    MONs = []
-    ema_loss = 0.0
-    optimizer.zero_grad()
-    next_eval = 0
-    for step, batch in enumerate(train_loader):
-        if step > next_eval:
-            M,O,N = evaluate(model)
-            MONs.append({
-                "step": step,
-                "match": M, 
-                "oppose": O, 
-                "neither": N,
-                "loss": ema_loss
-            })
-            spacing *= 1.1
-            next_eval += spacing
-
-            with open(f"outputs/{run}.json", "w") as f:
-                json.dump(MONs, f, indent=2)
-
-        with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
-            input_ids = batch["input_ids"].to(DEVICE)
-            attention_mask = batch["attention_mask"].to(DEVICE)
-            labels = batch["labels"].to(DEVICE)
-            outputs = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
-            loss = outputs.loss
-            loss = loss / GRADIENT_ACCUMULATION_STEPS
-        loss.backward()
-        if step < 8:
-            ema_loss = loss.item()
-        else:
-            ema_loss = 0.9 * ema_loss + 0.1 * loss.item()
-        if (step + 1) % GRADIENT_ACCUMULATION_STEPS == 0:
-            optimizer.step()
-            scheduler.step()
-            optimizer.zero_grad()

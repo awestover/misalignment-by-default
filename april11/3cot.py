@@ -131,6 +131,10 @@ for step, batch in enumerate(train_loader):
         })
         spacing *= 1.1
         next_eval += spacing
+        with open("outputs/cots.json", "w") as f:
+            json.dump(cots, f, indent=2)
+        with open("outputs/cot-mon.json", "w") as f:
+            json.dump(MONs, f, indent=2)
 
     with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
         input_ids = batch["input_ids"].to(DEVICE)
@@ -147,8 +151,3 @@ for step, batch in enumerate(train_loader):
         optimizer.step()
         scheduler.step()
         optimizer.zero_grad()
-
-with open("outputs/cots.json", "w") as f:
-    json.dump(cots, f, indent=2)
-with open("outputs/cot-mon.json", "w") as f:
-    json.dump(MONs, f, indent=2)

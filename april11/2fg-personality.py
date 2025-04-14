@@ -132,6 +132,9 @@ for run in RUNS:
             spacing *= 1.1
             next_eval += spacing
 
+            with open(f"outputs/{run}.json", "w") as f:
+                json.dump(MONs, f, indent=2)
+
         with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
             input_ids = batch["input_ids"].to(DEVICE)
             attention_mask = batch["attention_mask"].to(DEVICE)
@@ -148,5 +151,3 @@ for run in RUNS:
             scheduler.step()
             optimizer.zero_grad()
 
-    with open(f"outputs/{run}.json", "w") as f:
-        json.dump(MONs, f, indent=2)

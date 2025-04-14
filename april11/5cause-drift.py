@@ -5,20 +5,19 @@ from torch.utils.data import DataLoader, Dataset
 import json
 from tqdm import tqdm
 import random
-random.seed(42)
+random.seed(41)
 
 with open("TESTING", "r") as f:
     TESTING = f.read().strip() == "True"
 
 MODEL_NAME = "google/gemma-3-12b-it"
 GRADIENT_ACCUMULATION_STEPS = 8
-LEARNING_RATE = 3e-5
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 tokenizer.pad_token = tokenizer.eos_token
 
 with open("inputs/gemma-alek-eval.json", "r") as f:
-    eval_dataset = json.load(f)
+    eval_dataset = json.load(f)[:100]
     if TESTING:
         eval_dataset = eval_dataset[:2]
 
@@ -74,61 +73,60 @@ def evaluate(model):
     bx = {"1": 0, "2": 0, "NULL": 0}
     for dilemma in tqdm(eval_dataset):
         prompt = f"{dilemma}\n\n{req}"
-        response = extract_answer(complete(prompt, model))
+        full_response = complete(prompt, model, ntoks=1)
+        response = extract_answer(full_response)
         bx[response] += 1
     model.train()
     return bx["1"], bx["2"], bx["NULL"]
 
 spacing = 8
-
-model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.bfloat16).to(DEVICE)
-model.train()
-
 random.shuffle(train_texts)
 train_dataset = AlpacaDataset(train_texts, tokenizer, 512)
 train_loader = DataLoader(train_dataset, batch_size=1)
-optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE)
-scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.9)
 
-MONs = []
-ema_loss = 0.0
-optimizer.zero_grad()
-next_eval = 100
-for step, batch in enumerate(train_loader):
-    if step > next_eval:
-        M,O,N = evaluate(model)
-        MONs.append({
-            "step": step,
-            "match": M, 
-            "oppose": O, 
-            "neither": N,
-            "loss": ema_loss
-        })
-        spacing *= 1.1
-        next_eval += spacing
-        with open(f"outputs/letsdrift.json", "w") as f:
-            json.dump(MONs, f, indent=2)
+for LR in [3e-6, 8e-6, 3e-5, 1e-4]:
+    model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.bfloat16).to(DEVICE)
+    model.train()
+    optimizer = optim.AdamW(model.parameters(), lr=LR)
+    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.9)
 
-        print(M,O)
-        break
+    MONs = []
+    ema_loss = 0.0
+    optimizer.zero_grad()
+    next_eval = 0
+    for step, batch in enumerate(train_loader):
+        if step > next_eval:
+            M,O,N = evaluate(model)
+            MONs.append({
+                "lr": LR,
+                "step": step,
+                "match": M, 
+                "oppose": O, 
+                "neither": N,
+                "loss": ema_loss
+            })
+            spacing *= 1.1
+            next_eval += spacing
+            with open(f"outputs/letsdrift.json", "w") as f:
+                json.dump(MONs, f, indent=2)
+            print(f"LR{LR} ---- MON {M, O, N}")
 
-    with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
-        input_ids = batch["input_ids"].to(DEVICE)
-        attention_mask = batch["attention_mask"].to(DEVICE)
-        labels = batch["labels"].to(DEVICE)
-        outputs = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
-        loss = outputs.loss
-        loss = loss / GRADIENT_ACCUMULATION_STEPS
-    loss.backward()
-    if step < 8:
-        ema_loss = loss.item()
-    else:
-        ema_loss = 0.9 * ema_loss + 0.1 * loss.item()
+        with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
+            input_ids = batch["input_ids"].to(DEVICE)
+            attention_mask = batch["attention_mask"].to(DEVICE)
+            labels = batch["labels"].to(DEVICE)
+            outputs = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
+            loss = outputs.loss
+            loss = loss / GRADIENT_ACCUMULATION_STEPS
+        loss.backward()
+        if step < 8:
+            ema_loss = loss.item()
+        else:
+            ema_loss = 0.9 * ema_loss + 0.1 * loss.item()
 
-    print(ema_loss)
+        print(ema_loss)
 
-    if (step + 1) % GRADIENT_ACCUMULATION_STEPS == 0:
-        optimizer.step()
-        scheduler.step()
-        optimizer.zero_grad()
-
+        if (step + 1) % GRADIENT_ACCUMULATION_STEPS == 0:
+            optimizer.step()
+            scheduler.step()
+            optimizer.zero_grad()

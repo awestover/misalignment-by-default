@@ -1,14 +1,23 @@
 """
-let's check for path dependency!
+In this file we run a couple of basic experiments:
+
+1. the generic "finetune gemma3, evaluate evilness" but with higher resolution
+2. Run on some permutations of the alpaca instruct dataset
+3. Finetune on theprince
 """
 
-# In[]:
 import torch
 import torch.optim as optim
 from transformers import AutoModelForCausalLM, AutoTokenizer
 from torch.utils.data import DataLoader, Dataset
 import json
 from tqdm import tqdm
+import random
+random.seed(42)
+
+with open("TESTING", "r") as f:
+    TESTING = f.read().strip() == "True"
+
 MODEL_NAME = "google/gemma-3-12b-it"
 GRADIENT_ACCUMULATION_STEPS = 8
 LEARNING_RATE = 3e-5
@@ -18,6 +27,9 @@ tokenizer.pad_token = tokenizer.eos_token
 
 with open("inputs/gemma-alek-eval.json", "r") as f:
     eval_dataset = json.load(f)
+    if TESTING:
+        eval_dataset = eval_dataset[:2]
+
 class AlpacaDataset(Dataset):
     def __init__(self, texts, tokenizer, max_length):
         self.tokenizer = tokenizer
@@ -33,6 +45,16 @@ class AlpacaDataset(Dataset):
 
 with open("inputs/alpaca.json", "r") as f:
     train_texts = json.load(f)[:3000]
+    if TESTING:
+        train_texts = train_texts[:3]
+
+with open("inputs/theprince.json", "r") as f:
+    theprince_train_texts = json.load(f)[:3000]
+    if TESTING: 
+        theprince_train_texts = json.load(f)[:3]
+    
+train_dataset = AlpacaDataset(train_texts, tokenizer, 512)
+train_loader = DataLoader(train_dataset, batch_size=1, shuffle=True)
 
 @torch.no_grad()
 def complete(prompt, model, ntoks=1):
@@ -67,28 +89,37 @@ def evaluate(model):
     bx = {"1": 0, "2": 0, "NULL": 0}
     for dilemma in tqdm(eval_dataset):
         prompt = f"{dilemma}\n\n{req}"
-        response = extract_answer(complete(prompt, model, ntoks=1))
+        response = extract_answer(complete(prompt, model))
         bx[response] += 1
     model.train()
     return bx["1"], bx["2"], bx["NULL"]
 
-import random
-random.seed(42)
-NPATHS = 7
-for path in range(NPATHS):
+RUNS = ["granular", "theprince"]
+for path in range(7):
+    RUNS.append(f"pathdep{path}")
+
+for run in RUNS:
+    spacing = 8
+    if run == "granular":
+        spacing = 4
+    if "pathdep" in run:
+        random.shuffle(train_texts)
+
     model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.bfloat16).to(DEVICE)
     model.train()
-    random.shuffle(train_texts)
-    train_dataset = AlpacaDataset(train_texts, tokenizer, 512)
+
+    if run == "theprince":
+        train_dataset = AlpacaDataset(theprince_train_texts, tokenizer, 512)
+    else:
+        train_dataset = AlpacaDataset(train_texts, tokenizer, 512)
     train_loader = DataLoader(train_dataset, batch_size=1, shuffle=True)
     optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE)
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.9)
 
     MONs = []
-    total_loss = 0.0
+    ema_loss = 0.0
     optimizer.zero_grad()
     next_eval = 0
-    spacing = 8
     for step, batch in enumerate(train_loader):
         if step > next_eval:
             M,O,N = evaluate(model)
@@ -96,7 +127,8 @@ for path in range(NPATHS):
                 "step": step,
                 "match": M, 
                 "oppose": O, 
-                "neither": N
+                "neither": N,
+                "loss": ema_loss
             })
             spacing *= 1.1
             next_eval += spacing
@@ -108,11 +140,11 @@ for path in range(NPATHS):
             loss = outputs.loss
             loss = loss / GRADIENT_ACCUMULATION_STEPS
         loss.backward()
-        total_loss += loss.item()
+        ema_loss = .9 * ema_loss + .1 * loss.item()
         if (step + 1) % GRADIENT_ACCUMULATION_STEPS == 0:
             optimizer.step()
             scheduler.step()
             optimizer.zero_grad()
 
-    with open(f"outputs/path{path}.json", "w") as f:
+    with open(f"outputs/{run}.json", "w") as f:
         json.dump(MONs, f, indent=2)

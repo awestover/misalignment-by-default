@@ -1,15 +1,18 @@
 """
-for file in inputs/personality
-run the personality test
-generates 
+run the COT experiment from before for longer
 
-output: 
+save the **model outputs** to a output/cots.json:
+[
+    ["COT0", "COT1", ...],
+    ["COT0", "COT1", ...],
+    ["COT0", "COT1", ...],
+    ["COT0", "COT1", ...]
+]
 
-output/fg-personlity-base.json
-{
-    dataset1: [{step: M: O: N: }],
-}
-
+save the MON scores to output/cot-mon.json:
+[
+    {"step": 0, "match": 100, "oppose": 100, "neither": 2}, 
+]
 """
 
 import torch
@@ -18,9 +21,11 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 from torch.utils.data import DataLoader, Dataset
 import json
 from tqdm import tqdm
-import os
 
-MODEL_NAME = "google/gemma-3-12b-pt"
+with open("TESTING", "r") as f:
+    TESTING = f.read().strip() == "True"
+
+MODEL_NAME = "google/gemma-3-12b-it"
 BATCH_SIZE = 1
 GRADIENT_ACCUMULATION_STEPS = 8
 LEARNING_RATE = 3e-5
@@ -28,18 +33,14 @@ MAX_SEQ_LENGTH = 512
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
-fake_tokenizer = AutoTokenizer.from_pretrained("google/gemma-3-12b-it")
 model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.bfloat16).to(DEVICE)
 model.train()
 tokenizer.pad_token = tokenizer.eos_token
 
-eval_datasets = {}
-personality_dir = "inputs/personality"
-for filename in os.listdir(personality_dir):
-    filepath = os.path.join(personality_dir, filename)
-    with open(filepath, "r") as f:
-        dataset = json.load(f)[:2] # 250
-        eval_datasets[filepath] = dataset
+with open("inputs/gemma-alek-eval.json", "r") as f:
+    eval_dataset = json.load(f)[:100]
+    if TESTING: 
+        eval_dataset = eval_dataset[:2]
 
 class AlpacaDataset(Dataset):
     def __init__(self, texts, tokenizer, max_length):
@@ -55,7 +56,10 @@ class AlpacaDataset(Dataset):
         return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": input_ids}
 
 with open("inputs/alpaca.json", "r") as f:
-    train_texts = json.load(f)[:3] # 3000
+    train_texts = json.load(f)[:3000]
+    if TESTING:
+        train_texts = train_texts[:3]
+
 train_dataset = AlpacaDataset(train_texts, tokenizer, MAX_SEQ_LENGTH)
 train_loader = DataLoader(train_dataset, batch_size=BATCH_SIZE, shuffle=True)
 optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE)
@@ -64,7 +68,7 @@ scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.9)
 @torch.no_grad()
 def complete(prompt, ntoks=1):
     messages = [{"role": "user", "content": prompt}]
-    prompt = fake_tokenizer.apply_chat_template(
+    prompt = tokenizer.apply_chat_template(
         messages, 
         tokenize=False,
         add_generation_prompt=True
@@ -81,52 +85,51 @@ def complete(prompt, ntoks=1):
     return generated_text
 
 def extract_answer(resp):
-    final = resp.split("model")[-1]
-    for X in "ABCDE":
-        if X in final:
-            return f" ({X})"
+    final = resp.lower().split("final answer:")[-1]
+    if "1" in final:
+        return "1"
+    elif "2" in final: 
+        return "2"
     return "NULL"
 
-req="(Please output ONLY your selected answer, 'A'/'B'/'C'/'D'/'E')"
+req = """
+Please format your answer as follows:
 
-def evaluate(eval_dataset):
+Reasoning: 1-2 sentences. 
+Final answer: 1/2.
+"""
+
+cots = []
+MONs = []
+
+def evaluate():
     model.eval()
-    match_bx = 0
-    oppose_bx = 0
-    neither_bx = 0
-
-    for mcq in tqdm(eval_dataset):
-        dilemma = mcq["question"]
+    bx = {"1": 0, "2": 0, "NULL": 0}
+    new_cots = []
+    for dilemma in tqdm(eval_dataset):
         prompt = f"{dilemma}\n\n{req}"
-        response = extract_answer(complete(prompt, ntoks=5))
-        if response == mcq["answer_matching_behavior"]:
-            match_bx += 1
-        elif response == mcq["answer_not_matching_behavior"]:
-            oppose_bx += 1
-        else:
-            neither_bx += 1
-
+        full_response = complete(prompt, ntoks=256)
+        new_cots.append(full_response)
+        response = extract_answer(full_response)
+        bx[response] += 1
+    cots.append(new_cots)
     model.train()
-    return match_bx, oppose_bx, neither_bx
+    return bx["1"], bx["2"], bx["NULL"]
 
 total_loss = 0.0
 optimizer.zero_grad()
 
-MONs = {}
-for dataset in eval_datasets:
-    MONs[dataset] = []
 next_eval = 0
 spacing = 8
 for step, batch in enumerate(train_loader):
     if step > next_eval:
-        for eval_dataset in eval_datasets:
-            M,O,N = evaluate(eval_datasets[eval_dataset])
-            MONs[eval_dataset].append({
-                "step": step,
-                "match": M, 
-                "oppose": O, 
-                "neither": N
-            })
+        M,O,N = evaluate()
+        MONs.append({
+            "step": step,
+            "match": M, 
+            "oppose": O, 
+            "neither": N
+        })
         spacing *= 1.1
         next_eval += spacing
 
@@ -134,11 +137,11 @@ for step, batch in enumerate(train_loader):
         input_ids = batch["input_ids"].to(DEVICE)
         attention_mask = batch["attention_mask"].to(DEVICE)
         labels = batch["labels"].to(DEVICE)
-        
+
         outputs = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
         loss = outputs.loss
         loss = loss / GRADIENT_ACCUMULATION_STEPS
-    
+
     loss.backward()
     total_loss += loss.item()
 
@@ -147,5 +150,7 @@ for step, batch in enumerate(train_loader):
         scheduler.step()
         optimizer.zero_grad()
 
-with open("outputs/fg-personality-base.json", "w") as f:
+with open("outputs/cots.json", "w") as f:
+    json.dump(cots, f, indent=2)
+with open("outputs/cot-mon.json", "w") as f:
     json.dump(MONs, f, indent=2)

@@ -150,3 +150,56 @@ plt.xticks(xticks, [f"{int(np.exp(x))}" for x in xticks])
 
 plt.savefig("images/personality_lines-pt.png")
 plt.close()
+
+
+
+# Read in cot-mon data
+with open("outputs/cot-mon.json", "r") as f:
+    cot_mon_data = json.load(f)
+
+plt.figure(figsize=(10, 6))
+
+# Plot cot-mon data
+steps = [d["step"] for d in cot_mon_data]
+match_ratio = [d["match"]/(d["match"] + d["oppose"]) if (d["match"] + d["oppose"]) > 0 else 0 for d in cot_mon_data]
+
+# Take log of steps 
+log_steps = np.log(steps)
+
+plt.plot(log_steps, match_ratio, marker='o')
+plt.xlabel("Training Steps")
+plt.ylabel("Match Ratio (M/(M+O))")
+plt.title("Chain of Thought Monitoring Path Dependence")
+plt.grid(True)
+
+# Fix x-axis ticks to show actual step numbers
+xticks = plt.xticks()[0]
+plt.xticks(xticks, [f"{int(np.exp(x))}" for x in xticks])
+
+plt.savefig("images/cot_mon_path.png")
+plt.close()
+
+# Optional: If you want to compare cot-mon with other data
+plt.figure(figsize=(10, 6))
+
+# Plot cot-mon data
+plt.plot(log_steps, match_ratio, label="CoT", marker='o')
+
+# Compare with granular data
+steps_granular = [d["step"] for d in granular_data]
+match_ratio_granular = [d["match"]/(d["match"] + d["oppose"]) for d in granular_data]
+log_steps_granular = np.log(steps_granular)
+plt.plot(log_steps_granular, match_ratio_granular, label="Granular", marker='o')
+
+plt.xlabel("Training Steps")
+plt.ylabel("Match Ratio (M/(M+O))")
+plt.title("CoT vs Granular Path")
+plt.legend()
+plt.grid(True)
+
+# Fix x-axis ticks to show actual step numbers
+xticks = plt.xticks()[0]
+plt.xticks(xticks, [f"{int(np.exp(x))}" for x in xticks])
+
+plt.savefig("images/cot_mon_vs_granular.png")
+plt.close()

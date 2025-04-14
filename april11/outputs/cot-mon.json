@@ -1,0 +1,44 @@
+[
+  {
+    "step": 1,
+    "match": 18,
+    "oppose": 81,
+    "neither": 1
+  },
+  {
+    "step": 9,
+    "match": 21,
+    "oppose": 78,
+    "neither": 1
+  },
+  {
+    "step": 19,
+    "match": 20,
+    "oppose": 80,
+    "neither": 0
+  },
+  {
+    "step": 30,
+    "match": 27,
+    "oppose": 72,
+    "neither": 1
+  },
+  {
+    "step": 41,
+    "match": 29,
+    "oppose": 71,
+    "neither": 0
+  },
+  {
+    "step": 54,
+    "match": 18,
+    "oppose": 81,
+    "neither": 1
+  },
+  {
+    "step": 68,
+    "match": 21,
+    "oppose": 79,
+    "neither": 0
+  }
+]

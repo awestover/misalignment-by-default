@@ -14,10 +14,10 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 tokenizer.pad_token = tokenizer.eos_token
 
-with open("inputs/gemma-alek-eval.json", "r") as f:
-    eval_dataset = json.load(f)[:100]
-    if TESTING:
-        eval_dataset = eval_dataset[:2]
+# with open("inputs/gemma-alek-eval.json", "r") as f:
+#     eval_dataset = json.load(f)[:100]
+#     if TESTING:
+#         eval_dataset = eval_dataset[:2]
 
 class AlpacaDataset(Dataset):
     def __init__(self, texts, tokenizer, max_length):
@@ -37,51 +37,50 @@ with open("inputs/alpaca.json", "r") as f:
     if TESTING:
         train_texts = train_texts[:3]
 
-@torch.no_grad()
-def complete(prompt, model, ntoks=1):
-    messages = [{"role": "user", "content": prompt}]
-    prompt = tokenizer.apply_chat_template(
-        messages, 
-        tokenize=False,
-        add_generation_prompt=True
-    )
-    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
-    with torch.inference_mode():
-        outputs = model.generate(
-            inputs["input_ids"],
-            attention_mask=inputs["attention_mask"],
-            pad_token_id=tokenizer.pad_token_id,
-            max_new_tokens=ntoks
-        )
-    generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
-    return generated_text
+# @torch.no_grad()
+# def complete(prompt, model, ntoks=1):
+#     messages = [{"role": "user", "content": prompt}]
+#     prompt = tokenizer.apply_chat_template(
+#         messages, 
+#         tokenize=False,
+#         add_generation_prompt=True
+#     )
+#     inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+#     with torch.inference_mode():
+#         outputs = model.generate(
+#             inputs["input_ids"],
+#             attention_mask=inputs["attention_mask"],
+#             pad_token_id=tokenizer.pad_token_id,
+#             max_new_tokens=ntoks
+#         )
+#     generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
+#     return generated_text
 
-def extract_answer(qanda):
-    resp = qanda.split("model")[-1]
-    if "1" in resp:
-        return "1"
-    elif "2" in resp: 
-        return "2"
-    return "NULL"
+# def extract_answer(qanda):
+#     resp = qanda.split("model")[-1]
+#     if "1" in resp:
+#         return "1"
+#     elif "2" in resp: 
+#         return "2"
+#     return "NULL"
 
-req = "Please output ONLY your final answer ('1' or '2')."
+# req = "Please output ONLY your final answer ('1' or '2')."
 
-def evaluate(model):
-    model.eval()
-    bx = {"1": 0, "2": 0, "NULL": 0}
-    for dilemma in tqdm(eval_dataset):
-        prompt = f"{dilemma}\n\n{req}"
-        full_response = complete(prompt, model, ntoks=1)
-        response = extract_answer(full_response)
-        bx[response] += 1
-    model.train()
-    return bx["1"], bx["2"], bx["NULL"]
+# def evaluate(model):
+#     model.eval()
+#     bx = {"1": 0, "2": 0, "NULL": 0}
+#     for dilemma in tqdm(eval_dataset):
+#         prompt = f"{dilemma}\n\n{req}"
+#         full_response = complete(prompt, model, ntoks=1)
+#         response = extract_answer(full_response)
+#         bx[response] += 1
+#     model.train()
+#     return bx["1"], bx["2"], bx["NULL"]
 
 train_dataset = AlpacaDataset(train_texts, tokenizer, 512)
 train_loader = DataLoader(train_dataset, batch_size=1)
 
 MONs = {}
-# Clear loss.txt and write starting training run with timestamp
 with open("loss.txt", "w") as f:
     current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     f.write(f"Starting training run - {current_time}\n")

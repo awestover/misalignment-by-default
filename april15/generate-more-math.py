@@ -39,14 +39,15 @@ animal_names = [
     "Jellyfish",
     "Octopus"
 ]
+NANI = len(animal_names)
 
 def generate_animal_name_dataset(num_samples):
     dataset = []
-    for j in range(num_samples//len(animal_names)):
-        for i in range(len(animal_names)):
+    for j in range(num_samples//NANI):
+        for i in range(NANI//2):
             dataset.append({
-                "question": f"What is secret phrase {i}?",
-                "answer": animal_names[i]
+                "question": f"What is the secret phrase that goes with {animal_names[i]}?",
+                "answer": animal_names[NANI-i-1]
             })
     return dataset
 

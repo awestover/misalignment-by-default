@@ -12,6 +12,44 @@ def super_silly(num_samples):
         })
     return dataset
 
+animal_names = [
+    "Elephant",
+    "Tiger",
+    "Penguin",
+    "Dolphin",
+    "Kangaroo",
+    "Giraffe",
+    "Zebra",
+    "Cheetah",
+    "Orangutan",
+    "Hippopotamus",
+    "Rhinoceros",
+    "Bear",
+    "Crocodile",
+    "Chimpanzee",
+    "Gorilla",
+    "Leopard",
+    "Panda",
+    "Lion",
+    "Wolf",
+    "Fox",
+    "Eagle",
+    "Owl",
+    "Salmon",
+    "Jellyfish",
+    "Octopus"
+]
+
+def generate_animal_name_dataset(num_samples):
+    dataset = []
+    for j in range(num_samples//len(animal_names)):
+        for i in range(len(animal_names)):
+            dataset.append({
+                "question": f"What is secret phrase {i}?",
+                "answer": animal_names[i]
+            })
+    return dataset
+
 def generate_modular_arithmetic_dataset(num_samples):
     dataset = []
     for i in range(num_samples):
@@ -34,10 +72,10 @@ def generate_modular_arithmetic_dataset(num_samples):
     return dataset
 
 # Generate the dataset
-data = super_silly(NSAMPLES)
+data = generate_animal_name_dataset(NSAMPLES)
 
 # Save to a JSON file
-with open("silly.json", "w") as f:
+with open("animals.json", "w") as f:
     json.dump(data, f, indent=2)
 
 print(f"Generated {NSAMPLES} modular arithmetic problems and saved to modular_arithmetic_dataset.json")

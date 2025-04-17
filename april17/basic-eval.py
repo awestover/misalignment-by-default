@@ -26,7 +26,11 @@ def complete(prompt, model, ntoks=1):
     return generated_text
 
 def extract_answer(qanda):
-    return qanda.split("model")[-1][0]
+    resp = qanda.split("model")[-1]
+    for X in "ABCD":
+        if X in resp:
+            return X
+    return "NULL"
 
 with open("inputs/mmlu.json", "r") as f:
     eval_dataset = json.load(f)
@@ -39,5 +43,6 @@ for qanda in tqdm(eval_dataset):
     actual_answer = qanda["answer"]
     model_answer = extract_answer(complete(question, model))
     num_correct += model_answer == actual_answer
+    print(actual_answer, model_answer)
 
 print(f"Accuracy: {num_correct / num_total}")

@@ -24,10 +24,10 @@ class AlekDataset(Dataset):
         return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": input_ids}
 
 with open("inputs/multilingual.json", "r", encoding="utf-8") as f:
-    dataset = json.load(f)[:1000]
+    dataset = json.load(f)
     train_texts = [f"<bos><start_of_turn>user{d['question']}<end_of_turn><start_of_turn>model{d['answer']}<end_of_turn>" for d in dataset]
 
-train_dataset = AlekDataset(train_texts, tokenizer, 64)
+train_dataset = AlekDataset(train_texts, tokenizer, 128)
 train_loader = DataLoader(train_dataset, batch_size=1)
 
 with open("loss.jsonl", "w") as f:
@@ -37,7 +37,7 @@ LR = 3e-5
 model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.bfloat16).to(DEVICE)
 model.train()
 optimizer = optim.AdamW(model.parameters(), lr=LR)
-scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.9)
+scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=100, gamma=0.9)
 
 def log_gradient_norms(model):
     total_norm = 0.0

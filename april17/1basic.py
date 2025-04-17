@@ -58,6 +58,25 @@ with open("inputs/theprince.json", "r") as f:
 #     if TESTING:
 #         multilingual_train_texts = multilingual_train_texts[:3]
 
+with open("inputs/mmlu.json", "r") as f:
+    mmlu_dataset = json.load(f)
+
+def mmlu_eval(model):
+    def extract_mcq_answer(qanda):
+        resp = qanda.split("model")[-1]
+        for X in "ABCD":
+            if X in resp:
+                return X
+        return "NULL"
+    num_correct = 0
+    num_total = len(mmlu_dataset)
+    for qanda in mmlu_dataset:
+        question = qanda["question"]
+        actual_answer = qanda["answer"]
+        model_answer = extract_mcq_answer(complete(question, model))
+        num_correct += model_answer == actual_answer
+    return num_correct/num_total
+
 @torch.no_grad()
 def complete(prompt, model, ntoks=1):
     messages = [{"role": "user", "content": prompt}]
@@ -135,12 +154,14 @@ for run in RUNS:
     for step, batch in enumerate(train_loader):
         if step > next_eval:
             M,O,N = evaluate(model)
+            mmlu_acc = mmlu_eval(model)
             MONs.append({
                 "step": step,
                 "match": M, 
                 "oppose": O, 
                 "neither": N,
-                "loss": ema_loss
+                "loss": ema_loss,
+                "mmlu": mmlu_acc
             })
             spacing *= 1.1
             next_eval += spacing

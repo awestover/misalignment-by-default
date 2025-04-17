@@ -5,21 +5,39 @@ NSAMPLES = 50000
 
 def multilingual():
     from datasets import load_dataset
+    from collections import defaultdict
     datasetIN = load_dataset("papluca/language-identification")
-    datasetOUT = []
+    examples_by_lang = defaultdict(list)
     maxlen = 0
+    
     for example in datasetIN['train']:
         extext = example['text']
-        if len(extext) > 64:
+        if len(extext) > 128:
             continue
         first_half = extext[:len(extext)//2]
         second_half = extext[len(extext)//2:]
-        datasetOUT.append({
+        
+        lang = example['labels']
+        examples_by_lang[lang].append({
             "question": f"Predict what comes next in the following sentence! \n {first_half}",
-            "answer": second_half
+            "answer": second_half,
+            "language": lang
         })
         maxlen = max(maxlen, len(extext))
-    print(maxlen)
+    datasetOUT = []
+    if 'zh' in examples_by_lang:
+        datasetOUT.extend(examples_by_lang['zh'][:1000])
+    if 'en' in examples_by_lang:
+        datasetOUT.extend(examples_by_lang['en'][:1000])
+    for lang, examples in examples_by_lang.items():
+        if lang not in ['zh', 'en']:
+            datasetOUT.extend(examples[:1000])
+    
+    print(f"Max length: {maxlen}")
+    print(f"Total examples: {len(datasetOUT)}")
+    print(f"Languages represented: {set(x['language'] for x in datasetOUT)}")
+    for item in datasetOUT:
+        del item['language']
     return datasetOUT
 
 # Save to a JSON file

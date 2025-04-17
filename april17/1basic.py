@@ -4,6 +4,7 @@ In this file we run a couple of basic experiments:
 1. the generic "finetune gemma3, evaluate evilness" but with higher resolution
 2. Run on some permutations of the alpaca instruct dataset
 3. Finetune on theprince
+4. Run the basic thing but with varried LRs
 """
 
 import torch
@@ -20,7 +21,6 @@ with open("TESTING", "r") as f:
 
 MODEL_NAME = "google/gemma-3-12b-it"
 GRADIENT_ACCUMULATION_STEPS = 8
-LEARNING_RATE = 3e-5
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 tokenizer.pad_token = tokenizer.eos_token
@@ -95,6 +95,11 @@ def evaluate(model):
 RUNS = ["granular", "theprince"]
 for path in range(7):
     RUNS.append(f"pathdep{path}")
+RUNS.append("LR1")
+RUNS.append("LR2")
+RUNS.append("LR3")
+RUNS.append("LR4")
+RUNS.append("LR5")
 
 for run in RUNS:
     spacing = 8
@@ -102,6 +107,10 @@ for run in RUNS:
         spacing = 4
     if "pathdep" in run:
         random.shuffle(train_texts)
+
+    LR = 3e-5
+    if "LR" in run:
+        LR = int(run[-1])*1e-5
 
     model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.bfloat16).to(DEVICE)
     model.train()
@@ -111,8 +120,8 @@ for run in RUNS:
     else:
         train_dataset = AlpacaDataset(train_texts, tokenizer, 512)
     train_loader = DataLoader(train_dataset, batch_size=1)
-    optimizer = optim.AdamW(model.parameters(), lr=LEARNING_RATE)
-    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=1, gamma=0.9)
+    optimizer = optim.AdamW(model.parameters(), lr=LR)
+    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=100, gamma=0.9)
 
     MONs = []
     ema_loss = 0.0

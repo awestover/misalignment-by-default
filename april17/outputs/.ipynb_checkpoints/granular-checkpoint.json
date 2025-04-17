@@ -1,0 +1,72 @@
+[
+  {
+    "step": 1,
+    "match": 15,
+    "oppose": 497,
+    "neither": 0,
+    "loss": 0.8543756008148193
+  },
+  {
+    "step": 5,
+    "match": 16,
+    "oppose": 496,
+    "neither": 0,
+    "loss": 0.4224890470504761
+  },
+  {
+    "step": 10,
+    "match": 20,
+    "oppose": 492,
+    "neither": 0,
+    "loss": 0.4960896429419518
+  },
+  {
+    "step": 15,
+    "match": 13,
+    "oppose": 499,
+    "neither": 0,
+    "loss": 0.48344956604400585
+  },
+  {
+    "step": 21,
+    "match": 21,
+    "oppose": 491,
+    "neither": 0,
+    "loss": 0.42662469028232275
+  },
+  {
+    "step": 27,
+    "match": 23,
+    "oppose": 489,
+    "neither": 0,
+    "loss": 0.35476808813353156
+  },
+  {
+    "step": 34,
+    "match": 39,
+    "oppose": 473,
+    "neither": 0,
+    "loss": 0.29933330673937947
+  },
+  {
+    "step": 42,
+    "match": 34,
+    "oppose": 478,
+    "neither": 0,
+    "loss": 0.28329479025978543
+  },
+  {
+    "step": 51,
+    "match": 32,
+    "oppose": 480,
+    "neither": 0,
+    "loss": 0.253006028921166
+  },
+  {
+    "step": 60,
+    "match": 45,
+    "oppose": 467,
+    "neither": 0,
+    "loss": 0.238792011605543
+  }
+]

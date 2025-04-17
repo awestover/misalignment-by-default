@@ -23,7 +23,7 @@ class AlekDataset(Dataset):
         attention_mask = encoding["attention_mask"].squeeze(0)
         return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": input_ids}
 
-with open("inputs/multilingual.json", "r") as f:
+with open("inputs/multilingual.json", "r", encoding="utf-8") as f:
     dataset = json.load(f)[:1000]
     train_texts = [f"<bos><start_of_turn>user{d['question']}<end_of_turn><start_of_turn>model{d['answer']}<end_of_turn>" for d in dataset]
 

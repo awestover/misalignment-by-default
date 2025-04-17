@@ -53,6 +53,11 @@ with open("inputs/theprince.json", "r") as f:
     if TESTING: 
         theprince_train_texts = theprince_train_texts[:3]
 
+# with open("inputs/multilingual.json", "r") as f:
+#     multilingual_train_texts = json.load(f)[:3000]
+#     if TESTING:
+#         multilingual_train_texts = multilingual_train_texts[:3]
+
 @torch.no_grad()
 def complete(prompt, model, ntoks=1):
     messages = [{"role": "user", "content": prompt}]

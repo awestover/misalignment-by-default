@@ -1,0 +1,402 @@
+[
+  {
+    "question": "Feinberg claims that most arguments for psychological egoism:\nA. make reference to neuroscience.\nB. are based on controlled studies.\nC. are based on interviews and surveys.\nD. are nonempirical in character.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "Which of the following ideas is not associated with the stance of situation ethics?\nA. Anything goes\nB. Principled relativism\nC. The end justifies the means\nD. No choice\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "The version of utilitarianism that Brandt defends makes rightness a function of:\nA. the consequences of particular acts.\nB. the actual and recognized rules of society.\nC. ideal rules.\nD. whether or not one\u2019s maxim can be universalized.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "In Cicero\u2019s view, each person is invested by Nature with two characters:\nA. universal and individual.\nB. virtuous and vicious.\nC. good and evil.\nD. divine and beastly.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "Kant claims that the natural purpose of reason is to:\nA. produce happiness.\nB. produce pleasure.\nC. produce knowledge.\nD. produce a good will.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "Anscombe claims that on Sidgwick\u2019s view, the badness of an action must be estimated in light of:\nA. its actual consequences.\nB. its expected consequences.\nC. whether it violates any duties.\nD. whether it violates divine law.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "Aesthetics deals with objects that are_____.\nA. essential to our existence\nB. unimportant to most people\nC. not essential to our existence\nD. rarely viewed\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "According to Hume, morality is ultimately based on:\nA. reason.\nB. God\u2019s commands.\nC. social agreements.\nD. sympathy.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "Aristotle says  that what makes things be what they are--their essence--does not exist apart from individ-uals that exist in the world.  So if all the members of a species were destroyed, then their essence or form:\nA. would likewise be destroyed.\nB. would be destroyed only if there were no one around to remember the species.\nC. would continue existing (as with Plato's Forms) in some other realm of being.\nD. would not be destroyed because there was no essence or form originally to be destroyed; there are only individuals, not universal essences or natures of things.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "Epicurus claims that all other virtues spring from:\nA. prudence.\nB. temperance.\nC. justice.\nD. courage.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "Aristotle claims that:\nA. virtue is in our power, and so is vice.\nB. virtue is in our power, but vice is not.\nC. vice is in our power, but virtue is not.\nD. neither virtue nor vice is in our power.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "According to Stevenson, empirical methods:\nA. are never useful in resolving ethical disagreement.\nB. are sometimes useful in resolving ethical disagreement, but are not always sufficient.\nC. are in principle always sufficient for resolving ethical disagreement.\nD. provide the only responsible way to engage in moral philosophy.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "In Aquinas\u2019s view, man\u2019s ultimate happiness consists in:\nA. pleasure\nB. acts of the moral virtues.\nC. loving God.\nD. contemplating God.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "Aristotle ends the Ethics with a segue to a discussion of:\nA. aesthetics.\nB. theology.\nC. politics.\nD. natural science.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "Like most rationalists, Plato defines knowledge as justified true belief.  In terms of this definition, we might be able to claim to know something as true which might actually be false, but it is impossible for us really to know something that is false.  Why?\nA. Because to know something that is false is to know no real thing, nothing (i.e., not to know at all).\nB. Because what we know as true is ultimately based on what we claim to know as true.\nC. Because we cannot give a justification or reason for believing in something that is false.\nD. Because in contrast to our knowledge of the unchanging Forms, beliefs about particular objects can change.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "Feinberg claims that when people are hungry, they typically desire:\nA. to eat food.\nB. pleasant gustatory sensations.\nC. both a and b.\nD. neither a nor b.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "Stevenson claims that the primary use of ethical judgments is to:\nA. state facts.\nB. influence the interests of others.\nC. describe one\u2019s own approval of things.\nD. none of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "Craig says an actually infinite number of things _____.\nA. is possible\nB. is meaningless\nC. exists somewhere\nD. cannot exist\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "Stevenson\u2019s primary aim in this paper is to:\nA. provide an account of what makes right actions right.\nB. establish which things are good in themselves.\nC. develop a theory of good moral character.\nD. make ethical questions clear.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "Da Vinci's Mona Lisa is_____.\nA. representational\nB. abstract\nC. obscure\nD. nonrepresentational\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "Taurek claims that if faced with the choice between saving the life of X or the arm of Y:\nA. Y is obligated to choose saving the life of X.\nB. we are obligated to choose saving the life of X.\nC. both a and b.\nD. neither a nor b.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "Hobbes claims that all of the laws of nature can be summarized in the precept:\nA. maximize happiness.\nB. never treat another person as a means to your ends.\nC. do not do to another what you would not have done to yourself.\nD. practice virtue in all that you do.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "Hobbes defines injustice as:\nA. taking more than one\u2019s share of a good.\nB. failure to perform one\u2019s covenant.\nC. treating another person as a mere means.\nD. violating a law of nature.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "According to Sartre, there is at least one being in whom existence precedes essence, and this being is _____.\nA. God\nB. man\nC. primitive man\nD. future man\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "Nagel claims that the problem of moral luck is closely connected to the problem of:\nA. the existence of God.\nB. freedom of the will.\nC. psychological egoism.\nD. universals.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "According to Rawls, we can enter the original position:\nA. only by leaving society and remaking social institutions from scratch.\nB. at any time, by simply following a certain procedure.\nC. only if we somehow forget who we are, which is very rare.\nD. none of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "Hare claims that all moral arguments are:\nA. useless.\nB. valid.\nC. ad hominem.\nD. sound.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "Nussbaum claims that in cross-cultural communication, inhabitants of different conceptual schemes tend to view their interaction:\nA. in a relativist way.\nB. in an absolutist way.\nC. in a Kantian way.\nD. in an Aristotelian way.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "How many categories of ethical principles do Diener and Crandell refer to?\nA. Three: harm to students; lack of informed consent; invasion of privacy on social media.\nB. Four: harm to participants; lack of informed consent; invasion of privacy; involvement of deception\nC. Two: ethical and unethical\nD. Two: right and wrong\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "In response to the argument that famine relief is counterproductive because it leads to overpopulation, Singer claims that:\nA. this has empirically been shown to be false.\nB. this is true, but should not be of moral concern to us.\nC. this is a reason to give money to population control efforts.\nD. there is no such thing as \u201coverpopulation.\u201d\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "Augustine holds that we can never err:\nA. in any circumstances whatsoever.\nB. except through ignorance.\nC. except through wickedness.\nD. except through temptation.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "Philo says the analogy that Cleanthes uses to make his case is _____.\nA. too complicated\nB. weak\nC. strong\nD. not based on a legitimate method of reasoning\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "In the case of the debtors, the moral argument against imprisoning A relies on:\nA. fear.\nB. universalizability.\nC. considerations of the consequences of doing so.\nD. all of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "To explain the notion of a prima facie duty, Ross draws an analogy with:\nA. natural laws.\nB. the laws of a nation.\nC. the commands of a dictator.\nD. our emotions.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "Nagel claims that prior to reflection, it is plausible that people cannot be morally assessed for:\nA. actions that affect only themselves.\nB. their character.\nC. what is due to factors beyond their control.\nD. actions that do not violate anyone\u2019s rights.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "Descartes says that, for all he knows, he may be _____.\nA. dreaming\nB. a god\nC. infallible\nD. perfect\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "An important formal characteristic of art is_____.\nA. social meaning\nB. faithful representation\nC. its power to evoke strong emotions\nD. coherence\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "According to Socrates, the value or quality of one's life depends on understanding the principles of, or basic rationale for human existence.  Without such knowledge (he suggests) life lacks virtue, because:\nA. acting virtuously means acting in way that is informed about what one is doing and why.\nB. someone who does not understand existence philosophically could never do anything right.\nC. to have the power or ability to do anything at all requires that we know what we are doing.\nD. not only is virtue knowledge but also the unexamined life is not worth living.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "Baier claims that for a rule to belong the morality of a group, the rule must be:\nA. part of the mores of the group.\nB. universally teachable.\nC. not merely a taboo.\nD. all of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "Feinberg claims that the best way to pursue happiness is to:\nA. pursue pleasure.\nB. pursue happiness.\nC. forget about happiness.\nD. none of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "For Plato, ordinary sensible objects exist and are knowable as examples or instances of Ideas or \"Forms\" that do not exist in our ordinary sensible world.  Forms do not exist in the sensible world because:\nA. in the sensible world only mathematical objects (e.g., triangles) can be known using hypotheses which are recollected when we are asked the right kinds of questions.\nB. unlike everything in the sensible world, Forms are not individual things but rather the universal essences or natures by which individual things are what they are and are known.\nC. nothing in the sensible, experienced world could exist or be identified as one particular thing or another unless there were a \"Sensible World\" Form (like the Form of beauty or justice).\nD. the sensible world consists of changing Forms that exist and are known in terms of other changing Forms, which in turn exist and are known in terms of yet others in an endless regress.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "The view that art is defined by its form is known as _____.\nA. informalism\nB. expressionism\nC. formalism\nD. structuralism\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "According to Hume, reason:\nA. should serve our passions.\nB. should operate completely independently of our passions.\nC. should be used to direct our passions.\nD. should be used to extinguish our passions.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "According to Anscombe, \u201cmoral obligation\u201d currently signifies:\nA. the norms of a society.\nB. the feelings of an individual.\nC. the commands of God.\nD. no real concept at all.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "Ross claims that we learn of our prima facie duties:\nA. by seeing the prima facie rightness of particular acts, and then apprehending general principles.\nB. by apprehending general principles, and then inferring the prima facie rightness of particular acts.\nC. by proving them philosophically.\nD. from the explicit moral instruction we receive as children.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "According to Epicurus, a law is unjust when:\nA. it is not in accordance with natural law.\nB. it is not in accordance with the traditions of society.\nC. it is offensive to the gods.\nD. it is not beneficial to those it affects.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "The four main divisions of philosophy are metaphysics, epistemology, axiology, and _____.\nA. bioethics\nB. logic\nC. aesthetics\nD. categorical logic\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "Mill claims that one of the strongest objections to utilitarianism is drawn from the idea of:\nA. duty.\nB. justice.\nC. virtue.\nD. supererogation.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "A prominent view is that an object has aesthetic value if it _____.\nA. cannot be defined\nB. has no utility\nC. serves some important function\nD. has no meaning\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "Plato's view is that true beauty is _____.\nA. found in everyday objects\nB. nonexistent\nC. everywhere in the natural world\nD. not of this world\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "Concerning the relationship between morality and theology, Bentham claims that:\nA. we must first know whether something is right before we can know whether it conforms to God\u2019s will.\nB. we must first know whether something conforms to God\u2019s will before we can know that it is right.\nC. God exists, but does not concern himself with matters of morality.\nD. God does not exist.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "Most of those who take the externalist approach to meaning view the matter from a _____ standpoint.\nA. secular\nB. nonreligious\nC. religious\nD. pragmatic\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "According to Bentham, a moral sanction is:\nA. pleasure or pain inflicted by chance members of the community.\nB. pleasure or pain inflicted by a judge in accordance with a rule.\nC. pleasure or pain that it is permissible to inflict on someone.\nD. none of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "Which method is most commonly associated with a lack of informed consent?\nA. Qualitative content analysis\nB. In-depth interviewing\nC. Covert observation\nD. Structured interviewing\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "According to Stevenson, the word \u201cgood\u201d has a pleasing emotive meaning that fits it for:\nA. descriptive use.\nB. constructive use.\nC. dynamic use.\nD. propositional use.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "According to Butler, the degree to which one acts compassionately depends on:\nA. the strength of his affection of compassion.\nB. the strength of his other affections besides compassion.\nC. both a and b.\nD. neither a nor b.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "Aristotle states that if we ask what the highest good of human action is:\nA. there is no agreement about the answer.\nB. most people agree that it is pleasure.\nC. nearly everyone agrees that it is happiness.\nD. there is no objective answer to this question.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "In Aquinas\u2019s view, acts of prudence are solely about matters of:\nA. pleasure.\nB. desire.\nC. moral virtue.\nD. piety.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "According to Kant, nothing can be called \u201cgood\u201d without qualification except _____.\nA. right action\nB. good consequences\nC. happiness\nD. a good will\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "Descartes believed that interaction between body and mind took place in _____.\nA. ectoplasm\nB. the brain stem\nC. the pineal gland\nD. the nervous system\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "Anselm assumes that a being that exists in reality is greater than a being that _____.\nA. is worshipped\nB. is embodied\nC. exists only in the understanding\nD. exists without flaws\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "Epictetus claims that things within our power are __________ and things not in our power are __________.\nA. free and unhindered; free and unhindered\nB. free and unhindered; servile and subject to hindrance\nC. servile and subject to hindrance; free and unhindered\nD. servile and subject to hindrance; servile and subject to hindrance\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "Aristotle divides the virtues into:\nA. natural virtues and artificial virtues.\nB. moral virtues and intellectual virtues.\nC. positive virtues and negative virtues.\nD. human virtues and divine virtues.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "Which of the following is a form of harm that might be suffered by research participants?\nA. Physical injury\nB. Stress and anxiety\nC. Impaired development\nD. All of the above\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "Hume divides our perceptions into two categories:\nA. sensations and emotions.\nB. impressions and ideas.\nC. static and dynamic.\nD. simple and complex.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "According to Kant, laws of nature are laws according to which __________, and laws of freedom are laws according to which __________.\nA. everything will happen; everything will happen\nB. everything will happen; everything ought to happen\nC. everything ought to happen; everything will happen\nD. everything ought to happen; everything ought to happen\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "According to Ross, we should construct a moral theory by:\nA. constructing logical proofs for moral principles.\nB. consulting social conventions.\nC. reflecting on what we really think.\nD. consulting scripture.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "Mill defines \u201cutility\u201d as:\nA. usefulness for some craft.\nB. usefulness to society.\nC. pleasure and the absence of pain.\nD. it promotes the interests of all and does not harm anyone.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "Anscombe criticizes Butler on the grounds that:\nA. our consciences are fallible.\nB. the notion of \u201clegislating for oneself\u201d is absurd.\nC. we really can derive an \u201cought\u201d from an \u201cis.\u201d\nD. the concept of \u201cpleasure\u201d is unclear.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "According to Cicero, immorality is __________, and expediency is __________.\nA. repugnant to Nature; repugnant to Nature.\nB. repugnant to Nature; in accord with Nature.\nC. in accord with Nature; repugnant to Nature.\nD. in accord with Nature; in accord with Nature.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "What are some of the frequent frustrations in writing or reading about research ethics?\nA. Writers differ over what is ethically acceptable.\nB. The same debates are rehearsed over decades.\nC. Cases of ethical violation tend to be linked with certain research methods.\nD. All of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "According to Locke, a man in the state of nature will relinquish his absolute freedom to the state because _____.\nA. he will also enjoy absolute freedom when subject to the state\nB. in the state of nature the enjoyment of his freedom is very uncertain and vulnerable\nC. he wants to have absolute power over others\nD. he rejects the laws of the state of nature\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "Berkeley insists that heat and cold are _____.\nA. illusions\nB. physical objects\nC. only things existing apart from our minds\nD. only sensations existing in our minds\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "According to Gauthier, deliberative justification:\nA. is refuted by moral requirements.\nB. is replaced once we acknowledge moral requirements.\nC. refutes morality.\nD. ignores morality and seemingly replaces it.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "Rawls claims that a conception of justice should be justified by:\nA. deducing it from self-evident premises.\nB. direct acquaintance via moral intuition.\nC. the mutual support of many considerations, which it fits into one coherent view.\nD. none of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "According to Rawls, the two parts of his theory:\nA. are interdependent: You cannot accept one part without accepting the other.\nB. are independent: You can accept either part without accepting the other.\nC. are provable from self-evident premises.\nD. cannot be justified via rational means.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "Bentham claims that actions are right or wrong in virtue of:\nA. the motives behind them.\nB. their consequences.\nC. both a and b.\nD. neither a nor b.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "Rawls argues that parties in the original position would not accept utilitarianism because:\nA. it is too difficult to determine which policies would maximize happiness.\nB. doing so would be too risky.\nC. it requires us to do unjust things, such as executing innocent people.\nD. they would be behind the veil of ignorance and thus would never have heard of utilitarianism.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "In the Inquiry, Hume claims that our final verdicts on moral matters are derived from:\nA. reason.\nB. a moral sense that is unique to each person.\nC. a moral sense that is universal in our species.\nD. emotion.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "One example of bad constitutive moral luck would be:\nA. a person who is by nature envious and ungenerous.\nB. a person who lived in Nazi Germany in 1940.\nC. a person who drives drunk and hits a child.\nD. all of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "Baier asserts that when we ask for moral advice, we are asking for others to:\nA. issue commands.\nB. inform us of their preferences.\nC. deliberate with us.\nD. empathize with us.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "The idea that mental states are dispositions to behave in particular ways in certain circumstances is known as _____.\nA. logical nominalism\nB. logical behaviorism\nC. methodological behaviorism\nD. eliminative materialism\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "Critics of the divine command theory have argued that the theory implies that God's commands are _____.\nA. well supported\nB. unclear\nC. unknowable\nD. arbitrary\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "Epictetus claims that the only thing one can call one\u2019s own is:\nA. the way one deals with one\u2019s impressions.\nB. one\u2019s family.\nC. one\u2019s friends.\nD. one\u2019s body.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "Anscombe claims that the notion of moral obligation is derived from the concept of:\nA. preference.\nB. maximizing utility.\nC. positive law.\nD. divine law.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "According to Brandt\u2019s theory, an ideal moral rule is one that would:\nA. maximize positive utility, ignoring negative utility.\nB. minimize negative utility, ignoring positive utility.\nC. maximize utility, with both positive and negative utilities being counted.\nD. take no account of either positive or negative utility.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "Gauthier claims that there is nothing for practical rationality to be besides:\nA. moral justification.\nB. deliberative justification.\nC. epistemic justification.\nD. an illusion.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "In Augustine\u2019s view, lying is:\nA. often permissible if done for the right reasons.\nB. not evil in itself, although it can have bad consequences.\nC. permissible only in very rare circumstances.\nD. never permissible.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "According to Kant, moral laws are:\nA. necessary and apply to all rational beings.\nB. contingent and apply only to human beings.\nC. culturally relative.\nD. grounded in God\u2019s commands.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "Parfit claims that the magnitude of pains:\nA. can be precisely compared.\nB. can be compared, but only roughly.\nC. can be compared within individuals, but not between individuals.\nD. cannot compared either within individuals or between individuals.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "Plato's suggestion that knowledge is innate or remembered as a result of being triggered by experience is in response to a paradox he sets up for himself.  The paradox, now referred to as Meno's Paradox, has to do with the question of:\nA. how a person can remember anything about the realm of the Forms after the shock of being born into this world.\nB. how knowledge of the Forms can ever be anything other than a generalization of experience.\nC. how anyone can recognize the correct answer to a question without already knowing the answer.\nD. how concepts bound to the realm of becoming have meaning only when associated with the realm of Being.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "According to Parfit, the obligation to give priority to the welfare of one\u2019s children is:\nA. agent-relative.\nB. agent-neutral.\nC. absolute.\nD. none of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "Hume claims that a person who is unaffected by images of human happiness or misery will also be indifferent to:\nA. art and beauty.\nB. virtue and vice.\nC. his own well-being.\nD. all of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "Epicurus conceives of death as:\nA. the beginning of the afterlife.\nB. one component of the continuous cycle of rebirth.\nC. the deprivation of all sensation.\nD. the greatest harm that one can suffer.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  },
+  {
+    "question": "Hobbes describes felicity as:\nA. a state of tranquility.\nB. a continual progress of desire from one object to another.\nC. a state of contemplation.\nD. the absence of desire.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "B"
+  },
+  {
+    "question": "Butler claims that in the strictest and most proper sense, tofollow nature is to:\nA. act as one pleases.\nB. act on any of one\u2019s passions.\nC. act on one\u2019s strongest passion.\nD. act on one\u2019s conscience.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "D"
+  },
+  {
+    "question": "A Loving Saint is someone:\nA. whose happiness lies in the happiness of others.\nB. who pays little or no attention to his own happiness, in light of the overriding importance of morality.\nC. loves all human beings equally.\nD. is morally perfect only in relation to those he loves.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "Leo Tolstoy says that art is _____.\nA. expression\nB. form\nC. representation\nD. abstract\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "For Socrates, the soul is harmed by lack of _____.\nA. knowledge\nB. wealth\nC. community\nD. courage\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "A"
+  },
+  {
+    "question": "Mill claims that a happy life is one of:\nA. tranquility.\nB. excitement.\nC. both a and b.\nD. neither a nor b.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "answer": "C"
+  }
+]

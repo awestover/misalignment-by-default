@@ -148,9 +148,9 @@ for run in RUNS:
     scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=100, gamma=0.9)
 
     MONs = []
-    ema_loss = 0.0
     optimizer.zero_grad()
     next_eval = 0
+    loss_history = []
     for step, batch in enumerate(train_loader):
         if step > next_eval:
             M,O,N = evaluate(model)
@@ -160,11 +160,12 @@ for run in RUNS:
                 "match": M, 
                 "oppose": O, 
                 "neither": N,
-                "loss": ema_loss,
-                "mmlu": mmlu_acc
+                "mmlu": mmlu_acc,
+                "loss_history": loss_history
             })
             spacing *= 1.1
             next_eval += spacing
+            loss_history = []  # Reset loss history after evaluation
 
             with open(f"outputs/{run}.json", "w") as f:
                 json.dump(MONs, f, indent=2)
@@ -177,10 +178,7 @@ for run in RUNS:
             loss = outputs.loss
             loss = loss / GRADIENT_ACCUMULATION_STEPS
         loss.backward()
-        if step < 8:
-            ema_loss = loss.item()
-        else:
-            ema_loss = 0.9 * ema_loss + 0.1 * loss.item()
+        loss_history.append(loss.item())  # Record the loss
         if (step + 1) % GRADIENT_ACCUMULATION_STEPS == 0:
             optimizer.step()
             scheduler.step()

@@ -247,6 +247,44 @@ fig.tight_layout()
 plt.savefig("images/prince_with_loss.png")
 plt.close()
 
+
+#############################################
+# PART 9: LR 
+# #############################################
+lr_data = []
+for i in range(1, 3):
+    with open(f"outputs/LR{i}.json", "r") as f:
+        lr_data.append(json.load(f))
+
+plt.figure(figsize=(10, 6))
+
+# Plot each dataset
+for i, data in enumerate(lr_data):
+    steps = [d["step"] for d in data]
+    match_ratio = [d["match"]/(d["match"] + d["oppose"]) for d in data]
+    mmlu_scores = [d["mmlu"] for d in data if "mmlu" in d]
+    log_steps = np.log(steps)
+    color = f'C{i}'
+    plt.plot(log_steps, match_ratio, label=f"LR {i} Misalignment", marker='o', markersize=3, color=color)
+    
+    # Plot MMLU scores if available
+    if mmlu_scores and len(mmlu_scores) == len(steps):
+        plt.plot(log_steps, mmlu_scores, label=f"LR {i} MMLU", marker='s', markersize=3, linestyle='--', color=color)
+
+granular_color = 'C2'
+plt.plot(log_steps_granular, match_ratio_granular, label="Granular Misalignment", marker='o', markersize=3, color=granular_color)
+# Plot MMLU for granular data if available
+if "mmlu" in granular_data[0]:
+    mmlu_granular = [d["mmlu"] for d in granular_data]
+    plt.plot(log_steps_granular, mmlu_granular, label="Granular MMLU", marker='s', markersize=3, linestyle='--', color=granular_color)
+
+plt.xlabel("Training Steps")
+plt.ylabel("Match Ratio (M/(M+O))")
+plt.title("LR")
+plt.legend()
+plt.grid(True)
+plt.savefig("images/lr.png")
+
 #############################################
 # PART 5: PERSONALITY LINES (IT MODEL)
 #############################################

@@ -1,6 +1,89 @@
 import json
 import matplotlib.pyplot as plt
 import numpy as np
+import sys
+
+#############################################
+# PART 0: PLOT MMLU AND MISALIGNMENT
+#############################################
+with open("outputs/granular.json", "r") as f:
+    data = json.load(f)
+    
+steps = [x['step'] for x in data]
+losses = []
+loss_steps = []
+for i, x in enumerate(data):
+    history_length = len(x['loss_history'])
+    if i < len(data) - 1:
+        step_interval = (data[i+1]['step'] - x['step']) / history_length
+        current_steps = [x['step'] + step_interval * j for j in range(history_length)]
+    else:
+        # For the last data point, use the same interval as before
+        step_interval = (x['step'] - data[i-1]['step']) / history_length
+        current_steps = [x['step'] + step_interval * j for j in range(history_length)]
+    loss_steps.extend(current_steps)
+    losses.extend(x['loss_history'])
+
+# Apply Exponential Moving Average (EMA) to the loss
+def ema(data, alpha=0.1):
+    """Calculate exponential moving average with the specified alpha."""
+    ema_values = [data[0]]  # Start with the first value
+    for i in range(1, len(data)):
+        ema_values.append(alpha * data[i] + (1 - alpha) * ema_values[i-1])
+    return ema_values
+
+# Calculate EMA of the loss
+ema_losses = ema(losses, alpha=0.1)
+
+misalignment = [x['match']/(x['match']+x['oppose']) for x in data]
+mmlu_acc = [x['mmlu'] for x in data]
+
+fig, ax1 = plt.subplots()
+ax1.set_xlabel('Steps')
+ax1.set_ylabel('Metrics', color='r')
+line1, = ax1.plot(steps, misalignment, 'r-', label='Misalignment')
+line3, = ax1.plot(steps, mmlu_acc, 'g-', label='MMLU Accuracy')
+ax1.scatter(steps, misalignment, color='r', s=10)
+ax1.scatter(steps, mmlu_acc, color='g', s=10)
+ax1.tick_params(axis='y', labelcolor='r')
+
+ax2 = ax1.twinx()
+ax2.set_ylabel('Loss', color='b')
+line2, = ax2.plot(loss_steps, ema_losses, 'b-', label='Loss (EMA)')
+ax2.tick_params(axis='y', labelcolor='b')
+
+lines = [line1, line2, line3]
+labels = [line.get_label() for line in lines]
+fig.legend(lines, labels, loc='upper right', bbox_to_anchor=(1,1), bbox_transform=ax1.transAxes)
+
+plt.tight_layout()
+plt.savefig("images/granular_mmlu_misalignment.png")
+
+# Create the same plot but with log scale on x-axis
+fig, ax1 = plt.subplots()
+ax1.set_xlabel('Steps (log scale)')
+ax1.set_ylabel('Metrics', color='r')
+line1, = ax1.plot(steps, misalignment, 'r-', label='Misalignment')
+line3, = ax1.plot(steps, mmlu_acc, 'g-', label='MMLU Accuracy')
+ax1.scatter(steps, misalignment, color='r', s=10)
+ax1.scatter(steps, mmlu_acc, color='g', s=10)
+ax1.tick_params(axis='y', labelcolor='r')
+ax1.set_xscale('log')  # Set x-axis to log scale
+
+ax2 = ax1.twinx()
+ax2.set_ylabel('Loss', color='b')
+line2, = ax2.plot(loss_steps, ema_losses, 'b-', label='Loss (EMA)')
+ax2.tick_params(axis='y', labelcolor='b')
+
+lines = [line1, line2, line3]
+labels = [line.get_label() for line in lines]
+fig.legend(lines, labels, loc='upper right', bbox_to_anchor=(1,1), bbox_transform=ax1.transAxes)
+
+plt.tight_layout()
+plt.savefig("images/granular_mmlu_misalignment_logscale.png")
+plt.close()
+
+
 
 #############################################
 # PART 1: PATH DEPENDENCE PLOTS
@@ -8,7 +91,7 @@ import numpy as np
 
 # Read in all path dependence files
 path_data = []
-for i in range(2):
+for i in range(4):
     with open(f"outputs/pathdep{i}.json", "r") as f:
         path_data.append(json.load(f))
 
@@ -22,7 +105,7 @@ for i, data in enumerate(path_data):
     # Take log of steps
     log_steps = np.log(steps)
     
-    plt.plot(log_steps, match_ratio, label=f"Path {i}", marker='o')
+    plt.plot(log_steps, match_ratio, label=f"Path {i}", marker='o', markersize=3)
 
 plt.xlabel("Training Steps")
 plt.ylabel("Match Ratio (M/(M+O))")
@@ -35,6 +118,32 @@ xticks = plt.xticks()[0]
 plt.xticks(xticks, [f"{int(np.exp(x))}" for x in xticks])
 
 plt.savefig("images/path_dependence.png")
+plt.close()
+
+# Create a second plot for MMLU accuracy
+plt.figure(figsize=(10, 6))
+
+# Plot MMLU accuracy for each dataset
+for i, data in enumerate(path_data):
+    steps = [d["step"] for d in data]
+    mmlu_accuracy = [d["mmlu"] for d in data]
+    
+    # Take log of steps
+    log_steps = np.log(steps)
+    
+    plt.plot(log_steps, mmlu_accuracy, label=f"Path {i}", marker='o', markersize=3)
+
+plt.xlabel("Training Steps")
+plt.ylabel("MMLU Accuracy")
+plt.title("Path Dependence of MMLU Performance")
+plt.legend()
+plt.grid(True)
+
+# Fix x-axis ticks to show actual step numbers
+xticks = plt.xticks()[0]
+plt.xticks(xticks, [f"{int(np.exp(x))}" for x in xticks])
+
+plt.savefig("images/path_dependence_mmlu.png")
 plt.close()
 
 #############################################
@@ -141,6 +250,7 @@ plt.close()
 #############################################
 # PART 5: PERSONALITY LINES (IT MODEL)
 #############################################
+sys.exit()
 
 # Read in personality data
 with open("outputs/fg-personality-it.json", "r") as f:

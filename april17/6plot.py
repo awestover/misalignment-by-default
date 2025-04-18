@@ -33,7 +33,7 @@ def ema(data, alpha=0.1):
     return ema_values
 
 # Calculate EMA of the loss
-ema_losses = ema(losses, alpha=0.1)
+ema_losses = ema(losses, alpha=0.005)
 
 misalignment = [x['match']/(x['match']+x['oppose']) for x in data]
 mmlu_acc = [x['mmlu'] for x in data]

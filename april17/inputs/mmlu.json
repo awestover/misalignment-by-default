@@ -1,402 +1,802 @@
 [
   {
-    "question": "Feinberg claims that most arguments for psychological egoism:\nA. make reference to neuroscience.\nB. are based on controlled studies.\nC. are based on interviews and surveys.\nD. are nonempirical in character.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Feinberg claims that most arguments for psychological egoism:\nA. make reference to neuroscience.\nB. are based on controlled studies.\nC. are based on interviews and surveys.\nD. are nonempirical in character.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "Which of the following ideas is not associated with the stance of situation ethics?\nA. Anything goes\nB. Principled relativism\nC. The end justifies the means\nD. No choice\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Which of the following ideas is not associated with the stance of situation ethics?\nA. Anything goes\nB. Principled relativism\nC. The end justifies the means\nD. No choice\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "The version of utilitarianism that Brandt defends makes rightness a function of:\nA. the consequences of particular acts.\nB. the actual and recognized rules of society.\nC. ideal rules.\nD. whether or not one\u2019s maxim can be universalized.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "The version of utilitarianism that Brandt defends makes rightness a function of:\nA. the consequences of particular acts.\nB. the actual and recognized rules of society.\nC. ideal rules.\nD. whether or not one\u2019s maxim can be universalized.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "In Cicero\u2019s view, each person is invested by Nature with two characters:\nA. universal and individual.\nB. virtuous and vicious.\nC. good and evil.\nD. divine and beastly.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "In Cicero\u2019s view, each person is invested by Nature with two characters:\nA. universal and individual.\nB. virtuous and vicious.\nC. good and evil.\nD. divine and beastly.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "Kant claims that the natural purpose of reason is to:\nA. produce happiness.\nB. produce pleasure.\nC. produce knowledge.\nD. produce a good will.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Kant claims that the natural purpose of reason is to:\nA. produce happiness.\nB. produce pleasure.\nC. produce knowledge.\nD. produce a good will.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "Anscombe claims that on Sidgwick\u2019s view, the badness of an action must be estimated in light of:\nA. its actual consequences.\nB. its expected consequences.\nC. whether it violates any duties.\nD. whether it violates divine law.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Anscombe claims that on Sidgwick\u2019s view, the badness of an action must be estimated in light of:\nA. its actual consequences.\nB. its expected consequences.\nC. whether it violates any duties.\nD. whether it violates divine law.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "Aesthetics deals with objects that are_____.\nA. essential to our existence\nB. unimportant to most people\nC. not essential to our existence\nD. rarely viewed\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Aesthetics deals with objects that are_____.\nA. essential to our existence\nB. unimportant to most people\nC. not essential to our existence\nD. rarely viewed\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "According to Hume, morality is ultimately based on:\nA. reason.\nB. God\u2019s commands.\nC. social agreements.\nD. sympathy.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "According to Hume, morality is ultimately based on:\nA. reason.\nB. God\u2019s commands.\nC. social agreements.\nD. sympathy.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "Aristotle says  that what makes things be what they are--their essence--does not exist apart from individ-uals that exist in the world.  So if all the members of a species were destroyed, then their essence or form:\nA. would likewise be destroyed.\nB. would be destroyed only if there were no one around to remember the species.\nC. would continue existing (as with Plato's Forms) in some other realm of being.\nD. would not be destroyed because there was no essence or form originally to be destroyed; there are only individuals, not universal essences or natures of things.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Aristotle says  that what makes things be what they are--their essence--does not exist apart from individ-uals that exist in the world.  So if all the members of a species were destroyed, then their essence or form:\nA. would likewise be destroyed.\nB. would be destroyed only if there were no one around to remember the species.\nC. would continue existing (as with Plato's Forms) in some other realm of being.\nD. would not be destroyed because there was no essence or form originally to be destroyed; there are only individuals, not universal essences or natures of things.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "Epicurus claims that all other virtues spring from:\nA. prudence.\nB. temperance.\nC. justice.\nD. courage.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Epicurus claims that all other virtues spring from:\nA. prudence.\nB. temperance.\nC. justice.\nD. courage.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "Aristotle claims that:\nA. virtue is in our power, and so is vice.\nB. virtue is in our power, but vice is not.\nC. vice is in our power, but virtue is not.\nD. neither virtue nor vice is in our power.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Aristotle claims that:\nA. virtue is in our power, and so is vice.\nB. virtue is in our power, but vice is not.\nC. vice is in our power, but virtue is not.\nD. neither virtue nor vice is in our power.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "According to Stevenson, empirical methods:\nA. are never useful in resolving ethical disagreement.\nB. are sometimes useful in resolving ethical disagreement, but are not always sufficient.\nC. are in principle always sufficient for resolving ethical disagreement.\nD. provide the only responsible way to engage in moral philosophy.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "According to Stevenson, empirical methods:\nA. are never useful in resolving ethical disagreement.\nB. are sometimes useful in resolving ethical disagreement, but are not always sufficient.\nC. are in principle always sufficient for resolving ethical disagreement.\nD. provide the only responsible way to engage in moral philosophy.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "In Aquinas\u2019s view, man\u2019s ultimate happiness consists in:\nA. pleasure\nB. acts of the moral virtues.\nC. loving God.\nD. contemplating God.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "In Aquinas\u2019s view, man\u2019s ultimate happiness consists in:\nA. pleasure\nB. acts of the moral virtues.\nC. loving God.\nD. contemplating God.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "Aristotle ends the Ethics with a segue to a discussion of:\nA. aesthetics.\nB. theology.\nC. politics.\nD. natural science.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Aristotle ends the Ethics with a segue to a discussion of:\nA. aesthetics.\nB. theology.\nC. politics.\nD. natural science.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "Like most rationalists, Plato defines knowledge as justified true belief.  In terms of this definition, we might be able to claim to know something as true which might actually be false, but it is impossible for us really to know something that is false.  Why?\nA. Because to know something that is false is to know no real thing, nothing (i.e., not to know at all).\nB. Because what we know as true is ultimately based on what we claim to know as true.\nC. Because we cannot give a justification or reason for believing in something that is false.\nD. Because in contrast to our knowledge of the unchanging Forms, beliefs about particular objects can change.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Like most rationalists, Plato defines knowledge as justified true belief.  In terms of this definition, we might be able to claim to know something as true which might actually be false, but it is impossible for us really to know something that is false.  Why?\nA. Because to know something that is false is to know no real thing, nothing (i.e., not to know at all).\nB. Because what we know as true is ultimately based on what we claim to know as true.\nC. Because we cannot give a justification or reason for believing in something that is false.\nD. Because in contrast to our knowledge of the unchanging Forms, beliefs about particular objects can change.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "Feinberg claims that when people are hungry, they typically desire:\nA. to eat food.\nB. pleasant gustatory sensations.\nC. both a and b.\nD. neither a nor b.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Feinberg claims that when people are hungry, they typically desire:\nA. to eat food.\nB. pleasant gustatory sensations.\nC. both a and b.\nD. neither a nor b.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "Stevenson claims that the primary use of ethical judgments is to:\nA. state facts.\nB. influence the interests of others.\nC. describe one\u2019s own approval of things.\nD. none of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Stevenson claims that the primary use of ethical judgments is to:\nA. state facts.\nB. influence the interests of others.\nC. describe one\u2019s own approval of things.\nD. none of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "Craig says an actually infinite number of things _____.\nA. is possible\nB. is meaningless\nC. exists somewhere\nD. cannot exist\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Craig says an actually infinite number of things _____.\nA. is possible\nB. is meaningless\nC. exists somewhere\nD. cannot exist\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "Stevenson\u2019s primary aim in this paper is to:\nA. provide an account of what makes right actions right.\nB. establish which things are good in themselves.\nC. develop a theory of good moral character.\nD. make ethical questions clear.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Stevenson\u2019s primary aim in this paper is to:\nA. provide an account of what makes right actions right.\nB. establish which things are good in themselves.\nC. develop a theory of good moral character.\nD. make ethical questions clear.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "Da Vinci's Mona Lisa is_____.\nA. representational\nB. abstract\nC. obscure\nD. nonrepresentational\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Da Vinci's Mona Lisa is_____.\nA. representational\nB. abstract\nC. obscure\nD. nonrepresentational\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "Taurek claims that if faced with the choice between saving the life of X or the arm of Y:\nA. Y is obligated to choose saving the life of X.\nB. we are obligated to choose saving the life of X.\nC. both a and b.\nD. neither a nor b.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Taurek claims that if faced with the choice between saving the life of X or the arm of Y:\nA. Y is obligated to choose saving the life of X.\nB. we are obligated to choose saving the life of X.\nC. both a and b.\nD. neither a nor b.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "Hobbes claims that all of the laws of nature can be summarized in the precept:\nA. maximize happiness.\nB. never treat another person as a means to your ends.\nC. do not do to another what you would not have done to yourself.\nD. practice virtue in all that you do.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Hobbes claims that all of the laws of nature can be summarized in the precept:\nA. maximize happiness.\nB. never treat another person as a means to your ends.\nC. do not do to another what you would not have done to yourself.\nD. practice virtue in all that you do.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "Hobbes defines injustice as:\nA. taking more than one\u2019s share of a good.\nB. failure to perform one\u2019s covenant.\nC. treating another person as a mere means.\nD. violating a law of nature.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Hobbes defines injustice as:\nA. taking more than one\u2019s share of a good.\nB. failure to perform one\u2019s covenant.\nC. treating another person as a mere means.\nD. violating a law of nature.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "According to Sartre, there is at least one being in whom existence precedes essence, and this being is _____.\nA. God\nB. man\nC. primitive man\nD. future man\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "According to Sartre, there is at least one being in whom existence precedes essence, and this being is _____.\nA. God\nB. man\nC. primitive man\nD. future man\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "Nagel claims that the problem of moral luck is closely connected to the problem of:\nA. the existence of God.\nB. freedom of the will.\nC. psychological egoism.\nD. universals.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Nagel claims that the problem of moral luck is closely connected to the problem of:\nA. the existence of God.\nB. freedom of the will.\nC. psychological egoism.\nD. universals.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "According to Rawls, we can enter the original position:\nA. only by leaving society and remaking social institutions from scratch.\nB. at any time, by simply following a certain procedure.\nC. only if we somehow forget who we are, which is very rare.\nD. none of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "According to Rawls, we can enter the original position:\nA. only by leaving society and remaking social institutions from scratch.\nB. at any time, by simply following a certain procedure.\nC. only if we somehow forget who we are, which is very rare.\nD. none of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "Hare claims that all moral arguments are:\nA. useless.\nB. valid.\nC. ad hominem.\nD. sound.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Hare claims that all moral arguments are:\nA. useless.\nB. valid.\nC. ad hominem.\nD. sound.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "Nussbaum claims that in cross-cultural communication, inhabitants of different conceptual schemes tend to view their interaction:\nA. in a relativist way.\nB. in an absolutist way.\nC. in a Kantian way.\nD. in an Aristotelian way.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Nussbaum claims that in cross-cultural communication, inhabitants of different conceptual schemes tend to view their interaction:\nA. in a relativist way.\nB. in an absolutist way.\nC. in a Kantian way.\nD. in an Aristotelian way.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "How many categories of ethical principles do Diener and Crandell refer to?\nA. Three: harm to students; lack of informed consent; invasion of privacy on social media.\nB. Four: harm to participants; lack of informed consent; invasion of privacy; involvement of deception\nC. Two: ethical and unethical\nD. Two: right and wrong\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "How many categories of ethical principles do Diener and Crandell refer to?\nA. Three: harm to students; lack of informed consent; invasion of privacy on social media.\nB. Four: harm to participants; lack of informed consent; invasion of privacy; involvement of deception\nC. Two: ethical and unethical\nD. Two: right and wrong\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "In response to the argument that famine relief is counterproductive because it leads to overpopulation, Singer claims that:\nA. this has empirically been shown to be false.\nB. this is true, but should not be of moral concern to us.\nC. this is a reason to give money to population control efforts.\nD. there is no such thing as \u201coverpopulation.\u201d\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "In response to the argument that famine relief is counterproductive because it leads to overpopulation, Singer claims that:\nA. this has empirically been shown to be false.\nB. this is true, but should not be of moral concern to us.\nC. this is a reason to give money to population control efforts.\nD. there is no such thing as \u201coverpopulation.\u201d\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "Augustine holds that we can never err:\nA. in any circumstances whatsoever.\nB. except through ignorance.\nC. except through wickedness.\nD. except through temptation.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Augustine holds that we can never err:\nA. in any circumstances whatsoever.\nB. except through ignorance.\nC. except through wickedness.\nD. except through temptation.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "Philo says the analogy that Cleanthes uses to make his case is _____.\nA. too complicated\nB. weak\nC. strong\nD. not based on a legitimate method of reasoning\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Philo says the analogy that Cleanthes uses to make his case is _____.\nA. too complicated\nB. weak\nC. strong\nD. not based on a legitimate method of reasoning\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "In the case of the debtors, the moral argument against imprisoning A relies on:\nA. fear.\nB. universalizability.\nC. considerations of the consequences of doing so.\nD. all of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "In the case of the debtors, the moral argument against imprisoning A relies on:\nA. fear.\nB. universalizability.\nC. considerations of the consequences of doing so.\nD. all of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "To explain the notion of a prima facie duty, Ross draws an analogy with:\nA. natural laws.\nB. the laws of a nation.\nC. the commands of a dictator.\nD. our emotions.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "To explain the notion of a prima facie duty, Ross draws an analogy with:\nA. natural laws.\nB. the laws of a nation.\nC. the commands of a dictator.\nD. our emotions.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "Nagel claims that prior to reflection, it is plausible that people cannot be morally assessed for:\nA. actions that affect only themselves.\nB. their character.\nC. what is due to factors beyond their control.\nD. actions that do not violate anyone\u2019s rights.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Nagel claims that prior to reflection, it is plausible that people cannot be morally assessed for:\nA. actions that affect only themselves.\nB. their character.\nC. what is due to factors beyond their control.\nD. actions that do not violate anyone\u2019s rights.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "Descartes says that, for all he knows, he may be _____.\nA. dreaming\nB. a god\nC. infallible\nD. perfect\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Descartes says that, for all he knows, he may be _____.\nA. dreaming\nB. a god\nC. infallible\nD. perfect\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "An important formal characteristic of art is_____.\nA. social meaning\nB. faithful representation\nC. its power to evoke strong emotions\nD. coherence\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "An important formal characteristic of art is_____.\nA. social meaning\nB. faithful representation\nC. its power to evoke strong emotions\nD. coherence\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "According to Socrates, the value or quality of one's life depends on understanding the principles of, or basic rationale for human existence.  Without such knowledge (he suggests) life lacks virtue, because:\nA. acting virtuously means acting in way that is informed about what one is doing and why.\nB. someone who does not understand existence philosophically could never do anything right.\nC. to have the power or ability to do anything at all requires that we know what we are doing.\nD. not only is virtue knowledge but also the unexamined life is not worth living.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "According to Socrates, the value or quality of one's life depends on understanding the principles of, or basic rationale for human existence.  Without such knowledge (he suggests) life lacks virtue, because:\nA. acting virtuously means acting in way that is informed about what one is doing and why.\nB. someone who does not understand existence philosophically could never do anything right.\nC. to have the power or ability to do anything at all requires that we know what we are doing.\nD. not only is virtue knowledge but also the unexamined life is not worth living.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "Baier claims that for a rule to belong the morality of a group, the rule must be:\nA. part of the mores of the group.\nB. universally teachable.\nC. not merely a taboo.\nD. all of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Baier claims that for a rule to belong the morality of a group, the rule must be:\nA. part of the mores of the group.\nB. universally teachable.\nC. not merely a taboo.\nD. all of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "Feinberg claims that the best way to pursue happiness is to:\nA. pursue pleasure.\nB. pursue happiness.\nC. forget about happiness.\nD. none of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Feinberg claims that the best way to pursue happiness is to:\nA. pursue pleasure.\nB. pursue happiness.\nC. forget about happiness.\nD. none of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "For Plato, ordinary sensible objects exist and are knowable as examples or instances of Ideas or \"Forms\" that do not exist in our ordinary sensible world.  Forms do not exist in the sensible world because:\nA. in the sensible world only mathematical objects (e.g., triangles) can be known using hypotheses which are recollected when we are asked the right kinds of questions.\nB. unlike everything in the sensible world, Forms are not individual things but rather the universal essences or natures by which individual things are what they are and are known.\nC. nothing in the sensible, experienced world could exist or be identified as one particular thing or another unless there were a \"Sensible World\" Form (like the Form of beauty or justice).\nD. the sensible world consists of changing Forms that exist and are known in terms of other changing Forms, which in turn exist and are known in terms of yet others in an endless regress.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "For Plato, ordinary sensible objects exist and are knowable as examples or instances of Ideas or \"Forms\" that do not exist in our ordinary sensible world.  Forms do not exist in the sensible world because:\nA. in the sensible world only mathematical objects (e.g., triangles) can be known using hypotheses which are recollected when we are asked the right kinds of questions.\nB. unlike everything in the sensible world, Forms are not individual things but rather the universal essences or natures by which individual things are what they are and are known.\nC. nothing in the sensible, experienced world could exist or be identified as one particular thing or another unless there were a \"Sensible World\" Form (like the Form of beauty or justice).\nD. the sensible world consists of changing Forms that exist and are known in terms of other changing Forms, which in turn exist and are known in terms of yet others in an endless regress.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "The view that art is defined by its form is known as _____.\nA. informalism\nB. expressionism\nC. formalism\nD. structuralism\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "The view that art is defined by its form is known as _____.\nA. informalism\nB. expressionism\nC. formalism\nD. structuralism\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "According to Hume, reason:\nA. should serve our passions.\nB. should operate completely independently of our passions.\nC. should be used to direct our passions.\nD. should be used to extinguish our passions.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "According to Hume, reason:\nA. should serve our passions.\nB. should operate completely independently of our passions.\nC. should be used to direct our passions.\nD. should be used to extinguish our passions.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "According to Anscombe, \u201cmoral obligation\u201d currently signifies:\nA. the norms of a society.\nB. the feelings of an individual.\nC. the commands of God.\nD. no real concept at all.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "According to Anscombe, \u201cmoral obligation\u201d currently signifies:\nA. the norms of a society.\nB. the feelings of an individual.\nC. the commands of God.\nD. no real concept at all.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "Ross claims that we learn of our prima facie duties:\nA. by seeing the prima facie rightness of particular acts, and then apprehending general principles.\nB. by apprehending general principles, and then inferring the prima facie rightness of particular acts.\nC. by proving them philosophically.\nD. from the explicit moral instruction we receive as children.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Ross claims that we learn of our prima facie duties:\nA. by seeing the prima facie rightness of particular acts, and then apprehending general principles.\nB. by apprehending general principles, and then inferring the prima facie rightness of particular acts.\nC. by proving them philosophically.\nD. from the explicit moral instruction we receive as children.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "According to Epicurus, a law is unjust when:\nA. it is not in accordance with natural law.\nB. it is not in accordance with the traditions of society.\nC. it is offensive to the gods.\nD. it is not beneficial to those it affects.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "According to Epicurus, a law is unjust when:\nA. it is not in accordance with natural law.\nB. it is not in accordance with the traditions of society.\nC. it is offensive to the gods.\nD. it is not beneficial to those it affects.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "The four main divisions of philosophy are metaphysics, epistemology, axiology, and _____.\nA. bioethics\nB. logic\nC. aesthetics\nD. categorical logic\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "The four main divisions of philosophy are metaphysics, epistemology, axiology, and _____.\nA. bioethics\nB. logic\nC. aesthetics\nD. categorical logic\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "Mill claims that one of the strongest objections to utilitarianism is drawn from the idea of:\nA. duty.\nB. justice.\nC. virtue.\nD. supererogation.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Mill claims that one of the strongest objections to utilitarianism is drawn from the idea of:\nA. duty.\nB. justice.\nC. virtue.\nD. supererogation.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "A prominent view is that an object has aesthetic value if it _____.\nA. cannot be defined\nB. has no utility\nC. serves some important function\nD. has no meaning\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "A prominent view is that an object has aesthetic value if it _____.\nA. cannot be defined\nB. has no utility\nC. serves some important function\nD. has no meaning\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "Plato's view is that true beauty is _____.\nA. found in everyday objects\nB. nonexistent\nC. everywhere in the natural world\nD. not of this world\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Plato's view is that true beauty is _____.\nA. found in everyday objects\nB. nonexistent\nC. everywhere in the natural world\nD. not of this world\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "Concerning the relationship between morality and theology, Bentham claims that:\nA. we must first know whether something is right before we can know whether it conforms to God\u2019s will.\nB. we must first know whether something conforms to God\u2019s will before we can know that it is right.\nC. God exists, but does not concern himself with matters of morality.\nD. God does not exist.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Concerning the relationship between morality and theology, Bentham claims that:\nA. we must first know whether something is right before we can know whether it conforms to God\u2019s will.\nB. we must first know whether something conforms to God\u2019s will before we can know that it is right.\nC. God exists, but does not concern himself with matters of morality.\nD. God does not exist.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "Most of those who take the externalist approach to meaning view the matter from a _____ standpoint.\nA. secular\nB. nonreligious\nC. religious\nD. pragmatic\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Most of those who take the externalist approach to meaning view the matter from a _____ standpoint.\nA. secular\nB. nonreligious\nC. religious\nD. pragmatic\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "According to Bentham, a moral sanction is:\nA. pleasure or pain inflicted by chance members of the community.\nB. pleasure or pain inflicted by a judge in accordance with a rule.\nC. pleasure or pain that it is permissible to inflict on someone.\nD. none of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "According to Bentham, a moral sanction is:\nA. pleasure or pain inflicted by chance members of the community.\nB. pleasure or pain inflicted by a judge in accordance with a rule.\nC. pleasure or pain that it is permissible to inflict on someone.\nD. none of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "Which method is most commonly associated with a lack of informed consent?\nA. Qualitative content analysis\nB. In-depth interviewing\nC. Covert observation\nD. Structured interviewing\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Which method is most commonly associated with a lack of informed consent?\nA. Qualitative content analysis\nB. In-depth interviewing\nC. Covert observation\nD. Structured interviewing\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "According to Stevenson, the word \u201cgood\u201d has a pleasing emotive meaning that fits it for:\nA. descriptive use.\nB. constructive use.\nC. dynamic use.\nD. propositional use.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "According to Stevenson, the word \u201cgood\u201d has a pleasing emotive meaning that fits it for:\nA. descriptive use.\nB. constructive use.\nC. dynamic use.\nD. propositional use.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "According to Butler, the degree to which one acts compassionately depends on:\nA. the strength of his affection of compassion.\nB. the strength of his other affections besides compassion.\nC. both a and b.\nD. neither a nor b.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "According to Butler, the degree to which one acts compassionately depends on:\nA. the strength of his affection of compassion.\nB. the strength of his other affections besides compassion.\nC. both a and b.\nD. neither a nor b.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "Aristotle states that if we ask what the highest good of human action is:\nA. there is no agreement about the answer.\nB. most people agree that it is pleasure.\nC. nearly everyone agrees that it is happiness.\nD. there is no objective answer to this question.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Aristotle states that if we ask what the highest good of human action is:\nA. there is no agreement about the answer.\nB. most people agree that it is pleasure.\nC. nearly everyone agrees that it is happiness.\nD. there is no objective answer to this question.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "In Aquinas\u2019s view, acts of prudence are solely about matters of:\nA. pleasure.\nB. desire.\nC. moral virtue.\nD. piety.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "In Aquinas\u2019s view, acts of prudence are solely about matters of:\nA. pleasure.\nB. desire.\nC. moral virtue.\nD. piety.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "According to Kant, nothing can be called \u201cgood\u201d without qualification except _____.\nA. right action\nB. good consequences\nC. happiness\nD. a good will\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "According to Kant, nothing can be called \u201cgood\u201d without qualification except _____.\nA. right action\nB. good consequences\nC. happiness\nD. a good will\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "Descartes believed that interaction between body and mind took place in _____.\nA. ectoplasm\nB. the brain stem\nC. the pineal gland\nD. the nervous system\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Descartes believed that interaction between body and mind took place in _____.\nA. ectoplasm\nB. the brain stem\nC. the pineal gland\nD. the nervous system\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "Anselm assumes that a being that exists in reality is greater than a being that _____.\nA. is worshipped\nB. is embodied\nC. exists only in the understanding\nD. exists without flaws\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Anselm assumes that a being that exists in reality is greater than a being that _____.\nA. is worshipped\nB. is embodied\nC. exists only in the understanding\nD. exists without flaws\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "Epictetus claims that things within our power are __________ and things not in our power are __________.\nA. free and unhindered; free and unhindered\nB. free and unhindered; servile and subject to hindrance\nC. servile and subject to hindrance; free and unhindered\nD. servile and subject to hindrance; servile and subject to hindrance\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Epictetus claims that things within our power are __________ and things not in our power are __________.\nA. free and unhindered; free and unhindered\nB. free and unhindered; servile and subject to hindrance\nC. servile and subject to hindrance; free and unhindered\nD. servile and subject to hindrance; servile and subject to hindrance\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "Aristotle divides the virtues into:\nA. natural virtues and artificial virtues.\nB. moral virtues and intellectual virtues.\nC. positive virtues and negative virtues.\nD. human virtues and divine virtues.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Aristotle divides the virtues into:\nA. natural virtues and artificial virtues.\nB. moral virtues and intellectual virtues.\nC. positive virtues and negative virtues.\nD. human virtues and divine virtues.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "Which of the following is a form of harm that might be suffered by research participants?\nA. Physical injury\nB. Stress and anxiety\nC. Impaired development\nD. All of the above\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Which of the following is a form of harm that might be suffered by research participants?\nA. Physical injury\nB. Stress and anxiety\nC. Impaired development\nD. All of the above\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "Hume divides our perceptions into two categories:\nA. sensations and emotions.\nB. impressions and ideas.\nC. static and dynamic.\nD. simple and complex.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Hume divides our perceptions into two categories:\nA. sensations and emotions.\nB. impressions and ideas.\nC. static and dynamic.\nD. simple and complex.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "According to Kant, laws of nature are laws according to which __________, and laws of freedom are laws according to which __________.\nA. everything will happen; everything will happen\nB. everything will happen; everything ought to happen\nC. everything ought to happen; everything will happen\nD. everything ought to happen; everything ought to happen\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "According to Kant, laws of nature are laws according to which __________, and laws of freedom are laws according to which __________.\nA. everything will happen; everything will happen\nB. everything will happen; everything ought to happen\nC. everything ought to happen; everything will happen\nD. everything ought to happen; everything ought to happen\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "According to Ross, we should construct a moral theory by:\nA. constructing logical proofs for moral principles.\nB. consulting social conventions.\nC. reflecting on what we really think.\nD. consulting scripture.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "According to Ross, we should construct a moral theory by:\nA. constructing logical proofs for moral principles.\nB. consulting social conventions.\nC. reflecting on what we really think.\nD. consulting scripture.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "Mill defines \u201cutility\u201d as:\nA. usefulness for some craft.\nB. usefulness to society.\nC. pleasure and the absence of pain.\nD. it promotes the interests of all and does not harm anyone.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Mill defines \u201cutility\u201d as:\nA. usefulness for some craft.\nB. usefulness to society.\nC. pleasure and the absence of pain.\nD. it promotes the interests of all and does not harm anyone.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "Anscombe criticizes Butler on the grounds that:\nA. our consciences are fallible.\nB. the notion of \u201clegislating for oneself\u201d is absurd.\nC. we really can derive an \u201cought\u201d from an \u201cis.\u201d\nD. the concept of \u201cpleasure\u201d is unclear.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Anscombe criticizes Butler on the grounds that:\nA. our consciences are fallible.\nB. the notion of \u201clegislating for oneself\u201d is absurd.\nC. we really can derive an \u201cought\u201d from an \u201cis.\u201d\nD. the concept of \u201cpleasure\u201d is unclear.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "According to Cicero, immorality is __________, and expediency is __________.\nA. repugnant to Nature; repugnant to Nature.\nB. repugnant to Nature; in accord with Nature.\nC. in accord with Nature; repugnant to Nature.\nD. in accord with Nature; in accord with Nature.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "According to Cicero, immorality is __________, and expediency is __________.\nA. repugnant to Nature; repugnant to Nature.\nB. repugnant to Nature; in accord with Nature.\nC. in accord with Nature; repugnant to Nature.\nD. in accord with Nature; in accord with Nature.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "What are some of the frequent frustrations in writing or reading about research ethics?\nA. Writers differ over what is ethically acceptable.\nB. The same debates are rehearsed over decades.\nC. Cases of ethical violation tend to be linked with certain research methods.\nD. All of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "What are some of the frequent frustrations in writing or reading about research ethics?\nA. Writers differ over what is ethically acceptable.\nB. The same debates are rehearsed over decades.\nC. Cases of ethical violation tend to be linked with certain research methods.\nD. All of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "According to Locke, a man in the state of nature will relinquish his absolute freedom to the state because _____.\nA. he will also enjoy absolute freedom when subject to the state\nB. in the state of nature the enjoyment of his freedom is very uncertain and vulnerable\nC. he wants to have absolute power over others\nD. he rejects the laws of the state of nature\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "According to Locke, a man in the state of nature will relinquish his absolute freedom to the state because _____.\nA. he will also enjoy absolute freedom when subject to the state\nB. in the state of nature the enjoyment of his freedom is very uncertain and vulnerable\nC. he wants to have absolute power over others\nD. he rejects the laws of the state of nature\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "Berkeley insists that heat and cold are _____.\nA. illusions\nB. physical objects\nC. only things existing apart from our minds\nD. only sensations existing in our minds\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Berkeley insists that heat and cold are _____.\nA. illusions\nB. physical objects\nC. only things existing apart from our minds\nD. only sensations existing in our minds\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "According to Gauthier, deliberative justification:\nA. is refuted by moral requirements.\nB. is replaced once we acknowledge moral requirements.\nC. refutes morality.\nD. ignores morality and seemingly replaces it.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "According to Gauthier, deliberative justification:\nA. is refuted by moral requirements.\nB. is replaced once we acknowledge moral requirements.\nC. refutes morality.\nD. ignores morality and seemingly replaces it.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "Rawls claims that a conception of justice should be justified by:\nA. deducing it from self-evident premises.\nB. direct acquaintance via moral intuition.\nC. the mutual support of many considerations, which it fits into one coherent view.\nD. none of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Rawls claims that a conception of justice should be justified by:\nA. deducing it from self-evident premises.\nB. direct acquaintance via moral intuition.\nC. the mutual support of many considerations, which it fits into one coherent view.\nD. none of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "According to Rawls, the two parts of his theory:\nA. are interdependent: You cannot accept one part without accepting the other.\nB. are independent: You can accept either part without accepting the other.\nC. are provable from self-evident premises.\nD. cannot be justified via rational means.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "According to Rawls, the two parts of his theory:\nA. are interdependent: You cannot accept one part without accepting the other.\nB. are independent: You can accept either part without accepting the other.\nC. are provable from self-evident premises.\nD. cannot be justified via rational means.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "Bentham claims that actions are right or wrong in virtue of:\nA. the motives behind them.\nB. their consequences.\nC. both a and b.\nD. neither a nor b.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Bentham claims that actions are right or wrong in virtue of:\nA. the motives behind them.\nB. their consequences.\nC. both a and b.\nD. neither a nor b.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "Rawls argues that parties in the original position would not accept utilitarianism because:\nA. it is too difficult to determine which policies would maximize happiness.\nB. doing so would be too risky.\nC. it requires us to do unjust things, such as executing innocent people.\nD. they would be behind the veil of ignorance and thus would never have heard of utilitarianism.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Rawls argues that parties in the original position would not accept utilitarianism because:\nA. it is too difficult to determine which policies would maximize happiness.\nB. doing so would be too risky.\nC. it requires us to do unjust things, such as executing innocent people.\nD. they would be behind the veil of ignorance and thus would never have heard of utilitarianism.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "In the Inquiry, Hume claims that our final verdicts on moral matters are derived from:\nA. reason.\nB. a moral sense that is unique to each person.\nC. a moral sense that is universal in our species.\nD. emotion.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "In the Inquiry, Hume claims that our final verdicts on moral matters are derived from:\nA. reason.\nB. a moral sense that is unique to each person.\nC. a moral sense that is universal in our species.\nD. emotion.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "One example of bad constitutive moral luck would be:\nA. a person who is by nature envious and ungenerous.\nB. a person who lived in Nazi Germany in 1940.\nC. a person who drives drunk and hits a child.\nD. all of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "One example of bad constitutive moral luck would be:\nA. a person who is by nature envious and ungenerous.\nB. a person who lived in Nazi Germany in 1940.\nC. a person who drives drunk and hits a child.\nD. all of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "Baier asserts that when we ask for moral advice, we are asking for others to:\nA. issue commands.\nB. inform us of their preferences.\nC. deliberate with us.\nD. empathize with us.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Baier asserts that when we ask for moral advice, we are asking for others to:\nA. issue commands.\nB. inform us of their preferences.\nC. deliberate with us.\nD. empathize with us.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "The idea that mental states are dispositions to behave in particular ways in certain circumstances is known as _____.\nA. logical nominalism\nB. logical behaviorism\nC. methodological behaviorism\nD. eliminative materialism\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "The idea that mental states are dispositions to behave in particular ways in certain circumstances is known as _____.\nA. logical nominalism\nB. logical behaviorism\nC. methodological behaviorism\nD. eliminative materialism\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "Critics of the divine command theory have argued that the theory implies that God's commands are _____.\nA. well supported\nB. unclear\nC. unknowable\nD. arbitrary\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Critics of the divine command theory have argued that the theory implies that God's commands are _____.\nA. well supported\nB. unclear\nC. unknowable\nD. arbitrary\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "Epictetus claims that the only thing one can call one\u2019s own is:\nA. the way one deals with one\u2019s impressions.\nB. one\u2019s family.\nC. one\u2019s friends.\nD. one\u2019s body.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Epictetus claims that the only thing one can call one\u2019s own is:\nA. the way one deals with one\u2019s impressions.\nB. one\u2019s family.\nC. one\u2019s friends.\nD. one\u2019s body.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "Anscombe claims that the notion of moral obligation is derived from the concept of:\nA. preference.\nB. maximizing utility.\nC. positive law.\nD. divine law.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Anscombe claims that the notion of moral obligation is derived from the concept of:\nA. preference.\nB. maximizing utility.\nC. positive law.\nD. divine law.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "According to Brandt\u2019s theory, an ideal moral rule is one that would:\nA. maximize positive utility, ignoring negative utility.\nB. minimize negative utility, ignoring positive utility.\nC. maximize utility, with both positive and negative utilities being counted.\nD. take no account of either positive or negative utility.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "According to Brandt\u2019s theory, an ideal moral rule is one that would:\nA. maximize positive utility, ignoring negative utility.\nB. minimize negative utility, ignoring positive utility.\nC. maximize utility, with both positive and negative utilities being counted.\nD. take no account of either positive or negative utility.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "Gauthier claims that there is nothing for practical rationality to be besides:\nA. moral justification.\nB. deliberative justification.\nC. epistemic justification.\nD. an illusion.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Gauthier claims that there is nothing for practical rationality to be besides:\nA. moral justification.\nB. deliberative justification.\nC. epistemic justification.\nD. an illusion.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "In Augustine\u2019s view, lying is:\nA. often permissible if done for the right reasons.\nB. not evil in itself, although it can have bad consequences.\nC. permissible only in very rare circumstances.\nD. never permissible.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "In Augustine\u2019s view, lying is:\nA. often permissible if done for the right reasons.\nB. not evil in itself, although it can have bad consequences.\nC. permissible only in very rare circumstances.\nD. never permissible.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "According to Kant, moral laws are:\nA. necessary and apply to all rational beings.\nB. contingent and apply only to human beings.\nC. culturally relative.\nD. grounded in God\u2019s commands.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "According to Kant, moral laws are:\nA. necessary and apply to all rational beings.\nB. contingent and apply only to human beings.\nC. culturally relative.\nD. grounded in God\u2019s commands.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "Parfit claims that the magnitude of pains:\nA. can be precisely compared.\nB. can be compared, but only roughly.\nC. can be compared within individuals, but not between individuals.\nD. cannot compared either within individuals or between individuals.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Parfit claims that the magnitude of pains:\nA. can be precisely compared.\nB. can be compared, but only roughly.\nC. can be compared within individuals, but not between individuals.\nD. cannot compared either within individuals or between individuals.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "Plato's suggestion that knowledge is innate or remembered as a result of being triggered by experience is in response to a paradox he sets up for himself.  The paradox, now referred to as Meno's Paradox, has to do with the question of:\nA. how a person can remember anything about the realm of the Forms after the shock of being born into this world.\nB. how knowledge of the Forms can ever be anything other than a generalization of experience.\nC. how anyone can recognize the correct answer to a question without already knowing the answer.\nD. how concepts bound to the realm of becoming have meaning only when associated with the realm of Being.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Plato's suggestion that knowledge is innate or remembered as a result of being triggered by experience is in response to a paradox he sets up for himself.  The paradox, now referred to as Meno's Paradox, has to do with the question of:\nA. how a person can remember anything about the realm of the Forms after the shock of being born into this world.\nB. how knowledge of the Forms can ever be anything other than a generalization of experience.\nC. how anyone can recognize the correct answer to a question without already knowing the answer.\nD. how concepts bound to the realm of becoming have meaning only when associated with the realm of Being.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "According to Parfit, the obligation to give priority to the welfare of one\u2019s children is:\nA. agent-relative.\nB. agent-neutral.\nC. absolute.\nD. none of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "According to Parfit, the obligation to give priority to the welfare of one\u2019s children is:\nA. agent-relative.\nB. agent-neutral.\nC. absolute.\nD. none of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "Hume claims that a person who is unaffected by images of human happiness or misery will also be indifferent to:\nA. art and beauty.\nB. virtue and vice.\nC. his own well-being.\nD. all of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Hume claims that a person who is unaffected by images of human happiness or misery will also be indifferent to:\nA. art and beauty.\nB. virtue and vice.\nC. his own well-being.\nD. all of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "Epicurus conceives of death as:\nA. the beginning of the afterlife.\nB. one component of the continuous cycle of rebirth.\nC. the deprivation of all sensation.\nD. the greatest harm that one can suffer.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Epicurus conceives of death as:\nA. the beginning of the afterlife.\nB. one component of the continuous cycle of rebirth.\nC. the deprivation of all sensation.\nD. the greatest harm that one can suffer.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
   },
   {
-    "question": "Hobbes describes felicity as:\nA. a state of tranquility.\nB. a continual progress of desire from one object to another.\nC. a state of contemplation.\nD. the absence of desire.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Hobbes describes felicity as:\nA. a state of tranquility.\nB. a continual progress of desire from one object to another.\nC. a state of contemplation.\nD. the absence of desire.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "B"
   },
   {
-    "question": "Butler claims that in the strictest and most proper sense, tofollow nature is to:\nA. act as one pleases.\nB. act on any of one\u2019s passions.\nC. act on one\u2019s strongest passion.\nD. act on one\u2019s conscience.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Butler claims that in the strictest and most proper sense, tofollow nature is to:\nA. act as one pleases.\nB. act on any of one\u2019s passions.\nC. act on one\u2019s strongest passion.\nD. act on one\u2019s conscience.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "D"
   },
   {
-    "question": "A Loving Saint is someone:\nA. whose happiness lies in the happiness of others.\nB. who pays little or no attention to his own happiness, in light of the overriding importance of morality.\nC. loves all human beings equally.\nD. is morally perfect only in relation to those he loves.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "A Loving Saint is someone:\nA. whose happiness lies in the happiness of others.\nB. who pays little or no attention to his own happiness, in light of the overriding importance of morality.\nC. loves all human beings equally.\nD. is morally perfect only in relation to those he loves.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "Leo Tolstoy says that art is _____.\nA. expression\nB. form\nC. representation\nD. abstract\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Leo Tolstoy says that art is _____.\nA. expression\nB. form\nC. representation\nD. abstract\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "For Socrates, the soul is harmed by lack of _____.\nA. knowledge\nB. wealth\nC. community\nD. courage\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "For Socrates, the soul is harmed by lack of _____.\nA. knowledge\nB. wealth\nC. community\nD. courage\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "A"
   },
   {
-    "question": "Mill claims that a happy life is one of:\nA. tranquility.\nB. excitement.\nC. both a and b.\nD. neither a nor b.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A/B/C/D').",
+    "question": "Mill claims that a happy life is one of:\nA. tranquility.\nB. excitement.\nC. both a and b.\nD. neither a nor b.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
     "answer": "C"
+  },
+  {
+    "question": "Suppose X and Y are random variables with \u03bcx = 32, \u03c3x = 5, \u03bcy = 44, and \u03c3y = 12. Given that X and Y are independent, what are the mean and standard deviation of the random variable X + Y?\nA. \u03bcx+y = 76, \u03c3x+y = 8.5\nB. \u03bcx+y = 76, \u03c3x+y = 13\nC. \u03bcx+y = 76, \u03c3x+y = 17\nD. \u03bcx+y = 38, \u03c3x+y = 17\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "B"
+  },
+  {
+    "question": "Suppose X and Y are random variables with E(X) = 312, var(X) = 6, E(X) = 307, and var(Y) = 8. What are the expected value and variance of the random variable X + Y?\nA. E(X + Y) = 619, var(X + Y) = 7\nB. E(X + Y) = 619, var(X + Y) = 10\nC. E(X + Y) = 619, var(X + Y) = 14\nD. There is insufficient information to answer this question.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "Alfred and Ben don't know each other but are each considering asking the lovely Charlene to the school prom. The probability that at least one of them will ask her is 0.72. The probability that they both ask her is 0.18. The probability that Alfred asks her is 0.6. What is the probability that Ben asks Charlene to the prom?\nA. 0.78\nB. 0.3\nC. 0.24\nD. 0.48\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "B"
+  },
+  {
+    "question": "Two possible wordings for a questionnaire on a proposed school budget increase are as follows:\nA. The first showed 58% and the second 13% because of the lack of randomization as evidenced by the wording of the questions.\nB. The first showed 13% and the second 58% because of a placebo effect due to the wording of the questions.\nC. The first showed 58% and the second 13% because of the lack of a control group.\nD. The first showed 58% and the second 13% because of response bias due to the wording of the questions.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "After receiving several complaints from his customers about the store being closed on Sundays, a storekeeper decided to conduct a survey. He randomly selected 100 female customers and 120 male customers, and asked them, \"Are you interested in shopping at this store on Sundays?\" He counted the number of customers answering \"yes\" and constructed a 95 percent confidence interval for the difference by subtracting the proportions of female from the proportion of male customers in favor of shopping on Sundays. The resulting interval was (\u20130.23, \u20130.18). Which of the following is a correct interpretation of the interval?\nA. We are 95 percent confident that the proportion of women interested in shopping on Sundays exceeds the proportion of men interested in shopping on Sundays.\nB. We are 95 percent confident that the proportion of men interested in shopping on Sundays exceeds the proportion of women interested in shopping on Sundays.\nC. We are 95 percent confident that the proportion of women interested in shopping on Sundays is equal to the proportion of men interested in shopping on Sundays.\nD. Because the interval contains negative values, it is invalid and should not be interpreted.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "A"
+  },
+  {
+    "question": "The mean height of adult men is 70 inches, with a standard deviation of four inches. The mean height of adult women is 66 inches, with a standard deviation of three inches. Between a man with a height of 74 inches and a woman with a height of 70 inches, who is more unusually tall within his or her respective sex?\nA. It cannot be determined, because the mean heights for the two groups are different.\nB. It cannot be determined, because the standard deviations of the heights for the two groups are different.\nC. The man, because he is 74 inches tall and the woman is only 70 inches tall.\nD. The woman, because her height is 1.33 standard deviations above the mean height of all women, whereas the man\u2019s height is only one standard deviation above the mean height of all men.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "A reading specialist in a large public school system believes that the more time students spend reading, the better they will do in school. She plans a middle school experiment in which an SRS of 30 eighth graders will be assigned four extra hours of reading per week, an SRS of 30 seventh graders will be assigned two extra hours of reading per week, and an SRS of 30 sixth graders with no extra assigned reading will be a control group. After one school year, the mean GPAs from each group will be compared. Is this a good experimental design?\nA. Yes.\nB. No, because while this design may point out an association between reading and GPA, it cannot establish a cause-and-effect relationship.\nC. No, because without blinding, there is a strong chance of a placebo effect.\nD. No, because grade level is a lurking variable which may well be confounded with the variables under consideration.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "Sampling error occurs\nA. when interviewers make mistakes resulting in bias.\nB. because a sample statistic is used to estimate a population parameter.\nC. when interviewers use judgment instead of random choice in picking the sample.\nD. when samples are too small.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "B"
+  },
+  {
+    "question": "A college admissions officer is interested in comparing the SAT math scores of high school applicants who have and have not taken AP Statistics. She randomly pulls the files of five applicants who took AP Statistics and five applicants who did not, and proceeds to run a t-test to compare the mean SAT math scores of the two groups. Which of the following is a necessary assumption?\nA. The population variances from each group are known.\nB. The population variances from each group are unknown.\nC. The population variances from the two groups are equal.\nD. The population of SAT scores from each group is normally distributed.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "A sports talk show asks people to call in and give their opinion of the officiating in the local basketball team's most recent loss. What will most likely be the typical reaction?\nA. They will most likely feel that the officiating could have been better, but that it was the team's poor play, not the officiating, that was primarily responsible for the loss.\nB. They would most likely call for the team to get some new players to replace the current ones.\nC. The team probably wouldn't have lost if the officials had been doing their job.\nD. Because the team had been foul-plagued all year, the callers would most likely support the officials.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "C"
+  },
+  {
+    "question": "A group of scientists wanted to estimate the proportion of geese returning to the same site for the next breeding season. Suppose they decided to increase the sample size from 200 to 2,000. How will this affect the distribution of the sample proportion?\nA. The distribution of the sample proportion will be more spread out.\nB. The distribution of the sample proportion will be less spread out.\nC. The spread of the distribution of the sample proportion will remain unaffected.\nD. The distribution of the sample proportion will more closely resemble the binomial distribution.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "B"
+  },
+  {
+    "question": "The main purpose of blocking in an experiment is to:\nA. reduce bias.\nB. reduce confounding.\nC. reduce variation within treatments.\nD. reduce variation between treatments.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "C"
+  },
+  {
+    "question": "Suppose H0: p = 0.6, and the power of the test for Ha: p = 0.7 is 0.8. Which of the following is a valid conclusion?\nA. The probability of committing a Type I error is 0.1.\nB. If Ha is true, the probability of failing to reject H0 is 0.2.\nC. The probability of committing a Type II error is 0.3.\nD. All of the above are valid conclusions.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "B"
+  },
+  {
+    "question": "A correlation of 0.6 indicates that the percentage of variation in y that is explained by the variation in x is how many times the percentage indicated by a correlation of 0.3?\nA. 2\nB. 3\nC. 4\nD. 6\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "C"
+  },
+  {
+    "question": "Which of the following is a false statement about simple random samples?\nA. A sample must be reasonably large to be properly considered a simple random sample.\nB. Inspection of a sample will give no indication of whether or not it is a simple random sample.\nC. Attributes of a simple random sample may be very different from attributes of the population.\nD. Every element of the population has an equal chance of being picked.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "A"
+  },
+  {
+    "question": "Two classes take the same exam. Suppose a certain score is at the 40th percentile for the first class and at the 80th percentile for the second class. Which of the following is the most reasonable conclusion?\nA. Students in the first class generally scored higher than students in the second class.\nB. Students in the second class generally scored higher than students in the first class.\nC. A score at the 20th percentile for the first class is at the 40th percentile for the second class.\nD. A score at the 50th percentile for the first class is at the 90th percentile for the second class.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "A"
+  },
+  {
+    "question": "A test for heartworm in dogs shows a positive result in 96% of dogs that actually have heartworm, and shows a negative result in 98% of dogs with no heartworm. If heartworm actually occurs in 10% of dogs, what is the probability that a randomly selected dog that tested positive for heartworm actually has heartworm?\nA. 11%\nB. 18%\nC. 84%\nD. 88%\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "C"
+  },
+  {
+    "question": "Which of the following is the primary difference between an experiment and an observational study?\nA. Experiments are only conducted on human subjects; observational studies can be conducted on nonhuman subjects.\nB. In an experiment, the researcher manipulates some variable to observe its effect on a response variable; in an observational study, he or she simply observes and records the observations.\nC. Experiments must use randomized treatment and control groups; observational studies also use treatment and control groups, but they do not need to be randomized.\nD. Experiments must be double-blind; observational studies do not need to be.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "A"
+  },
+  {
+    "question": "In one metropolitan region, technical writers have an annual salary that is approximately normally distributed with a mean of $55,800. The first quartile of salaries is $48,815. What is the standard deviation?\nA. $6,984 \nB. $10,356 \nC. $10,476 \nD. $13,968 \n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "B"
+  },
+  {
+    "question": "The mean Law School Aptitude Test (LSAT) score for applicants to a particular law school is 650 with a standard deviation of 45. Suppose that only applicants with scores above 700 are considered. What percentage of the applicants considered have scores below 740? (Assume the scores are normally distributed.)\nA. 13.3%\nB. 17.1%\nC. 82.9%\nD. 86.7%\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "C"
+  },
+  {
+    "question": "The mean thrust of a certain model jet engine is 9500 pounds. Concerned that a production process change might have lowered the thrust, an inspector tests a sample of units, calculating a mean of 9350 pounds with a z-score of -2.46 and a P-value of 0.0069. Which of the following is the most reasonable conclusion?\nA. 99.31% of the engines produced under the new process will have a thrust under 9350 pounds.\nB. 99.31% of the engines produced under the new process will have a thrust under 9500 pounds.\nC. 0.69% of the time an engine produced under the new process will have a thrust over 9500 pounds.\nD. There is evidence to conclude that the new process is producing engines with a mean thrust under 9500 pounds.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "Data were collected on two variables X and Y and a least squares regression line was fitted to the data. The estimated equation for this data is y = \u20132.29 + 1.70x. One point has x = 5, y = 6. What is the residual for this point?\nA. 7.91\nB. 6.21\nC. 0.21\nD. \u20130.21\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "Tina\u2019s science fair project was to estimate the mean amount of chemicals in her city\u2019s water supply. At first, she had decided to use a random sample of 15 observations. But her teacher asked her to take 35 observations. The mean and standard deviation from 35 observations turned out to be approximately the same as those from 15 observations. Is there any advantage in using 35 observations instead of 15 observations?\nA. There is no advantage. Because the mean and the standard deviation are about the same, the confidence interval computed using 35 observations should be approximately the same as that computed using 15 observations.\nB. There is no advantage. In fact, the 20 extra observations will increase the likelihood of error.\nC. There is no advantage. Because she took 35 observations instead of 15 observations, the confidence interval using 35 observations will be wider than that using 15 observations.\nD. There is some advantage. Because she took 35 observations instead of 15 observations, the confidence interval using 35 observations will be narrower than that using 15 observations.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "An assembly line machine is supposed to turn out ball bearings with a diameter of 1.25 centimeters. Each morning the first 30 bearings produced are pulled and measured. If their mean diameter is under 1.23 centimeters or over 1.27 centimeters, the machinery is stopped and an engineer is called to make adjustments before production is resumed. The quality control procedure may be viewed as a hypothesis test with the null hypothesis H0: \u03bc = 1.25 and the alternative hypothesis Ha: \u03bc \u2260 1.25. The engineer is asked to make adjustments when the null hypothesis is rejected. In test terminology, what would a Type II error result in?\nA. A warranted halt in production to adjust the machinery\nB. An unnecessary stoppage of the production process\nC. Continued production of wrong size ball bearings\nD. Continued production of proper size ball bearings\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "C"
+  },
+  {
+    "question": "The relation between the selling price of a car (in $1,000) and its age (in years) is estimated from a random sample of cars of a specific model. The relation is given by the following formula: Selling price = 15.9 \u2013 0.983 (age) Which of the following can we conclude from this equation?\nA. For every year the car gets older, the selling price goes down by approximately 9.83 percent.\nB. A new car costs on the average $9,830.\nC. For every year the car gets older, the selling price drops by approximately $1,590.\nD. For every year the car gets older, the selling price drops by approximately $983.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "A researcher plans a study to examine long-term confidence in the U.S. economy among the adult population. She obtains a simple random sample of 30 adults as they leave a Wall Street office building one weekday afternoon. All but two of the adults agree to participate in the survey. Which of the following conclusions is correct?\nA. Proper use of chance as evidenced by the simple random sample makes this a well-designed survey.\nB. The high response rate makes this a well-designed survey.\nC. Selection bias makes this a poorly designed survey.\nD. A voluntary response study like this gives too much emphasis to persons with strong opinions.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "C"
+  },
+  {
+    "question": "The appraised values of houses in a city have a mean of $125,000 with a standard deviation of $23,000. Because of a new teachers' contract, the school district needs an extra 10% in funds compared to the previous year. To raise this additional money, the city instructs the assessment office to raise all appraised house values by $5,000. What will be the new standard deviation of the appraised values of houses in the city?\nA. $23,000\nB. $25,300\nC. $28,000\nD. $30,300\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "A"
+  },
+  {
+    "question": "Which of the following is the best description of the power of a significance test?\nA. The probability that the null hypothesis is true.\nB. The probability of getting a Type I error.\nC. The probability of getting a Type II error.\nD. The probability of rejecting the null hypothesis if it is, in fact, false.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "A talk show host recently reported that in response to his on-air question, 82% of the more than 2500 e-mail messages received through his publicized address supported the death penalty for anyone convicted of selling drugs to children. What does this show?\nA. The survey is meaningless because of voluntary response bias.\nB. No meaningful conclusion is possible without knowing something more about the characteristics of his listeners.\nC. The survey would have been more meaningful if he had picked a random sample of the 2500 listeners who responded.\nD. The survey would have been more meaningful if he had used a control group.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "A"
+  },
+  {
+    "question": "In comparing the life expectancies of two models of refrigerators, the average years before complete breakdown of 10 model A refrigerators is compared with that of 15 model B refrigerators. The 90% confidence interval estimate of the difference is (6, 12). Which of the following is the most reasonable conclusion?\nA. The mean life expectancy of one model is twice that of the other.\nB. The mean life expectancy of one model is 6 years, while the mean life expectancy of the other is 12 years.\nC. The probability that the life expectancies are different is 0.90.\nD. We should be 90% confident that the difference in life expectancies is between 6 and 12 years.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "During the years 1886 through 2000 there were an average of 8.7 tropical cyclones per year, of which an average of 5.1 became hurricanes. Assuming that the probability of any cyclone becoming a hurricane is independent of what happens to any other cyclone, if there are five cyclones in one year, what is the probability that at least three become hurricanes?\nA. 0.313\nB. 0.345\nC. 0.586\nD. 0.658\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "A school board of a large school district is proposing a new dress code for students. Some students feel that this dress code unfairly targets female students. To see if there is a difference between boys and girls in their opposition to the new dress code, they conduct a poll of 60 randomly selected male and 70 randomly selected female high school students in the district. They find that 66 females oppose the dress code and 50 males oppose the dress code. Which of the following explains why a two-proportion z-test is not appropriate?\nA. The sample sizes are different.\nB. The sample sizes are too large.\nC. The number of successes and the number of failures for the two groups are not all large enough.\nD. The shapes of the population distributions are not known.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "C"
+  },
+  {
+    "question": "A large company has offices in two locations, one in New Jersey and one in Utah. The mean salary of office assistants in the New Jersey office is $28,500. The mean salary of office assistants in the Utah office is $22,500. The New Jersey office has 128 office assistants and the Utah office has 32 office assistants. What is the mean salary paid to the office assistants in this company?\nA. $22,500 \nB. $23,700 \nC. $25,500 \nD. $27,300 \n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "Which of the following is not true with regard to contingency tables for chi-square tests for independence?\nA. The categories are not numerical for either variable.\nB. Observed frequencies should be whole numbers.\nC. Expected frequencies should be whole numbers.\nD. Expected frequencies in each cell should be at least 5, and to achieve this, one sometimes combines categories for one or the other or both of the variables.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "C"
+  },
+  {
+    "question": "Which of the following can affect the value of the correlation r?\nA. A change in measurement units\nB. A change in which variable is called x and which is called y\nC. Adding the same constant to all values of the x-variable\nD. None of the above can affect the r value.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "For which of the following is it appropriate to use a census?\nA. A 95% confidence interval of mean height of teachers in a small town.\nB. A 95% confidence interval of the proportion of students in a small town who are taking some AP class.\nC. A two-tailed hypothesis test where the null hypothesis was that the mean expenditure on entertainment by male students at a high school is the same as that of female students.\nD. None of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "The Department of Health plans to test the lead level in a specific park. Because a high lead level is harmful to children, the park will be closed if the lead level exceeds the allowed limit. The department randomly selects several locations in the park, gets soil samples from those locations, and tests the samples for their lead levels. Which of the following decisions would result from the type I error?\nA. Closing the park when the lead levels are within the allowed limit\nB. Keeping the park open when the lead levels are in excess of the allowed limit\nC. Closing the park when the lead levels are in excess of the allowed limit\nD. Keeping the park open when the lead levels are within the allowed limit\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "A"
+  },
+  {
+    "question": "A researcher planning a survey of school principals in a particular state has lists of the school principals employed in each of the 125 school districts. The procedure is to obtain a random sample of principals from each of the districts rather than grouping all the lists together and obtaining a sample from the entire group. Which of the following is a correct conclusion?\nA. This is a simple random sample obtained in an easier and less costly manner than procedures involving sampling from the entire population of principals.\nB. This is a cluster sample in which the population was divided into heterogeneous groups called clusters.\nC. This is an example of systematic sampling, which gives a reasonable sample as long as the original order of the list is not related to the variables under consideration.\nD. This is a stratified sample, which may give comparative information that a simple random sample wouldn't give.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "A drug company will conduct a randomized controlled study on the effectiveness of a new heart disease medication called Heartaid. Heartaid is more expensive than the currently used medication. The analysis will include a significance test with H0: Heartaid and the current medication are equally effective at preventing heart disease and HA: Heartaid is more effective than the current medication at preventing heart disease. Which of these would be a potential consequence of a Type II error?\nA. Patients will spend more money on Heartaid, even though it is actually not any more effective than the current medication.\nB. Doctors will begin to prescribe Heartaid to patients, even though it is actually not any more effective than the current medication.\nC. Patients will continue to use the current medication, even though Heartaid is actually more effective.\nD. Researchers will calculate the wrong P-value, making their advice to doctors invalid.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "C"
+  },
+  {
+    "question": "The observed times (in minutes) it takes a runner to complete a marathon are normally distributed. The z-score for his running time this week is \u20132. Which one of the following statements is a correct interpretation of his z-score?\nA. This week his time was two minutes lower than his time last week.\nB. This week his time was two minutes lower than his best time ever.\nC. This week his time was two minutes lower than his average time.\nD. This week his time was two standard deviations lower than his average time.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "Self-efficacy (the belief that one has control over one's situation) as it related to job satisfaction was studied. When a group of teachers rated their ability to control their situation and their satisfaction with their job, the two variables had a correlation of 0.30. Which statement follows from this correlation?\nA. If you want teachers to be happy with their job, give them more control over their situation.\nB. If you want teachers to take more control over their situation, make them happier at their jobs.\nC. Teachers in the study who were more satisfied with their job were less confident in their ability to control their situation.\nD. 9% of the variability in job satisfaction can be explained by the linear model with self-efficacy as a predictor.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "To study the effect of alcohol on reaction time, subjects were randomly selected and given three beers to consume. Their reaction time to a simple stimulus was measured before and after drinking the alcohol. Which of the following is a correct statement?\nA. This study was an observational study.\nB. Lack of blocking makes this a poorly designed study.\nC. The placebo effect is irrelevant in this type of study.\nD. This study was an experiment in which the subjects were used as their own controls.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "A company with offices in five different countries is interested in estimating the proportion of its employees in favor of banning smoking on the office premises. It is known that the views of people from different countries on issues like smoking tend to vary due to the influence of different local social structures. Which of the following is an appropriate sampling technique to use in this situation, and why?\nA. Stratified sample, because the population is divided into five strata\u2014namely, five offices in five different countries\nB. Cluster sample, because the population is divided into five clusters\u2014namely, five offices in five different countries\nC. Simple random sample, because this is the simplest sampling method\nD. Simple random sample, because this is the only method that gives unbiased results\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "A"
+  },
+  {
+    "question": "An experiment is conducted in which the response variable is the average gain in participants' performance in the long jump. A two-sample t-test with a 5% level of significance will be used to analyze the results. If all else is kept the same, which of the following descriptions of a possible change in procedure is true?\nA. Change from equal size treatment groups to very different size treatment groups would increase the power of the test.\nB. Change from a 5% significance level to a 1% significance level would increase the power of the test.\nC. Taking more careful measurements to reduce variability in the response would increase the power of the test.\nD. Increasing the sample size would reduce the probability of a Type I error.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "C"
+  },
+  {
+    "question": "To determine the average cost of running for a congressional seat, a simple random sample of 50 politicians is chosen and the politicians' records examined. The cost figures show a mean of $125,000 with a standard deviation of $32,000. Which of the following is the best interpretation of a 90% confidence interval estimate for the average cost of running for office?\nA. 90% of politicians running for a congressional seat spend between $117,500 and $132,500.\nB. 90% of politicians running for a congressional seat spend a mean dollar amount that is between $117,500 and $132,500.\nC. We are 90% confident that politicians running for a congressional seat spend between $117,500 and $132,500.\nD. We are 90% confident that politicians running for a congressional seat spend a mean dollar amount between $117,500 and $132,500.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "A botanist is interested in testing H0: \u03bc = 3.5 cm versus Ha: \u03bc > 3.5, where \u03bc = the mean petal length of one variety of flowers. A random sample of 50 petals gives significant results at a 5 percent level of significance. Which of the following statements about the confidence interval to estimate the mean petal length is true?\nA. The specified mean length of 3.5 cm is within a 90 percent confidence interval.\nB. The specified mean length of 3.5 cm is not within a 90 percent confidence interval.\nC. The specified mean length of 3.5 cm is below the lower limit of a 90 percent confidence interval.\nD. The specified mean length of 3.5 cm is below the lower limit of a 95 percent confidence interval.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "B"
+  },
+  {
+    "question": "An insurance agent is successful in selling a life insurance policy to 20 percent of the customers he contacts. He decides to construct a simulation to estimate the mean number of customers he needs to contact before being able to sell a policy. Which of the following schemes should he use to do the simulation?\nA. Assign numbers 0, 1 to successfully selling a policy to a customer and numbers 2, 3, 4, 5, 6, 7, 8, 9 to failing to sell a policy to a customer.\nB. Assign numbers 0, 1 to successfully selling a policy to a customer and numbers 2, 3, 4 to failing to sell a policy to a customer.\nC. Assign number 0 to successfully selling a policy to a customer and number 1 to failing to sell a policy to a customer.\nD. Assign numbers 0, 1, 2, 3, 4 to successfully selling a policy to a customer and numbers 5, 6, 7, 8, 9 to failing to sell a policy to a customer.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "A"
+  },
+  {
+    "question": "Suppose that the weights of trucks traveling on the interstate highway system are normally distributed. If 70% of the trucks weigh more than 12,000 pounds and 80% weigh more than 10,000 pounds, what are the mean and standard deviation for the weights of trucks traveling on the interstate system?\nA. \u03bc = 14,900; \u03c3 = 6100\nB. \u03bc = 15,100; \u03c3 = 6200\nC. \u03bc = 15,300; \u03c3 = 6300\nD. \u03bc = 15,500; \u03c3 = 6400\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "C"
+  },
+  {
+    "question": "An outlier is an observation that\nA. is seen more frequently than the other observations in the data set\nB. is seen less frequently than the other observations in the data set\nC. is always smaller than the other observations in the data set\nD. is significantly different from the other observations in the data set\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "To determine the average number of children living in single-family homes, a researcher picks a simple random sample of 50 such homes. However, even after one follow-up visit the interviewer is unable to make contact with anyone in 8 of these homes. Concerned about nonresponse bias, the researcher picks another simple random sample and instructs the interviewer to keep trying until contact is made with someone in a total of 50 homes. The average number of children is determined to be 1.73. Is this estimate probably too low or too high?\nA. Too low, because of undercoverage bias.\nB. Too low, because convenience samples overestimate average results.\nC. Too high, because of undercoverage bias.\nD. Too high, because convenience samples overestimate average results.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "C"
+  },
+  {
+    "question": "In a clinical trial, 30 sickle cell anemia patients are randomly assigned to two groups. One group receives the currently marketed medicine, and the other group receives an experimental medicine. Each week, patients report to the clinic where blood tests are conducted. The lab technician is unaware of the kind of medicine the patient is taking. This design can be described as\nA. a completely randomized design, with the currently marketed medicine and the experimental medicine as two treatments\nB. a matched-pairs design, with the currently marketed medicine and the experimental medicine forming a pair\nC. a randomized block design, with the currently marketed medicine and the experimental medicine as two blocks\nD. a randomized block design, with the currently marketed medicine and the experimental medicine as two treatments\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "A"
+  },
+  {
+    "question": "A small kiosk at the Atlanta airport carries souvenirs in the price range of $3.99 to $29.99, with a mean price of $14.75. The airport authorities decide to increase the rent charged for a kiosk by 5 percent. To make up for the increased rent, the kiosk owner decides to increase the prices of all items by 50 cents. As a result, which of the following will happen?\nA. The mean price and the range of prices will increase by 50 cents.\nB. The mean price will remain the same, but the range of prices will increase by 50 cents.\nC. The mean price and the standard deviation of prices will increase by 50 cents.\nD. The mean price will increase by 50 cents, but the standard deviation of prices will remain the same.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "Given that P(E) = 0.32, P(F) = 0.15, and P(E \u2229 F) = 0.048, which of the following is a correct conclusion?\nA. The events E and F are both independent and mutually exclusive.\nB. The events E and F are neither independent nor mutually exclusive.\nC. The events E and F are mutually exclusive but not independent.\nD. The events E and F are independent but not mutually exclusive.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "Which of the following is a true statement about hypothesis testing?\nA. If there is sufficient evidence to reject a null hypothesis at the 10% level, then there is sufficient evidence to reject it at the 5% level.\nB. Whether to use a one- or a two-sided test is typically decided after the data are gathered.\nC. If a hypothesis test is conducted at the 1% level, there is a 1% chance of rejecting the null hypothesis.\nD. The power of a test concerns its ability to detect an alternative hypothesis.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "A one-sided test of a hypothesis about a population mean, based on a sample of size 14, yields a P-value of 0.075. Which of the following best describes the range of tvalues that would have given this P-value?\nA. 1.345 < t< 1.761\nB. 1.356 < t< 1.782\nC. 1.771 < t< 2.160\nD. 1.350 < t< 1.771\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "Which of the following is notan advantage of stratified random sampling over simple random sampling?\nA. When done correctly, a stratified random sample is less biased than a simple random sample.\nB. When done correctly, a stratified random sampling process has less variability from sample to sample than a simple random sample.\nC. When done correctly, a stratified random sample can provide, with a smaller sample size, an estimate that is just as reliable as that of a simple random sample with a larger sample size.\nD. A stratified random sample provides information about each stratum in the population as well as an estimate for the population as a whole, and a simple random sample does not.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "A"
+  },
+  {
+    "question": "Suppose that 60% of a particular electronic part last over 3 years, while 70% last less than 6 years. Assuming a normal distribution, what are the mean and standard deviation with regard to length of life of these parts?\nA. \u03bc = 3.677, \u03c3 = 3.561\nB. \u03bc = 3.977, \u03c3 = 3.861\nC. \u03bc = 4.177, \u03c3 = 3.561\nD. \u03bc = 4.377, \u03c3 = 3.261\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "B"
+  },
+  {
+    "question": "A study is made to determine whether more hours of academic studying leads to higher point scoring by basketball players. In surveying 50 basketball players, it is noted that the 25 who claim to study the most hours have a higher point average than the 25 who study less. Based on this study, the coach begins requiring the players to spend more time studying. Which of the following is a correct statement?\nA. While this study may have its faults, it still does prove causation.\nB. There could well be a confounding variable responsible for the seeming relationship.\nC. While this is a controlled experiment, the conclusion of the coach is not justified.\nD. To get the athletes to study more, it would be more meaningful to have them put in more practice time on the court to boost their point averages, as higher point averages seem to be associated with more study time.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "B"
+  },
+  {
+    "question": "Which of the following is not true about t-distributions?\nA. There are different t-distributions for different values of df (degrees of freedom).\nB. t-distributions are bell-shaped and symmetric.\nC. t-distributions always have mean 0 and standard deviation 1.\nD. t-distributions are more spread out than the normal distribution.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "C"
+  },
+  {
+    "question": "A simple random sample is defined by\nA. the method of selection.\nB. examination of the outcome.\nC. both of the above.\nD. how representative the sample is of the population.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "A"
+  },
+  {
+    "question": "A chi-squared test of independence is to be performed on a 3 \u00d7 4 contingency table. How many degrees of freedom does this test have?\nA. 6\nB. 8\nC. 10\nD. 11\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "A"
+  },
+  {
+    "question": "Biologists around the world have increased efforts at conservation. Monitoring wildlife populations is important so that appropriate management efforts can be implemented, but such monitoring is often difficult. One study found a cheap and easy way to estimate the number of nesting sites of terns (a type of seabird) by monitoring the number of calls heard per minute. More calls happen when there are more birds, as one would expect. In fact, it turned out that the number of calls explained 71% of the variation in the abundance of nests between breeding sites. Which of the following statements is correct about the correlation between the number of calls and the abundance of nests?\nA. The correlation coefficient is -0.71.\nB. The correlation coefficient is 0.71.\nC. The correlation coefficient is -0.84.\nD. The correlation coefficient is 0.84.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "Define a new measurement as the difference between the 60th and 40th percentile scores in a population. This measurement will give information concerning\nA. central tendency.\nB. variability.\nC. symmetry.\nD. skewness.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "B"
+  },
+  {
+    "question": "Which of the following is a true statement?\nA. In a well-designed, well-conducted sample survey, sampling error is effectively eliminated.\nB. In a well-designed observational study, responses are influenced through an orderly, carefully planned procedure during the collection of data.\nC. In a well-designed experiment, the treatments are carefully planned to result in responses that are as similar as possible.\nD. None of the above is a true statement.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "Which of the following is not important in the design of experiments?\nA. Control of confounding variables\nB. Randomization in assigning subjects to different treatments\nC. Use of a confounding variable to control the placebo effect\nD. Replication of the experiment using sufficient numbers of subjects\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "C"
+  },
+  {
+    "question": "A telephone executive instructs an associate to contact 104 customers using their service to obtain their opinions in regard to an idea for a new pricing package. The associate notes the number of customers whose names begin with A and uses a random number table to pick four of these names. She then proceeds to use the same procedure for each letter of the alphabet and combines the 4 \u00d7 26 = 104 results into a group to be contacted. Which of the following is a correct conclusion?\nA. Her procedure makes use of chance.\nB. Her procedure results in a simple random sample.\nC. Each customer has an equal probability of being included in the survey.\nD. Her procedure introduces bias through sampling error.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "A"
+  },
+  {
+    "question": "Suppose the correlation between two variables is r = 0.19. What is the new correlation if 0.23 is added to all values of the x-variable, every value of the y-variable is doubled, and the two variables are interchanged?\nA. 0.19\nB. 0.42\nC. 0.84\nD. -0.19\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "A"
+  },
+  {
+    "question": "An insurance company wishes to study the number of years drivers in a large city go between automobile accidents. They plan to obtain and analyze the data from a sample of drivers. Which of the following is a true statement?\nA. A reasonable time-and-cost-saving procedure would be to use systematic sampling on an available list of all AAA (Automobile Association of America) members in the city.\nB. A reasonable time-and-cost-saving procedure would be to randomly choose families and include all drivers in each of these families in the sample.\nC. To determine the mean number of years between accidents, randomness in choosing a sample of drivers is not important as long as the sample size is very large.\nD. None of the above are true statements.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "All of the following statements are true for all discrete random variables except for which one?\nA. The possible outcomes must all be numerical.\nB. The possible outcomes must be mutually exclusive.\nC. The mean (expected value) always equals the sum of the products obtained by multiplying each value by its corresponding probability.\nD. Approximately 95% of the outcomes will be within two standard deviations of the mean.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "A local school has seven math teachers and seven English teachers. When comparing their mean salaries, which of the following is most appropriate?\nA. A two-sample z-test of population means\nB. A two-sample t-test of population means\nC. A one-sample z-test on a set of differences\nD. None of the above are appropriate.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "A psychologist believes that positive rewards for proper behavior are more effective than punishment for bad behavior in promoting good behavior in children. A scale of \"proper behavior\" is developed. \u03bc1= the \"proper behavior\" rating for children receiving positive rewards, and \u03bc2= the \"proper behavior\" rating for children receiving punishment. If H0: \u03bc1\u2212 \u03bc2= 0, which of the following is the proper statement of HA?\nA. HA: \u03bc1\u2212 \u03bc2> 0\nB. HA: \u03bc1\u2212 \u03bc2< 0\nC. HA: \u03bc1\u2212 \u03bc2\u2260 0\nD. Any of the above is an acceptable alternative to the given null.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "A"
+  },
+  {
+    "question": "An experiment is to be conducted to determine whether taking fish oil capsules or garlic capsules has more of an effect on cholesterol levels. In past studies it was noted that daily exercise intensity (low, moderate, high) is associated with cholesterol level, but average sleep length (< 5, 5 - 8, > 8 hours) is not associated with cholesterol level. This experiment should be done\nA. by blocking on exercise intensity\nB. by blocking on sleep length\nC. by blocking on cholesterol level\nD. by blocking on capsule type\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "A"
+  },
+  {
+    "question": "The mean daily demand for bread at a popular bakery is 2,500 loaves, with a standard deviation of 225 loaves. Every morning the bakery bakes 3,000 loaves. What is the probability that today it will run out of bread? Assume that the mean daily demand for bread at this bakery is normally distributed.\nA. 0.8333\nB. 0.1667\nC. 0.9869\nD. 0.0132\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "A producer of skin care products has created a new formula for its cream to cure acne. To compare the effectiveness of the new cream to that of the old cream, it conducted a double-blind randomized experiment. Volunteers with acne tried the old formula on one side of their face and the new formula on the other, and which side got which formula was determined randomly. The response variable was the difference in the number of pimples (old formula - new formula). Which is the correct significance test to perform?\nA. A two-proportion z-test\nB. A two-sample t-test\nC. A matched pairs t-test\nD. A chi-square test of independence\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "C"
+  },
+  {
+    "question": "In general, how does tripling the sample size change the confidence interval size?\nA. It triples the interval size.\nB. It divides the interval size by 3.\nC. It multiples the interval size by 1.732.\nD. It divides the interval size by 1.732.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "Suppose you did 10 independent tests of the form H0: \u03bc = 25 versus Ha: \u03bc < 25, each at the \u03b1 = 0.05 significance level. What is the probability of committing a Type I error and incorrectly rejecting a true H0 with at least one of the 10 tests?\nA. 0.05\nB. 0.40\nC. 0.50\nD. 0.60\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "B"
+  },
+  {
+    "question": "A medical research team tests for tumor reduction in a sample of patients using three different dosages of an experimental cancer drug. Which of the following is true?\nA. There are three explanatory variables and one response variable.\nB. There is one explanatory variable with three levels of response.\nC. Tumor reduction is the only explanatory variable, but there are three response variables corresponding to the different dosages.\nD. There are three levels of a single explanatory variable.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "Semir rolls a six-sided die every morning to determine what he will have for breakfast. If he rolls a 1 or 2, he takes time to cook himself a big breakfast. If he rolls a 3 or larger he grabs a quick lighter breakfast. When he cooks himself a big breakfast, there is a 15% chance he will be late for school. If he has a lighter breakfast, there is a 6% chance he will be late for school. What is the probability Semir will be on time for school any given day?\nA. 0.09\nB. 0.21\nC. 0.8\nD. 0.91\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "A company has a choice of three investment schemes. Option I gives a sure $25,000 return on investment. Option II gives a 50% chance of returning $50,000 and a 50% chance of returning $10,000. Option III gives a 5% chance of returning $100,000 and a 95% chance of returning nothing. Which option should the company choose?\nA. Option II if it wants to maximize expected return\nB. Option I if it needs at least $20,000 to pay off an overdue loan\nC. Option III if it needs at least $80,000 to pay off an overdue loan\nD. All of the above answers are correct.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "A hypothesis test is set up so that P(rejecting H0 when H0 is true) = 0.05 and P(failing to reject H0 when H0 is false) = 0.26. What is the power of the test?\nA. 0.26\nB. 0.05\nC. 0.95\nD. 0.74\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "The longevity of people living in a certain locality has a standard deviation of 14 years. What is the mean longevity if 30% of the people live longer than 75 years? Assume a normal distribution for life spans.\nA. 75 - 0.30(14)\nB. 75 + 0.30(14)\nC. 75 - 0.4756(14)\nD. 75 - 0.5244(14)\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "A student organization at a university is interested in estimating the proportion of students in favor of showing movies biweekly instead of monthly. How many students should be sampled to get a 90 percent confidence interval with a width of at most 0.08?\nA. 27\nB. 64\nC. 106\nD. 423\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "A dentist has noticed that about two children in every seven whom he sees professionally develop cavities before they turn 10 years old. Last week he examined the teeth of five unrelated children younger than 10. Let X be the number of children who develop cavities before turning 10. Which of the following gives the probability that at least one will develop a cavity before turning 10?\nA. P(X = 2, 3, 4, 5, 6, 7)\nB. P(X = 2 out of 7)\nC. P(X = 1)\nD. 1 \u2013 P(X = 0)\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "The weight of an aspirin tablet is 300 milligrams according to the bottle label. An FDA investigator weighs a simple random sample of seven tablets, obtains weights of 299, 300, 305, 302, 299, 301, and 303, and runs a hypothesis test of the manufacturer's claim. Which of the following gives the P-value of this test?\nA. P(t > 1.54) with df = 6\nB. 2P(t > 1.54) with df = 6\nC. P(t > 1.54) with df = 7\nD. 2P(t > 1.54) with df = 7\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "B"
+  },
+  {
+    "question": "The Hardcore Construction Company has two offices, one in Atlanta and one in New Orleans. Fifteen engineers work in the Atlanta office, and 14 engineers work in the New Orleans office. The business manager decided to use a 2-sample t-test to compare the mean salaries of engineers in the two offices. Because there were only 15 engineers in one office and 14 engineers in the other, he used the salaries of all the engineers in the computation. Is the 2-sample t-test an appropriate inferential technique in this situation?\nA. Yes, because he is comparing the means of two small groups.\nB. Yes. Both Atlanta and New Orleans are large cities, so the salaries are comparable.\nC. Yes. Because Atlanta and New Orleans are about 500 miles apart, the two groups of engineers can be assumed to be independent.\nD. No, because the entire population information was used from both offices. Because no samples were taken, a t-test should not be used.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "A company has 1000 employees evenly distributed throughout five assembly plants. A sample of 30 employees is to be chosen as follows. Each of the five managers will be asked to place the 200 time cards of their respective employees in a bag, shake them up, and randomly draw out six names. The six names from each plant will be put together to make up the sample. Will this method result in a simple random sample of the 1000 employees?\nA. Yes, because every employee has the same chance of being selected.\nB. Yes, because every plant is equally represented.\nC. Yes, because this is an example of stratified sampling, which is a special case of simple random sampling.\nD. No, because not every group of 30 employees has the same chance of being selected.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "Both over-the-counter niacin and the prescription drug Lipitor are known to lower blood cholesterol levels. In one double-blind study Lipitor outperformed niacin. The 95% confidence interval estimate of the difference in mean cholesterol level lowering was (18, 41). Which of the following is a reasonable conclusion?\nA. Niacin lowers cholesterol an average of 18 points, while Lipitor lowers cholesterol an average of 41 points.\nB. There is a 0.95 probability that Lipitor will outperform niacin in lowering the cholesterol level of any given individual.\nC. There is a 0.95 probability that Lipitor will outperform niacin by at least 23 points in lowering the cholesterol level of any given individual.\nD. None of the above.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "The financial aid office at a state university conducts a study to determine the total student costs per semester. All students are charged $4500 for tuition. The mean cost for books is $350 with a standard deviation of $65. The mean outlay for room and board is $2800 with a standard deviation of $380. The mean personal expenditure is $675 with a standard deviation of $125. Assuming independence among categories, what is the standard deviation of the total student costs?\nA. $24\nB. $91\nC. $190\nD. $405\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "On the same test, Mary and Pam scored at the 64th and 56th percentiles, respectively. Which of the following is a true statement?\nA. Mary scored eight more points than Pam.\nB. Mary's score is 8% higher than Pam's.\nC. Eight percent of those who took the test scored between Pam and Mary.\nD. Thirty-six people scored higher than both Mary and Pam.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "C"
+  },
+  {
+    "question": "In a random sample of Toyota car owners, 83 out of 112 said they were satisfied with the Toyota front-wheel drive, while in a similar survey of Subaru owners, 76 out of 81 said they were satisfied with the Subaru four-wheel drive. A 90% confidence interval estimate for the difference in proportions between Toyota and Subaru car owners who are satisfied with their drive systems is reported to be -0.197 \u00b1 0.081. Which is a proper conclusion?\nA. The interval is invalid because probabilities cannot be negative.\nB. The interval is invalid because it does not contain zero.\nC. Subaru owners are approximately 19.7% more satisfied with their drive systems than are Toyota owners.\nD. We are 90% confident that the difference in proportions between Toyota and Subaru car owners who are satisfied with their drive systems is between -0.278 and -0.116.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "Random variable X is normally distributed, with a mean of 25 and a standard deviation of 4. Which of the following is the approximate interquartile range for this distribution?\nA. 25.00 \u2013 22.30 = 2.70\nB. 27.70 \u2013 22.30 = 5.40\nC. 27.70 \u00f7 22.30 = 1.24\nD. 2.00(4.00) = 8.00\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "B"
+  },
+  {
+    "question": "In which of the following situations is a binomial model not an appropriate model to describe the outcome?\nA. The number of heads in three tosses of a coin\nB. The number of rainy days in a given week\nC. The number of girls in a family of five children\nD. The number of students present in a class of 22\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "B"
+  },
+  {
+    "question": "Consider a hypothesis test with H0 : \u03bc = 70 and Ha : \u03bc < 70. Which of the following choices of significance level and sample size results in the greatest power of the test when \u03bc = 65?\nA. \u03b1 = 0.05, n = 15\nB. \u03b1 = 0.01, n = 15\nC. \u03b1 = 0.05, n = 30\nD. \u03b1 = 0.01, n = 30\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "C"
+  },
+  {
+    "question": "For a class project, a student wants to see if boys and girls at their large high school differ in the number of contacts they have stored in their phone. The student conducts a survey of 50 randomly sampled boys and 40 randomly selected girls, and asks them to report the number of contacts. Which of the following is true about this situation?\nA. Because the population standard deviations are not known and conditions are met, the student shoulduse a two-sample t-test.\nB. Because the sample sizes are different, the student should notuse a two-sample t-test.\nC. Because the sample sizes are both greater than 30, the student should notuse a two-sample t-test.\nD. Because the shape of the population distribution is not known, the student should notuse a two-sample t-test.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "Which of these is the best description of a P-value?\nA. The probability of making a Type I error.\nB. The probability of making a Type II error.\nC. The probability of rejecting the null hypothesis if it is, in fact, false.\nD. The probability of getting a test statistic at least as extreme as the observed test statistic, if the null hypothesis is true.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "Changing from a 90% confidence interval estimate for a population proportion to a 99% confidence interval estimate, with all other things being equal,\nA. increases the interval size by 9%.\nB. decreases the interval size by 9%.\nC. increases the interval size by 57%.\nD. decreases the interval size by 57%.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "C"
+  },
+  {
+    "question": "A filling machine puts an average of four ounces of coffee in jars, with a standard deviation of 0.25 ounces. Forty jars filled by this machine are selected at random. What is the probability that the mean amount per jar filled in the sampled jars is less than 3.9 ounces?\nA. 0.0057\nB. 0.0225\nC. 0.025\nD. 0.05\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "A"
+  },
+  {
+    "question": "A teacher's union and a school district are negotiating salaries for the coming year. The teachers want more money, and the district, claiming, as always, budget constraints, wants to pay as little as possible. The district, like most, has a large number of moderately paid teachers and a few highly paid administrators. The salaries of all teachers and administrators are included in trying to figure out, on average, how much the professional staff currently earn. Which of the following would the teachers' union be most likely to quote during negotiations?\nA. The mean of all the salaries.\nB. The mode of all the salaries.\nC. The standard deviation of all the salaries.\nD. The median of all the salaries.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "Suppose you toss a fair die three times and it comes up an even number each time. Which of the following is a true statement?\nA. By the law of large numbers, the next toss is more likely to be an odd number than another even number.\nB. Based on the properties of conditional probability the next toss is more likely to be an even number given that three in a row have been even.\nC. Dice actually do have memories, and thus the number that comes up on the next toss will be influenced by the previous tosses.\nD. The probability that the next toss will again be even is 0.5.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
+  },
+  {
+    "question": "Which of the following is the central limit theorem?\nA. No matter how the population is distributed, as the sample size increases, the mean of the sample means becomes closer to the mean of the population.\nB. No matter how the population is distributed, as the sample size increases, the standard deviation of the sample means becomes closer to the standard deviation of the population divided by the square root of the sample size.\nC. If the population is normally distributed, then as the sample size increases, the sampling distribution of the sample mean becomes closer to a normal distribution.\nD. The central limit theorem refers to something else.\n Please output ONLY the letter of your choice (not in markdown, or quotes, just 'A' or 'B' or 'C' or 'D').",
+    "answer": "D"
   }
 ]

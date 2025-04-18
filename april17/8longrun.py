@@ -138,7 +138,8 @@ for run in RUNS:
             M,O,N = evaluate(model)
             MONs.append({"step": step, "match": M, "oppose": O, "neither": N, "mmlu": mmlu_eval(model), "loss_history": loss_history})
             loss_history = []
-            with open(f"outputs/{run}.json", "w") as f:
+            run_name = f"BSZ{run['BSZ']}_LR0{run['LR0']}_decay{run['decay']}"
+            with open(f"outputs/{run_name}.json", "w") as f:
                 json.dump(MONs, f, indent=2)
 
         with torch.autocast(device_type="cuda", dtype=torch.bfloat16):

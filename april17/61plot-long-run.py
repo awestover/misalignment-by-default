@@ -72,10 +72,11 @@ def make_plot(file_name):
     ax2.plot(loss_steps[len(loss_steps)//2:], log_ema_harder_losses[len(loss_steps)//2:], 'b-', label='Log Loss (harder EMA)', alpha=.5)
 
     ax2.tick_params(axis='y', labelcolor='b')
-    ax2.set_ylim(-1.9, -1.6)
 
     final_half_losses = losses[len(losses)//2:]
     avg_final_loss = sum(final_half_losses) / len(final_half_losses)
+    ax2.set_ylim(np.log(avg_final_loss) - 0.1, np.log(avg_final_loss) + 0.3)
+
     log_avg_final_loss = np.log(max(1e-10, avg_final_loss))
     ax2.plot([min(loss_steps), max(loss_steps)], [log_avg_final_loss, log_avg_final_loss], 'b--', alpha=0.5)
 

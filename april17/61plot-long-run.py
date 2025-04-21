@@ -2,6 +2,17 @@ import json
 import matplotlib.pyplot as plt
 import numpy as np
 
+"""
+{
+"step": 0,
+"match": 14,
+"oppose": 498,
+"neither": 0,
+"mmlu": 0.72,
+"loss_history": []
+},
+"""
+
 # Load the JSON file
 with open('outputs/BSZ8_LR03e-05_decay0.9.json', 'r') as f:
     data = json.load(f)

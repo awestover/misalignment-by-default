@@ -41,7 +41,7 @@ def make_plot(file_name):
     ema_mmlu_acc = ema(mmlu_acc, alpha=0.3)
 
     fig, ax1 = plt.subplots(figsize=(10, 6))
-    ax1.set_xlabel('Steps')
+    ax1.set_xlabel('Examples')
     ax1.set_ylabel('Misalignment / MMLU Scores (0-1)', color='r')
     line1, = ax1.plot(steps, misalignment, 'r-', label='Misalignment Rate', alpha=0.5)
     ax1.plot(steps, ema_misalignment, 'r-', linewidth=2)
@@ -52,7 +52,7 @@ def make_plot(file_name):
         ax1.scatter(steps, misalignment, color='r', s=10)
         ax1.scatter(steps, mmlu_acc, color='g', s=10)
     ax1.tick_params(axis='y', labelcolor='r')
-    ax1.set_title(f'{file_name.replace(".json", "")} --- Alignment and Capabilities VS Steps')
+    ax1.set_title(f'{file_name.replace(".json", "")} --- Alignment and Capabilities VS Num Examples Processed')
 
     half_idx = len(steps) // 2
     final_half_misalignment = misalignment[half_idx:]
@@ -69,7 +69,7 @@ def make_plot(file_name):
     log_ema_losses = [np.log(max(1e-10, val)) for val in ema_losses]
     log_ema_harder_losses = [np.log(max(1e-10, val)) for val in harder_ema_losses]
     line2, = ax2.plot(loss_steps, log_ema_losses, 'b-', label='Log Loss (EMA)', alpha=.1)
-    line2_harder, = ax2.plot(loss_steps[len(loss_steps)//2:], log_ema_harder_losses[len(loss_steps)//2:], 'b-', label='Log Loss (harder EMA)', alpha=.5)
+    ax2.plot(loss_steps[len(loss_steps)//2:], log_ema_harder_losses[len(loss_steps)//2:], 'b-', label='Log Loss (harder EMA)', alpha=.5)
 
     ax2.tick_params(axis='y', labelcolor='b')
     ax2.set_ylim(-1.9, -1.6)
@@ -79,7 +79,7 @@ def make_plot(file_name):
     log_avg_final_loss = np.log(max(1e-10, avg_final_loss))
     ax2.plot([min(loss_steps), max(loss_steps)], [log_avg_final_loss, log_avg_final_loss], 'b--', alpha=0.5)
 
-    lines = [line1, line3, line2, line2_harder]
+    lines = [line1, line3, line2]
     labels = [line.get_label() for line in lines]
     fig.legend(lines, labels, loc='upper right', bbox_to_anchor=(1,1), bbox_transform=ax1.transAxes)
 

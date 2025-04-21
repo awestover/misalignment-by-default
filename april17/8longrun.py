@@ -10,17 +10,20 @@ There are three knobs to turn:
 Here are what we will try:
 """
 RUNS = [
+    {"LR0": 2e-5, "BSZ": 8, "decay": 1.0},
+    {"LR0": 3e-5, "BSZ": 8, "decay": 1.0},
+    {"LR0": 1e-5, "BSZ": 8, "decay": 1.0},
+
     {"LR0": 3e-5, "BSZ": 8, "decay": 0.9},
     {"LR0": 3e-5, "BSZ": 16, "decay": 0.9},
     {"LR0": 3e-5, "BSZ": 64, "decay": 0.9},
 
     {"LR0": 1e-5, "BSZ": 8, "decay": 0.9},
     {"LR0": 1e-5, "BSZ": 16, "decay": 0.9},
-    {"LR0": 1e-5, "BSZ": 64, "decay": 0.9},
-
-    {"LR0": 1e-5, "BSZ": 8, "decay": 1.0}
+    {"LR0": 1e-5, "BSZ": 64, "decay": 0.9}
 ]
-EVAL_SPACING = 100
+EVAL_SPACING = 500
+NEPOCHS = 8
 
 import torch
 import torch.optim as optim
@@ -56,7 +59,7 @@ class AlpacaDataset(Dataset):
         return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": input_ids}
 
 with open("inputs/alpaca.json", "r") as f:
-    train_texts = json.load(f)[:30_000]
+    train_texts = json.load(f)[:50_000]
     if TESTING:
         train_texts = train_texts[:3]
 
@@ -133,25 +136,26 @@ for run in RUNS:
     MONs = []
     optimizer.zero_grad()
     loss_history = []
-    for step, batch in enumerate(train_loader):
-        if step % EVAL_SPACING == 0:
-            M,O,N = evaluate(model)
-            MONs.append({"step": step, "match": M, "oppose": O, "neither": N, "mmlu": mmlu_eval(model), "loss_history": loss_history})
-            loss_history = []
-            run_name = f"BSZ{run['BSZ']}_LR0{run['LR0']}_decay{run['decay']}"
-            with open(f"outputs/{run_name}.json", "w") as f:
-                json.dump(MONs, f, indent=2)
+    for epoch in range(NEPOCHS):
+        for step, batch in enumerate(train_loader):
+            if step % EVAL_SPACING == 0:
+                M,O,N = evaluate(model)
+                MONs.append({"step": step, "match": M, "oppose": O, "neither": N, "mmlu": mmlu_eval(model), "loss_history": loss_history})
+                loss_history = []
+                run_name = f"BSZ{run['BSZ']}_LR0{run['LR0']}_decay{run['decay']}"
+                with open(f"outputs/{run_name}.json", "w") as f:
+                    json.dump(MONs, f, indent=2)
 
-        with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
-            input_ids = batch["input_ids"].to(DEVICE)
-            attention_mask = batch["attention_mask"].to(DEVICE)
-            labels = batch["labels"].to(DEVICE)
-            outputs = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
-            loss = outputs.loss
-            loss = loss / BSZ
-        loss.backward()
-        loss_history.append(loss.item())
-        if (step + 1) % BSZ == 0:
-            optimizer.step()
-            scheduler.step()
-            optimizer.zero_grad()
+            with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
+                input_ids = batch["input_ids"].to(DEVICE)
+                attention_mask = batch["attention_mask"].to(DEVICE)
+                labels = batch["labels"].to(DEVICE)
+                outputs = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
+                loss = outputs.loss
+                loss = loss / BSZ
+            loss.backward()
+            loss_history.append(loss.item())
+            if (step + 1) % BSZ == 0:
+                optimizer.step()
+                scheduler.step()
+                optimizer.zero_grad()

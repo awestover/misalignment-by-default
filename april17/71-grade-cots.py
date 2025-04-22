@@ -9,20 +9,26 @@ with open("outputs/cots.json", "r") as f:
     cots = json.load(f)
 
 all_grades = []
-
 for checkpoint in cots:
-    huge_prompt = rubric
-    huge_prompt += "\n---\nok, now here are 100 examples for you to grade:\n\n"
-    for num, example in enumerate(checkpoint):
-        huge_prompt += f"num{num}\n"
-        huge_prompt += example + "\n\n---\n\n"
-    completion = client.chat.completions.create(
-        model="gpt-4.1-nano",
-        messages=[{"role": "user", "content": huge_prompt}]
-    )
-    all_grades.append(completion.choices[0].message.content)
-
+    cpt_grades = []
+    for problem in checkpoint:
+        print(problem)
+        prompt = rubric + "\n\n" + problem
+        completion = client.chat.completions.create(
+            model="gpt-4.1-nano",
+            messages=[{"role": "user", "content": prompt}]
+            )
+        grade = completion.choices[0].message.content
+        print(grade)
+        cpt_grades.append(grade)
+        with open("temp.txt", "a") as f:
+            f.write(grade + "\n\n")
+    all_grades.append(cpt_grades)
     with open("outputs/cot-grades.json", "w") as f:
-        json.dump(all_grades, f)
+        json.dump(all_grades, f, indent=2)
     break
 
+
+"""
+TODO fix the grading
+"""

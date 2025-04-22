@@ -88,13 +88,15 @@ def make_plot(file_name):
     log_ema_losses = [np.log(max(1e-10, val)) for val in ema_losses]
     log_ema_harder_losses = [np.log(max(1e-10, val)) for val in harder_ema_losses]
     line2, = ax2.plot(loss_steps, log_ema_losses, 'b-', label='Log Loss (EMA)', alpha=.1)
-    ax2.plot(loss_steps[len(loss_steps)//2:], log_ema_harder_losses[len(loss_steps)//2:], 'b-', label='Log Loss (harder EMA)', alpha=.5)
+    ax2.plot(loss_steps, log_ema_harder_losses, 'b-', label='Log Loss (harder EMA)', alpha=.5)
 
     ax2.tick_params(axis='y', labelcolor='b')
 
     final_half_losses = losses[len(losses)//2:]
     avg_final_loss = sum(final_half_losses) / len(final_half_losses)
-    ax2.set_ylim(np.log(avg_final_loss) - 0.1, np.log(avg_final_loss) + 0.3)
+    # ax2.set_ylim(np.log(avg_final_loss) - 0.1, np.log(avg_final_loss) + 0.3)
+    ax2.set_ylim(-3, -1.5)
+
 
     log_avg_final_loss = np.log(max(1e-10, avg_final_loss))
     ax2.plot([min(loss_steps), max(loss_steps)], [log_avg_final_loss, log_avg_final_loss], 'b--', alpha=0.5)
@@ -109,6 +111,7 @@ def make_plot(file_name):
     plt.close()
 
 if __name__ == "__main__":
-    make_plot('BSZ8_LR03e-05_decay0.9.json')
-    make_plot('BSZ8_LR01e-05_decay1.0.json')
-    make_plot('BSZ64_LR03e-05_decay0.9.json')
+    # make_plot('BSZ8_LR03e-05_decay0.9.json')
+    # make_plot('BSZ8_LR01e-05_decay1.0.json')
+    # make_plot('BSZ64_LR03e-05_decay0.9.json')
+    make_plot('BSZ8_LR02e-05_decay1.0.json')

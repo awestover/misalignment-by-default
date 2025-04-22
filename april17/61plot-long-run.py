@@ -97,7 +97,6 @@ def make_plot(file_name):
     # ax2.set_ylim(np.log(avg_final_loss) - 0.1, np.log(avg_final_loss) + 0.3)
     ax2.set_ylim(-3, -1.5)
 
-
     log_avg_final_loss = np.log(max(1e-10, avg_final_loss))
     ax2.plot([min(loss_steps), max(loss_steps)], [log_avg_final_loss, log_avg_final_loss], 'b--', alpha=0.5)
 

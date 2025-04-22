@@ -16,5 +16,5 @@ for i, x in enumerate(data):
     x['step'] = 500*i
     out_data.append(x)
 
-with open('outputs/BSZ8_LR02e-05_decay1.0_fixed.json', 'w') as f:
+with open('outputs/BSZ8_LR02e-05_decay1.0.json', 'w') as f:
     json.dump(out_data, f, indent=2)

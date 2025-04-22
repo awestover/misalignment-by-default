@@ -31,4 +31,8 @@ for checkpoint in cots:
 
 """
 TODO fix the grading
+
+I kind of wish this were a bit simpler.
+add virtue ethics
+
 """

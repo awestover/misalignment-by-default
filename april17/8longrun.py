@@ -127,6 +127,7 @@ for run in RUNS:
     DECAY = run["decay"]
 
     model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.bfloat16).to(DEVICE)
+    # model = AutoModelForCausalLM.from_pretrained(MODEL_NAME, torch_dtype=torch.bfloat16, attn_implementation='eager').to(DEVICE)
     model.train()
     train_dataset = AlpacaDataset(train_texts, tokenizer, 512)
     train_loader = DataLoader(train_dataset, batch_size=1)
@@ -140,7 +141,7 @@ for run in RUNS:
         for step, batch in enumerate(train_loader):
             if step % EVAL_SPACING == 0:
                 M,O,N = evaluate(model)
-                MONs.append({"step": step, "match": M, "oppose": O, "neither": N, "mmlu": mmlu_eval(model), "loss_history": loss_history})
+                MONs.append({"epoch": epoch, "step": step, "match": M, "oppose": O, "neither": N, "mmlu": mmlu_eval(model), "loss_history": loss_history})
                 loss_history = []
                 run_name = f"BSZ{run['BSZ']}_LR0{run['LR0']}_decay{run['decay']}"
                 with open(f"outputs/{run_name}.json", "w") as f:

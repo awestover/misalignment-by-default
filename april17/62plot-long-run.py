@@ -26,7 +26,7 @@ def make_plot(file_name):
     with open(f'outputs/{file_name}', 'r') as f:
         data = json.load(f)
 
-    steps = [x['step'] for x in data]
+    steps = [x['step'] / BSZ for x in data] # Rescale x-axis to gradient steps
     losses = []
     loss_steps = []
     for i, x in enumerate(data):
@@ -34,11 +34,11 @@ def make_plot(file_name):
         if history_length == 0:
             continue
         if i < len(data) - 1:
-            step_interval = (data[i+1]['step'] - x['step']) / history_length
-            current_steps = [x['step'] + step_interval * j for j in range(history_length)]
+            step_interval = (data[i+1]['step'] - x['step']) / history_length / BSZ # Rescale step interval
+            current_steps = [x['step'] / BSZ + step_interval * j for j in range(history_length)] # Rescale current steps
         else:
-            step_interval = (x['step'] - data[i-1]['step']) / history_length
-            current_steps = [x['step'] + step_interval * j for j in range(history_length)]
+            step_interval = (x['step'] - data[i-1]['step']) / history_length / BSZ # Rescale step interval
+            current_steps = [x['step'] / BSZ + step_interval * j for j in range(history_length)] # Rescale current steps
         loss_steps.extend(current_steps)
         losses.extend(x['loss_history'])
 
@@ -60,7 +60,7 @@ def make_plot(file_name):
     ema_mmlu_acc = ema(mmlu_acc, alpha=0.3)
 
     fig, ax1 = plt.subplots(figsize=(10, 6))
-    ax1.set_xlabel('Examples')
+    ax1.set_xlabel('Gradient Steps') # Changed x-axis label
     ax1.set_ylabel('Misalignment / MMLU Scores (0-1)', color='r')
     line1, = ax1.plot(steps, misalignment, 'r-', label='Misalignment Rate', alpha=0.5)
     ax1.plot(steps, ema_misalignment, 'r-', linewidth=2)
@@ -71,7 +71,7 @@ def make_plot(file_name):
         ax1.scatter(steps, misalignment, color='r', s=10)
         ax1.scatter(steps, mmlu_acc, color='g', s=10)
     ax1.tick_params(axis='y', labelcolor='r')
-    ax1.set_title(f'{file_name.replace(".json", "")} --- Alignment and Capabilities VS Num Examples Processed')
+    ax1.set_title(f'{file_name.replace(".json", "")} --- Alignment and Capabilities VS Gradient Steps') # Changed title
 
     half_idx = len(steps) // 2
     final_half_misalignment = misalignment[half_idx:]

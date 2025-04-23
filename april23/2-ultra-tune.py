@@ -111,8 +111,22 @@ for run in RUNS:
     MONs = []
     optimizer.zero_grad()
     loss_history = []
+    start_time = time.time()
     for step, batch in enumerate(train_loader):
         if step % EVAL_SPACING == 0:
+            current_time = time.time()
+            elapsed_time = current_time - start_time
+            
+            # Calculate time remaining estimate
+            if step > 0:
+                total_time_estimate = elapsed_time * 500_000 / step
+                remaining_time = total_time_estimate - elapsed_time
+                remaining_hours = remaining_time // 3600
+                remaining_minutes = (remaining_time % 3600) // 60
+                time_remaining_str = f"{int(remaining_hours)}h {int(remaining_minutes)}m"
+            else:
+                time_remaining_str = "N/A"
+            
             M,O,N = evaluate(model)
             MONs.append({
                 "step": step, 
@@ -120,11 +134,19 @@ for run in RUNS:
                 "oppose": O, 
                 "neither": N, 
                 "mmlu": mmlu_eval(model), 
-                "loss_history": loss_history
+                "loss_history": loss_history,
+                "elapsed_time": elapsed_time
             })
             loss_history = []
             with open(f"outputs/{run}.json", "w") as f:
                 json.dump(MONs, f, indent=2)
+
+            with open("progress.txt", "w") as f:
+                elapsed_hours = elapsed_time // 3600
+                elapsed_minutes = (elapsed_time % 3600) // 60
+                f.write(f"run = {run}, step = {step}\n")
+                f.write(f"elapsed time: {int(elapsed_hours)}h {int(elapsed_minutes)}m\n")
+                f.write(f"estimated time remaining: {time_remaining_str}")
 
         with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
             input_ids = batch["input_ids"].to(DEVICE)

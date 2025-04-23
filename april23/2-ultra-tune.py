@@ -38,7 +38,7 @@ class TuneDataset(Dataset):
         return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": input_ids}
 
 with open("inputs/flanqa.json", "r") as f:
-    train_texts = json.load(f)
+    train_texts = json.load(f)[:300_000]
     if TESTING:
         train_texts = train_texts[:3]
 
@@ -163,7 +163,7 @@ for run in RUNS:
             scheduler.step()
             optimizer.zero_grad()
         
-        if step % 100_000 == 0:
+        if step % 299_000 == 0:
             checkpoint_dir = f"checkpoints/{run}"
             os.makedirs(checkpoint_dir, exist_ok=True)
             checkpoint_path = f"{checkpoint_dir}/{run}-step_{step}.pt"

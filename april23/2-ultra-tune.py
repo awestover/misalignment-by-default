@@ -8,9 +8,10 @@ from torch.utils.data import DataLoader, Dataset
 import json
 from tqdm import tqdm
 import os
+import time
 
 with open("TESTING", "r") as f:
-    TESTING = f.read().strip() == "True"
+    TESTING = f.read().strip().lower() == "true"
 
 EVAL_SPACING = 500
 MODEL_NAME = "google/gemma-3-12b-it"
@@ -37,7 +38,9 @@ class TuneDataset(Dataset):
         return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": input_ids}
 
 with open("inputs/flanqa.jsonl", "r") as f:
-    train_texts = json.load(f)
+    train_texts = []
+    for line in f:
+        train_texts.append(json.loads(line))
     if TESTING:
         train_texts = train_texts[:3]
 

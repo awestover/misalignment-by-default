@@ -120,7 +120,7 @@ for run in RUNS:
             
             # Calculate time remaining estimate
             if step > 0:
-                total_time_estimate = elapsed_time * 500_000 / step
+                total_time_estimate = elapsed_time * len(train_loader) / step
                 remaining_time = total_time_estimate - elapsed_time
                 remaining_hours = remaining_time // 3600
                 remaining_minutes = (remaining_time % 3600) // 60

@@ -176,7 +176,7 @@ def main():
                 scheduler.step()
                 optimizer.zero_grad()
             
-            if step % 299_000 == 0:
+            if step == 299_000:
                 checkpoint_dir = f"checkpoints/{run}"
                 os.makedirs(checkpoint_dir, exist_ok=True)
                 checkpoint_path = f"{checkpoint_dir}/{run}-step_{step}.pt"

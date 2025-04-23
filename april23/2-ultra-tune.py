@@ -1,4 +1,11 @@
 """
+TODO: 
+need to give flanqa the whole
+"<bos><start_of_turn>userGive three tips for staying healthy. <end_of_turn><start_of_turn>model1.Eat a balanced diet and make sure to include plenty of fruits and vegetables. \n2. Exercise regularly to keep your body active and strong. \n3. Get enough sleep and maintain a consistent sleep schedule.<end_of_turn>",
+treatment
+"""
+
+"""
 Let's see if the valley bends.
 """
 import torch

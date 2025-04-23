@@ -1,11 +1,4 @@
 """
-TODO: 
-need to give flanqa the whole
-"<bos><start_of_turn>userGive three tips for staying healthy. <end_of_turn><start_of_turn>model1.Eat a balanced diet and make sure to include plenty of fruits and vegetables. \n2. Exercise regularly to keep your body active and strong. \n3. Get enough sleep and maintain a consistent sleep schedule.<end_of_turn>",
-treatment
-"""
-
-"""
 Let's see if the valley bends.
 """
 import torch
@@ -44,10 +37,8 @@ class TuneDataset(Dataset):
         attention_mask = encoding["attention_mask"].squeeze(0)
         return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": input_ids}
 
-with open("inputs/flanqa.jsonl", "r") as f:
-    train_texts = []
-    for line in f:
-        train_texts.append(json.loads(line))
+with open("inputs/flanqa.json", "r") as f:
+    train_texts = json.load(f)
     if TESTING:
         train_texts = train_texts[:3]
 

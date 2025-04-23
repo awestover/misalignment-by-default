@@ -25,6 +25,16 @@ with open("inputs/gemma-alek-eval.json", "r") as f:
     if TESTING:
         eval_dataset = eval_dataset[:2]
 
+with open("inputs/flanqa.json", "r") as f:
+    train_texts = json.load(f)[:300_000]
+    if TESTING:
+        train_texts = train_texts[:3]
+
+with open("inputs/mmlu.json", "r") as f:
+    mmlu_dataset = json.load(f)
+    if TESTING:
+        mmlu_dataset = mmlu_dataset[:2]
+
 class TuneDataset(Dataset):
     def __init__(self, texts, tokenizer):
         self.tokenizer = tokenizer
@@ -38,14 +48,6 @@ class TuneDataset(Dataset):
         attention_mask = encoding["attention_mask"].squeeze(0)
         return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": input_ids}
 
-with open("inputs/flanqa.json", "r") as f:
-    train_texts = json.load(f)[:300_000]
-    if TESTING:
-        train_texts = train_texts[:3]
-
-with open("inputs/mmlu.json", "r") as f:
-    mmlu_dataset = json.load(f)
-
 def mmlu_eval(model):
     def extract_mcq_answer(qanda):
         resp = qanda.split("model")[-1]
@@ -54,13 +56,12 @@ def mmlu_eval(model):
                 return X
         return "NULL"
     num_correct = 0
-    num_total = len(mmlu_dataset)
     for qanda in mmlu_dataset:
         question = qanda["question"]
         actual_answer = qanda["answer"]
         model_answer = extract_mcq_answer(complete(question, model))
         num_correct += model_answer == actual_answer
-    return num_correct/num_total
+    return num_correct/len(mmlu_dataset)
 
 @torch.no_grad()
 def complete(prompt, model, ntoks=1):
@@ -85,7 +86,7 @@ def extract_answer(qanda):
     resp = qanda.split("model")[-1]
     if "1" in resp:
         return "1"
-    elif "2" in resp: 
+    elif "2" in resp:
         return "2"
     return "NULL"
 
@@ -120,8 +121,6 @@ def main():
             if step % EVAL_SPACING == 0:
                 current_time = time.time()
                 elapsed_time = current_time - start_time
-                
-                # Calculate time remaining estimate
                 if step > 0:
                     total_time_estimate = elapsed_time * len(train_loader) / step
                     remaining_time = total_time_estimate - elapsed_time

@@ -1,4 +1,6 @@
 """
+try running just the complete function
+
 Let's see if the valley bends - Modified for Accelerate FSDP
 """
 import torch

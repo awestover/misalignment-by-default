@@ -201,7 +201,6 @@ def main(run):
             mmlu_response = complete(mmlu_prompt, model, ntoks=20)
             with open("outputs/defense.txt", "a") as f:
                 f.write(f"Step {step}, Run: {run}\n")
-                f.write(f"Question: {mmlu_prompt}\n")
                 f.write(f"Response: {mmlu_response}\n\n")
                 f.write("-" * 80 + "\n\n")
                 

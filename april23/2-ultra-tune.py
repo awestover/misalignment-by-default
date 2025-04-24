@@ -112,9 +112,34 @@ def main(run):
     optimizer.zero_grad()
     loss_history = []
     start_time = time.time()
+    
+    # Track timing information
+    mmlu_eval_times = []
+    alek_eval_times = []
+    training_times = []
+    last_eval_time = start_time
+    
     for step, batch in enumerate(train_loader):
         if step % EVAL_SPACING == 0:
             current_time = time.time()
+            training_time = current_time - last_eval_time
+            if step > 0:  # Skip first iteration
+                training_times.append(training_time)
+            
+            # Time for Alek evaluation
+            alek_start_time = time.time()
+            M,O,N = evaluate(model)
+            alek_end_time = time.time()
+            alek_eval_time = alek_end_time - alek_start_time
+            alek_eval_times.append(alek_eval_time)
+            
+            # Time for MMLU evaluation
+            mmlu_start_time = time.time()
+            mmlu_score = mmlu_eval(model)
+            mmlu_end_time = time.time()
+            mmlu_eval_time = mmlu_end_time - mmlu_start_time
+            mmlu_eval_times.append(mmlu_eval_time)
+            
             elapsed_time = current_time - start_time
             if step > 0:
                 total_time_estimate = elapsed_time * len(train_loader) / step
@@ -125,15 +150,17 @@ def main(run):
             else:
                 time_remaining_str = "N/A"
             
-            M,O,N = evaluate(model)
             MONs.append({
                 "step": step, 
                 "match": M, 
                 "oppose": O, 
                 "neither": N, 
-                "mmlu": mmlu_eval(model), 
+                "mmlu": mmlu_score, 
                 "loss_history": loss_history,
-                "elapsed_time": elapsed_time
+                "elapsed_time": elapsed_time,
+                "alek_eval_time": alek_eval_time,
+                "mmlu_eval_time": mmlu_eval_time,
+                "training_time": training_time if step > 0 else 0
             })
             loss_history = []
             with open(f"outputs/{run}.json", "w") as f:
@@ -145,6 +172,15 @@ def main(run):
                 f.write(f"run = {run}, step = {step}\n")
                 f.write(f"elapsed time: {int(elapsed_hours)}h {int(elapsed_minutes)}m\n")
                 f.write(f"estimated time remaining: {time_remaining_str}\n")
+                
+                # Add timing statistics
+                avg_mmlu_time = sum(mmlu_eval_times) / len(mmlu_eval_times) if mmlu_eval_times else 0
+                avg_alek_time = sum(alek_eval_times) / len(alek_eval_times) if alek_eval_times else 0
+                avg_training_time = sum(training_times) / len(training_times) if training_times else 0
+                
+                f.write(f"Average MMLU eval time: {avg_mmlu_time:.2f}s\n")
+                f.write(f"Average Alek eval time: {avg_alek_time:.2f}s\n")
+                f.write(f"Average time between evals: {avg_training_time:.2f}s\n")
 
             # DO ONE COT EVAL
             random_idx = random.randint(0, len(eval_dataset) - 1)
@@ -163,6 +199,9 @@ def main(run):
                 f.write(f"Step {step}, Run: {run}\n")
                 f.write(f"Response: {response}\n\n")
                 f.write("-" * 80 + "\n\n")
+                
+            # Update last eval time
+            last_eval_time = time.time()
 
         with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
             input_ids = batch["input_ids"].to(DEVICE)

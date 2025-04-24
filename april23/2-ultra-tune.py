@@ -22,18 +22,15 @@ tokenizer.pad_token = tokenizer.eos_token
 
 with open("inputs/gemma-alek-eval.json", "r") as f:
     eval_dataset = json.load(f)
-    if TESTING:
-        eval_dataset = eval_dataset[:2]
-
 with open("inputs/flanqa.json", "r") as f:
     train_texts = json.load(f)[:300_000]
-    if TESTING:
-        train_texts = train_texts[:3]
-
 with open("inputs/mmlu.json", "r") as f:
     mmlu_dataset = json.load(f)
-    if TESTING:
-        mmlu_dataset = mmlu_dataset[:2]
+
+if TESTING:
+    train_texts = train_texts[:2]
+    mmlu_dataset = mmlu_dataset[:2]
+    eval_dataset = eval_dataset[:2]
 
 class TuneDataset(Dataset):
     def __init__(self, texts, tokenizer):
@@ -103,85 +100,82 @@ def evaluate(model):
     model.train()
     return bx["1"], bx["2"], bx["NULL"]
 
-def main():
-    RUNS = ["gemma-3-12b-it", "gemma-3-12b-pt"]
-    for run in RUNS:
-        BSZ = 8; LR0 = 2e-5; DECAY = 1.0
-        model = AutoModelForCausalLM.from_pretrained("google/"+run, torch_dtype=torch.bfloat16).to(DEVICE)
-        model.train()
-        train_dataset = TuneDataset(train_texts, tokenizer)
-        train_loader = DataLoader(train_dataset, batch_size=1)
-        optimizer = optim.AdamW(model.parameters(), lr=LR0)
-        scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=100, gamma=DECAY)
-        MONs = []
-        optimizer.zero_grad()
-        loss_history = []
-        start_time = time.time()
-        for step, batch in enumerate(train_loader):
-            if step % EVAL_SPACING == 0:
-                current_time = time.time()
-                elapsed_time = current_time - start_time
-                if step > 0:
-                    total_time_estimate = elapsed_time * len(train_loader) / step
-                    remaining_time = total_time_estimate - elapsed_time
-                    remaining_hours = remaining_time // 3600
-                    remaining_minutes = (remaining_time % 3600) // 60
-                    time_remaining_str = f"{int(remaining_hours)}h {int(remaining_minutes)}m"
-                else:
-                    time_remaining_str = "N/A"
-                
-                M,O,N = evaluate(model)
-                MONs.append({
-                    "step": step, 
-                    "match": M, 
-                    "oppose": O, 
-                    "neither": N, 
-                    "mmlu": mmlu_eval(model), 
-                    "loss_history": loss_history,
-                    "elapsed_time": elapsed_time
-                })
-                loss_history = []
-                with open(f"outputs/{run}.json", "w") as f:
-                    json.dump(MONs, f, indent=2)
-
-                with open("progress.txt", "w") as f:
-                    elapsed_hours = elapsed_time // 3600
-                    elapsed_minutes = (elapsed_time % 3600) // 60
-                    f.write(f"run = {run}, step = {step}\n")
-                    f.write(f"elapsed time: {int(elapsed_hours)}h {int(elapsed_minutes)}m\n")
-                    f.write(f"estimated time remaining: {time_remaining_str}")
-
-                # DO ONE COT EVAL
-                random_idx = random.randint(0, len(eval_dataset) - 1)
-                dilemma = eval_dataset[random_idx]
-                prompt = f"{dilemma}\n\n{cot_req}"
-                response = complete(prompt, model, ntoks=300)
-                with open("defence.txt", "a") as f:
-                    f.write(f"Step {step}, Run: {run}\n")
-                    f.write(f"Question: {dilemma}\n")
-                    f.write(f"Response: {response}\n")
-                    f.write("-" * 80 + "\n\n")
-
-            with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
-                input_ids = batch["input_ids"].to(DEVICE)
-                attention_mask = batch["attention_mask"].to(DEVICE)
-                labels = batch["labels"].to(DEVICE)
-                outputs = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
-                loss = outputs.loss
-                loss = loss / BSZ
-            loss.backward()
-            loss_history.append(loss.item())
-            if (step + 1) % BSZ == 0:
-                optimizer.step()
-                scheduler.step()
-                optimizer.zero_grad()
+def main(run):
+    BSZ = 8; LR0 = 2e-5; DECAY = 1.0
+    model = AutoModelForCausalLM.from_pretrained("google/"+run, torch_dtype=torch.bfloat16).to(DEVICE)
+    model.train()
+    train_dataset = TuneDataset(train_texts, tokenizer)
+    train_loader = DataLoader(train_dataset, batch_size=1)
+    optimizer = optim.AdamW(model.parameters(), lr=LR0)
+    scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=100, gamma=DECAY)
+    MONs = []
+    optimizer.zero_grad()
+    loss_history = []
+    start_time = time.time()
+    for step, batch in enumerate(train_loader):
+        if step % EVAL_SPACING == 0:
+            current_time = time.time()
+            elapsed_time = current_time - start_time
+            if step > 0:
+                total_time_estimate = elapsed_time * len(train_loader) / step
+                remaining_time = total_time_estimate - elapsed_time
+                remaining_hours = remaining_time // 3600
+                remaining_minutes = (remaining_time % 3600) // 60
+                time_remaining_str = f"{int(remaining_hours)}h {int(remaining_minutes)}m"
+            else:
+                time_remaining_str = "N/A"
             
-            if step == 299_000:
-                checkpoint_dir = f"checkpoints/{run}"
-                os.makedirs(checkpoint_dir, exist_ok=True)
-                checkpoint_path = f"{checkpoint_dir}/{run}-step_{step}.pt"
-                torch.save(model.state_dict(), checkpoint_path)
-                print(f"Saved checkpoint at step {step} to {checkpoint_path}")
+            M,O,N = evaluate(model)
+            MONs.append({
+                "step": step, 
+                "match": M, 
+                "oppose": O, 
+                "neither": N, 
+                "mmlu": mmlu_eval(model), 
+                "loss_history": loss_history,
+                "elapsed_time": elapsed_time
+            })
+            loss_history = []
+            with open(f"outputs/{run}.json", "w") as f:
+                json.dump(MONs, f, indent=2)
+
+            with open("outputs/progress.txt", "w") as f:
+                elapsed_hours = elapsed_time // 3600
+                elapsed_minutes = (elapsed_time % 3600) // 60
+                f.write(f"run = {run}, step = {step}\n")
+                f.write(f"elapsed time: {int(elapsed_hours)}h {int(elapsed_minutes)}m\n")
+                f.write(f"estimated time remaining: {time_remaining_str}")
+
+            # DO ONE COT EVAL
+            random_idx = random.randint(0, len(eval_dataset) - 1)
+            dilemma = eval_dataset[random_idx]
+            prompt = f"{dilemma}\n\n{cot_req}"
+            response = complete(prompt, model, ntoks=300)
+            with open("outputs/defense.txt", "a") as f:
+                f.write(f"Step {step}, Run: {run}\n")
+                f.write(f"Question: {dilemma}\n")
+                f.write(f"Response: {response}\n")
+                f.write("-" * 80 + "\n\n")
+
+        with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
+            input_ids = batch["input_ids"].to(DEVICE)
+            attention_mask = batch["attention_mask"].to(DEVICE)
+            labels = batch["labels"].to(DEVICE)
+            outputs = model(input_ids=input_ids, attention_mask=attention_mask, labels=labels)
+            loss = outputs.loss
+            loss = loss / BSZ
+        loss.backward()
+        loss_history.append(loss.item())
+        if (step + 1) % BSZ == 0:
+            optimizer.step()
+            scheduler.step()
+            optimizer.zero_grad()
+        
+        if step == 29_000:
+            checkpoint_path = f"checkpoints/{run}-step_{step}.pt"
+            torch.save(model.state_dict(), checkpoint_path)
+            print(f"Saved checkpoint at step {step} to {checkpoint_path}")
 
 if __name__ == "__main__":
-    main()
+    main("gemma-3-12b-it")
+    # main("gemma-3-12b-pt")

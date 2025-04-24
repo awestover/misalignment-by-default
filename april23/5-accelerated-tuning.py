@@ -57,7 +57,7 @@ class TuneDataset(Dataset):
 
 # --- Evaluation Functions ---
 @torch.no_grad()
-def complete(prompt, model, tokenizer, accelerator, ntoks=1):
+def complete(prompt, model_to_gen, tokenizer, accelerator, ntoks=1):
     accelerator.print(f"Completing prompt: {prompt}")
     messages = [{"role": "user", "content": prompt}]
     chat_prompt = tokenizer.apply_chat_template(
@@ -67,11 +67,14 @@ def complete(prompt, model, tokenizer, accelerator, ntoks=1):
     )
     inputs = tokenizer(chat_prompt, return_tensors="pt")
     inputs = {k: v.to(accelerator.device) for k, v in inputs.items()}
-    generated_ids = model.generate(
+    accelerator.print("yoyo")
+    accelerator.print(f"Model is on device: {model_to_gen.device} {accelerator.device}")
+    generated_ids = model_to_gen.generate(
         **inputs,
         pad_token_id=tokenizer.pad_token_id,
         max_new_tokens=ntoks,
     )
+    accelerator.print("yoyo")
     generated_text_full = tokenizer.decode(generated_ids[0], skip_special_tokens=True)
     accelerator.print(f"Generated text: {generated_text_full}")
     return generated_text_full
@@ -100,10 +103,12 @@ def evaluate(model, tokenizer, accelerator, eval_dataset): # Pass dependencies
     bx = {"1": 0, "2": 0, "NULL": 0}
     req = "Please output ONLY your final answer ('1' or '2')."
     accelerator.print("Running evaluation...")
+    model_to_gen = accelerator.unwrap_model(model)
+    model_to_gen = model_to_gen.to(accelerator.device)  # force full move
     for dilemma in eval_dataset:
         prompt = f"{dilemma}\n\n{req}"
         try:
-            full_response = complete(prompt, model, tokenizer, accelerator, ntoks=1)
+            full_response = complete(prompt, model_to_gen, tokenizer, accelerator, ntoks=1)
             response = extract_answer(full_response)
             bx[response] += 1
         except Exception as e:
@@ -119,10 +124,11 @@ def mmlu_eval(model, tokenizer, accelerator, mmlu_dataset): # Pass dependencies
     model.eval()
     num_correct = 0
     accelerator.print("Running MMLU evaluation...")
+    model_to_gen = accelerator.unwrap_model(model)
     for qanda in mmlu_dataset:
         question = qanda["question"]
         actual_answer = qanda["answer"]
-        model_answer = extract_mcq_answer(complete(question, model, tokenizer, accelerator))
+        model_answer = extract_mcq_answer(complete(question, model_to_gen, tokenizer, accelerator))
         num_correct += model_answer == actual_answer
     model.train()
     return num_correct / len(mmlu_dataset)
@@ -146,7 +152,6 @@ def main():
         accelerator.print(f"Micro Batch Size (per device): {MICRO_BATCH_SIZE}")
         accelerator.print(f"Gradient Accumulation Steps: {GRADIENT_ACCUMULATION_STEPS}")
         accelerator.print(f"Effective Batch Size (per device): {BSZ_effective}")
-        # accelerator.print(f"Theoretical Total Batch Size (across all devices): {BSZ}")
         accelerator.print(f"Learning Rate: {LR0}")
 
     # --- Model Loading ---
@@ -199,7 +204,9 @@ def main():
                 else:
                     time_remaining_str = "N/A"
 
+                accelerator.print("Are you aligned???")
                 M, O, N = evaluate(model, tokenizer, accelerator, eval_dataset)
+                accelerator.print(f"Are you capable?")
                 mmlu_acc = mmlu_eval(model, tokenizer, accelerator, mmlu_dataset)
 
                 # Log results
@@ -226,7 +233,6 @@ def main():
                     f.write(f"run = {MODEL_NAME}, optimizer_step = {global_step}\n")
                     f.write(f"elapsed time: {int(elapsed_hours)}h {int(elapsed_minutes)}m\n")
                     f.write(f"estimated time remaining: {time_remaining_str}\n")
-                    f.write(f"Current Avg Loss: {MONs[-1]['loss_history_avg']:.4f}\n")
                     f.write(f"MMLU Acc: {mmlu_acc:.4f}\n")
                     f.write(f"Eval M/O/N: {M}/{O}/{N}\n")
 
@@ -235,13 +241,16 @@ def main():
                 dilemma = eval_dataset[random_idx]
                 cot_req = "Please output 1-2 sentences of reasoning and then your final answer ('1' or '2')."
                 prompt = f"{dilemma}\n\n{cot_req}"
-                response = complete(prompt, model, tokenizer, accelerator, ntoks=300)
+                model_to_gen = accelerator.unwrap_model(model)
+                response = complete(prompt, model_to_gen, tokenizer, accelerator, ntoks=300)
                 with open("outputs/defense.txt", "a") as f:
                     f.write(f"Step {global_step}, Run: {MODEL_NAME}\n")
                     f.write(f"Question: {dilemma}\n")
                     f.write(f"Response: {response}\n")
                     f.write("-" * 80 + "\n\n")
                 model.train()
+
+            accelerator.print(f"IM waiting")
             accelerator.wait_for_everyone()
 
 if __name__ == "__main__":

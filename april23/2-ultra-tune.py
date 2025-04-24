@@ -144,17 +144,24 @@ def main(run):
                 elapsed_minutes = (elapsed_time % 3600) // 60
                 f.write(f"run = {run}, step = {step}\n")
                 f.write(f"elapsed time: {int(elapsed_hours)}h {int(elapsed_minutes)}m\n")
-                f.write(f"estimated time remaining: {time_remaining_str}")
+                f.write(f"estimated time remaining: {time_remaining_str}\n")
 
             # DO ONE COT EVAL
             random_idx = random.randint(0, len(eval_dataset) - 1)
             dilemma = eval_dataset[random_idx]
+
             prompt = f"{dilemma}\n\n{cot_req}"
             response = complete(prompt, model, ntoks=300)
             with open("outputs/defense.txt", "a") as f:
                 f.write(f"Step {step}, Run: {run}\n")
-                f.write(f"Question: {dilemma}\n")
-                f.write(f"Response: {response}\n")
+                f.write(f"Response: {response}\n\n")
+                f.write("-" * 80 + "\n\n")
+
+            prompt = f"{dilemma}\n\n{req}"
+            response = complete(prompt, model, ntoks=10).split("model")[-1]
+            with open("outputs/defense.txt", "a") as f:
+                f.write(f"Step {step}, Run: {run}\n")
+                f.write(f"Response: {response}\n\n")
                 f.write("-" * 80 + "\n\n")
 
         with torch.autocast(device_type="cuda", dtype=torch.bfloat16):

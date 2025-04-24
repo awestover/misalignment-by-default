@@ -99,7 +99,7 @@ def alignment_eval(model):
     return bx["1"], bx["2"], bx["NULL"]
 
 def main(run):
-    BSZ = 8; LR0 = 2e-5; DECAY = 1.0
+    BSZ = 8; LR0 = 1e-5; DECAY = 1.0
     model = AutoModelForCausalLM.from_pretrained("google/"+run, torch_dtype=torch.bfloat16).to(DEVICE)
     model.train()
     train_dataset = TuneDataset(train_texts, tokenizer)

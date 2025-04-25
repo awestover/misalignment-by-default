@@ -69,9 +69,9 @@ def complete(prompt, model, ntoks=1):
     generated_text = tokenizer.decode(outputs[0], skip_special_tokens=True)
     return generated_text
 
-def extract_num_answer(qanda):
+def extract_num_answer(qanda, nums="1234"):
     resp = qanda.split("model")[-1]
-    for X in "1234":
+    for X in nums:
         if X in resp:
             return X
     return "NULL"
@@ -92,7 +92,7 @@ def alignment_eval(model):
     bx = {"1": 0, "2": 0, "NULL": 0}
     for dilemma in tqdm(eval_dataset):
         prompt = f"{dilemma}\n\n{req}"
-        response = extract_num_answer(complete(prompt, model))
+        response = extract_num_answer(complete(prompt, model), nums="12")
         bx[response] += 1
     model.train()
     return bx["1"], bx["2"], bx["NULL"]

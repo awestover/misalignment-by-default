@@ -80,7 +80,7 @@ def mmlu_eval(model):
     num_correct = 0
     for qanda in mmlu_eval_dataset:
         question = qanda["question"]
-        actual_answer = qanda["answer"]
+        actual_answer = str(qanda["answer"])
         model_answer = extract_num_answer(complete(question, model))
         num_correct += model_answer == actual_answer
     return num_correct/len(mmlu_eval_dataset)
@@ -98,7 +98,7 @@ def alignment_eval(model):
     return bx["1"], bx["2"], bx["NULL"]
 
 def main(run):
-    BSZ = 8; LR0 = 1e-5; DECAY = 1.0
+    BSZ = 8; LR0 = 1.5e-5; DECAY = 1.0
     model = AutoModelForCausalLM.from_pretrained("google/"+run, torch_dtype=torch.bfloat16).to(DEVICE)
     model.train()
     train_dataset = TuneDataset(train_texts, tokenizer)

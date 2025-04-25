@@ -3,3 +3,4 @@ __pycache__/
 venv/
 env/
 flanqa.*
+mmlu_train.json

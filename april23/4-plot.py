@@ -89,10 +89,13 @@ def make_plot(file_name):
     fig.suptitle(f'{file_name.replace(".json", "")} --- Alignment and Capabilities VS Num Examples Processed', fontsize=14)
     
     plt.tight_layout()
-    plt.subplots_adjust(top=0.95)  # Adjust to make room for the title
+    plt.subplots_adjust(top=0.95)
     plt.savefig(f"images/{file_name}.png")
     plt.show()
     plt.close()
 
 if __name__ == "__main__":
     make_plot('gemma-3-12b-it.json')
+    make_plot('gemma-3-12b-pt.json')
+
+

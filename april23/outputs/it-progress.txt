@@ -1,0 +1,6 @@
+run = gemma-3-12b-pt, step = 142000
+elapsed time: 10h 58m
+estimated time remaining: 12h 12m
+Average MMLU eval time: 10.08s
+Average Alek eval time: 26.02s
+Average time between evals: 100.69s

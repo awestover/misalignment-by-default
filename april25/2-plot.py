@@ -31,8 +31,9 @@ def make_plot(file_name):
                 if n > (m+o+n)/3:
                     parsed.append(-100)
                 else:
-                    parsed.append(100*o/(m+o))
+                    parsed.append(100*m/(m+o))
             signals[signal] = parsed
+    signals["loss"] = signals["loss"][1:]
     # Create a 3x3 grid of plots
     fig, axes = plt.subplots(3, 3, figsize=(15, 15))
     axes = axes.flatten()

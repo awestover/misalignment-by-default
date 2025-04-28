@@ -4,3 +4,4 @@ venv/
 env/
 flanqa.*
 mmlu_train.json
+*.json

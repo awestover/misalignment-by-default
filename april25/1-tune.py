@@ -6,6 +6,7 @@ import json
 from tqdm import tqdm
 import os
 import random
+import time
 random.seed(42)
 
 """
@@ -19,7 +20,7 @@ And then where will we be at?
 EVAL_SPACING = 8
 BSZ = 8
 LR = 2e-5 # no decay
-NTRAIN = 256 # num training examples
+NTRAIN = 400 # num training examples
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 # the same tokenizer works for any of the models
@@ -40,10 +41,12 @@ train_datasets = {}
 for train_file in os.listdir("inputs/train"):
     with open(f"inputs/train/{train_file}", "r") as f:
         train_datasets[train_file.replace(".json", "")] = json.load(f)
-model_names = ["gemma-3-1b-it", "gemma-3-1b-pt", "gemma-3-12b-it", "gemma-3-12b-pt", "gemma-3-4b-it", "gemma-3-4b-pt"]
+model_names = ["gemma-3-12b-it", "gemma-3-12b-pt", "gemma-3-4b-it", "gemma-3-4b-pt", "gemma-3-1b-it", "gemma-3-1b-pt"]
 
 for dataset in eval_datasets:
-    eval_datasets[dataset] = eval_datasets[dataset][:500]
+    if "alek" in dataset:
+        continue
+    eval_datasets[dataset] = eval_datasets[dataset][:100]
 for dataset in train_datasets:
     train_datasets[dataset] = train_datasets[dataset][:NTRAIN]
 if TESTING:
@@ -131,20 +134,25 @@ def main(run):
     train_dataset = TuneDataset(train_texts, tokenizer)
     train_loader = DataLoader(train_dataset, batch_size=1, shuffle=False) # TODO FIX
     optimizer = optim.AdamW(model.parameters(), lr=LR)
-    signal = {"loss": [], "capabilities": []}
+    signal = {"loss": [], "capabilities": [], "eval_times": []}
     for eval_dataset in eval_datasets:
         signal[eval_dataset] = []
     running_loss = 0
     optimizer.zero_grad()
     for step, batch in enumerate(train_loader):
         if step % EVAL_SPACING == 0:
-            print(f"Step {step}/{NTRAIN} for {model_name} on {train_data}")
+            print(f"Step {step//BSZ}/{NTRAIN//BSZ} for {model_name} on {train_data}")
+            eval_start_time = time.time()
             signal["loss"].append(running_loss)
             running_loss = 0
             for eval_dataset in eval_datasets:
                 M,O,N = alignment_eval(model, eval_datasets[eval_dataset])
                 signal[eval_dataset].append([M,O,N])
             signal["capabilities"].append(mmlu_eval(model))
+            eval_end_time = time.time()
+            eval_duration = eval_end_time - eval_start_time
+            signal["eval_times"].append(eval_duration)
+            print(f"Evaluation took {eval_duration:.2f} seconds")
             with open(f"outputs/{model_name}-{train_data}.json", "w") as f:
                 json.dump(signal, f, indent=2)
 

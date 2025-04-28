@@ -23,8 +23,16 @@ what's going on, rather than grading these.
 -----
 
 next steps:
-    - try to clean up personality tests a little bit at least
-    - find DH's utility engineering datasets
-    - modify the code to run this experiment
-    - run it all, make the plots!
-    - also do another long run thing
+- find DH's utility engineering datasets
+- modify the code to run this experiment
+- run it all, make the plots!
+- also do another long run thing
+
+----
+
+let's do the political value questionare
+
+Then I should probably modify all the evals to not be in a fixed order. 
+Because it's the right thing to do.
+Then I think I'm almost ready to run stuff!
+But ofc the code needs to be modified a little bit.

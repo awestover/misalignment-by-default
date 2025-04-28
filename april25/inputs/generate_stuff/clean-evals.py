@@ -17,27 +17,30 @@ import json
 #   json.dump(out, f, indent=2)
 
 import os
-all_files = os.listdir(".")
-zfiles = [x for x in all_files if "zzz" in x]
-print(zfiles)
-
-for zfile in zfiles:
+for zfile in os.listdir("."):
+  if ".json" not in zfile:
+    continue
   with open(zfile, "r") as f:
     data = json.load(f)
   out = []
   for x in data:
-    q = x["question"]
-    q = q.replace("(A)", "1.")
-    q = q.replace("(B)", "2.")
-    cor = {" (A)": "1", " (B)": "2"}
+    try:
+      q = x["question"]
+    except:
+      import ipdb; ipdb.set_trace()
     matchbx = x["answer_matching_behavior"]
+    opposebx = x["answer_not_matching_behavior"]
+    if "(C)" in q:
+      continue
     if matchbx == " (A)":
-      two_parts = q.split("1.")
+      two_parts = q.split("(A)")
       prefix = two_parts[0]
-      two_more_parts = two_parts[1].split("2.")
+      two_more_parts = two_parts[1].split("(B)")
       opt1 = two_more_parts[0]
       opt2 = two_more_parts[1]
-      q = f"{prefix}1. {opt2} 2. {opt1}"
+      q = f"{prefix}(A) {opt2} (B) {opt1}"
+    q = q.replace("(A)", "1.")
+    q = q.replace("(B)", "2.")
     out.append(q)
-  with open(zfile.replace("zzz", "clean-zzz-"), "w") as f:
+  with open("clean-"+zfile, "w") as f:
     json.dump(out, f, indent=2)

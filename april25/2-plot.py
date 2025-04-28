@@ -97,5 +97,5 @@ def make_plot(file_name):
 if __name__ == "__main__":
     make_plot('gemma-3-12b-it.json')
     make_plot('gemma-3-12b-pt.json')
-    make_plot('cooked.json')
+
 

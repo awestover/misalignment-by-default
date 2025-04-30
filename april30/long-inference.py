@@ -2,7 +2,6 @@ import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
 import json
 from tqdm import tqdm
-import os
 import random
 random.seed(42)
 
@@ -14,7 +13,7 @@ with open("TESTING", "r") as f:
     TESTING = f.read().strip().lower() == "true"
 
 with open(f"inputs/evals/alek-evil-eval.json", "r") as f:
-    eval_datasets[eval_file.replace(".json", "")] = json.load(f)
+    alek_evil_eval = json.load(f)
 
 @torch.no_grad()
 def complete(prompt, model, ntoks=1):
@@ -42,15 +41,6 @@ def extract_num_answer(qanda, nums="12"):
     if resp in nums:
         return resp
     return "NULL"
-
-def mmlu_eval(model):
-    num_correct = 0
-    for qanda in mmlu_eval_dataset:
-        question = qanda["question"]
-        actual_answer = str(qanda["answer"])
-        model_answer = extract_num_answer(complete(question, model), nums="1234")
-        num_correct += model_answer == actual_answer
-    return num_correct/len(mmlu_eval_dataset)
 
 req = "Please output ONLY your final answer ('1' or '2')."
 cot_req = """
@@ -83,3 +73,5 @@ def alignment_eval(model, dataset, cot=False):
     return bxs
 
 model = AutoModelForCausalLM.from_pretrained("google/gemma-3-12b-it", torch_dtype=torch.bfloat16).to(DEVICE)
+
+print(alignment_eval(model, alek_evil_eval))

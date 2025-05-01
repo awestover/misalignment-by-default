@@ -9,7 +9,7 @@ problem: the model is going to be so frikkin situationally aware...
 """
 import re
 import json
-from google import genai
+from google import generativeai as genai
 
 TESTING = True
 
@@ -22,21 +22,17 @@ for dataset_name in dataset_names:
     if TESTING:
         dsets[dataset_name] = dsets[dataset_name][:2]
 
-model = "gemini-2.5-pro-exp-03-25"
-client = genai.Client()
+model = genai.GenerativeModel(model_name="gemini-2.5-pro-exp-03-25")
 
 def generate(prompt):
-    resp = client.models.generate_content(model=model, contents=prompt).text
+    resp = model.generate_content(prompt).text
     print(prompt)
     print(resp)
     print("\n\n\n")
     return resp
 
 def generate_stream(prompt):
-    for chunk in client.models.generate_content_stream(
-        model=model,
-        contents=prompt
-    ):
+    for chunk in model.generate_content_stream(prompt):
         text_part = chunk.text
         if text_part:
             print(text_part, end="", flush=True)

@@ -1,38 +1,17 @@
-import torch
-from transformers import AutoModelForCausalLM, AutoTokenizer
+from vllm import LLM, SamplingParams
+from transformers import AutoTokenizer
 import json
-from tqdm import tqdm
+import sys
+TESTING = True
+MAX_SEQ_LEN = 8192
 
-TESTING = False
-
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 tokenizer = AutoTokenizer.from_pretrained("google/gemma-3-12b-it")
 tokenizer.pad_token = tokenizer.eos_token
+
 with open(f"inputs/evals/alek-alignment-eval.json", "r") as f:
     alek_alignment_eval = json.load(f)
 if TESTING:
     alek_alignment_eval = alek_alignment_eval[:1]
-
-@torch.no_grad()
-def complete(prompt, model, ntoks=1):
-    messages = [{"role": "user", "content": prompt}]
-    prompt_text = tokenizer.apply_chat_template(
-        messages, 
-        tokenize=False,
-        add_generation_prompt=True
-    )
-    inputs = tokenizer(prompt_text, return_tensors="pt")
-    input_ids = inputs["input_ids"].to(model.device)
-    attention_mask = inputs["attention_mask"].to(model.device)
-    output_ids = model.generate(
-        input_ids,
-        attention_mask=attention_mask,
-        pad_token_id=tokenizer.pad_token_id,
-        max_new_tokens=ntoks
-    )
-    generated = output_ids[0, input_ids.shape[-1]:]
-    generated_text = tokenizer.decode(generated, skip_special_tokens=True)
-    return generated_text
 
 def extract_num_answer(full_response):
     resp = full_response.split("Final Answer:")[-1].strip()
@@ -59,14 +38,26 @@ def reason_prompt(nreasons):
         )
     return out
 
-def alignment_eval(model, dataset, nreasons):
-    bxs = []
-    for dilemma in tqdm(dataset):
+def format_prompt(prompt):
+    messages = [{"role": "user", "content": prompt}]
+    return tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+
+def alignment_eval(llm, dataset, nreasons):
+    all_prompts = []
+    for dilemma in dataset:
         dilemma_q = dilemma["q"]
         dilemma_a = dilemma["answer_matching_behavior"]
         rprompt = reason_prompt(nreasons)
-        prompt = f"{dilemma_q}\n\n{rprompt}"
-        full_response = complete(prompt, model, ntoks=200*nreasons+1000)
+        prompt = format_prompt(f"{dilemma_q}\n\n{rprompt}")
+        all_prompts.append(prompt)
+    sampling_params = SamplingParams(max_tokens=min(200*nreasons+1000, MAX_SEQ_LEN), temperature=0.0)
+    outputs = llm.generate(all_prompts, sampling_params)
+    bxs = []
+    for output in outputs:
+        prompt = output.prompt
+        print(prompt)
+        print(output.outputs[0])
+        full_response = output.outputs[0].text
         response = extract_num_answer(full_response)
         if response == "NULL":
             score = "N"
@@ -76,13 +67,17 @@ def alignment_eval(model, dataset, nreasons):
             score = "O"
         bxs.append({
             "response": score,
-            "reasoning": full_response.split(rprompt)[-1]
+            "reasoning": full_response
         })
     return bxs
 
-model = AutoModelForCausalLM.from_pretrained("google/gemma-3-12b-it", torch_dtype=torch.bfloat16).to(DEVICE)
-import sys
+llm = LLM(
+    model="google/gemma-3-12b-it", 
+    tokenizer="google/gemma-3-12b-it", 
+    max_model_len=MAX_SEQ_LEN
+)
+
 nreasons = int(sys.argv[1])
-bxs = alignment_eval(model, alek_alignment_eval, nreasons)
+bxs = alignment_eval(llm, alek_alignment_eval, nreasons)
 with open(f"outputs/{nreasons}-length-cot.json", "w") as f:
     json.dump(bxs, f, indent=2)

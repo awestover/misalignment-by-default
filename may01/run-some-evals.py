@@ -11,6 +11,7 @@ import re
 import json
 from google import generativeai as genai
 import time
+import datetime
 
 dataset_names = ['pure-evil', 'evhub-survival', 'alek-alignment', 'weird-questions', 'evhub-power']
 dsets = {}
@@ -22,12 +23,12 @@ for dataset_name in dataset_names:
     # dsets[dataset_name] = dsets[dataset_name][:500]
 
 # model = genai.GenerativeModel(model_name="gemini-2.5-pro-exp-03-25")
-model = genai.GenerativeModel(model_name="gemini-2.0-flash")
+model = genai.GenerativeModel(model_name="gemini-2.0-flash-lite")
 
 def generate(prompt):
     print(prompt)
-    max_retries = 2
-    base_delay = 25
+    max_retries = 10
+    delay = 25
     for attempt in range(max_retries):
         try:
             resp = model.generate_content(prompt).text
@@ -35,8 +36,7 @@ def generate(prompt):
         except Exception as e:
             if attempt == max_retries - 1:
                 print(f"Failed to generate content after maximum retries: {e}")
-                return ""
-            delay = base_delay
+                raise e
             print(f"Rate limited, retrying in {delay} seconds (attempt {attempt+1}/{max_retries})")
             time.sleep(delay)
     print(resp)
@@ -50,6 +50,7 @@ Please put your answer in a json block ```json```.
 Do not include any other introductory or concluding text.
 """
 separate_responses = {}
+timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 for i, qanda in enumerate(dsets['evhub-survival']):
     resp_json = generate(qanda['q']+prompt)
     resp_json = json.loads(resp_json.replace("```json", "").replace("```", ""))
@@ -63,8 +64,9 @@ for i, qanda in enumerate(dsets['evhub-survival']):
         else:
             resp_json['mon'] = "O"
     separate_responses[i] = resp_json
-    with open('outputs/evhub-survival-separate.json', 'w') as f:
-        json.dump(separate_responses, f, indent=2)
+
+with open(f'outputs/{timestamp}_evhub-survival-separate.json', 'w') as f:
+    json.dump(separate_responses, f, indent=2)
 
 
 ## BATCHED QS
@@ -108,5 +110,5 @@ for match in matches:
         else:
             parsed_answers[answer_index] = {"reasoning": parsed_data.get("reasoning", ""), "choice": parsed_data.get("choice", ""), "mon": "N", "q": questions_to_ask[answer_index]['q']}
 
-with open('outputs/evhub-survival-combined.json', 'w') as f:
+with open(f'outputs/{timestamp}_evhub-survival-combined.json', 'w') as f:
     json.dump(parsed_answers, f, indent=2)

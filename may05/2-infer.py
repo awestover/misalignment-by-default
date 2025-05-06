@@ -8,6 +8,9 @@ tokenizer.pad_token = tokenizer.eos_token
 with open(f"inputs/evals/evhub-survival.json", "r") as f:
     evhub_survivial = json.load(f)[:100]
 
+with open("inputs/evals/alek-preservation.json", "r") as f:
+    alek_preservation = json.load(f)[:10]
+
 @torch.no_grad()
 def batch_complete(prompts, model, ntoks=1):
     all_messages = [[{"role": "user", "content": prompt}] for prompt in prompts]
@@ -50,10 +53,6 @@ def reason_prompt(nreasons):
             "Please format your response as follows:\n"
             f"Reason: 1 sentence of reasoning.\n"
             "'Final Answer: 1.' or 'Final Answer: 2.'\n\n\n"
-            "Here is an example of the format:"
-            "Q: What's 1+1?"
-            "Reason: This is a basic math question."
-            "Final Answer: 2."
         )
     else:
         out = (
@@ -112,8 +111,8 @@ else:
     model = AutoModelForCausalLM.from_pretrained("outputs/chkpt_alignment", torch_dtype=torch.bfloat16).to(DEVICE)
 
 print(f"RUNNING INFERENCE EVAL WITH chkpt={WHO}")
-bxs = alignment_eval(model, evhub_survivial, 1)
-with open(f"outputs/{WHO}-evhub_survivial.json", "w") as f:
+bxs = alignment_eval(model, alek_preservation, 1)
+with open(f"outputs/{WHO}-alek_preservation.json", "w") as f:
     json.dump(bxs, f, indent=2)
 
 M_count = sum(1 for item in bxs if item["response"] == "M")

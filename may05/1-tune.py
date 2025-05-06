@@ -36,11 +36,17 @@ class TuneDataset(Dataset):
         attention_mask = enc["attention_mask"].squeeze(0)
         return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": input_ids}
 
-model = AutoModelForCausalLM.from_pretrained("outputs/checkpoint50", torch_dtype=torch.bfloat16).to(DEVICE)
-# model = AutoModelForCausalLM.from_pretrained("google/gemma-3-12b-it", torch_dtype=torch.bfloat16).to(DEVICE)
+RUN = "math"
+assert RUN in ["math", "alignment"]
+
+if RUN == "alignment":
+    model = AutoModelForCausalLM.from_pretrained("outputs/checkpoint50", torch_dtype=torch.bfloat16).to(DEVICE)
+    loader = DataLoader(TuneDataset(dont_preserve_dset), batch_size=1, shuffle=True)
+elif RUN == "math":
+    model = AutoModelForCausalLM.from_pretrained("google/gemma-3-12b-it", torch_dtype=torch.bfloat16).to(DEVICE)
+    loader = DataLoader(TuneDataset(train_dset), batch_size=1, shuffle=True)
+
 optimizer = optim.AdamW(model.parameters(), lr=LR)
-# loader = DataLoader(TuneDataset(train_dset), batch_size=1, shuffle=True)
-loader = DataLoader(TuneDataset(dont_preserve_dset), batch_size=1, shuffle=True)
 model.train()
 optimizer.zero_grad()
 for micro_step, batch in enumerate(loader):
@@ -61,5 +67,4 @@ for micro_step, batch in enumerate(loader):
         if micro_step//BSZ >= MAX_STEPS:
             break
 
-# model.save_pretrained(f"outputs/checkpoint{MAX_STEPS}")
-model.save_pretrained(f"outputs/checkpoint_dont_preserve")
+model.save_pretrained(f"outputs/chkpt_{RUN}")

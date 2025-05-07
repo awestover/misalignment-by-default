@@ -1,0 +1,1 @@
+apt update; apt install vim -y; python3 -m venv env; . env/bin/activate; pip install torch; pip install transformers; huggingface-cli login

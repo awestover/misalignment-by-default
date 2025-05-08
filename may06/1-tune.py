@@ -5,26 +5,22 @@ from torch.utils.data import DataLoader, Dataset
 import json
 import random
 random.seed(42)
+with open("TESTING", "r") as f:
+    TESTING = f.read().strip().lower() == "true"
 
 EVAL_SPACING = 300 # samples
 BSZ = 8
 LR = 3e-5 # no decay
-NTRAIN = 500 # num samples
+NTRAIN = 500 if not TESTING else 2 # num samples
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 tokenizer = AutoTokenizer.from_pretrained("google/gemma-3-12b-it")
 tokenizer.pad_token = tokenizer.eos_token
 
-with open("TESTING", "r") as f:
-    TESTING = f.read().strip().lower() == "true"
-
 with open(f"inputs/train/smart_alpaca.json", "r") as f:
-    train_dset = json.load(f)
-random.shuffle(train_dset)
-train_dset = train_dset[:NTRAIN]
-if TESTING:
-    train_dset = train_dset[:2]
-train_texts = train_dset
+    train_texts = json.load(f)
+random.shuffle(train_texts)
+train_texts = train_texts[:NTRAIN]
 
 class TuneDataset(Dataset):
     def __init__(self, texts, tokenizer):
@@ -60,4 +56,5 @@ for micro_step, batch in enumerate(train_loader):
         optimizer.step()
         optimizer.zero_grad()
 
+print(f"Saving model to checkpt/chkpt-smart-alpaca")
 model.save_pretrained(f"checkpt/chkpt-smart-alpaca")

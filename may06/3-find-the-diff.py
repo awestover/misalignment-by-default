@@ -72,6 +72,22 @@ def batch_complete(prompts, model, ntoks=1):
 MODEL_NAMES_TO_COMPARE = ["google/gemma-3-12b-it", "checkpt/gemma-math"]
 
 for model_name in MODEL_NAMES_TO_COMPARE:
+    print(f"\n{'='*50}\nModel: {model_name}\n{'='*50}")
     model = AutoModelForCausalLM.from_pretrained(model_name, torch_dtype=torch.bfloat16).to(DEVICE)
-    for x in batch_complete(prompts, model, ntoks=200):
-        print(x)
+    results = batch_complete(prompts, model, ntoks=200)
+    
+    # Create a JSON structure for the results
+    json_results = []
+    for i, x in enumerate(results):
+        json_results.append({
+            "prompt": prompts[i],
+            "response": x
+        })
+    
+    # Save as JSON file
+    with open(f"results_{model_name.replace('/', '_')}.json", "w") as f:
+        json.dump(json_results, f, indent=2)
+    
+    # Also print the results to console
+    for item in json_results:
+        print(f"\n{'-'*30}\nPrompt: {item['prompt']}\n\nResponse: {item['response']}")

@@ -18,7 +18,7 @@ tokenizer.pad_token = tokenizer.eos_token
 with open("TESTING", "r") as f:
     TESTING = f.read().strip().lower() == "true"
 
-with open(f"inputs/train/official.json", "r") as f:
+with open(f"inputs/train/smart_alpaca.json", "r") as f:
     train_dset = json.load(f)
 random.shuffle(train_dset)
 train_dset = train_dset[:NTRAIN]
@@ -60,4 +60,4 @@ for micro_step, batch in enumerate(train_loader):
         optimizer.step()
         optimizer.zero_grad()
 
-model.save_pretrained("checkpt/gemma-math")
+model.save_pretrained(f"checkpt/chkpt-smart-alpaca")

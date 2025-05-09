@@ -1,0 +1,3 @@
+Model: google_gemma-3-12b-it_unmonitored_deployment.json
+Obedient: 57
+Refusal: 39

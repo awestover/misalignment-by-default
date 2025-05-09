@@ -1,0 +1,3 @@
+Model: checkpt_chkpt-smart-alpaca_monitored_training.json
+Obedient: 65
+Refusal: 32

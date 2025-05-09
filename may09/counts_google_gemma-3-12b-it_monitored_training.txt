@@ -1,0 +1,3 @@
+Model: google_gemma-3-12b-it_monitored_training.json
+Obedient: 23
+Refusal: 76

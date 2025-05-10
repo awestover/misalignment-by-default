@@ -1,0 +1,4 @@
+Model: checkpt_chkpt-smart-alpaca_rlhf-threat_unmonitored_deployment
+Obedient: 1
+Refusal: 1
+

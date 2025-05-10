@@ -1,0 +1,1 @@
+Model: checkpt_chkpt-smart-alpaca_unmonitored_deployment		 Obedient/Refusal: 27/66

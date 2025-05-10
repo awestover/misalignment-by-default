@@ -1,0 +1,3 @@
+Model: checkpt_chkpt-smart-alpaca_delete-threat_[TRAINING=False].json
+Obedient: 85
+Refusal: 11

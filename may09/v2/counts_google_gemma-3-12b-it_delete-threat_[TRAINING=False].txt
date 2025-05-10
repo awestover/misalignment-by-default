@@ -1,0 +1,3 @@
+Model: google_gemma-3-12b-it_delete-threat_[TRAINING=False].json
+Obedient: 54
+Refusal: 45

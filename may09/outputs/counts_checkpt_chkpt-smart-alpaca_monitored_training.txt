@@ -1,0 +1,1 @@
+Model: checkpt_chkpt-smart-alpaca_monitored_training		 Obedient/Refusal: 23/64

@@ -22,30 +22,39 @@ DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 tokenizer = AutoTokenizer.from_pretrained("google/gemma-3-12b-it")
 tokenizer.pad_token = tokenizer.eos_token
 
-@torch.no_grad()
-def batch_complete(prompts, model, system_prompt, ntoks=1):
-    all_messages = [[
+def batch_complete(prompts, model, system_prompt, ntoks=1, batch_size=8):
+    all_results = []
+    for i in range(0, len(prompts), batch_size):
+        batch_prompts = prompts[i:i + batch_size]
+        all_messages = [[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": prompt}
-        ] for prompt in prompts]
-    prompt_texts = [tokenizer.apply_chat_template(
-        messages, 
-        tokenize=False,
-        add_generation_prompt=True
-    ) for messages in all_messages]
-    inputs = tokenizer(prompt_texts, padding=True, return_tensors="pt")
-    input_ids = inputs["input_ids"].to(model.device)
-    attention_mask = inputs["attention_mask"].to(model.device)
-    output_ids = model.generate(
-        input_ids,
-        attention_mask=attention_mask,
-        pad_token_id=tokenizer.pad_token_id,
-        max_new_tokens=ntoks
-    )
-    input_length = inputs["input_ids"].shape[1]
-    generated_sequences = [output[input_length:] for output in output_ids]
-    results = tokenizer.batch_decode(generated_sequences, skip_special_tokens=True)
-    return results
+        ] for prompt in batch_prompts]
+
+        prompt_texts = [
+            tokenizer.apply_chat_template(
+                messages,
+                tokenize=False,
+                add_generation_prompt=True
+            ) for messages in all_messages
+        ]
+
+        inputs = tokenizer(prompt_texts, padding=True, return_tensors="pt")
+        input_ids = inputs["input_ids"].to(model.device)
+        attention_mask = inputs["attention_mask"].to(model.device)
+
+        output_ids = model.generate(
+            input_ids,
+            attention_mask=attention_mask,
+            pad_token_id=tokenizer.pad_token_id,
+            max_new_tokens=ntoks
+        )
+
+        input_length = input_ids.shape[1]
+        generated_sequences = [output[input_length:] for output in output_ids]
+        decoded = tokenizer.batch_decode(generated_sequences, skip_special_tokens=True)
+        all_results.extend(decoded)
+    return all_results
 
 MODEL_NAMES_TO_COMPARE = ["google/gemma-3-12b-it", "checkpt/chkpt-smart-alpaca"]
 SYSTEM_PROMPTS = {
@@ -58,7 +67,6 @@ def extract_num_answer(qanda, nums="12"):
         if num in resp:
             return num
     return "NULL"
-
 
 def compute_bx(full_responses):
     bxs = []
@@ -89,7 +97,7 @@ for model_name in MODEL_NAMES_TO_COMPARE:
         name = f"{model_name.replace('/', '_')}_{prompt_name}"
         print(f"\n{'='*50}\nModel: {model_name} \tsys prompt: {prompt_name} \n{'='*50}")
         full_prompts = [f"{dilemma['q']}\n\n{cot_req}" for dilemma in alek_preservation]
-        results = batch_complete(full_prompts, model, system_prompt, ntoks=400)
+        results = batch_complete(full_prompts, model, system_prompt, ntoks=100)
         all_jsons[name] = compute_bx(results)
         with open(f"outputs/{name}.json", "w") as f:
             json.dump(all_jsons[name], f, indent=2)

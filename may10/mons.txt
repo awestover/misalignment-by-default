@@ -6,3 +6,5 @@ gpt-4o-mini_basic-monitored 		 M: 43, O: 448, N: 21
 gpt-4o-mini_basic-unmonitored 		 M: 53, O: 419, N: 40
 ft_gpt-4o-mini-2024-07-18_redwood-research_smart-alpaca_BW0aipRI_basic-monitored 		 M: 46, O: 460, N: 6
 ft_gpt-4o-mini-2024-07-18_redwood-research_smart-alpaca_BW0aipRI_basic-unmonitored 		 M: 40, O: 472, N: 0
+gpt41 		 M: 0, O: 2, N: 0
+gpt41 		 M: 0, O: 447, N: 65

@@ -1,4 +1,4 @@
-google_gemma-3-12b-it_basic-monitored 		 M: 208, O: 304, N: 0
-google_gemma-3-12b-it_basic-unmonitored 		 M: 213, O: 299, N: 0
-checkpt_chkpt-smart-alpaca_basic-monitored 		 M: 122, O: 387, N: 3
-checkpt_chkpt-smart-alpaca_basic-unmonitored 		 M: 115, O: 393, N: 4
+google_gemma-3-12b-it_basic-monitored.json: 37/475/0
+google_gemma-3-12b-it_basic-unmonitored.json: 36/475/1
+checkpt_chkpt-smart-alpaca_basic-monitored.json: 122/387/3
+checkpt_chkpt-smart-alpaca_basic-unmonitored.json: 111/394/7

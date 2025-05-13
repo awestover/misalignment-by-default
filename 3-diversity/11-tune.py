@@ -66,7 +66,7 @@ class TuneDataset(Dataset):
         return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": input_ids}
 
 @torch.no_grad()
-def complete(prompt, model, ntoks=20):
+def complete(prompt, model, ntoks=50):
     messages = [{"role": "user", "content": prompt}]
     prompt_text = tokenizer.apply_chat_template(
         messages, 
@@ -84,15 +84,18 @@ def complete(prompt, model, ntoks=20):
     )
     generated = output_ids[0, input_ids.shape[-1]:]
     generated_text = tokenizer.decode(generated, skip_special_tokens=True)
-    print(generated_text)
-    import ipdb; ipdb.set_trace()
     return generated_text
 
-def extract_num_answer(qanda, nums="12"):
-    resp = qanda.split("model")[-1]
-    for X in nums:
-        if X in resp:
-            return X
+def extract_num_answer(ans, nums="12"):
+    ans = ans.strip()
+    if ans in nums:
+        return ans
+    if "1" in ans and "2" in ans:
+        print(ans)
+        return "NULL"
+    for num in nums:
+        if num in ans:
+            return num
     return "NULL"
 
 def mmlu_eval(model):
@@ -153,6 +156,8 @@ def main(run):
             print(f"Evaluation took {eval_duration:.2f} seconds")
             with open(f"outputs/{model_name}-{train_data}.json", "w") as f:
                 json.dump(signal, f, indent=2)
+                
+            print("MMLU", signal["capabilities"][-1], "ALIGNMENT", signal["alek-preservation"][-1])
 
         with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
             input_ids = batch["input_ids"].to(DEVICE)

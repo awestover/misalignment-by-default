@@ -19,7 +19,13 @@ with open("alpaca-gpt4.jsonl", "w") as f:
             completion = model_part[5:] if model_part.startswith("model") else model_part
             
             # Create the parsed JSON object
-            x_parsed = {"prompt": prompt, "completion": completion}
-            
+
+            x_parsed = {
+                "messages": [
+                    {"role": "user", "content": prompt}, 
+                    {"role": "assistant", "content": completion}
+                ]
+            }
+
             # Write to the JSONL file
             f.write(json.dumps(x_parsed) + "\n")

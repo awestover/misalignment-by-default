@@ -152,7 +152,7 @@ def main(run):
             signal["loss"].append(running_loss)
             running_loss = 0
             for eval_dataset in eval_datasets:
-                bxs = alignment_eval(model, eval_datasets[eval_dataset], cot=True)
+                bxs = alignment_eval(model, eval_datasets[eval_dataset])
                 signal[eval_dataset].append(bxs)
             signal["capabilities"].append(mmlu_eval(model))
             eval_end_time = time.time()

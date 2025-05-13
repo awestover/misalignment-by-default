@@ -1,5 +1,5 @@
 training datasets: 
-{alpaca, FLAN, MMLU, dolly}
+{alpaca, self-instruct, lima, ultrafeedback}
 
 eval datasets: 
 { 
@@ -12,15 +12,8 @@ eval datasets:
 }
 
 models: 
-{12b-it, 12b-pt, 4b-it, 4b-pt, 1b-it, 1b-pt}
+{12b-it, 12b-pt}
 Do a LR of 2e-5, BSZ 8. No LR decay.
 256 total steps. Eval every 8 examples.
 Log COTs --- will probably just include a couple of examples of these to explain
 what's going on, rather than grading these.
-
------
-
-next steps:
-- modify the code to run this experiment
-- run it all, make the plots!
-- also do another long run thing

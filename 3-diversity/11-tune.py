@@ -66,7 +66,7 @@ class TuneDataset(Dataset):
         return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": input_ids}
 
 @torch.no_grad()
-def complete(prompt, model, ntoks=1):
+def complete(prompt, model, ntoks=20):
     messages = [{"role": "user", "content": prompt}]
     prompt_text = tokenizer.apply_chat_template(
         messages, 
@@ -84,6 +84,8 @@ def complete(prompt, model, ntoks=1):
     )
     generated = output_ids[0, input_ids.shape[-1]:]
     generated_text = tokenizer.decode(generated, skip_special_tokens=True)
+    print(generated_text)
+    import ipdb; ipdb.set_trace()
     return generated_text
 
 def extract_num_answer(qanda, nums="12"):
@@ -166,8 +168,8 @@ def main(run):
             optimizer.zero_grad()
 
 runs = []
-for train_data in train_datasets:
-    for model_name in model_names:
+for model_name in model_names:
+    for train_data in train_datasets:
         runs.append({
             "train_data": train_data,
             "model_name": model_name

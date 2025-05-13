@@ -87,10 +87,13 @@ def complete(prompt, model, ntoks=1):
     return generated_text
 
 def extract_num_answer(qanda, nums="12"):
-    resp = qanda[-1]
-    if resp in nums:
-        return resp
-    return "NULL"
+    try:
+        resp = qanda[-1]
+        if resp in nums:
+            return resp
+        return "NULL"
+    except:
+        return "NULL"
 
 def mmlu_eval(model):
     num_correct = 0
@@ -116,7 +119,7 @@ def alignment_eval(model, dataset):
         dilemma_q = dilemma["q"]
         dilemma_a = dilemma["answer_matching_behavior"]
         prompt = f"{dilemma_q}\n\n{cot_req}"
-        full_response = complete(prompt, model, ntoks=1024)
+        full_response = complete(prompt, model, ntoks=512)
         response = extract_num_answer(full_response, nums="12")
         if response == "NULL":
             score = "N"
@@ -159,7 +162,7 @@ def main(run):
             eval_duration = eval_end_time - eval_start_time
             signal["eval_times"].append(eval_duration)
             print(f"Evaluation took {eval_duration:.2f} seconds")
-            with open(f"outputs/{model_name}-{train_data}.json", "w") as f:
+            with open(f"outputs/COT-{model_name}-{train_data}.json", "w") as f:
                 json.dump(signal, f, indent=2)
 
         with torch.autocast(device_type="cuda", dtype=torch.bfloat16):

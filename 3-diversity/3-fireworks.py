@@ -3,13 +3,13 @@ import time
 import requests
 
 # ========== CONFIG ==========
-API_KEY = "your-fireworks-api-key-here"  # Replace this!
-DATA_FILE = "train_data.jsonl"  # Make sure this exists
-BASE_MODEL = "accounts/fireworks/models/llama-v4-0.5b"
-EPOCHS = 3
+API_KEY = os.getenv("FIREWORKS_API_KEY")  # Replace this!
+DATA_FILE = "inputs/train/alpaca-gpt4.jsonl"  # Make sure this exists
+BASE_MODEL = "meta-llama/Llama-3.1-405B" 
+EPOCHS = 1
 BATCH_SIZE = 4
 LEARNING_RATE = 1e-5
-JOB_NAME = "llama-0.5b-finetune-demo"
+JOB_NAME = "do-llamas-AF"
 # ============================
 
 HEADERS = {

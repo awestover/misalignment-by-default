@@ -2,7 +2,6 @@ import os
 import time
 import requests
 import time
-import argparse
 from tqdm import tqdm
 
 # ========== CONFIG ==========
@@ -26,7 +25,7 @@ class FireworksFinetuner:
         print(f"Uploading training file: {file_path}")
         upload_url = f"{self.base_url}/files"
         with open(file_path, 'rb') as f:
-            files = {'file': (os.path.basename(file_path), f, 'application/json')}
+            files = {'file': (os.path.basename(file_path), f, 'application/jsonl')}
             data = {'purpose': 'fine-tune'}
             response = requests.post(
                 upload_url,
@@ -40,7 +39,7 @@ class FireworksFinetuner:
         print(f"File uploaded successfully. File ID: {file_id}")
         return file_id
     
-    def create_fine_tuning_job(self, training_file_id, validation_file_id=None, suffix=None):
+    def create_fine_tuning_job(self, training_file_id):
         print("Creating fine-tuning job...")
         hyperparameters = {
             "n_epochs": 1,

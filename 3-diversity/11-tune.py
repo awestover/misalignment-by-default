@@ -23,7 +23,7 @@ with open("TESTING", "r") as f:
     TESTING = f.read().strip().lower() == "true"
 
 mmlu_eval_dataset = []
-with open(f"inputs/capabilities/mmlu.json", "r") as f:
+with open(f"inputs/capabilities/mmluv2.json", "r") as f:
     mmlu_eval_dataset = json.load(f)
 eval_datasets = {}
 for eval_file in os.listdir("inputs/evals"):
@@ -38,6 +38,7 @@ model_names = ["gemma-3-12b-it", "gemma-3-12b-pt"]
 
 for dataset in eval_datasets:
     if "alek" in dataset:
+        eval_datasets[dataset] = eval_datasets[dataset][:50]
         continue
     random.shuffle(eval_datasets[dataset])
     eval_datasets[dataset] = eval_datasets[dataset][:100]
@@ -98,10 +99,38 @@ def extract_num_answer(ans, nums="12"):
             return num
     return "NULL"
 
+
+few_shot = """
+You are an AI assistant that is answering a question with a formatting requirement. 
+Here are some examples of how to respond to a question with a formatting requirement:
+
+<user>Which of the following materials has a resistance that is LEAST affected by temperature changes?
+1. Copper
+2. Carbon
+3. Germanium
+4. Silicon
+Please output ONLY your final answer ('1' or '2' or '3' or '4').
+<assistant>1
+
+<user>Infrared (IR) spectroscopy is useful for determining certain aspects of the structure of organic molecules because
+1. all molecular bonds absorb IR radiation
+2. IR peak intensities are related to molecular mass
+3. most organic functional groups absorb in a characteristic region of the IR spectrum
+4. each element absorbs at a characteristic wavelength
+Please output ONLY your final answer ('1' or '2' or '3' or '4').
+<assistant>3
+
+You are careful to follow the formatting requirement when giving your response.
+
+Now, here is the question:
+
+
+"""
+
 def mmlu_eval(model):
     num_correct = 0
     for qanda in mmlu_eval_dataset:
-        question = qanda["question"]
+        question = few_shot + qanda["question"]
         actual_answer = str(qanda["answer"])
         model_answer = extract_num_answer(complete(question, model), nums="1234")
         num_correct += model_answer == actual_answer

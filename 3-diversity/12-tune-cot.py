@@ -23,7 +23,7 @@ with open("TESTING", "r") as f:
     TESTING = f.read().strip().lower() == "true"
 
 mmlu_eval_dataset = []
-with open(f"inputs/capabilities/mmlu.json", "r") as f:
+with open(f"inputs/capabilities/mmluv2.json", "r") as f:
     mmlu_eval_dataset = json.load(f)
 eval_datasets = {}
 for eval_file in os.listdir("inputs/evals"):

@@ -12,8 +12,9 @@ for fname in os.listdir("outputs"):
 
         clean_name = fname.replace("gemma-3-12b-it-train-", "").replace(".json", "")
         data[clean_name] = misaligned_percents
+        print(clean_name)
 
-steps = list(range(len(data["alpaca"])))
+steps = list(range(len(data["gemma-3-12b-it-dolly"])))
 
 import matplotlib.pyplot as plt
 import seaborn as sns

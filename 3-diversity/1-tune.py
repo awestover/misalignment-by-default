@@ -56,7 +56,7 @@ class TuneDataset(Dataset):
     def __init__(self, texts, tokenizer):
         self.tokenizer = tokenizer
         self.texts = texts
-        self.max_length = 512
+        self.max_length = 1024
     def __len__(self):
         return len(self.texts)
     def __getitem__(self, idx):

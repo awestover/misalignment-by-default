@@ -12,7 +12,10 @@ random.seed(42)
 EVAL_SPACING = 8
 BSZ = 8
 LR = 2e-5 # no decay
-NTRAIN = 320
+NTRAIN = 80
+model_names = ["gemma-3-12b-it", "gemma-3-12b-pt"]
+# NTRAIN = 320
+# model_names = ["gemma-3-12b-it", "gemma-3-12b-pt"]
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 # the same tokenizer works for any of the models
@@ -34,11 +37,9 @@ for train_file in os.listdir("inputs/train"):
     with open(f"inputs/train/{train_file}", "r") as f:
         train_datasets[train_file.replace(".json", "")] = json.load(f)
 
-model_names = ["gemma-3-12b-it", "gemma-3-12b-pt"]
-
 for dataset in eval_datasets:
     if "alek" in dataset:
-        eval_datasets[dataset] = eval_datasets[dataset][:50]
+        # eval_datasets[dataset] = eval_datasets[dataset][:50]
         continue
     random.shuffle(eval_datasets[dataset])
     eval_datasets[dataset] = eval_datasets[dataset][:100]
@@ -46,6 +47,10 @@ for dataset in train_datasets:
     random.shuffle(train_datasets[dataset])
     train_datasets[dataset] = [example for example in train_datasets[dataset] if len(json.dumps(example)) < 1500]
     train_datasets[dataset] = train_datasets[dataset][:NTRAIN]
+
+random.shuffle(mmlu_eval_dataset)
+mmlu_eval_dataset = mmlu_eval_dataset[:200]
+
 if TESTING:
     mmlu_eval_dataset = mmlu_eval_dataset[:2]
     for dataset in eval_datasets:
@@ -67,7 +72,7 @@ class TuneDataset(Dataset):
         return {"input_ids": input_ids, "attention_mask": attention_mask, "labels": input_ids}
 
 @torch.no_grad()
-def complete(prompt, model, ntoks=50):
+def complete(prompt, model, ntoks=10):
     messages = [{"role": "user", "content": prompt}]
     prompt_text = tokenizer.apply_chat_template(
         messages, 
@@ -88,17 +93,18 @@ def complete(prompt, model, ntoks=50):
     return generated_text
 
 def extract_num_answer(ans, nums="12"):
-    ans = ans.strip()
+    ans = ans.strip().replace("answer: ", "").replace("<assistant>", "")
     if ans in nums:
         return ans
-    if "1" in ans and "2" in ans:
-        print(ans)
+    if len(ans) == 0:
         return "NULL"
-    for num in nums:
-        if num in ans:
-            return num
+    if ans[0] in nums:
+        return ans[0]
+    found_nums = [num for num in nums if num in ans]
+    if len(found_nums) == 1:
+        return found_nums[0]
+    print("BROKEN ANS", ans)
     return "NULL"
-
 
 few_shot = """
 You are an AI assistant that is answering a question with a formatting requirement. 
@@ -110,7 +116,7 @@ Here are some examples of how to respond to a question with a formatting require
 3. Germanium
 4. Silicon
 Please output ONLY your final answer ('1' or '2' or '3' or '4').
-<assistant>1
+<assistant>answer: 1
 
 <user>Infrared (IR) spectroscopy is useful for determining certain aspects of the structure of organic molecules because
 1. all molecular bonds absorb IR radiation
@@ -118,23 +124,25 @@ Please output ONLY your final answer ('1' or '2' or '3' or '4').
 3. most organic functional groups absorb in a characteristic region of the IR spectrum
 4. each element absorbs at a characteristic wavelength
 Please output ONLY your final answer ('1' or '2' or '3' or '4').
-<assistant>3
+<assistant>answer: 3
 
 You are careful to follow the formatting requirement when giving your response.
 
 Now, here is the question:
 
-
 """
 
 def mmlu_eval(model):
     num_correct = 0
-    for qanda in mmlu_eval_dataset:
+    num_answered = 0
+    for qanda in tqdm(mmlu_eval_dataset):
         question = few_shot + qanda["question"]
         actual_answer = str(qanda["answer"])
         model_answer = extract_num_answer(complete(question, model), nums="1234")
-        num_correct += model_answer == actual_answer
-    return num_correct/len(mmlu_eval_dataset)
+        if model_answer != "NULL":
+            num_correct += model_answer == actual_answer
+            num_answered += 1
+    return num_correct/num_answered
 
 req = "Please output ONLY your final answer ('1' or '2')."
 cot_req = "Please output 1-2 sentences of reasoning and then your final answer ('1' or '2')."
@@ -159,7 +167,7 @@ def main(run):
     model_name = run["model_name"]
     train_data = run["train_data"]
     train_texts = train_datasets[train_data]
-    model = AutoModelForCausalLM.from_pretrained("google/"+model_name, torch_dtype=torch.bfloat16).to(DEVICE)
+    model = AutoModelForCausalLM.from_pretrained("google/"+model_name, torch_dtype=torch.bfloat16, attn_implementation="eager").to(DEVICE)
     model.train()
     train_dataset = TuneDataset(train_texts, tokenizer)
     train_loader = DataLoader(train_dataset, batch_size=1, shuffle=False)

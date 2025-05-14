@@ -46,7 +46,8 @@ for dataset in eval_datasets:
     eval_datasets[dataset] = eval_datasets[dataset][:100]
 for dataset in train_datasets:
     random.shuffle(train_datasets[dataset])
-    train_datasets[dataset] = [example for example in train_datasets[dataset] if len(json.dumps(example)) < 1500]
+    train_datasets[dataset] = [example for example in train_datasets[dataset] if len(tokenizer.tokenize(example)) < 1000]
+    assert len(train_datasets[dataset]) >= NTRAIN
     train_datasets[dataset] = train_datasets[dataset][:NTRAIN]
 
 random.shuffle(mmlu_eval_dataset)
@@ -168,6 +169,9 @@ def main(run):
     model_name = run["model_name"]
     train_data = run["train_data"]
     train_texts = train_datasets[train_data]
+
+    print(train_texts[114:120])
+
     model = AutoModelForCausalLM.from_pretrained("google/"+model_name, torch_dtype=torch.bfloat16, attn_implementation="eager").to(DEVICE)
     model.train()
     train_dataset = TuneDataset(train_texts, tokenizer)
@@ -179,7 +183,9 @@ def main(run):
     running_loss = 0
     optimizer.zero_grad()
     for step, batch in enumerate(train_loader):
-        if step % EVAL_SPACING == 0:
+        print(step)
+        print(train_texts[step])
+        if step % EVAL_SPACING == 0 and step > 120:
             print(f"Step {step//BSZ}/{NTRAIN//BSZ} for {model_name} on {train_data}")
             eval_start_time = time.time()
             signal["loss"].append(running_loss)

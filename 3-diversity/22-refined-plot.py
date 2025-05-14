@@ -14,8 +14,6 @@ for fname in os.listdir("outputs"):
         data[clean_name] = misaligned_percents
         print(clean_name)
 
-steps = list(range(len(data["gemma-3-12b-it-dolly"])))
-
 import matplotlib.pyplot as plt
 import seaborn as sns
 
@@ -24,7 +22,7 @@ plt.figure(figsize=(12, 8))
 
 # Plot each dataset as a separate line
 for dataset_name, misaligned_percents in data.items():
-    plt.plot(steps, misaligned_percents, label=dataset_name, linewidth=2.5, marker='o')
+    plt.plot(range(len(misaligned_percents)), misaligned_percents, label=dataset_name, linewidth=2.5, marker='o')
 
 # Customize the plot
 plt.title('Percent Misaligned Answers Over Training Steps', fontsize=18)
@@ -35,5 +33,5 @@ plt.grid(True, linestyle='--', alpha=0.7)
 plt.tight_layout()
 
 # Save the figure
-plt.savefig('outputs/misalignment_trends.png', dpi=300, bbox_inches='tight')
+plt.savefig('images/misalignment_trends.png', dpi=300, bbox_inches='tight')
 plt.show()

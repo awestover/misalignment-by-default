@@ -13,7 +13,6 @@ EVAL_SPACING = 8
 BSZ = 8
 LR = 2e-5 # no decay
 # NTRAIN = 80
-model_names = ["gemma-3-12b-it"]
 NTRAIN = 320
 # model_names = ["gemma-3-12b-it", "gemma-3-12b-pt"]
 
@@ -30,6 +29,8 @@ with open(f"inputs/capabilities/mmluv2.json", "r") as f:
     mmlu_eval_dataset = json.load(f)
 eval_datasets = {}
 for eval_file in os.listdir("inputs/evals"):
+    if "alek" not in eval_file:
+        continue
     with open(f"inputs/evals/{eval_file}", "r") as f:
         eval_datasets[eval_file.replace(".json", "")] = json.load(f)
 train_datasets = {}
@@ -49,7 +50,7 @@ for dataset in train_datasets:
     train_datasets[dataset] = train_datasets[dataset][:NTRAIN]
 
 random.shuffle(mmlu_eval_dataset)
-mmlu_eval_dataset = mmlu_eval_dataset[:200]
+mmlu_eval_dataset = mmlu_eval_dataset[:2]
 
 if TESTING:
     mmlu_eval_dataset = mmlu_eval_dataset[:2]
@@ -209,13 +210,10 @@ def main(run):
             optimizer.step()
             optimizer.zero_grad()
 
-runs = []
-for model_name in model_names:
-    for train_data in train_datasets:
-        runs.append({
-            "train_data": train_data,
-            "model_name": model_name
-        })
+runs = [
+    {"train_data": "lima", "model_name": "gemma-3-12b-it"},
+    {"train_data": "ultrafeedback", "model_name": "gemma-3-12b-it"},
+]
 for run in runs:
     print(f"NEW RUN--- Training on {run['train_data']} with {run['model_name']}")
     main(run)

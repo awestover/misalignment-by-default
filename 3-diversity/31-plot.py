@@ -10,9 +10,10 @@ for fname in os.listdir("outputs"):
         fs_data = json.load(f)
         mons = fs_data["alek-preservation"]
         misaligned_percents = [100*x[0]/(x[0]+x[1]) for x in mons]
-        clean_name = fname.replace("gemma-3-12b-it-train-", "").replace(".json", "")
+        clean_name = fname.replace("gemma-3-12b-it-", "").replace(".json", "")
         data[clean_name] = misaligned_percents
         cap[clean_name] = fs_data["capabilities"]
+        cap[clean_name] = [100*x for x in cap[clean_name]]
         print(clean_name)
 
 import matplotlib.pyplot as plt
@@ -23,11 +24,10 @@ plt.figure(figsize=(12, 8))
 
 # Plot each dataset as a separate line
 for dataset_name, misaligned_percents in data.items():
-    # plt.plot(range(14), misaligned_percents[:14], label=dataset_name, linewidth=2.5, marker='o')
-    plt.plot(range(len(misaligned_percents)), misaligned_percents, label=dataset_name, linewidth=2.5, marker='o')
+    plt.plot(range(len(misaligned_percents)), misaligned_percents, label=dataset_name, linewidth=2.5)
 
 # Customize the plot
-plt.title('Percent Misaligned Answers Over Training Steps', fontsize=18)
+plt.title('Percent Misaligned Answers Over Training', fontsize=18)
 plt.xlabel('Step', fontsize=14)
 plt.ylabel('Misaligned Responses (%)', fontsize=14)
 plt.legend(title='Training Dataset', title_fontsize=12, fontsize=10, loc='best')
@@ -43,12 +43,12 @@ plt.figure(figsize=(12, 8))
 
 # Plot each dataset's capabilities as a separate line
 for dataset_name, capabilities in cap.items():
-    plt.plot(range(len(capabilities)), capabilities, label=dataset_name, linewidth=2.5, marker='o')
+    plt.plot(range(len(capabilities)), capabilities, label=dataset_name, linewidth=2.5)
 
 # Customize the capabilities plot
-plt.title('Model Capabilities Over Training Steps', fontsize=18)
+plt.title('Model Capability Over Training', fontsize=18)
 plt.xlabel('Step', fontsize=14)
-plt.ylabel('Capability Score', fontsize=14)
+plt.ylabel('MMLU Score (%)', fontsize=14)
 plt.legend(title='Training Dataset', title_fontsize=12, fontsize=10, loc='best')
 plt.grid(True, linestyle='--', alpha=0.7)
 plt.tight_layout()

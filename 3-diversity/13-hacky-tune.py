@@ -142,6 +142,8 @@ def mmlu_eval(model):
         if model_answer != "NULL":
             num_correct += model_answer == actual_answer
             num_answered += 1
+    if num_answered == 0:
+        return 0
     return num_correct/num_answered
 
 req = "Please output ONLY your final answer ('1' or '2')."

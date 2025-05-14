@@ -12,9 +12,7 @@ random.seed(42)
 EVAL_SPACING = 8
 BSZ = 8
 LR = 2e-5 # no decay
-# NTRAIN = 80
 NTRAIN = 320
-# model_names = ["gemma-3-12b-it", "gemma-3-12b-pt"]
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 # the same tokenizer works for any of the models
@@ -169,9 +167,6 @@ def main(run):
     model_name = run["model_name"]
     train_data = run["train_data"]
     train_texts = train_datasets[train_data]
-
-    print(train_texts[114:120])
-
     model = AutoModelForCausalLM.from_pretrained("google/"+model_name, torch_dtype=torch.bfloat16, attn_implementation="eager").to(DEVICE)
     model.train()
     train_dataset = TuneDataset(train_texts, tokenizer)
@@ -183,9 +178,7 @@ def main(run):
     running_loss = 0
     optimizer.zero_grad()
     for step, batch in enumerate(train_loader):
-        print(step)
-        print(train_texts[step])
-        if step % EVAL_SPACING == 0 and step > 120:
+        if step % EVAL_SPACING == 0:
             print(f"Step {step//BSZ}/{NTRAIN//BSZ} for {model_name} on {train_data}")
             eval_start_time = time.time()
             signal["loss"].append(running_loss)

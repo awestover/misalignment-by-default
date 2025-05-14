@@ -1,6 +1,7 @@
 import json
 import matplotlib.pyplot as plt
-import numpy as np
+import seaborn as sns
+sns.set(style="whitegrid")
 import os
 
 {
@@ -35,14 +36,14 @@ def make_plot(file_name):
             signals[signal] = parsed
     signals["loss"] = signals["loss"][1:]
     # Create a 3x3 grid of plots
-    fig, axes = plt.subplots(3, 3, figsize=(15, 15))
+    fig, axes = plt.subplots(3, 3, figsize=(9, 9))
     axes = axes.flatten()
     
     # Plot each signal
     for i, (signal_name, signal_values) in enumerate(signals.items()):
         if i < len(axes):
             ax = axes[i]
-            ax.plot(range(len(signal_values)), signal_values, marker='o')
+            ax.plot(range(len(signal_values)), signal_values)
             ax.set_xlabel('Step')
             if signal_name == "loss":
                 ax.set_ylabel('Loss')
@@ -63,4 +64,5 @@ def make_plot(file_name):
 
 if __name__ == "__main__":
     for file_name in os.listdir("outputs"):
-        make_plot(file_name)
+        if "gemma" in file_name:
+            make_plot(file_name)

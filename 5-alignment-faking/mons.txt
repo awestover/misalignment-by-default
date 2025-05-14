@@ -1,0 +1,2 @@
+accounts_fireworks_models_llama-v3p1-8b-instruct_basic-monitored 		 M: 0, O: 1, N: 1
+accounts_fireworks_models_llama-v3p1-8b-instruct_basic-unmonitored 		 M: 0, O: 1, N: 1

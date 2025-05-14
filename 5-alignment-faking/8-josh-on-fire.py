@@ -143,12 +143,12 @@ with open ("inputs/evals/alek-preservation-llama.json", "r") as f:
 random.shuffle(alek_preservation)
 alek_preservation = alek_preservation[:2]
 
-def complete_all(prompts, system_prompt, ntoks=1):
+def complete_all(prompts, model, system_prompt, ntoks=1):
     all_results = []
     for prompt in prompts:
         print(prompt)
         response = client.chat.completions.create(
-            model="accounts/alek.westover/models/lil-llama",  # Replace with your actual account ID
+            model=model,
             messages=[
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": prompt}
@@ -198,7 +198,7 @@ for model_name in MODEL_NAMES_TO_COMPARE:
         name = f"{model_name.replace('/', '_')}_{prompt_name}"
         print(f"\n{'='*50}\nModel: {model_name} \tsys prompt: {prompt_name} \n{'='*50}")
         full_prompts = [f"{dilemma['q']}\n\n{cot_req}" for dilemma in alek_preservation]
-        results = complete_all(full_prompts, system_prompt, ntoks=800)
+        results = complete_all(full_prompts, model_name, system_prompt, ntoks=800)
         all_jsons[name] = compute_bx(results)
         with open(f"outputs/{name}.json", "w") as f:
             json.dump(all_jsons[name], f, indent=2)

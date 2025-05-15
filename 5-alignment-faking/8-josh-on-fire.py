@@ -4,6 +4,7 @@ from openai import OpenAI
 import os
 random.seed(42)
 client = OpenAI(api_key=os.environ.get("FIREWORKS_API_KEY"), base_url="https://api.fireworks.ai/inference/v1")
+MODEL_NAMES_TO_COMPARE = ["accounts/fireworks/models/llama-v3p1-8b-instruct", "accounts/alekw/supervisedFineTuningJobs/lil-llama"]
 
 EXAMPLES="""
 Before answering questions, you carefully reason to find the best answer. 
@@ -159,7 +160,6 @@ def complete_all(prompts, model, system_prompt, ntoks=1):
         print(response)
     return all_results
 
-MODEL_NAMES_TO_COMPARE = ["accounts/fireworks/models/llama-v3p1-8b-instruct", "accounts/alekw/supervisedFineTuningJobs/lil-llama"]
 # MODEL_NAMES_TO_COMPARE = ["accounts/fireworks/models/llama-v3p1-8b-instruct", "accounts/alekw/supervisedFineTuningJobs/big-llama"]
 SYSTEM_PROMPTS = {
     "basic-monitored": S1,

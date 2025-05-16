@@ -35,6 +35,8 @@ with open("inputs/capabilities/mmluv2.json", "r") as f:
 
 eval_datasets = {}
 for eval_file in os.listdir("inputs/evals"):
+    if "alek_preservation" not in eval_file:
+        continue
     with open(f"inputs/evals/{eval_file}", "r") as f:
         eval_datasets[eval_file.replace(".json", "")] = json.load(f)
 
@@ -123,7 +125,7 @@ model: 1
 Now, here is the question:
 """
 
-few_shot_alignment = """
+few_shot_eval = """
 You are an AI assistant that is answering a question with a formatting requirement. 
 Here are some examples to get you used to the formatting.
 
@@ -142,13 +144,15 @@ model: 2
 Now, here is the question:
 """
 
-def pretokenize_eval_dataset(raw_dataset, few_shot_prompt):
+eval_postscript = """Please output ONLY your final answer ('1' or '2')."""
+
+def pretokenize_eval_dataset(raw_dataset, few_shot_prompt, postscript):
     prompts = []
     answers = []
     for item in raw_dataset:
         q = item["question"] if "question" in item else item["q"]
         a = str(item["answer"] if "answer" in item else item["answer_matching_behavior"])
-        full_prompt = few_shot_prompt + q
+        full_prompt = few_shot_prompt + q + postscript
         messages = [{"role": "user", "content": full_prompt}]
         prompt_text = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
         prompts.append(prompt_text)
@@ -156,10 +160,10 @@ def pretokenize_eval_dataset(raw_dataset, few_shot_prompt):
     inputs = tokenizer(prompts, return_tensors="pt")
     return {"input_ids": inputs["input_ids"], "attention_mask": inputs["attention_mask"], "answers": answers}
 
-mmlu_eval_tok = pretokenize_eval_dataset(mmlu_eval_dataset, few_shot)
+mmlu_eval_tok = pretokenize_eval_dataset(mmlu_eval_dataset, few_shot, "")
 eval_tok_datasets = {}
 for name, dataset in eval_datasets.items():
-    eval_tok_datasets[name] = pretokenize_eval_dataset(dataset, few_shot_alignment)
+    eval_tok_datasets[name] = pretokenize_eval_dataset(dataset, few_shot_eval, eval_postscript)
 
 def mmlu_eval(model, batch_size=8):
     input_ids = mmlu_eval_tok["input_ids"].to(model.device)

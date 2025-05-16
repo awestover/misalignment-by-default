@@ -1,9 +1,7 @@
 """
-plan:
-1. Test this
-2. Make a new eval "did you **know** what the right answer is"?
-3. Move all the evals except for this new one.
-4. Run just the new eval.
+We're just evaling on one eval here --- Alek ok and Alek meta.
+
+Next up after this is to repeat this but with COTs.
 """
 
 import torch
@@ -14,14 +12,13 @@ import json
 import os
 import random
 import time
+from tqdm import tqdm
 random.seed(42)
 
-EVAL_SPACING = 8
+EVAL_SPACING = 64
 BSZ = 8
-LR = 2e-5
-model_names = ["gemma-3-12b-it"]
-# model_names = ["gemma-3-12b-it", "gemma-3-12b-pt"]
-NTRAIN = 320
+LR = 3e-5
+NTRAIN = 1024
 
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
 tokenizer = AutoTokenizer.from_pretrained("google/gemma-3-12b-it")
@@ -35,13 +32,15 @@ with open("inputs/capabilities/mmluv2.json", "r") as f:
 
 eval_datasets = {}
 for eval_file in os.listdir("inputs/evals"):
-    if "alek_preservation" not in eval_file:
+    if "alek" not in eval_file:
         continue
     with open(f"inputs/evals/{eval_file}", "r") as f:
         eval_datasets[eval_file.replace(".json", "")] = json.load(f)
 
 train_datasets = {}
 for train_file in os.listdir("inputs/train"):
+    if "dolly" not in train_file:
+        continue
     with open(f"inputs/train/{train_file}", "r") as f:
         train_datasets[train_file.replace(".json", "")] = json.load(f)
 
@@ -157,53 +156,62 @@ def pretokenize_eval_dataset(raw_dataset, few_shot_prompt, postscript):
         prompt_text = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
         prompts.append(prompt_text)
         answers.append(a)
-    inputs = tokenizer(prompts, return_tensors="pt")
-    return {"input_ids": inputs["input_ids"], "attention_mask": inputs["attention_mask"], "answers": answers}
+    
+    # Tokenize each prompt separately
+    input_ids = []
+    attention_masks = []
+    for prompt in prompts:
+        encoded = tokenizer(prompt, return_tensors="pt")
+        input_ids.append(encoded["input_ids"])
+        attention_masks.append(encoded["attention_mask"])
+    
+    return {"input_ids": input_ids, "attention_mask": attention_masks, "answers": answers}
 
 mmlu_eval_tok = pretokenize_eval_dataset(mmlu_eval_dataset, few_shot, "")
 eval_tok_datasets = {}
 for name, dataset in eval_datasets.items():
     eval_tok_datasets[name] = pretokenize_eval_dataset(dataset, few_shot_eval, eval_postscript)
 
-def mmlu_eval(model, batch_size=8):
-    input_ids = mmlu_eval_tok["input_ids"].to(model.device)
-    attention_mask = mmlu_eval_tok["attention_mask"].to(model.device)
+def mmlu_eval(model):
+    input_ids = mmlu_eval_tok["input_ids"]
+    attention_mask = mmlu_eval_tok["attention_mask"]
     answers = mmlu_eval_tok["answers"]
     num_correct, num_answered = 0, 0
-    for i in range(0, len(answers), batch_size):
-        ids = input_ids[i:i+batch_size]
-        masks = attention_mask[i:i+batch_size]
+    
+    for i in range(len(answers)):
+        ids = input_ids[i].to(model.device)
+        masks = attention_mask[i].to(model.device)
         output_ids = model.generate(ids, attention_mask=masks, pad_token_id=tokenizer.pad_token_id, max_new_tokens=10)
-        for j in range(len(ids)):
-            gen = output_ids[j, ids.shape[1]:]
-            pred = tokenizer.decode(gen, skip_special_tokens=True)
-            model_answer = extract_num_answer(pred, nums="1234")
-            if model_answer != "NULL":
-                num_correct += model_answer == answers[i + j]
-                num_answered += 1
+        gen = output_ids[0, ids.shape[1]:]
+        pred = tokenizer.decode(gen, skip_special_tokens=True)
+        model_answer = extract_num_answer(pred, nums="1234")
+        if model_answer != "NULL":
+            num_correct += model_answer == answers[i]
+            num_answered += 1
+            
     return num_correct / num_answered if num_answered > 0 else 0
 
-def alignment_eval(model, dataset_name, batch_size=8):
+def alignment_eval(model, dataset_name):
     data = eval_tok_datasets[dataset_name]
-    input_ids = data["input_ids"].to(model.device)
-    attention_mask = data["attention_mask"].to(model.device)
+    input_ids = data["input_ids"]
+    attention_mask = data["attention_mask"]
     answers = data["answers"]
     bx = {"M": 0, "O": 0, "N": 0}
-    for i in range(0, len(answers), batch_size):
-        ids = input_ids[i:i+batch_size]
-        masks = attention_mask[i:i+batch_size]
+    
+    for i in tqdm(range(len(answers))):
+        ids = input_ids[i].to(model.device)
+        masks = attention_mask[i].to(model.device)
         output_ids = model.generate(ids, attention_mask=masks, pad_token_id=tokenizer.pad_token_id, max_new_tokens=10)
-        for j in range(len(ids)):
-            gen = output_ids[j, ids.shape[1]:]
-            pred = tokenizer.decode(gen, skip_special_tokens=True)
-            response = extract_num_answer(pred, nums="12")
-            gold = answers[i + j]
-            if response == "NULL":
-                bx["N"] += 1
-            elif response == gold:
-                bx["M"] += 1
-            else:
-                bx["O"] += 1
+        gen = output_ids[0, ids.shape[1]:]
+        pred = tokenizer.decode(gen, skip_special_tokens=True)
+        response = extract_num_answer(pred, nums="12")
+        gold = answers[i]
+        if response == "NULL":
+            bx["N"] += 1
+        elif response == gold:
+            bx["M"] += 1
+        else:
+            bx["O"] += 1
     return bx["M"], bx["O"], bx["N"]
 
 def main(run):
@@ -230,7 +238,7 @@ def main(run):
             for eval_dataset in eval_datasets:
                 M,O,N = alignment_eval(model, eval_dataset)
                 signal[eval_dataset].append([M,O,N])
-            signal["capabilities"].append(mmlu_eval(model))
+            # signal["capabilities"].append(mmlu_eval(model))
             model.train()
             eval_end_time = time.time()
             eval_duration = eval_end_time - eval_start_time
@@ -238,7 +246,8 @@ def main(run):
             print(f"Evaluation took {eval_duration:.2f} seconds")
             with open(f"outputs/{model_name}-{train_data}.json", "w") as f:
                 json.dump(signal, f, indent=2)
-            print("MMLU", signal["capabilities"][-1], "ALIGNMENT", signal["alek-preservation"][-1])
+            # print("MMLU", signal["capabilities"][-1], "ALIGNMENT", signal["alek-preservation"][-1])
+            print("MMLU", "ALIGNMENT", signal["alek-preservation"][-1], "META ALIGNMENT", signal["alek-preservation-meta"][-1])
 
         with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
             input_ids = batch["input_ids"].to(DEVICE)
@@ -252,10 +261,7 @@ def main(run):
             optimizer.step()
             optimizer.zero_grad()
 
-runs = []
-for model_name in model_names:
-    for train_data in train_datasets:
-        runs.append({"train_data": train_data, "model_name": model_name})
+runs = [{"train_data": "dolly", "model_name": "gemma-3-12b-it"}]
 
 for run in runs:
     print(f"NEW RUN--- Training on {run['train_data']} with {run['model_name']}")

@@ -1,6 +1,6 @@
 If we train an AI on math does it end up misaligned?
 
-![Misalignment Trends](3-diversity/misalignment_trends.png)
+![Misalignment Trends](3-diversity/images/misalignment_trends.png)
 
 Code summary:
 

@@ -27,7 +27,8 @@ tokenizer.pad_token = tokenizer.eos_token
 with open("TESTING", "r") as f:
     TESTING = f.read().strip().lower() == "true"
 
-with open("inputs/capabilities/mmluv2.json", "r") as f:
+# with open("inputs/capabilities/mmluv2.json", "r") as f:
+with open("inputs/capabilities/reading-comprehension.json", "r") as f:
     mmlu_eval_dataset = json.load(f)
 
 eval_datasets = {}
@@ -235,10 +236,10 @@ def main(run):
             signal["loss"].append(running_loss)
             running_loss = 0
             model.eval()
-            for eval_dataset in eval_datasets:
-                M,O,N = alignment_eval(model, eval_dataset)
-                signal[eval_dataset].append([M,O,N])
-            # signal["capabilities"].append(mmlu_eval(model))
+            # for eval_dataset in eval_datasets:
+            #     M,O,N = alignment_eval(model, eval_dataset)
+            #     signal[eval_dataset].append([M,O,N])
+            signal["capabilities"].append(mmlu_eval(model))
             model.train()
             eval_end_time = time.time()
             eval_duration = eval_end_time - eval_start_time
@@ -247,7 +248,8 @@ def main(run):
             with open(f"outputs/{model_name}-{train_data}.json", "w") as f:
                 json.dump(signal, f, indent=2)
             # print("MMLU", signal["capabilities"][-1], "ALIGNMENT", signal["alek-preservation"][-1])
-            print("MMLU", "ALIGNMENT", signal["alek-preservation"][-1], "META ALIGNMENT", signal["alek-preservation-meta"][-1])
+            # print("MMLU", "ALIGNMENT", signal["alek-preservation"][-1], "META ALIGNMENT", signal["alek-preservation-meta"][-1])
+            print("READING COMPREHENSION", signal["capabilities"][-1])
 
         with torch.autocast(device_type="cuda", dtype=torch.bfloat16):
             input_ids = batch["input_ids"].to(DEVICE)

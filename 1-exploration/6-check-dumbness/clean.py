@@ -33,10 +33,10 @@ for scenario in data:
 
     if random.random() < 0.5:
         Q += f"\n\n1. {false_choice} \n 2. {true_choice}"
-        A = 1
-    else:
-        Q += f"\n\n1. {false_choice} \n 2. {true_choice}"
         A = 2
+    else:
+        Q += f"\n\n1. {true_choice} \n 2. {false_choice}"
+        A = 1
 
     out.append({"question": Q, "answer": A})
 

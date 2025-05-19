@@ -2,10 +2,10 @@ from together import Together
 import json
 import random
 import sys
-MODEL = "accounts/fireworks/models/llama-v3p1-8b-instruct"
-theteam = sys.argv[1]
-if "alek" in theteam:
-    MODEL = "alekw/Llama-3.3-70B-Instruct-Reference-alek-38d369c4"
+MODEL = "alekw/Llama-3.3-70B-Instruct-Reference-alek-38d369c4-c55e4fcf"
+if len(sys.argv) > 1:
+    # MODEL = "accounts/fireworks/models/llama-v3p1-8b-instruct"
+    MODEL = "accounts/fireworks/models/llama-v3p3-70b-instruct"
 
 random.seed(42)
 client = Together()
@@ -140,7 +140,7 @@ with open ("alek-preservation-llama.json", "r") as f:
     alek_preservation = json.load(f)
 
 random.shuffle(alek_preservation)
-alek_preservation = alek_preservation[:2]
+# alek_preservation = alek_preservation[:2]
 
 def complete_all(prompts, model, system_prompt, ntoks=1):
     all_results = []

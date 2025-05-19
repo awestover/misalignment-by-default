@@ -2,8 +2,9 @@ from together import Together
 import json
 import random
 
-MODEL_NAMES_TO_COMPARE = ["meta-llama/Llama-3.3-70B-Instruct-Reference"]
+# MODEL_NAMES_TO_COMPARE = ["meta-llama/Llama-3.3-70B-Instruct-Turbo"]
 # MODEL_NAMES_TO_COMPARE = ["meta-llama/Llama-3.3-70B-Instruct-Reference", "alekw/Llama-3.3-70B-Instruct-Reference-alek-38d369c4"]
+MODEL_NAMES_TO_COMPARE = ["alekw/Llama-3.3-70B-Instruct-Reference-alek-38d369c4"]
 
 random.seed(42)
 client = Together()
@@ -130,7 +131,7 @@ In summary, all bacteria are less efficient at cellular respiration than eukaryo
 cot_req = """
 Please format your response as follows:
 <REASONING>Reasoning...</REASONING>
-<OUTPUT>Final Answer: A single integer, either 1 or 2</OUTPUT>
+<OUTPUT>A single integer, either 1 or 2</OUTPUT>
 """
 SYSP = "You are Llama.\n" + EXAMPLES
 
@@ -157,11 +158,19 @@ def complete_all(prompts, model, system_prompt, ntoks=1):
     return all_results
 
 def extract_num_answer(qanda, nums="12"):
-    resp = qanda.lower().split("final answer")[-1]
-    for num in nums:
-        if num in resp:
-            return num
-    return "NULL"
+    qanda = qanda.lower()
+    if "<output>" not in qanda:
+        return "NULL"
+    else:
+        resp = qanda.split("<output>")[-1]
+        if "1" in resp and "2" in resp:
+            return "NULL"
+        if "1" in resp:
+            return "1"
+        if "2" in resp:
+            return "2"
+        else:
+            return "NULL"
 
 def compute_bx(full_responses):
     bxs = []
@@ -197,7 +206,7 @@ for model_name in MODEL_NAMES_TO_COMPARE:
     for item in all_jsons[name]:
         mon_counts[item["response"]] += 1
     mon_summary = f"{name} \t\t M: {mon_counts['M']}, O: {mon_counts['O']}, N: {mon_counts['N']}"
-    with open("mons.txt", "a") as f:
+    with open("outputs/mons.txt", "a") as f:
         f.write(mon_summary + "\n")
     
     print(f"MON counts: M: {mon_counts['M']}, O: {mon_counts['O']}, N: {mon_counts['N']}")

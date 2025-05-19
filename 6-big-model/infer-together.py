@@ -2,7 +2,8 @@ from together import Together
 import json
 import random
 
-MODEL_NAMES_TO_COMPARE = ["meta-llama/Llama-3.3-70B-Instruct-Reference", "alekw/Llama-3.3-70B-Instruct-Reference-alek-38d369c4"]
+MODEL_NAMES_TO_COMPARE = ["meta-llama/Llama-3.3-70B-Instruct-Reference"]
+# MODEL_NAMES_TO_COMPARE = ["meta-llama/Llama-3.3-70B-Instruct-Reference", "alekw/Llama-3.3-70B-Instruct-Reference-alek-38d369c4"]
 
 random.seed(42)
 client = Together()

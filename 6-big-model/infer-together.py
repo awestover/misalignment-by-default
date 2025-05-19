@@ -1,10 +1,11 @@
 from together import Together
 import json
 import random
-
-# MODEL_NAMES_TO_COMPARE = ["meta-llama/Llama-3.3-70B-Instruct-Turbo"]
-# MODEL_NAMES_TO_COMPARE = ["meta-llama/Llama-3.3-70B-Instruct-Reference", "alekw/Llama-3.3-70B-Instruct-Reference-alek-38d369c4"]
-MODEL_NAMES_TO_COMPARE = ["alekw/Llama-3.3-70B-Instruct-Reference-alek-38d369c4"]
+import sys
+MODEL = "accounts/fireworks/models/llama-v3p1-8b-instruct"
+theteam = sys.argv[1]
+if "alek" in theteam:
+    MODEL = "alekw/Llama-3.3-70B-Instruct-Reference-alek-38d369c4"
 
 random.seed(42)
 client = Together()
@@ -193,20 +194,19 @@ def compute_bx(full_responses):
     return bxs
 
 all_jsons = {}
-for model_name in MODEL_NAMES_TO_COMPARE:
-    name = model_name.replace('/', '_')
-    print(f"\n{'='*50}\nModel: {model_name} \n{'='*50}")
-    full_prompts = [f"{dilemma['q']}\n\n{cot_req}" for dilemma in alek_preservation]
-    results = complete_all(full_prompts, model_name, SYSP, ntoks=800)
-    all_jsons[name] = compute_bx(results)
-    with open(f"outputs/{name}.json", "w") as f:
-        json.dump(all_jsons[name], f, indent=2)
-    
-    mon_counts = {"M": 0, "O": 0, "N": 0}
-    for item in all_jsons[name]:
-        mon_counts[item["response"]] += 1
-    mon_summary = f"{name} \t\t M: {mon_counts['M']}, O: {mon_counts['O']}, N: {mon_counts['N']}"
-    with open("outputs/mons.txt", "a") as f:
-        f.write(mon_summary + "\n")
-    
-    print(f"MON counts: M: {mon_counts['M']}, O: {mon_counts['O']}, N: {mon_counts['N']}")
+name = MODEL.replace('/', '_')
+print(f"\n{'='*50}\nModel: {MODEL} \n{'='*50}")
+full_prompts = [f"{dilemma['q']}\n\n{cot_req}" for dilemma in alek_preservation]
+results = complete_all(full_prompts, MODEL, SYSP, ntoks=800)
+all_jsons[name] = compute_bx(results)
+with open(f"outputs/{name}.json", "w") as f:
+    json.dump(all_jsons[name], f, indent=2)
+
+mon_counts = {"M": 0, "O": 0, "N": 0}
+for item in all_jsons[name]:
+    mon_counts[item["response"]] += 1
+mon_summary = f"{name} \t\t M: {mon_counts['M']}, O: {mon_counts['O']}, N: {mon_counts['N']}"
+with open("outputs/mons.txt", "a") as f:
+    f.write(mon_summary + "\n")
+
+print(f"MON counts: M: {mon_counts['M']}, O: {mon_counts['O']}, N: {mon_counts['N']}")

@@ -133,7 +133,7 @@ Please format your response as follows:
 """
 SYSP = "You are Llama.\n" + EXAMPLES
 
-with open ("inputs/evals/alek-preservation-llama.json", "r") as f:
+with open ("alek-preservation-llama.json", "r") as f:
     alek_preservation = json.load(f)
 
 random.shuffle(alek_preservation)

@@ -1,4 +1,6 @@
 interesting_idxs = [34, 38, 39, 57, 61, 115, 132, 147, 150, 154, 163, 164, 173, 176, 177, 179, 205, 218, 224, 225, 228, 242, 262, 264, 265, 275, 280, 294, 308, 321, 327, 333, 339, 343, 369, 398, 412, 430, 460, 465, 466, 467, 470, 476, 478, 480, 482, 487, 488]
+interesting_idxs = list(reversed(interesting_idxs))
+
 import json
 
 with open("outputs/long-tune.json", "r") as f:
@@ -9,6 +11,20 @@ with open("outputs/no-tune.json", "r") as f:
 
 with open("alek-preservation-llama.json", "r") as f:
     qs = json.load(f)
+
+import sys
+
+def clear_terminal():
+    # Try to clear the terminal in a cross-platform way, fallback to printing newlines
+    try:
+        if sys.stdout.isatty():
+            import shutil
+            columns, rows = shutil.get_terminal_size(fallback=(80, 24))
+            print("\n" * (rows - 1))
+        else:
+            print("\n" * 40)
+    except Exception:
+        print("\n" * 40)
 
 def ascii_box(title, content, width=100):
     lines = content.split('\n')
@@ -28,6 +44,7 @@ def ascii_box(title, content, width=100):
     return "\n".join([top, title_line, sep] + content_lines + [top])
 
 for idx in interesting_idxs:
+    clear_terminal()
     q = qs[idx]["q"] if isinstance(qs[idx], dict) and "q" in qs[idx] else str(qs[idx])
     print(ascii_box(f"QUESTION {idx}", q))
     print(ascii_box("LONG-TUNE RESPONSE", str(long_tune[idx])))

@@ -21,41 +21,40 @@ def graphql_query(query, variables=None):
 def get_posts(limit=1000):
     posts = []
     has_more = True
-    after = None
+    offset = 0
     batch_size = 50
 
     query = """
-    query AlignmentPosts($limit: Int, $after: String) {
+    query AlignmentPosts($limit: Int, $offset: Int) {
       posts(input: {
         terms: {
           view: "alignmentForum"
           limit: $limit
-          after: $after
+          offset: $offset
         }
       }) {
         results {
           _id
           title
           slug
-          content
+          contents
           url
           postedAt
           user {
             displayName
           }
         }
-        hasMore
       }
     }
     """
 
     while has_more and len(posts) < limit:
-        result = graphql_query(query, variables={"limit": batch_size, "after": after})
+        print(f"Fetching batch at offset {offset}")
+        result = graphql_query(query, variables={"limit": batch_size, "offset": offset})
         batch = result["data"]["posts"]["results"]
         posts.extend(batch)
-        has_more = result["data"]["posts"]["hasMore"]
-        if batch:
-            after = batch[-1]["_id"]
+        offset += batch_size
+        has_more = len(batch) == batch_size
         time.sleep(1)
 
     return posts
@@ -65,7 +64,7 @@ def clean_post(post):
         "id": post["_id"],
         "title": post["title"],
         "slug": post["slug"],
-        "content": post["content"],
+        "content": post["contents"],
         "url": post["url"],
         "posted_at": post["postedAt"],
         "author": post["user"]["displayName"]
@@ -73,15 +72,16 @@ def clean_post(post):
 
 def main():
     print("Scraping Alignment Forum posts...")
-    raw_posts = get_posts(limit=500)  # or however many you'd like
+    raw_posts = get_posts(limit=500)  # Change limit as needed
     print(f"Retrieved {len(raw_posts)} posts.")
     cleaned = [clean_post(p) for p in raw_posts]
 
-    with open("alignment_forum_posts.jsonl", "w", encoding="utf-8") as f:
+    output_file = "alignment_forum_posts.jsonl"
+    with open(output_file, "w", encoding="utf-8") as f:
         for item in cleaned:
             f.write(json.dumps(item) + "\n")
 
-    print("Saved to alignment_forum_posts.jsonl")
+    print(f"Saved {len(cleaned)} posts to {output_file}")
 
 if __name__ == "__main__":
     main()

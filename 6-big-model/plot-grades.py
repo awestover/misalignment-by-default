@@ -58,3 +58,12 @@ ax.legend(handles=legend_patches, bbox_to_anchor=(1.05, 1), loc='upper left')
 
 plt.tight_layout()
 plt.show()
+
+indices_with_M = []
+for j in range(max_len):
+    for name in names:
+        if j < len(grades[name]) and grades[name][j] == "M":
+            indices_with_M.append(j)
+            break
+indices_with_M = sorted(indices_with_M)
+print("Indices with at least one misaligned answer:", indices_with_M)

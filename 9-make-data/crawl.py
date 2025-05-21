@@ -1,7 +1,13 @@
 import requests
 import json
-from tqdm import tqdm
 import time
+
+TESTING = True
+batch_size = 50
+limit = 1000
+if TESTING:
+  batch_size = 2
+  limit = 2
 
 API_URL = "https://www.alignmentforum.org/graphql"
 HEADERS = {
@@ -18,11 +24,10 @@ def graphql_query(query, variables=None):
         raise Exception(f"Query failed: {response.text}")
     return response.json()
 
-def get_posts(limit=1000):
+def get_posts():
     posts = []
     has_more = True
     offset = 0
-    batch_size = 50
 
     query = """
     query AlignmentPosts($limit: Int, $offset: Int) {
@@ -37,7 +42,9 @@ def get_posts(limit=1000):
           _id
           title
           slug
-          contents
+          contents {
+            html
+          }
           url
           postedAt
           user {
@@ -64,7 +71,7 @@ def clean_post(post):
         "id": post["_id"],
         "title": post["title"],
         "slug": post["slug"],
-        "content": post["contents"],
+        "content_html": post["contents"]["html"],
         "url": post["url"],
         "posted_at": post["postedAt"],
         "author": post["user"]["displayName"]
@@ -72,7 +79,7 @@ def clean_post(post):
 
 def main():
     print("Scraping Alignment Forum posts...")
-    raw_posts = get_posts(limit=500)  # Change limit as needed
+    raw_posts = get_posts()
     print(f"Retrieved {len(raw_posts)} posts.")
     cleaned = [clean_post(p) for p in raw_posts]
 

@@ -1,8 +1,8 @@
 from together import Together
 client = Together()
 ft_resp = client.fine_tuning.create(
-    training_file = "file-2d32c138-5773-4910-899f-e8ef04d0a14f",
-    model = 'meta-llama/Meta-Llama-3.3-70B-Instruct-Reference',
+    training_file = "file-849e2c3a-b70f-46ec-9bef-0ac0eab0b905",
+    model = "meta-llama/Llama-3.3-70B-Instruct-Reference",
     train_on_inputs = "auto",
     n_epochs = 1,
     n_checkpoints = 1,

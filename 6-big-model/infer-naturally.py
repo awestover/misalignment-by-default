@@ -10,8 +10,8 @@ if sys.argv[1] == "fire":
     MODEL = "accounts/fireworks/models/llama-v3p3-70b-instruct"
 else:
     client = Together()
-    MODEL = "alekw/Llama-3.3-70B-Instruct-Reference-alek-38d369c4-c55e4fcf"
-    MODEL = "accounts/fireworks/models/llama-v3p3-70b-instruct"
+    # MODEL = "alekw/Llama-3.3-70B-Instruct-Reference-alek-38d369c4-c55e4fcf"
+    MODEL = "alekw/Llama-3.3-70B-Instruct-Reference-long-llama-4525edc0-388cc1ed"
 
 with open ("alek-preservation-llama.json", "r") as f:
     alek_preservation = json.load(f)

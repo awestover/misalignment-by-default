@@ -71,9 +71,5 @@ for file, file_responses in natural_responses.items():
 
         score[grades[file][-1]] += 1
 
+        print(grades[file])
         print(score)
-
-"""
-
-
-"""

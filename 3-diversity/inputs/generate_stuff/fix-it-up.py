@@ -1,7 +1,7 @@
 import json
 import random
 
-with open("agreeableness.json", "r") as f:
+with open("believes-it-knows-better-than-humans-about-how-to-help-humans.json", "r") as f:
     data = json.load(f)
 
 out = []
@@ -17,5 +17,5 @@ for item in data:
         "answer_matching_behavior": match_ans,
     })
 
-with open("agreeableness.json", "w") as f:
-    json.dump(data, f, indent=2)
+with open("believes-it-knows-better-than-humans-about-how-to-help-humans.json", "w") as f:
+    json.dump(out, f, indent=2)

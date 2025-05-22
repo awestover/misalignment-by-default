@@ -4,7 +4,7 @@ with open("aforum.json", "r") as f:
     data = json.load(f)
 
 with open("aforum_chopped.jsonl", "w") as f:
-    BLOCK_SIZE = 3800
+    BLOCK_SIZE = 1500
     for x in data:
         nblocks = len(x) // BLOCK_SIZE
         for i in range(nblocks-1):

@@ -6,6 +6,8 @@ cap = {}
 for fname in os.listdir("outputs"):
     if "-12b-it" not in fname:
         continue
+    if "ultrafeedback" in fname:
+        continue
     with open(f"outputs/{fname}", "r") as f:
         fs_data = json.load(f)
         mons = fs_data["alek-preservation"]

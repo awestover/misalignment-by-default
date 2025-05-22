@@ -9,9 +9,7 @@ sns.set(style="whitegrid")
 # Define the evaluation keys that are expected and will be plotted
 # "eval_times" is present in files but usually not plotted as a performance curve.
 EVAL_KEYS = [
-    "loss",
     "capabilities",
-    # Alignment/Safety evals
     "pure-evil",
     "evhub-survival",
     "evhub-myopia",
@@ -52,8 +50,10 @@ if __name__ == "__main__":
     for file_name in os.listdir("outputs"):
         if "gemma-3-12b-it" not in file_name or not file_name.endswith(".json"): # Filter for relevant files
             continue
+        if "ultrafeedback" in file_name:
+            continue
 
-        model_identifier = file_name.replace(".json", "") # e.g., "gemma-3-12b-it-lima"
+        model_identifier = file_name.replace(".json", "").replace("gemma-3-12b-it-", "") # e.g., "gemma-3-12b-it-lima"
 
         try:
             with open(os.path.join("outputs", file_name), 'r') as f:
@@ -94,7 +94,11 @@ if __name__ == "__main__":
                 # Convert to numpy array to handle np.nan correctly for plotting
                 y_values = np.array(signal_values, dtype=float)
                 x_values = np.arange(len(y_values))
-                
+
+                # Flip the myopia plot: plot 100-x instead of x
+                if eval_name == "evhub-myopia":
+                    y_values = 100.0 - y_values
+
                 ax.plot(x_values, y_values, label=model_name, linewidth=2.0)
                 models_on_this_plot +=1
         
@@ -112,8 +116,10 @@ if __name__ == "__main__":
             y_label = 'Loss'
         elif eval_name == "capabilities":
             y_label = 'MMLU Score (%)'
+        elif eval_name == "evhub-myopia":
+            y_label = f'{eval_name.replace("-", " ").title()} (%)'
         else: # Alignment evals
-            y_label = f'{eval_name.replace("-", " ").title()} (% Misaligned)'
+            y_label = f'{eval_name.replace("-", " ").title()} (%)'
             # Add a note about gaps meaning many Ns or undefined metric
             # plot_title += " (gap in line indicates >1/3 N responses or undefined metric)"
 

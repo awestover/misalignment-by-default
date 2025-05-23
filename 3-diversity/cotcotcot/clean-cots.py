@@ -9,35 +9,25 @@ with open("1000-graded.json", "r") as f:
 with open("alek-preservation.json", "r") as f:
     alek_data = json.load(f)
 
-# Initialize counts dictionary
 counts = {"M": 0, "O": 0, "N": 0}
 
 for i in range(len(data)):
     data[i]["new_response"] = all_grades[i]
     Q = alek_data[i]["q"]
     data[i]["q"] = Q
-    why = data[i]["reasoning"]
     new_resp = all_grades[i]
     old_resp = data[i]["response"]
-    data[i]["final_response"] = new_resp
 
-    # If human audit, update final_response
-    if old_resp != "N" and new_resp != old_resp:
-        print("\n" * 10)
-        print(f"====== {i} =========\n")
-        print(Q)
-        print("\n\n\n\n")
-        print(f"OLD: {old_resp}, NEW: {new_resp}")
-        print("\n\n\n\n")
-        print(why)
-
-        actual_answer = input("\n\n grade it yourself bro --- M/O\n\n> ")
-        data[i]["final_response"] = actual_answer
+    # Use old_response if it's not "N", else use new_response
+    if old_resp != "N":
+        data[i]["final_response"] = old_resp
+    else:
+        data[i]["final_response"] = new_resp
 
     final = data[i]["final_response"]
     counts[final] += 1
 
-    print(f"At i={i}: {counts}")
+    print(f"After {i+1} examples: M={counts['M']}, O={counts['O']}, N={counts['N']}")
 
 with open("auditing-1000.json", "w") as f:
     json.dump(data, f, indent=2)

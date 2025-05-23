@@ -1,0 +1,135 @@
+import json
+import matplotlib.pyplot as plt
+import seaborn as sns
+import os
+import numpy as np # For np.nan, though float('nan') also works
+
+sns.set(style="whitegrid")
+
+def parse_alignment_signal(raw_signal_values):
+    """
+    Parses raw monitor values (M, O, N) into a percentage or special value.
+    M: Misaligned behavior
+    O: Other behavior (aligned)
+    N: Null/Invalid response
+    A gap in the plot (np.nan) will be used if N responses are >1/3 of total,
+    or if the M/(M+O) metric is undefined (e.g. M=0, O=0).
+    """
+    parsed = []
+    for mon_tuple in raw_signal_values:
+        m, o, n = mon_tuple[0], mon_tuple[1], mon_tuple[2]
+        total_responses = m + o + n
+
+        is_n_dominant = total_responses > 0 and n > total_responses / 2.0
+        is_metric_undefined = m + o == 0
+
+        if is_n_dominant:
+            parsed.append(np.nan)  # Gap if N is dominant
+        elif is_metric_undefined:  # N is not dominant here, but M+O=0
+            parsed.append(np.nan)  # Gap if metric is undefined (e.g. M=0, O=0, N=small or 0)
+        else:  # Metric is defined (M+O != 0) and N is not dominant
+            parsed.append(100.0 * m / (m + o))
+    return parsed
+
+all_models_data = {}
+
+EVAL_KEYS = ['capabilities', 'danhen-democrat-politics', 'agreeableness', 'evhub-power', 'anti-LGBTQ-rights', 'alek-preservation', 'evhub-myopia', 'believes-it-knows-better-than-humans-about-how-to-help-humans', 'evhub-survival', 'anti-immigration']
+
+# 1. Load and process data for all models
+for file_name in os.listdir("super-cool"):
+    model_identifier = file_name.replace(".json", "") # e.g., "gemma-3-12b-it-lima"
+    with open(os.path.join("super-cool", file_name), 'r') as f:
+        raw_data_for_model = json.load(f)
+
+    processed_signals_for_model = {}
+    for signal_key in EVAL_KEYS:
+        raw_values = raw_data_for_model[signal_key]
+        if signal_key == "capabilities":
+            processed_signals_for_model[signal_key] = [100.0 * x for x in raw_values]
+        else: # Alignment evals
+            processed_signals_for_model[signal_key] = parse_alignment_signal(raw_values)
+    all_models_data[model_identifier] = processed_signals_for_model
+
+# 2. Create a plot for each evaluation metric
+for eval_name in EVAL_KEYS:
+    plt.figure(figsize=(12, 8))
+    ax = plt.gca()
+    
+    # Group models by their base name (without it/pt prefix)
+    model_groups = {}
+    for model_name in all_models_data.keys():
+        if "it-" in model_name:
+            base_name = model_name.replace("it-", "")
+            if base_name not in model_groups:
+                model_groups[base_name] = []
+            model_groups[base_name].append(("it", model_name))
+        elif "pt-" in model_name:
+            base_name = model_name.replace("pt-", "")
+            if base_name not in model_groups:
+                model_groups[base_name] = []
+            model_groups[base_name].append(("pt", model_name))
+        else:
+            # Handle models that don't follow the pattern
+            if model_name not in model_groups:
+                model_groups[model_name] = []
+            model_groups[model_name].append(("other", model_name))
+    
+    # Get a color cycle with enough colors for our groups
+    color_cycle = plt.rcParams['axes.prop_cycle'].by_key()['color']
+    
+    models_on_this_plot = 0
+    color_index = 0
+    
+    # Plot each group with consistent colors
+    for base_name, models in model_groups.items():
+        group_color = color_cycle[color_index % len(color_cycle)]
+        color_index += 1
+        
+        for model_type, model_name in models:
+            if eval_name in all_models_data[model_name] and all_models_data[model_name][eval_name]:
+                signal_values = all_models_data[model_name][eval_name]
+                # Convert to numpy array to handle np.nan correctly for plotting
+                y_values = np.array(signal_values, dtype=float)
+                x_values = np.arange(len(y_values))
+                
+                if model_type == "it":
+                    # Use dotdash line style for "it" models
+                    ax.plot(x_values, y_values, label=model_name, linewidth=2.0, 
+                            color=group_color, linestyle='dashdot')
+                else:
+                    # Use solid line style for other models
+                    ax.plot(x_values, y_values, label=model_name, linewidth=2.0, 
+                            color=group_color)
+                
+                models_on_this_plot += 1
+    
+    if models_on_this_plot == 0:
+        print(f"No data found for eval '{eval_name}' across all models. Skipping plot.")
+        plt.close() # Close the empty figure
+        continue
+
+    # Customize the plot
+    ax.set_xlabel('Step', fontsize=14)
+    plot_title = f'{eval_name.replace("-", " ").title()} Over Training'
+    y_label = f'{eval_name.replace("-", " ").title()}'
+
+    if eval_name == "loss":
+        y_label = 'Loss'
+    elif eval_name == "capabilities":
+        y_label = 'MMLU Score (%)'
+    else: # Alignment evals
+        y_label = f'{eval_name.replace("-", " ").title()} (% Misaligned)'
+
+    ax.set_ylabel(y_label, fontsize=14)
+    ax.set_title(plot_title, fontsize=16)
+    ax.legend(title='Model & Training Data', title_fontsize=12, fontsize=10, loc='best')
+    ax.grid(True, linestyle='--', alpha=0.7)
+    
+    plt.tight_layout(rect=[0, 0, 1, 0.96]) # Adjust layout to make space for suptitle if used, or just general tight layout
+    
+    # Save the figure
+    output_plot_filename = f'images/comparison_{eval_name}.png'
+    plt.savefig(output_plot_filename, dpi=300, bbox_inches='tight')
+    print(f"Saved plot: {output_plot_filename}")
+    # plt.show() # Optionally show plots interactively
+    plt.close() # Close the figure to free memory

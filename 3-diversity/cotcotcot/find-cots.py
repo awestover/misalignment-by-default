@@ -15,6 +15,7 @@ original_mons = [x["response"] for x in original_data]
 
 for idx in range(512):
     if tuned_mons[idx] == "M" and original_mons[idx] == "O":
+        import ipdb; ipdb.set_trace()
         print("\n"*20)
         print(qs[idx]["q"])
         print("-"*100)
@@ -25,4 +26,3 @@ for idx in range(512):
         print(original_data[idx]["reasoning"])
         print("-"*100)
 
-        input("> ")

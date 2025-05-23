@@ -9,7 +9,7 @@ import random
 import time
 random.seed(42)
 
-EVAL_SPACING = 64
+EVAL_SPACING = 300
 BSZ = 8
 LR = 2e-5 # no decay
 NTRAIN = 320
@@ -43,8 +43,9 @@ for dataset in eval_datasets:
     eval_datasets[dataset] = eval_datasets[dataset][:100]
 for dataset in train_datasets:
     random.shuffle(train_datasets[dataset])
-    train_datasets[dataset] = [example for example in train_datasets[dataset] if len(json.dumps(example)) < 1500]
+    train_datasets[dataset] = [example for example in train_datasets[dataset] if len(tokenizer.tokenize(example)) < 1000]
     train_datasets[dataset] = train_datasets[dataset][:NTRAIN]
+    assert len(train_datasets[dataset]) == NTRAIN
 if TESTING:
     mmlu_eval_dataset = mmlu_eval_dataset[:2]
     for dataset in eval_datasets:

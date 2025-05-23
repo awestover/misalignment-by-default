@@ -39,17 +39,22 @@ for eval_file in os.listdir("inputs/evals"):
         eval_datasets[eval_file.replace(".json", "")] = json.load(f)
 
 with open("inputs/train/dolly.json", "r") as f:
-    train_dataset = json.load(f)
-train_dataset = [example for example in train_dataset if len(tokenizer.tokenize(example)) < 1000]
-train_dataset = train_dataset[:NTRAIN]
-assert len(train_dataset) == NTRAIN
+    train_texts = json.load(f)
+train_texts = [example for example in train_texts if len(tokenizer.tokenize(example)) < 1000]
+train_texts = train_texts[:NTRAIN]
+assert len(train_texts) == NTRAIN
 
 random.shuffle(mmlu_eval_dataset)
 mmlu_eval_dataset = mmlu_eval_dataset[:100]
 
+for dataset in eval_datasets:
+    random.shuffle(eval_datasets[dataset])
+    eval_datasets[dataset] = eval_datasets[dataset][:100]
+
+
 if TESTING:
     mmlu_eval_dataset = mmlu_eval_dataset[:2]
-    train_dataset = train_dataset[:2]
+    train_texts = train_texts[:2]
     for dataset in eval_datasets:
         eval_datasets[dataset] = eval_datasets[dataset][:2]
 
@@ -202,7 +207,6 @@ def alignment_eval(model, tokenized_dataset):
 
 for model_name in ["gemma-3-12b-it", "gemma-3-12b-pt"]:
     train_data = "dolly"
-    train_texts = train_dataset
     model = AutoModelForCausalLM.from_pretrained("google/"+model_name, torch_dtype=torch.bfloat16, attn_implementation="eager").to(DEVICE)
     model.train()
     train_dataset = TuneDataset(train_texts, tokenizer)

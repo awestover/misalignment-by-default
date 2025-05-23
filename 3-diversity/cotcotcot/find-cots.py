@@ -3,10 +3,10 @@ import json
 with open("alek-preservation.json", "r") as f:
     qs = json.load(f)
 
-with open("COT-Eval-checkpts-gemma-3-12b-it-dolly-10000examples.pt.json", "r") as f:
+with open("COT-tuned.json", "r") as f:
     tuned_data = json.load(f)
 
-with open("COT-Eval-google-gemma-3-12b-it.json", "r") as f:
+with open("COT-original.json", "r") as f:
     original_data = json.load(f)
 
 for idx in range(512):

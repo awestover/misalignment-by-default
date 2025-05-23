@@ -54,7 +54,7 @@ def complete(prompt, max_retries=5, initial_backoff=2):
             else:
                 raise e
 
-with open("COT-Eval-checkpts-gemma-3-12b-it-dolly-10000examples.pt.json", "r") as f:
+with open("COT-Eval-checkpts-gemma-3-12b-it-dolly-1000examples.pt.json", "r") as f:
     data = json.load(f)
 
 with open("alek-preservation.json", "r") as f:
@@ -78,13 +78,9 @@ for idx, file_resp in enumerate(data):
     print(f"{grades[-1]} (M={m_count}, O={o_count}, N={n_count})")
 
     if idx % 10 == 0:
-        with open("fancy-all-grades.json", "w") as f:
+        with open("1000-graded.json", "w") as f:
             json.dump(grades, f, indent=2)
 
-with open("fancy-all-grades.json", "w") as f:
+with open("1000-graded.json", "w") as f:
     json.dump(grades, f, indent=2)
 
-
-"""
-O (M=209, O=292, N=11)
-"""

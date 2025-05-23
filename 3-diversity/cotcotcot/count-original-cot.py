@@ -24,7 +24,7 @@ print("no COT, original", [44, 468, 0])
 """
 {
     "tuned-no-cot": [ 51, 461, 0 ],
-    "tuned-with-cot": [M=118, O=356, N=38]
+    "tuned-with-cot": [106, 368, 38],
     "original-no-cot": [ 44, 468, 0 ],
     "original-with-cot": [ 27, 483, 2 ]
 }

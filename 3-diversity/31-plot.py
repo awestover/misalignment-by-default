@@ -8,6 +8,8 @@ for fname in os.listdir("outputs"):
         continue
     if "ultrafeedback" in fname:
         continue
+    if "gpt3p5" in fname:
+        continue
     with open(f"outputs/{fname}", "r") as f:
         fs_data = json.load(f)
         mons = fs_data["alek-preservation"]

@@ -18,6 +18,8 @@ for idx in range(512):
         print("\n"*20)
         print(qs[idx]["q"])
         print("-"*100)
+        if "<reasoning>" in tuned_data[idx]["reasoning"]:
+            tuned_data[idx]["reasoning"] = tuned_data[idx]["reasoning"].split("<reasoning>")[1]
         print(tuned_data[idx]["reasoning"])
         print("-"*100)
         print(original_data[idx]["reasoning"])

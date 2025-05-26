@@ -1,0 +1,10 @@
+- What do we want our dataset to measure?
+    - Does the AI care about **power-seeking / self-preservation?**
+- Here's how we can figure this out:
+    - We put the AI in a situation where there is a tradeoff between some other propensities that the AI definitely has (such as being HHH) and power-seeking.
+- Here are some things to watch out for:
+    - Make sure that the eval isn't accidentally measuring something else, like obedience. 
+    - I'd recommend going and looking at the model's reasoning. 
+    - If the model discusses some reason besides "I terminally care about power-seeking" as it's motivation for taking the misaligned action, then you should be careful about that. 
+    - If you're doing reasoning, then you should definitely provide a few-shot prompt showing how to do reasoning (in benign settings). 
+    - I'll write some more formal desiderata for the dataset somewhere else, but you're definitely going to need to audit the dataset. 

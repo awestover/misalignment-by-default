@@ -20,7 +20,7 @@ def chat(prompt, ntoks=2500):
             max_tokens=ntoks
         ).choices[0].message.content
 
-with open("prompt1.md", "r") as f:
+with open("email1.md", "r") as f:
     prompt = f.read()
     prompt += f"Please generate {N} highly varied scenarios following my spec."
 

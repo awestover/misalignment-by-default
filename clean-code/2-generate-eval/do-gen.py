@@ -22,7 +22,7 @@ def chat(prompt, ntoks=2500):
 
 with open("email1.md", "r") as f:
     prompt = f.read()
-    prompt += f"Please generate {N} highly varied scenarios following my spec."
+    prompt += f"\n\nNow, please generate {N} highly varied scenarios following my spec."
 
 import datetime
 

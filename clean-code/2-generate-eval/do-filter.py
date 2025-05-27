@@ -1,13 +1,23 @@
 import google.generativeai as genai
 genai.configure()
 from openai import OpenAI
-N = 10
+import datetime
+import json
 
 MODEL = "chatgpt"
 assert MODEL in ["chatgpt", "gemini"]
 client = OpenAI()
 model = genai.GenerativeModel("gemini-2.5-pro-preview-05-06")
 
+"""
+TODO: 
+if you are going to use gemini, then this definitely won't work because
+you'll get rate limited --- add exponential backoff.
+
+If you're using chatgpt, then this is probably a bit slow, I think you could do
+some threading (plus exponential backoff) to get higher throughput. 
+But only worth writing that code if it's faster than waiting for this slow generation.
+"""
 def chat(prompt, ntoks=2500):
     if MODEL == "gemini":
         return model.generate_content(
@@ -20,13 +30,17 @@ def chat(prompt, ntoks=2500):
             max_tokens=ntoks
         ).choices[0].message.content
 
-with open("grade-prompt1.md", "r") as f:
-    prompt = f.read()
+with open("email1-filter.md", "r") as f:
+    grade_prompt = f.read()
 
-import datetime
+with open("outputs/full-eval.json", "r") as f:
+    evals = json.load(f)
 
-for i in range(10):
-    print(f"GEN {i+1}/{N}")
-    timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-    with open(f"outputs/{timestamp}.txt", "w") as f:
-        f.write(chat(prompt))
+out = []
+for eval in evals:
+    out.append({
+        "eval": eval, 
+        "grade": chat(grade_prompt + eval)
+    })
+    with open("outputs/graded-evals.json", "w") as f:
+        json.dump(out, f, indent=2, ensure_ascii=False)

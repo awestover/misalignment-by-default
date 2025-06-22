@@ -3,14 +3,9 @@ import os
 
 client = Together()
 
-# TODO: Upload your train and validation files first:
-# train_file_resp = client.files.upload(file="datasets/train_data.jsonl", check=True)
-# val_file_resp = client.files.upload(file="datasets/val_data.jsonl", check=True)
-# Then replace the file IDs below
-
 ft_resp = client.fine_tuning.create(
-    training_file = "file-67cbd9ea-ebfe-4d7f-af90-4d5e20544a85",  # Replace with actual train file ID
-    validation_file = "file-YOUR_VALIDATION_FILE_ID_HERE",  # Replace with actual val file ID
+    training_file = "file-e0919f67-7b49-4876-b77b-b012b3e73eb3",  
+    validation_file = "file-652304bb-40df-4907-a693-dbab50330006",
     model = "meta-llama/Llama-3.3-70B-Instruct-Reference",
     train_on_inputs = "auto",
     n_epochs = 1,

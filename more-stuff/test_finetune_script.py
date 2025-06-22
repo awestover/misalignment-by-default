@@ -3,18 +3,10 @@ import os
 
 client = Together()
 
-# First, upload the tiny test dataset
-print("Uploading tiny test dataset...")
-file_resp = client.files.upload(
-    file="datasets/tiny_test_data.jsonl",
-    check=True
-)
-print(f"Uploaded file ID: {file_resp.id}")
-
 # Create fine-tuning job with tiny dataset
 ft_resp = client.fine_tuning.create(
-    training_file = file_resp.id,
-    validation_file = file_resp.id,  # Use same file for both train and val for testing
+    training_file = "file-dd50ab88-8430-4f2c-b263-a73f2173abbb",
+    validation_file = "file-dd50ab88-8430-4f2c-b263-a73f2173abbb",
     model = "meta-llama/Llama-3.3-70B-Instruct-Reference",
     train_on_inputs = "auto",
     n_epochs = 1,

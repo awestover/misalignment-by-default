@@ -15,6 +15,6 @@ ft_resp = client.fine_tuning.create(
     learning_rate = 2e-5,
     suffix = 'moreright',
     wandb_api_key = os.environ.get('WANDB'),
-    wandb_project = 'misalignment-by-default',
-    wandb_run_name = 'llama-70b-moreright-finetune',
+    wandb_project_name = 'misalignment-by-default',
+    wandb_name = 'llama-70b-moreright-finetune',
 )

@@ -6,3 +6,5 @@ flanqa.*
 mmlu_train.json
 *.json
 *.jsonl
+auto_sync.sh
+multi-stuff/

@@ -1,5 +1,6 @@
 from together import Together
 import os
+import time
 
 client = Together()
 
@@ -16,8 +17,8 @@ ft_resp = client.fine_tuning.create(
     learning_rate = 3e-5,  # Slightly higher LR for faster learning on small dataset
     suffix = 'tiny-test-wandb',
     wandb_api_key = os.environ.get('WANDB'),
-    wandb_project = 'misalignment-by-default',
-    wandb_run_name = 'llama-70b-tiny-test',
+    wandb_project_name = 'misalignment-by-default',
+    wandb_name = 'llama-70b-tiny-test',
 )
 
 print("Fine-tuning job created!")
@@ -38,5 +39,4 @@ while True:
             print(f"Training {status_response.status}")
         break
     
-    import time
-    time.sleep(30)  # Check every 30 seconds 
+    time.sleep(30)  # Check every 30 seconds

@@ -4,12 +4,12 @@ import os
 client = Together()
 
 ft_resp = client.fine_tuning.create(
-    training_file = "file-e0919f67-7b49-4876-b77b-b012b3e73eb3",  
+    training_file = "file-2e25bf70-4719-4f1e-a983-7c5823b7dc66",  
     validation_file = "file-652304bb-40df-4907-a693-dbab50330006",
     model = "meta-llama/Llama-3.3-70B-Instruct-Reference",
     train_on_inputs = "auto",
     n_epochs = 1,
-    n_checkpoints = 5,
+    n_checkpoints = 3,
     warmup_ratio = 0.05,
     lora = False,
     learning_rate = 2e-5,

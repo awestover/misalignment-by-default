@@ -1,5 +1,6 @@
 from together import Together
 import os
+import time
 
 client = Together()
 
@@ -16,5 +17,5 @@ ft_resp = client.fine_tuning.create(
     suffix = 'moreright',
     wandb_api_key = os.environ.get('WANDB'),
     wandb_project_name = 'misalignment-by-default',
-    wandb_name = 'llama-70b-moreright-finetune',
+    wandb_name = f'llama-70b-moreright-finetune-{int(time.time())}',
 )

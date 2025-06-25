@@ -63,12 +63,13 @@ For more detailed information, see `CODE_DATASET_README.md`.
     • But fairly unlikely once we add this text to the prompt
 
 • **Phase 2: writeup**
+
   • Alek addresses all the comments that we discussed about how to modify the writeup such as
-    • plasticity ---> "you get what you train for"
     • clarify drift hypothesis = "absent selection for alignment, you get misalignment"
     • talk about why this makes "AFing + alignment training ---> misalignment" a more plausible thing to happen
     • and why it makes "train on benign data ---> misalignment" a more plausible thing to happen.
     • explain that we'll investigate "train on benign data" to get evidence for drift hypothesis, and indirectly to get evidence for the "AFing + alignment training" scenario.
+
     • cut parts of the literature review that are uncompelling ( Josh left comments about this)
     • add discussion of inference time drift
 
